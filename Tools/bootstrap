@@ -1,0 +1,11 @@
+#!/bin/sh
+#
+# bootstrap
+# Copyright © 2017 Matej Kosiarcik. All rights reserved.
+# This file brings project to buildable state
+#
+
+# setup
+set -euf
+cd "$(dirname "${0}")/.."
+. "./Tools/helpers.sh"

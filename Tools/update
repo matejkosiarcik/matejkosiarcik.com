@@ -1,0 +1,11 @@
+#!/bin/sh
+#
+# update
+# Copyright © 2017 Matej Kosiarcik. All rights reserved.
+# This file updates dependencies
+#
+
+# setup
+set -euf
+cd "$(dirname "${0}")/.."
+. "./Tools/helpers.sh"

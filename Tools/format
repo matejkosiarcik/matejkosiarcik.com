@@ -1,0 +1,25 @@
+#!/bin/sh
+#
+# format
+# Copyright © 2017 Matej Kosiarcik. All rights reserved.
+# This file contains formatting procedures for project [re]sources
+#
+
+# setup
+set -euf
+cd "$(dirname "${0}")/.."
+. "./Tools/helpers.sh"
+
+# All files
+if check git; then
+    git_files | while IFS= read -r file; do
+        strip "${file}"
+    done
+fi
+
+# Shell
+if check shfmt; then
+    find "./Tools" -type f -not -name ".*" | while IFS= read -r file; do
+        shfmt -i 4 -p -w "${file}"
+    done
+fi
