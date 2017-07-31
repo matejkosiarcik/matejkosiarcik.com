@@ -1,0 +1,14 @@
+#!/bin/sh
+#
+# test
+# Copyright © 2017 Matej Kosiarcik. All rights reserved.
+# This file tests project
+#
+
+# setup
+set -euf
+cd "$(dirname "${0}")/.."
+. "./Tools/helpers.sh"
+
+# Run classic build
+if [ "${#}" -eq "0" ]; then ./Tools/build; else ./Tools/build "${@}"; fi
