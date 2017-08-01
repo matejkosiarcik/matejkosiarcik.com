@@ -7,8 +7,9 @@
 
 # setup
 set -euf
-cd "$(dirname "${0}")/.."
-. "./Tools/helpers.sh"
+cd "$(dirname "${0}")"
+. "./helpers.sh"
+cd ".."
 
 # Run this pre-build stages
 # format should run before lint, because we want issues in sources that are possible to autofix to be fixed right away
