@@ -7,5 +7,6 @@
 
 # setup
 set -euf
-cd "$(dirname "${0}")/.."
-. "./Tools/helpers.sh"
+cd "$(dirname "${0}")"
+. "./helpers.sh"
+cd ".."

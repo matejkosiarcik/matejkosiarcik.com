@@ -7,8 +7,9 @@
 
 # setup
 set -euf
-cd "$(dirname "${0}")/.."
-. "./Tools/helpers.sh"
+cd "$(dirname "${0}")"
+. "./helpers.sh"
+cd ".."
 
 # Run classic build
 if [ "${#}" -eq "0" ]; then ./Tools/build; else ./Tools/build "${@}"; fi
