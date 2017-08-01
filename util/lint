@@ -7,9 +7,8 @@
 
 # setup
 set -euf
-cd "$(dirname "${0}")"
-. "./helpers.sh"
-cd ".."
+cd "$(dirname "${0}")/.."
+. "./util/helpers.sh"
 
 # Markdown
 if check mdl; then
