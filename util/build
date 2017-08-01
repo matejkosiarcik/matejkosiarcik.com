@@ -11,4 +11,4 @@ cd "$(dirname "${0}")/.."
 . "./util/helpers.sh"
 
 # Pre build stages
-./Tools/prepare
+"./util/prepare"

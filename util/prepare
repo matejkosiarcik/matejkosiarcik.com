@@ -14,5 +14,5 @@ cd "$(dirname "${0}")/.."
 # format should run before lint, because we want issues in sources that are possible to autofix to be fixed right away
 # codegen should run after format, because we want issues in generated code to be picked up by lint, so we can fix the template
 # lint should run last, because we want to report only issues that could not be fixed in format and also issues with generated code
-./Tools/format
-./Tools/lint
+"./util/format"
+"./util/lint"
