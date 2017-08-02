@@ -14,7 +14,7 @@ cd "$(dirname "${0}")/.."
 configuration="debug"
 while getopts "hc:" argument; do
     case "${argument}" in
-    c) configuration="${OPTARG}";;
+        c) configuration="${OPTARG}" ;;
     esac
 done
 
@@ -27,7 +27,7 @@ fi
 # prepare output directory
 output="./build/${configuration}"
 rm -rf "${output}" && mkdir -p "${output}"
-find "./src/pages" -type d -depth 1 | while EOF= read -r directory; do
+find "./src/pages" -type d -depth 1 | while IFS= read -r directory; do
     mkdir -p "${output}/$(basename "${directory}")"
 done
 
