@@ -10,5 +10,27 @@ set -euf
 cd "$(dirname "${0}")/.."
 . "./util/helpers.sh"
 
-# Pre build stages
-"./util/prepare"
+# parse arguments
+configuration="debug"
+while getopts "hc:" argument; do
+    case "${argument}" in
+    c) configuration="${OPTARG}";;
+    esac
+done
+
+# validate arguments
+if [ "${configuration}" != "debug" ] && [ "${configuration}" != "release" ]; then
+    printf "%s\n" "Unrecognized mode: '${configuration}'"
+    exit 1
+fi
+
+# prepare output directory
+output="./build/${configuration}"
+rm -rf "${output}" && mkdir -p "${output}"
+find "./src/pages" -type d -depth 1 | while EOF= read -r directory; do
+    mkdir -p "${output}/$(basename "${directory}")"
+done
+
+# build stages
+python "./util/build-markup" --output "${output}"
+ln -s "home/index.html" "${output}/index.html"
