@@ -20,6 +20,13 @@ if check yamllint; then
     yamllint "." --format parsable --config-file ".yamllint.yml" || true
 fi
 
+# Python
+if check pylint; then
+    git_files | grep ".py\$" | while IFS= read -r file; do
+        pylint --rcfile ".pylintrc" "${file}"
+    done
+fi
+
 # Shell
 if check shellcheck; then
     shell_files | while IFS= read -r file; do
