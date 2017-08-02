@@ -38,8 +38,8 @@ pages = seq(os.listdir(pages_path)).map(lambda x: os.path.join(pages_path, x)).f
 # generate formatted pages
 for page in pages:
     data = json.loads(open(os.path.join(page, "data.json")).read())
-    renderer = pystache.Renderer(search_dirs=[page, markup_path])
-    content = renderer.render(markup, data)
+    renderer = pystache.Renderer(search_dirs=[page, markup_path], file_encoding="utf-8")
+    content = renderer.render(markup, data).encode("utf-8")
     target = open(os.path.join(output, os.path.basename(page), "index.html"), "w+")
     target.write(content)
     target.close()
