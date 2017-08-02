@@ -26,6 +26,9 @@ if check pylint; then
         pylint --rcfile ".pylintrc" "${file}"
     done
 fi
+if check flake8; then
+    flake8 "."
+fi
 
 # Shell
 if check shellcheck; then
