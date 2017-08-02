@@ -21,10 +21,10 @@ if check yamllint; then
 fi
 
 # Shell
-shell_files() { find "./Tools" -type f -not -name ".*" -and -not -name "*.md"; }
+shell_files() { find "./util" -type f -not -name ".*" -and -not -name "*.md"; }
 if check shellcheck; then
     shell_files | while IFS= read -r file; do
-        shellcheck --external-sources "./Tools/helpers.sh" --format gcc "${file}" || true
+        shellcheck --external-sources "./util/helpers.sh" --format gcc "${file}" || true
     done
 fi
 if check shfmt; then
