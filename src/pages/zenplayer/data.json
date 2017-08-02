@@ -1,3 +1,5 @@
 {
-    "test": "ZenPlayer"
+    "title": "ZenPlayer - minimal music player for Mac",
+    "keywords": "app, mac, iphone, music",
+	"description": "ZenPlayer - minimalistic way to listen to music. From Mac user. To Mac users."
 }
