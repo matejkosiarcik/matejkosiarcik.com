@@ -63,3 +63,7 @@ git_files() {
 shell_files() {
     find "./util" -type f -not -name "*.*" -or -name "*.sh"
 }
+
+python_files() {
+    git_files | grep ".py\$"
+}
