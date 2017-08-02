@@ -41,6 +41,7 @@ check() (
 # accepts 2 arguments
 #  - 1. is subject string to test, e.g. "/foo"
 #  - 2. is test string, e.g. "/"
+contains() { case "${1}" in *"${2}"*) true ;; *) false ;; esac; }
 has_prefix() { case "${1}" in "${2}"*) true ;; *) false ;; esac; }
 has_suffix() { case "${1}" in *"${2}") true ;; *) false ;; esac; }
 
@@ -56,6 +57,14 @@ git_files() {
     find "." -type f -not -path "*.git/*" | while IFS= read -r file; do
         if exists git && git check-ignore "${file}" >/dev/null 2>&1; then continue; fi       # if git exists and ignores this file
         if has_prefix "${file}" "./"; then file="$(printf "%s\n" "${file}" | cut -c 3-)"; fi # remove leading ./ from file path
+        printf "%s\n" "${file}"
+    done
+}
+
+# filter out binary resources
+text_files() {
+    git_files | while IFS= read -r file; do
+        if contains "${file}" "assets/" && ! contains "$(file "${file}")" "text"; then continue; fi
         printf "%s\n" "${file}"
     done
 }
