@@ -59,3 +59,7 @@ git_files() {
         printf "%s\n" "${file}"
     done
 }
+
+shell_files() {
+    find "./util" -type f -not -name "*.*" -or -name "*.sh"
+}

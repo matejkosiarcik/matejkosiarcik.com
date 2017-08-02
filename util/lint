@@ -21,7 +21,6 @@ if check yamllint; then
 fi
 
 # Shell
-shell_files() { find "./util" -type f -not -name ".*" -and -not -name "*.md"; }
 if check shellcheck; then
     shell_files | while IFS= read -r file; do
         shellcheck --external-sources "./util/helpers.sh" --format gcc "${file}" || true
