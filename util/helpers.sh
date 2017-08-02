@@ -45,8 +45,8 @@ contains() { case "${1}" in *"${2}"*) true ;; *) false ;; esac; }
 has_prefix() { case "${1}" in "${2}"*) true ;; *) false ;; esac; }
 has_suffix() { case "${1}" in *"${2}") true ;; *) false ;; esac; }
 
-# finds all files in current tree that satisfy conditions
-# conditions:
+# finds all "git" files in project
+# files must match conditions:
 #  - file must not be in ".git" directory
 #  - file must not be ignored by command "git" when "git" is available
 # prints out files that satisfy all conditions
@@ -61,7 +61,8 @@ git_files() {
     done
 }
 
-# filter out binary resources
+# finds all text files in project
+# basically just filters out binary resources from git_files
 text_files() {
     git_files | while IFS= read -r file; do
         if contains "${file}" "assets/" && ! contains "$(file "${file}")" "text"; then continue; fi
@@ -69,10 +70,12 @@ text_files() {
     done
 }
 
+# lists shell files
 shell_files() {
     find "./util" -type f -not -name "*.*" -or -name "*.sh"
 }
 
+# lists python files
 python_files() {
     git_files | grep ".py\$"
 }
