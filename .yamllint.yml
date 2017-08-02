@@ -3,11 +3,6 @@ extends: default
 
 # For all rules
 ignore: |
-    .build/
     .git/
     build/
-    Carthage/
-    fastlane/
-    Packages/
-    Pods/
 ...
