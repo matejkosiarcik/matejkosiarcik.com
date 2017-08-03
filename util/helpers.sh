@@ -79,3 +79,11 @@ shell_files() {
 python_files() {
     git_files | grep ".py\$"
 }
+
+# lists json files
+json_files() {
+    git_files | while IFS= read -r file; do
+        if ! has_suffix "${file}" ".json"; then continue; fi
+        printf "%s\n" "${file}"
+    done
+}

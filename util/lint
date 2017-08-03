@@ -33,6 +33,13 @@ if check pep8; then
     pep8 "."
 fi
 
+# JSON
+if check jsonlint; then
+    json_files | while IFS= read -r file; do
+        jsonlint "${file}" --quiet
+    done
+fi
+
 # Shell
 if check shellcheck; then
     shell_files | while IFS= read -r file; do
