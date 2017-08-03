@@ -28,3 +28,8 @@ if check jsonlint; then
         printf "%s\n" "$(jsonlint "${file}" --indent 4 --pretty-print)" >"${file}"
     done
 fi
+
+# Python
+if check autopep8; then
+    autopep8 "." --recursive --in-place --aggressive --aggressive
+fi
