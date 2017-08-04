@@ -32,5 +32,6 @@ find "./src/pages" -type d -depth 1 | while IFS= read -r directory; do
 done
 
 # build stages
-python "./util/build-markup.py" --output "${output}"
+# Markup
+python3 "./util/build-markup.py" --output "${output}"
 ln -s "home/index.html" "${output}/index.html"

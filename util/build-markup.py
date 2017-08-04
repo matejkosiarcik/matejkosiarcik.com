@@ -40,6 +40,8 @@ for page in pages:
     data = json.loads(open(os.path.join(page, "data.json")).read())
     renderer = pystache.Renderer(search_dirs=[page, markup_path], file_encoding="utf-8")
     content = renderer.render(markup, data).encode("utf-8")
+    if six.PY3:
+        content = str(content)
     target = open(os.path.join(output, os.path.basename(page), "index.html"), "w+")
     target.write(content)
     target.close()
