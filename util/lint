@@ -30,7 +30,7 @@ fi
 # Python
 if check pylint; then
     python_files | while IFS= read -r file; do
-        pylint --rcfile ".pylintrc" "${file}" | grep -E "^[W|C]"
+        pylint --rcfile ".pylintrc" "${file}" | grep -E "^[W|C]" || true
     done
 fi
 if check flake8; then
