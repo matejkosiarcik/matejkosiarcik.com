@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 #
-# build-mustache
-# Copyright © 2017 Matej Kosiarcik. All rights reserved.
-# This file builds mustache
+# Copyright © 2017 Matej Kosiarcik <matejkosiarcik@gmail.com>. All rights reserved.
+# This file is part of Web which is released under MIT license.
+# See file LICENSE.txt or go to https://github.com/matejkosiarcik/Web/ for full license details.
 #
 
 from __future__ import absolute_import, division, print_function, unicode_literals
