@@ -5,11 +5,11 @@
 //
 
 @mixin padding-horizontal ($padding) {
-	padding-left: $padding;
-	padding-right: $padding;
+    padding-left: $padding;
+    padding-right: $padding;
 }
 
 @mixin center-horizontal () {
-	margin-left: auto;
-	margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
