@@ -24,21 +24,27 @@ if [ "${configuration}" != "debug" ] && [ "${configuration}" != "release" ]; the
     exit 1
 fi
 
+# helpers
+build_path() {
+    printf "%s" "${1}" | sed "s~./src~~" | sed "s~/shared~_include~" | sed "s~/pages/~~"
+}
+
 # prepare output directory
 output="./build/${configuration}"
 rm -rf "${output}" && mkdir -p "${output}"
-find "./src/pages" -type d -depth 1 | while IFS= read -r directory; do
-    mkdir -p "${output}/$(basename "${directory}")"
+find "./src" -type d -depth 2 | while IFS= read -r directory; do
+    directory="$(build_path "${directory}")"
+    mkdir -p "${output}/${directory}"
 done
 
 # Markup
 python3 "./util/build-markup.py" --output "${output}"
 
 # Styles
-find "./src/pages" -type f -name "style.scss" | while IFS= read -r file; do
-    target="${output}/$(printf "%s\n" "${file}" | sed "s~./src/pages/~~")"
+find "./src" -type f -name "*.scss" -not -name "_*" | while IFS= read -r file; do
+    target="${output}/$(build_path "${file}")"
     target="$(dirname "${target}")/$(basename "${target}" ".scss").css"
-    sass --scss --unix-newlines "${file}" "${target}"
+    sass --scss --unix-newlines --sourcemap=none --style=expanded --load-path="./src/shared/styles" "${file}" "${target}"
     printf "%s\n" "$(cssbeautify "${target}")" >"${target}"
 done
 
