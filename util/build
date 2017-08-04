@@ -44,7 +44,7 @@ python3 "./util/build-markup.py" --output "${output}"
 find "./src" -type f -name "*.scss" -not -name "_*" | while IFS= read -r file; do
     target="${output}/$(build_path "${file}")"
     target="$(dirname "${target}")/$(basename "${target}" ".scss").css"
-    sass --scss --unix-newlines --sourcemap=none --style=expanded --load-path="./src/shared/styles" "${file}" "${target}"
+    sass --scss --unix-newlines --style=expanded --load-path="./src/shared/styles" "${file}" "${target}"
     printf "%s\n" "$(cssbeautify "${target}")" >"${target}"
 done
 
