@@ -40,3 +40,8 @@ find "./build/${configuration}/home" -type f | while IFS= read -r file; do
     name="$(basename "${file}")"
     ln -s "home/${name}" "${output}/${name}"
 done
+
+# Correct whitespace in generated files
+find "./build/${configuration}" -type f | while IFS= read -r file; do
+    strip "${file}"
+done
