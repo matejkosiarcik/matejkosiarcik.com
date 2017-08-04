@@ -34,6 +34,13 @@ done
 # Markup
 python3 "./util/build-markup.py" --output "${output}"
 
+# Styles
+find "./src/pages" -type f -name "style.scss" | while IFS= read -r file; do
+    target="${output}/$(printf "%s\n" "${file}" | sed "s~./src/pages/~~")"
+    target="$(dirname "${target}")/$(basename "${target}" ".scss").css"
+    sass --scss --unix-newlines "${file}" "${target}"
+    printf "%s\n" "$(cssbeautify "${target}")" >"${target}"
+done
 
 # Create symlinks from index to home
 find "./build/${configuration}/home" -type f | while IFS= read -r file; do
