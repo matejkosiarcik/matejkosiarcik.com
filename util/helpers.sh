@@ -10,9 +10,10 @@
 # this removes excessive whitespace
 # accepts 1 argument of file to format
 strip() {
-    printf "%s\n" "$(sed '/./,$!d' "${1}")" >"${1}"            # remove leading newlines
-    printf "%s\n" "$(cat -s "${1}")" >"${1}"                   # strip multiple empty lines and trailing newlines
-    printf "%s\n" "$(sed 's~[[:space:]]*$~~' <"${1}")" >"${1}" # remove trailing whitespace
+    printf "%s\n" "$(sed "s~\r\n~\n~" "${1}")" >"${1}"        # replace windows to unix newlines
+    printf "%s\n" "$(sed '/./,$!d' "${1}")" >"${1}"           # remove leading newlines
+    printf "%s\n" "$(cat -s "${1}")" >"${1}"                  # strip multiple empty lines and trailing newlines
+    printf "%s\n" "$(sed 's~[[:space:]]*$~~' "${1}")" >"${1}" # remove trailing whitespace
 }
 
 # searches for passed command
