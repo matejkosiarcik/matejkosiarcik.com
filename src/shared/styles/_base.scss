@@ -1,5 +1,51 @@
-@import "environment";
+//
+// Copyright © 2017 Matej Kosiarcik <matejkosiarcik@gmail.com>. All rights reserved.
+// This file is part of Web which is released under MIT license.
+// See file LICENSE.txt or go to https://github.com/matejkosiarcik/Web/ for full license details.
+//
 
-* {
-    margin: none;
+@import "constants";
+@import "functions";
+
+/* Fonts */
+.font-size-xl {
+    font-size: 35px;
+    font-weight: 100;
+}
+
+.font-size-l {
+    font-size: 30px;
+    font-weight: 100;
+}
+
+.font-size-m {
+    font-size: 25px;
+    font-weight: 200;
+}
+
+.font-size-s {
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.font-size-xs {
+    font-size: 15px;
+    font-weight: 400;
+}
+
+/* Text */
+.text-color-dark {
+    color: darken($text-color, 5%);
+}
+
+.text-color-default {
+    color: $text-color;
+}
+
+.text-color-light {
+    color: lighten($text-color, 5%);
+}
+
+.no-decoration {
+	text-decoration: none;
 }

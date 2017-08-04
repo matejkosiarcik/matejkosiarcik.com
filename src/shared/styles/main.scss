@@ -1,10 +1,14 @@
 @import "base";
-@import "environment";
-
-html, body {
-    height: 100%;
-}
+@import "constants";
+@import "functions";
 
 body {
     background-color: $background-color;
+}
+
+#page {
+    max-width: 100%;
+    width: 970px;
+    @include padding-horizontal(5px);
+    @include center-horizontal();
 }
