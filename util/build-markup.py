@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright © 2017 Matej Kosiarcik <matejkosiarcik@gmail.com>. All rights reserved.
 # This file is part of personal-website which is released under MIT license.
 # See file LICENSE.txt or go to https://github.com/matejkosiarcik/personal-website for full license details.
 #
