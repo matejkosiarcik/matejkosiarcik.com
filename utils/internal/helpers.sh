@@ -1,10 +1,8 @@
+# shellcheck shell=sh
 #
 # This file is part of personal-website which is released under MIT license.
 # See file LICENSE.txt or go to https://github.com/matejkosiarcik/personal-website for full license details.
 #
-
-# Specifies to ShellCheck what shell it should use for linting
-# shellcheck shell=sh
 
 # this removes excessive whitespace
 # accepts 1 argument of file to format
