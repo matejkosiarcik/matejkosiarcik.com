@@ -1,0 +1,16 @@
+{
+    "name": "personal-website",
+    "version": "0.1.0",
+    "description": "My personal website https://binarytrex.com",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/matejkosiarcik/personal-website.git"
+    },
+    "author": "Matej Košiarčik <matejkosiarcik@gmail.com>",
+    "license": "MIT",
+    "homepage": "https://github.com/matejkosiarcik/personal-website#readme",
+    "devDependencies": {
+        "apache-server-configs": "^2.0.0",
+        "normalize.css": "^7.0.0"
+    }
+}

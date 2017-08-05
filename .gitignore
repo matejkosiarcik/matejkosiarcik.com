@@ -1,9 +1,10 @@
 ### Generic ###
-.build/
 build/
+
+### Project specific ###
 .vscode/
 .sass-cache/
-Generated/
+node_modules/
 
 ### macOS ###
 # General
