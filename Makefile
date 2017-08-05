@@ -8,8 +8,8 @@
 ### Config ###
 SHELL = /bin/sh -euf
 MAKEFLAGS += --warn-undefined-variables
-TARGET_PATH = build
-SOURCE_PATH = src
+TARGET_DIR = build
+SOURCE_DIR = src
 
 # get compilation mode
 ifeq ($(mode), release)
@@ -31,7 +31,7 @@ help:
 # Cleaning
 .PHONY: clean
 clean:
-	rm -rf "$(TARGET_PATH)"
+	rm -rf "$(TARGET_DIR)"
 
 # Just forwarding targets
 .PHONY: format
@@ -43,11 +43,11 @@ lint:
 	./utils/lint
 
 ### Documentation ###
-TARGET_DOCUMENTATION_PATH = $(TARGET_PATH)/doc
+TARGET_DOCUMENTATION_DIR = $(TARGET_DIR)/doc
 MARKDOWN_SOURCES = $(shell . "./utils/internal/helpers.sh" && files_ending ".md")
-MARKDOWN_TARGETS = $(patsubst %.md,$(TARGET_DOCUMENTATION_PATH)/%.html,$(MARKDOWN_SOURCES))
+MARKDOWN_TARGETS = $(patsubst %.md,$(TARGET_DOCUMENTATION_DIR)/%.html,$(MARKDOWN_SOURCES))
 
-$(TARGET_DOCUMENTATION_PATH)/%.html: %.md
+$(TARGET_DOCUMENTATION_DIR)/%.html: %.md
 	mkdir -p "$$(dirname $@)"
 	grip "$<" --export "$@"
 
@@ -55,21 +55,21 @@ $(TARGET_DOCUMENTATION_PATH)/%.html: %.md
 doc: $(MARKDOWN_TARGETS)
 
 ### Build ###
-SOURCE_PAGES_PATH = $(SOURCE_PATH)/pages
-TARGET_PAGES_PATH = $(TARGET_PATH)/$(MODE)
-SOURCE_SHARED_PATH = $(SOURCE_PATH)/shared
-TARGET_SHARED_PATH = $(TARGET_PATH)/$(MODE)/_include
+SOURCE_PAGES_DIR = $(SOURCE_DIR)/pages
+TARGET_PAGES_DIR = $(TARGET_DIR)/$(MODE)
+SOURCE_SHARED_DIR = $(SOURCE_DIR)/shared
+TARGET_SHARED_DIR = $(TARGET_DIR)/$(MODE)/_include
 
 _pre-build:
-	@printf "%s\n" "Building into: $(TARGET_PATH)"
+	@printf "%s\n" "Building into: $(TARGET_DIR)"
 
 ## Style ##
-SOURCE_STYLE_PATH = $(SOURCE_SHARED_PATH)/styles
-TARGET_STYLE_PATH = $(TARGET_SHARED_PATH)/styles
+SOURCE_STYLE_DIR = $(SOURCE_SHARED_DIR)/styles
+TARGET_STYLE_DIR = $(TARGET_SHARED_DIR)/styles
 
 # normalize.css
 NORMALIZE_SOURCE = ./node_modules/normalize.css/normalize.css
-NORMALIZE_TARGET = $(TARGET_STYLE_PATH)/normalize.css
+NORMALIZE_TARGET = $(TARGET_STYLE_DIR)/normalize.css
 
 $(NORMALIZE_TARGET): $(NORMALIZE_SOURCE)
 	mkdir -p "$$(dirname "$@")"
