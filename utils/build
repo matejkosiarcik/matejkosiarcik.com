@@ -12,9 +12,7 @@ cd "$(dirname "${0}")/.."
 # parse arguments
 configuration="debug"
 while getopts "hc:" argument; do
-    case "${argument}" in
-        c) configuration="${OPTARG}" ;;
-    esac
+    case "${argument}" in c) configuration="${OPTARG}" ;; esac
 done
 
 # validate arguments

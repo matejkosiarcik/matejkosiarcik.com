@@ -73,17 +73,14 @@ shell_files() {
     find "./utils" -type f -not -name "*.*" -or -name "*.sh"
 }
 
-# lists python files
+# lists .py files
 python_files() {
     git_files | grep ".py\$"
 }
 
-# lists json files
+# lists .json files
 json_files() {
-    git_files | while IFS= read -r file; do
-        if ! has_suffix "${file}" ".json"; then continue; fi
-        printf "%s\n" "${file}"
-    done
+    git_files | grep ".json\$"
 }
 
 # lists .md files
