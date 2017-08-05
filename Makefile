@@ -43,11 +43,11 @@ lint:
 	./utils/lint
 
 ### Documentation ###
-TARGET_DOCUMENTATION_DIR = $(TARGET_DIR)/doc
+DOCUMENTATION_TARGET_DIR = $(TARGET_DIR)/doc
 MARKDOWN_SOURCES = $(shell . "./utils/internal/helpers.sh" && files_ending ".md")
-MARKDOWN_TARGETS = $(patsubst %.md,$(TARGET_DOCUMENTATION_DIR)/%.html,$(MARKDOWN_SOURCES))
+MARKDOWN_TARGETS = $(patsubst %.md,$(DOCUMENTATION_TARGET_DIR)/%.html,$(MARKDOWN_SOURCES))
 
-$(TARGET_DOCUMENTATION_DIR)/%.html: %.md
+$(DOCUMENTATION_TARGET_DIR)/%.html: %.md
 	mkdir -p "$$(dirname $@)"
 	grip "$<" --export "$@"
 
@@ -55,21 +55,21 @@ $(TARGET_DOCUMENTATION_DIR)/%.html: %.md
 doc: $(MARKDOWN_TARGETS)
 
 ### Build ###
-SOURCE_PAGES_DIR = $(SOURCE_DIR)/pages
-TARGET_PAGES_DIR = $(TARGET_DIR)/$(MODE)
-SOURCE_SHARED_DIR = $(SOURCE_DIR)/shared
-TARGET_SHARED_DIR = $(TARGET_DIR)/$(MODE)/_include
+PAGES_SOURCE_DIR = $(SOURCE_DIR)/pages
+PAGES_TARGET_DIR = $(TARGET_DIR)/$(MODE)
+SHARED_SOURCE_DIR = $(SOURCE_DIR)/shared
+SHARED_TARGET_DIR = $(TARGET_DIR)/$(MODE)/_include
 
 _pre-build:
 	@printf "%s\n" "Building into: $(TARGET_DIR)"
 
 ## Style ##
-SOURCE_STYLE_DIR = $(SOURCE_SHARED_DIR)/styles
-TARGET_STYLE_DIR = $(TARGET_SHARED_DIR)/styles
+STYLE_SOURCE_DIR = $(SHARED_SOURCE_DIR)/styles
+STYLE_TARGET_DIR = $(SHARED_TARGET_DIR)/styles
 
 # normalize.css
 NORMALIZE_SOURCE = ./node_modules/normalize.css/normalize.css
-NORMALIZE_TARGET = $(TARGET_STYLE_DIR)/normalize.css
+NORMALIZE_TARGET = $(TARGET_DIR)/normalize.css
 
 $(NORMALIZE_TARGET): $(NORMALIZE_SOURCE)
 	mkdir -p "$$(dirname "$@")"
