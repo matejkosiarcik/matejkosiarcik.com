@@ -45,7 +45,7 @@ lint:
 ### Documentation ###
 DOCUMENTATION_TARGET_DIR = $(TARGET_DIR)/doc
 MARKDOWN_SOURCES = $(shell . "./utils/internal/helpers.sh" && files_ending ".md")
-MARKDOWN_TARGETS = $(patsubst %.md,$(DOCUMENTATION_TARGET_DIR)/%.html,$(MARKDOWN_SOURCES))
+MARKDOWN_TARGETS = $(patsubst %.md, $(DOCUMENTATION_TARGET_DIR)/%.html, $(MARKDOWN_SOURCES))
 
 $(DOCUMENTATION_TARGET_DIR)/%.html: %.md
 	mkdir -p "$$(dirname $@)"
