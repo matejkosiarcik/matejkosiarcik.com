@@ -72,7 +72,7 @@ text_files() {
 
 # lists shell files
 shell_files() {
-    find "./util" -type f -not -name "*.*" -or -name "*.sh"
+    find "./utils" -type f -not -name "*.*" -or -name "*.sh"
 }
 
 # lists python files
