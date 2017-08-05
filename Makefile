@@ -100,5 +100,15 @@ _build-sass: $(STYLE_SHARED_TARGETS) $(STYLE_PAGE_TARGETS)
 
 _build-style: _build-normalize _build-sass
 
-.PHONY: build
-build: _pre-build _build-style
+## Markup ##
+# Mustache -> HTML
+MARKUP_SOURCES = $(wildcard $(PAGES_SOURCE_DIR)/**/*.html.mustache)
+MARKUP_TARGETS = $(patsubst $(PAGES_SOURCE_DIR)/%.html.mustache, $(PAGES_TARGET_DIR)/%.html, $(MARKUP_SOURCES))
+
+$(PAGES_TARGET_DIR)/%.html: $(PAGES_SOURCE_DIR)/%.html.mustache
+	mkdir -p "$$(dirname "$@")"
+	python "./utils/internal/build-mustache.py" --data "$$(dirname "$<")" --output "$$(dirname "$@")"
+
+_build-markup: $(MARKUP_TARGETS)
+
+build: _pre-build _build-markup _build-style
