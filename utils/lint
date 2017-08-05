@@ -9,7 +9,7 @@ set -euf
 cd "$(dirname "${0}")/.."
 . "./utils/internal/helpers.sh"
 
-# General text files
+# All text files
 text_files | while IFS= read -r file; do
     # check for leading tabs
     (grep -E "^	" --line-number <"${file}" || true) \
