@@ -85,3 +85,8 @@ json_files() {
         printf "%s\n" "${file}"
     done
 }
+
+# lists .md files
+markdown_files() {
+    git_files | grep ".md\$"
+}

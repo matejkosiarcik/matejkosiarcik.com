@@ -3,32 +3,36 @@
 # See file LICENSE.txt or go to https://github.com/matejkosiarcik/personal-website for full license details.
 #
 
-# general config
+# DISCLAIMER: use '_' as prefix for private targets
+
+### Config ###
 SHELL = /bin/sh -euf
 MAKEFLAGS += --warn-undefined-variables
+BUILD_PATH = build
 
-# get configuration mode
+# get compilation mode
 ifeq ($(mode), release)
 	MODE = release
 else
 	MODE = debug
 endif
 
-# path config
-BUILD_PATH = "build/$(MODE)"
-# OUTPUT_PATH = $(BUILD_PATH)/main
-# BIN_PATH = $(BUILD_PATH)/bin
-
+# Default target
 .PHONY: all
-all: prepare build
+all: format doc lint build
 
-.PHONY: build
-build:
-	@printf "%s\n" "Building into: $(BUILD_PATH)"
+# Help message
+.PHONY: help
+help:
+	@printf "%s\n" "Available targets:"
+	@grep -E "^([a-z\-]+):" $(MAKEFILE_LIST) | grep -Eo "^([a-z\-]+)" | sort | tr "\n" "," | sed -E "s~(.*)~\1~" | sed -E 's~^(.+),$$~\1~' | sed "s~,~, ~g"
 
-.PHONY: prepare
-prepare: format doc lint
+# Cleaning
+.PHONY: clean
+clean:
+	rm -rf "$(BUILD_PATH)"
 
+# Just forwarding targets
 .PHONY: format
 format:
 	./utils/format
@@ -37,11 +41,22 @@ format:
 lint:
 	./utils/lint
 
-.PHONY: doc
-doc:
-	./utils/docgen
+### Documentation ###
+DOCS_PATH = $(BUILD_PATH)/doc
+MARKDOWN_SOURCES = $(shell . ./utils/internal/helpers.sh && markdown_files)
+MARKDOWN_TARGETS = $(patsubst %.md,$(DOCS_PATH)/%.html,$(MARKDOWN_SOURCES))
 
-.PHONY: help
-help:
-	@printf "%s\n" "Available targets:"
-	@grep -E "^([a-z\-]+):" $(MAKEFILE_LIST) | grep -Eo "^([a-z\-]+)" | sort | tr "\n" "," | sed -E "s~(.*)~\1~" | sed -E 's~^(.+),$$~\1~' | sed "s~,~, ~g"
+$(DOCS_PATH)/%.html: %.md
+	mkdir -p "$$(dirname $@)"
+	grip "$<" --export "$@"
+
+.PHONY: doc
+doc: $(MARKDOWN_TARGETS)
+
+### Build ###
+PAGES_PATH = $(BUILD_PATH)/$(MODE)
+SHARED_PATH = $(BUILD_PATH)/$(MODE)/_include
+
+.PHONY: build
+build:
+	@printf "%s\n" "Building into: $(BUILD_PATH)"
