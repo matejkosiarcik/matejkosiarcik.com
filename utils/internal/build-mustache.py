@@ -13,7 +13,7 @@ import six
 
 # parse arguments
 parser = argparse.ArgumentParser()
-parser.add_argument("-o", "--output", help="Output path (file or directory)")
+parser.add_argument("-o", "--output", help="Output directory path")
 parser.add_argument("-d", "--data", help="Directory path for json-data and partial-html")
 arguments = parser.parse_args()
 
@@ -55,14 +55,6 @@ else:
     content = str(content)
 
 # get target file
-if os.path.isdir(output_path):
-    target = os.path.join(output_path, "index.html")
-elif os.path.isfile(output_path):
-    target = output_path
-else:
-    print("Output path is not directory nor file")
-    exit(1)
-
-target = open(target, "w+")
+target = open(os.path.join(output_path, "index.html"), "w+")
 target.write(content)
 target.close()
