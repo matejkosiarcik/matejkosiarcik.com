@@ -7,4 +7,4 @@
 # setup
 set -euf
 cd "$(dirname "${0}")/.."
-. "./utils/helpers.sh"
+. "./utils/internal/helpers.sh"

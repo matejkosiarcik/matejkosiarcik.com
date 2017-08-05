@@ -7,7 +7,7 @@
 # setup
 set -euf
 cd "$(dirname "${0}")/.."
-. "./utils/helpers.sh"
+. "./utils/internal/helpers.sh"
 
 # parse arguments
 configuration="debug"
@@ -37,7 +37,7 @@ find "./src" -type d -depth 2 | while IFS= read -r directory; do
 done
 
 # Markup
-python3 "./utils/build-markup.py" --output "${output}"
+python3 "./utils/internal/build-markup.py" --output "${output}"
 
 # Styles
 find "./src" -type f -name "*.scss" -not -name "_*" | while IFS= read -r file; do

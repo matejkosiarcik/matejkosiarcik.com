@@ -7,7 +7,7 @@
 # setup
 set -euf
 cd "$(dirname "${0}")/.."
-. "./utils/helpers.sh"
+. "./utils/internal/helpers.sh"
 
 # General text files
 text_files | while IFS= read -r file; do
@@ -49,7 +49,7 @@ fi
 # Shell
 if check shellcheck; then
     shell_files | while IFS= read -r file; do
-        shellcheck --external-sources "./utils/helpers.sh" --format gcc "${file}" || true
+        shellcheck --external-sources "./utils/internal/helpers.sh" --format gcc "${file}" || true
     done
 fi
 if check shfmt; then
