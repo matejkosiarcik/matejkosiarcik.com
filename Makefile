@@ -69,11 +69,12 @@ STYLE_TARGET_DIR = $(SHARED_TARGET_DIR)/styles
 
 # normalize.css
 NORMALIZE_SOURCE = ./node_modules/normalize.css/normalize.css
-NORMALIZE_TARGET = $(TARGET_DIR)/normalize.css
+NORMALIZE_TARGET = $(STYLE_TARGET_DIR)/normalize.css
 
 $(NORMALIZE_TARGET): $(NORMALIZE_SOURCE)
 	mkdir -p "$$(dirname "$@")"
 	cp "$<" "$@"
+	printf "%s\n" "$$(cssbeautify "$@")" >"$@"
 
 _build-normalize: $(NORMALIZE_TARGET)
 
