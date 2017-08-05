@@ -73,17 +73,10 @@ shell_files() {
     find "./utils" -type f -not -name "*.*" -or -name "*.sh"
 }
 
-# lists .py files
-python_files() {
-    git_files | grep ".py\$"
-}
-
-# lists .json files
-json_files() {
-    git_files | grep ".json\$"
-}
-
-# lists .md files
-markdown_files() {
-    git_files | grep ".md\$"
+# lists files ending with given pattern
+# accepts 1 argument:
+# - pattern to be satisfied at end of filepath
+files_ending() {
+    pattern="${1}"
+    git_files | grep "${pattern}\$"
 }

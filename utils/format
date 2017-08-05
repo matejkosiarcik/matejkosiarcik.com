@@ -23,7 +23,7 @@ fi
 
 # JSON
 if check jsonlint; then
-    json_files | while IFS= read -r file; do
+    files_ending ".json" | while IFS= read -r file; do
         printf "%s\n" "$(jsonlint "${file}" --indent 4 --pretty-print)" >"${file}"
     done
 fi

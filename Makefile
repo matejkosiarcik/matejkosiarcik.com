@@ -43,7 +43,7 @@ lint:
 
 ### Documentation ###
 DOCS_PATH = $(BUILD_PATH)/doc
-MARKDOWN_SOURCES = $(shell . ./utils/internal/helpers.sh && markdown_files)
+MARKDOWN_SOURCES = $(shell . ./utils/internal/helpers.sh && files_ending ".md")
 MARKDOWN_TARGETS = $(patsubst %.md,$(DOCS_PATH)/%.html,$(MARKDOWN_SOURCES))
 
 $(DOCS_PATH)/%.html: %.md
