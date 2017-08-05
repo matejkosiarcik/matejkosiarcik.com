@@ -57,6 +57,23 @@ doc: $(MARKDOWN_TARGETS)
 PAGES_PATH = $(BUILD_PATH)/$(MODE)
 SHARED_PATH = $(BUILD_PATH)/$(MODE)/_include
 
-.PHONY: build
-build:
+_pre-build:
 	@printf "%s\n" "Building into: $(BUILD_PATH)"
+
+## Style ##
+STYLE_PATH = $(SHARED_PATH)/styles
+
+# normalize.css
+NORMALIZE_SOURCE = ./node_modules/normalize.css/normalize.css
+NORMALIZE_TARGET = $(STYLE_PATH)/normalize.css
+
+$(NORMALIZE_TARGET): $(NORMALIZE_SOURCE)
+	mkdir -p "$$(dirname "$@")"
+	cp "$<" "$@"
+
+_build-normalize: $(NORMALIZE_TARGET)
+
+_build-style: _build-normalize
+
+.PHONY: build
+build: _pre-build _build-style
