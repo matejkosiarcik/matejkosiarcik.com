@@ -111,4 +111,16 @@ $(PAGES_TARGET_DIR)/%.html: $(PAGES_SOURCE_DIR)/%.html.mustache
 
 _build-markup: $(MARKUP_TARGETS)
 
-build: _pre-build _build-markup _build-style
+## General ##
+# Symlinks from / (root) to /home
+MARKUP_HOME_SYMLINK_SOURCES = $(wildcard $(PAGES_TARGET_DIR)/home/*)
+MARKUP_HOME_SYMLINK_TARGETS = $(patsubst $(PAGES_TARGET_DIR)/home/%, $(PAGES_TARGET_DIR)/%, $(MARKUP_HOME_SYMLINK_SOURCES))
+
+$(PAGES_TARGET_DIR)/%: $(PAGES_TARGET_DIR)/home/%
+	ln -s "home/$$(basename "$@")" "$@"
+
+.PHONY: _build-symlinks
+_build-symlinks: $(MARKUP_HOME_SYMLINK_TARGETS)
+
+.PHONY: build
+build: _pre-build _build-markup _build-style _build-symlinks
