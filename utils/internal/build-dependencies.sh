@@ -4,6 +4,10 @@
 # See file LICENSE.txt or go to https://github.com/matejkosiarcik/personal-website for full license details.
 #
 
+# setup
+set -euf
+. "./utils/internal/helpers.sh"
+
 # parse arguments
 while getopts "o:" argument; do
     case "${argument}" in o) output="${OPTARG}" ;; esac
