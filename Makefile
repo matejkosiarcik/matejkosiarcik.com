@@ -78,7 +78,27 @@ $(NORMALIZE_TARGET): $(NORMALIZE_SOURCE)
 
 _build-normalize: $(NORMALIZE_TARGET)
 
-_build-style: _build-normalize
+# Sass
+STYLE_INTERNAL = $(wildcard $(STYLE_SOURCE_DIR)/_*.scss)
+STYLE_SHARED_SOURCES = $(filter-out $(STYLE_INTERNAL), $(wildcard $(STYLE_SOURCE_DIR)/*.scss))
+STYLE_SHARED_TARGETS = $(patsubst $(STYLE_SOURCE_DIR)/%.scss, $(STYLE_TARGET_DIR)/%.css, $(STYLE_SHARED_SOURCES))
+
+$(STYLE_TARGET_DIR)/%.css: $(STYLE_SOURCE_DIR)/%.scss
+	mkdir -p "$$(dirname "$@")"
+	sass --scss --unix-newlines --style=expanded --load-path="$(STYLE_SOURCE_DIR)" "$<" "$@"
+	printf "%s\n" "$$(cssbeautify "$@")" >"$@"
+
+STYLE_PAGE_SOURCES = $(wildcard $(PAGES_SOURCE_DIR)/**/*.scss)
+STYLE_PAGE_TARGETS = $(patsubst $(PAGES_SOURCE_DIR)/%.scss, $(PAGES_TARGET_DIR)/%.css, $(STYLE_PAGE_SOURCES))
+
+$(PAGES_TARGET_DIR)/%.css: $(PAGES_SOURCE_DIR)/%.scss
+	mkdir -p "$$(dirname "$@")"
+	sass --scss --unix-newlines --style=expanded --load-path="$(STYLE_SOURCE_DIR)" "$<" "$@"
+	printf "%s\n" "$$(cssbeautify "$@")" >"$@"
+
+_build-sass: $(STYLE_SHARED_TARGETS) $(STYLE_PAGE_TARGETS)
+
+_build-style: _build-normalize _build-sass
 
 .PHONY: build
 build: _pre-build _build-style
