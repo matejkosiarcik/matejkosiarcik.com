@@ -24,6 +24,12 @@ if check htmlhint; then
         | sed -E "s~\[(.*)\] \[(.*)\]~'\1' [\2]~"
 fi
 
+# Sass
+if check sass-lint; then
+    sass-lint --verbose --no-exit --syntax scss --format unix | grep -Ev "([0-9]+) problems" | grep -v "^\$" \
+        | sed -E "s~(w|W)arning/~~" | sed -E "s~(e|E)rror/~~" | sed -E "s~^(.*):([0-9]+):([0-9]+):~\1:\2:\3: warning:~"
+fi
+
 # Markdown
 if check mdl; then
     mdl "." --git-recurse || true
@@ -32,6 +38,14 @@ fi
 # Yaml
 if check yamllint; then
     yamllint "." --format parsable --config-file ".yamllint.yml" | sed "s~^./~~"
+fi
+
+# JSON
+if check jsonlint; then
+    files_ending ".json" | while IFS= read -r file; do
+        jsonlint "${file}" --quiet --compact 2>&1 | sed -E "s~\.\$~~" \
+            | sed -E "s~(.*): line ([0-9]+), col ([0-9]+), ~\1:\2:\3: warning: ~" | sed "s~', '~' or '~g"
+    done
 fi
 
 # Python
@@ -49,20 +63,6 @@ if check flake8; then
 fi
 if check pep8; then
     pep8 "."
-fi
-
-# JSON
-if check jsonlint; then
-    files_ending ".json" | while IFS= read -r file; do
-        jsonlint "${file}" --quiet --compact 2>&1 | sed -E "s~\.\$~~" \
-            | sed -E "s~(.*): line ([0-9]+), col ([0-9]+), ~\1:\2:\3: warning: ~" | sed "s~', '~' or '~g"
-    done
-fi
-
-# Sass
-if check sass-lint; then
-    sass-lint --verbose --no-exit --syntax scss --format unix | grep -Ev "([0-9]+) problems" | grep -v "^\$" \
-        | sed -E "s~(w|W)arning/~~" | sed -E "s~(e|E)rror/~~" | sed -E "s~^(.*):([0-9]+):([0-9]+):~\1:\2:\3: warning:~"
 fi
 
 # Shell
