@@ -6,7 +6,7 @@
 @import "constants";
 @import "functions";
 
-/* Fonts */
+/* Text */
 .font-size-xl {
     font-size: 35px;
     font-weight: 100;
@@ -18,7 +18,7 @@
 }
 
 .font-size-m {
-    font-size: 25px;
+    font-size: 23px;
     font-weight: 200;
 }
 
@@ -28,11 +28,10 @@
 }
 
 .font-size-xs {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 400;
 }
 
-/* Text */
 .text-color-dark {
     color: darken($text-color, 5%);
 }
@@ -42,9 +41,37 @@
 }
 
 .text-color-light {
-    color: lighten($text-color, 5%);
+    color: lighten($text-color, 15%);
+}
+
+/* Positioning */
+.float-right {
+    float: right;
+}
+
+.float-left {
+    float: left;
+}
+
+.clear:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/* Styling  */
+.no-selection::selection {
+    background-color: transparent;
 }
 
 .no-decoration {
     text-decoration: none;
+}
+
+.thumbnailed {
+    background-image: url("/_include/images/loading.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+    min-width: 100px;
+    min-height: 100px;
 }

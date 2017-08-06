@@ -3,17 +3,44 @@
 // See file LICENSE.txt or go to https://github.com/matejkosiarcik/personal-website for full license details.
 //
 
-@import "base";
+@import "classes";
 @import "constants";
 @import "functions";
 
 body {
     background-color: $background-color;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Open Sans", Helvetica, sans-serif;
 }
 
 #page {
+    // sizing
     max-width: 100%;
     width: 970px;
+    min-height: 100%;
+
+    // positioning
     @include padding-horizontal(5px);
     @include center-horizontal();
+    position: relative;
+    min-height: 100%;
+}
+
+#page > header {
+    width: 100%;
+    margin-top: 10px;
+}
+
+#content {
+    width: 100%;
+    padding-bottom: 100px;
+    padding-top: 50px;
+}
+
+#page > footer {
+    width: 100%;
+    margin-bottom: 10px;
+
+    // make it stay at bottom
+    position: absolute;
+    bottom: 0;
 }
