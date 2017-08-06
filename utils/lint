@@ -47,6 +47,11 @@ if check jsonlint; then
     done
 fi
 
+# Sass
+if check sass-lint; then
+    sass-lint --verbose --no-exit --syntax scss --format unix | grep -Ev "([0-9]+) problems" | grep -v "^\$" || true
+fi
+
 # Shell
 if check shellcheck; then
     shell_files | while IFS= read -r file; do

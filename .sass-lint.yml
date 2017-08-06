@@ -1,0 +1,27 @@
+#
+# This file is part of personal-website which is released under MIT license.
+# See file LICENSE.txt or go to https://github.com/matejkosiarcik/personal-website for full license details.
+#
+
+---
+options:
+    merge-default-rules: true
+
+rules:
+    # disabling
+    force-pseudo-nesting:
+        - 0
+    no-ids:
+        - 0
+    quotes:
+        - 0
+
+    # customization
+    indentation:
+        - 2
+        -
+            size: 4
+    property-sort-order:
+        - 2
+        - order: smacss
+...
