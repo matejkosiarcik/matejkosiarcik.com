@@ -8,6 +8,3 @@
 set -euf
 cd "$(dirname "${0}")/.."
 . "./utils/internal/helpers.sh"
-
-# Run classic build
-if [ "${#}" -eq "0" ]; then ./Tools/build; else ./Tools/build "${@}"; fi
