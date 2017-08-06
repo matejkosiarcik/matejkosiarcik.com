@@ -13,8 +13,8 @@ cd "$(dirname "${0}")/.."
 text_files | while IFS= read -r file; do
     if [ "${file}" = "Makefile" ]; then continue; fi
     # check for leading tabs
-    (grep -E "^	" --line-number <"${file}" || true) \
-        | sed -E "s~^([0-9]+):(.*)\$~${file}:\1: warning: leading <tab> found for line: '\2' (tab_indent)~"
+    grep -E "^	" --line-number <"${file}" \
+        | sed -E "s~^([0-9]+):(.*)\$~${file}:\1: warning: leading <tab> found (tab_indent)~"
 done
 
 # Markdown
@@ -24,17 +24,21 @@ fi
 
 # Yaml
 if check yamllint; then
-    yamllint "." --format parsable --config-file ".yamllint.yml" || true
+    yamllint "." --format parsable --config-file ".yamllint.yml" | sed "s~^./~~"
 fi
 
 # Python
 if check pylint; then
     files_ending ".py" | while IFS= read -r file; do
-        pylint --rcfile ".pylintrc" "${file}" | grep -E "^[W|C]" || true
+        pylint --output-format parseable "${file}" | grep -Ev "^([- ]+)\$" | grep -Ev "^\$" \
+            | grep -Ev "^([\*]+) Module" | grep -v "^Your code has been rated at " \
+            | sed -E "s~(.*)\[(.*)\](.*)~\1\3 [\2]~" | sed -E "s~(.*):([0-9]+): ~\1:\2: warning:~" \
+            | sed -E "s~, \]\$~]~"
     done
 fi
 if check flake8; then
-    flake8 "." || true
+    flake8 "." | sed -E "s~(.*):([0-9]+):([0-9]+): ([^ ]+) (.*)~\1:\2:\3: \5 [\4]~" \
+        | sed -E "s~(.*):([0-9]+):([0-9]+): ~\1:\2:\3: warning: ~" | sed "s~^./~~"
 fi
 if check pep8; then
     pep8 "."
@@ -49,58 +53,60 @@ fi
 
 # Sass
 if check sass-lint; then
-    sass-lint --verbose --no-exit --syntax scss --format unix | grep -Ev "([0-9]+) problems" | grep -v "^\$" || true
+    sass-lint --verbose --no-exit --syntax scss --format unix | grep -Ev "([0-9]+) problems" | grep -v "^\$" \
+        | sed -E "s~(w|W)arning/~~" | sed -E "s~(e|E)rror/~~" | sed -E "s~^(.*):([0-9]+):([0-9]+):~\1:\2:\3: warning:~"
 fi
 
 # Shell
 if check shellcheck; then
     shell_files | while IFS= read -r file; do
-        shellcheck --external-sources "./utils/internal/helpers.sh" --format gcc "${file}" || true
+        shellcheck --external-sources "./utils/internal/helpers.sh" --format gcc "${file}" | sed "s~^./~~"
     done
 fi
 if check shfmt; then
     shell_files | while IFS= read -r file; do
         shfmt -i 4 -p -l "${file}" \
-            | sed -E "s~(.*)~\1: warning: file badly formatted, run 'format' script to resolve (bad_format)~"
+            | sed -E "s~(.*)~\1: warning: file badly formatted, run 'format' script to resolve (bad_format)~" \
+            | sed "s~^./~~"
     done
 fi
 # Invoke various shells with scripts for alternative linting via dry runs
 if check sh; then
     shell_files | while IFS= read -r file; do
-        sh -n "${file}" || true
+        sh -n "${file}" | sed "s~^./~~"
     done
 fi
 if check bash; then
     shell_files | while IFS= read -r file; do
-        bash -n "${file}" || true
-        bash --posix -o pipefail -n "${file}" || true
-        bash -o posix -o pipefail -n "${file}" || true
+        bash -n "${file}" | sed "s~^./~~"
+        bash --posix -o pipefail -n "${file}" | sed "s~^./~~"
+        bash -o posix -o pipefail -n "${file}" | sed "s~^./~~"
     done
 fi
 if check dash; then
     shell_files | while IFS= read -r file; do
-        dash -n "${file}" || true
+        dash -n "${file}" | sed "s~^./~~"
     done
 fi
 if check ksh; then
     shell_files | while IFS= read -r file; do
-        ksh -n "${file}" || true
+        ksh -n "${file}" | sed "s~^./~~"
     done
 fi
 if check mksh; then
     shell_files | while IFS= read -r file; do
-        mksh -n "${file}" || true
+        mksh -n "${file}" | sed "s~^./~~"
     done
 fi
 if check zsh; then
     shell_files | while IFS= read -r file; do
-        zsh -n "${file}" || true
+        zsh -n "${file}" | sed "s~^./~~"
     done
 fi
 if check yash; then
     shell_files | while IFS= read -r file; do
-        yash -n "${file}" || true
-        yash --posix -n "${file}" || true
-        yash -o posixly-correct -n "${file}" || true
+        yash -n "${file}" | sed "s~^./~~"
+        yash --posix -n "${file}" | sed "s~^./~~"
+        yash -o posixly-correct -n "${file}" | sed "s~^./~~"
     done
 fi
