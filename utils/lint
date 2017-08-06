@@ -34,7 +34,7 @@ if check pylint; then
     done
 fi
 if check flake8; then
-    flake8 "."
+    flake8 "." || true
 fi
 if check pep8; then
     pep8 "."
