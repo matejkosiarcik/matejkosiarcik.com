@@ -77,7 +77,7 @@ STYLE_SOURCE_DIR = $(SHARED_SOURCE_DIR)/styles
 STYLE_TARGET_DIR = $(SHARED_TARGET_DIR)/styles
 
 # normalize.css
-NORMALIZE_SOURCE = ./node_modules/normalize.css/normalize.css
+NORMALIZE_SOURCE = node_modules/normalize.css/normalize.css
 NORMALIZE_TARGET = $(STYLE_TARGET_DIR)/normalize.css
 
 $(NORMALIZE_TARGET): $(NORMALIZE_SOURCE)
