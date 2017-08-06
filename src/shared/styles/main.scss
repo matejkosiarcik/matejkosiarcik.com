@@ -12,35 +12,30 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Open Sans", Helvetica, sans-serif;
 }
 
-#page {
-    // sizing
-    max-width: 100%;
-    width: 970px;
-    min-height: 100%;
-
-    // positioning
+#main-container {
+    @include center-horizontal;
     @include padding-horizontal(5px);
-    @include center-horizontal();
+
     position: relative;
+    width: 970px;
+    max-width: 100%;
     min-height: 100%;
 }
 
-#page > header {
+#main-container > header {
     width: 100%;
     margin-top: 10px;
 }
 
-#content {
+#main-container > .content {
     width: 100%;
-    padding-bottom: 100px;
     padding-top: 50px;
+    padding-bottom: 100px;
 }
 
-#page > footer {
-    width: 100%;
-    margin-bottom: 10px;
-
-    // make it stay at bottom
+#main-container > footer {
     position: absolute;
     bottom: 0;
+    width: 100%;
+    margin-bottom: 10px;
 }
