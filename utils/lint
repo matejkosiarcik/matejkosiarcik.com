@@ -47,7 +47,8 @@ fi
 # JSON
 if check jsonlint; then
     files_ending ".json" | while IFS= read -r file; do
-        jsonlint "${file}" --quiet
+        jsonlint "${file}" --quiet --compact 2>&1 | sed -E "s~\.\$~~" \
+            | sed -E "s~(.*): line ([0-9]+), col ([0-9]+), ~\1:\2:\3: warning: ~" | sed "s~', '~' or '~g"
     done
 fi
 
