@@ -112,10 +112,10 @@ _build-style: _build-normalize _build-sass
 ## Markup ##
 # Mustache -> HTML
 MARKUP_SHARED_SOURCES = $(wildcard $(SHARED_SOURCE_DIR)/markup/*.html.mustache)
-MARKUP_SOURCES = $(wildcard $(PAGES_SOURCE_DIR)/**/*.html.mustache)
-MARKUP_TARGETS = $(patsubst $(PAGES_SOURCE_DIR)/%.html.mustache, $(PAGES_TARGET_DIR)/%.html, $(MARKUP_SOURCES))
+MARKUP_SOURCES = $(wildcard $(PAGES_SOURCE_DIR)/**/content.html.mustache)
+MARKUP_TARGETS = $(patsubst $(PAGES_SOURCE_DIR)/%/content.html.mustache, $(PAGES_TARGET_DIR)/%/index.html, $(MARKUP_SOURCES))
 
-$(PAGES_TARGET_DIR)/%.html: $(PAGES_SOURCE_DIR)/%.html.mustache $(MARKUP_SHARED_SOURCES)
+$(PAGES_TARGET_DIR)/%/index.html: $(PAGES_SOURCE_DIR)/%/content.html.mustache $(MARKUP_SHARED_SOURCES)
 	mkdir -p "$$(dirname "$@")"
 	python "./utils/internal/build-mustache.py" --data "$$(dirname "$<")" --output "$$(dirname "$@")"
 
