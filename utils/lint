@@ -17,6 +17,13 @@ text_files | while IFS= read -r file; do
         | sed -E "s~^([0-9]+):(.*)\$~${file}:\1: warning: leading <tab> found (tab_indent)~"
 done
 
+# Html
+if check htmlhint; then
+    htmlhint --format unix "." | grep -v "^\$" | grep -Ev "^(.*)([0-9]+) problem(s?)(.*)\$" \
+        | sed -E "s~\[error/(.*)\]\$~[\1]~" | sed -E "s~(.*):([0-9]+):([0-9]+): ~\1:\2:\3: warning: ~" \
+        | sed -E "s~\[(.*)\] \[(.*)\]~'\1' [\2]~"
+fi
+
 # Markdown
 if check mdl; then
     mdl "." --git-recurse || true
