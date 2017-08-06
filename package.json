@@ -9,7 +9,7 @@
     "author": "Matej Košiarčik <matejkosiarcik@gmail.com>",
     "license": "MIT",
     "homepage": "https://github.com/matejkosiarcik/personal-website#readme",
-    "devDependencies": {
+    "dependencies": {
         "apache-server-configs": "^2.0.0",
         "normalize.css": "^7.0.0"
     }

@@ -42,6 +42,15 @@ format:
 lint:
 	./utils/lint
 
+# Dependency resolution
+.PHONY: bootstrap
+bootstrap:
+	npm install
+
+.PHONY: update
+update:
+	npm install --save
+
 ### Documentation ###
 DOCUMENTATION_TARGET_DIR = $(TARGET_DIR)/doc
 MARKDOWN_SOURCES = $(shell . "./utils/internal/helpers.sh" && files_ending ".md")
