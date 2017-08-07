@@ -5,9 +5,8 @@
 
 export function rewrite_class(htmlclass: string, element: HTMLElement, enable: boolean): void {
     const classes = element.classList
-    classes.remove("no-" + htmlclass)
+    classes.remove(`no-${htmlclass}`)
     classes.remove(htmlclass)
-
-    const new_class = enable ? htmlclass : "no-" + htmlclass
-    classes.add(new_class)
+    const newClass = enable ? htmlclass : `no-${htmlclass}`
+    classes.add(newClass)
 }
