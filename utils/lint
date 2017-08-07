@@ -12,9 +12,9 @@ cd "$(dirname "${0}")/.."
 # All text files
 text_files | while IFS= read -r file; do
     if [ "${file}" = "Makefile" ]; then continue; fi
-    # check for leading tabs
-    grep -E "^	" --line-number <"${file}" \
-        | sed -E "s~^([0-9]+):(.*)\$~${file}:\1: warning: leading <tab> found (tab_indent)~"
+    # check for indentation tabs
+    grep -E "^(\s*)	(\s*)" --line-number <"${file}" \
+        | sed -E "s~^([0-9]+):(.*)\$~${file}:\1: warning: indentation using <tab> found (tab_indent)~"
 done
 
 # Html
