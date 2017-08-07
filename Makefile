@@ -121,6 +121,29 @@ _build-sass: $(STYLE_SHARED_TARGETS) $(STYLE_PAGE_TARGETS)
 
 _build-style: _build-normalize _build-sass
 
+## Scripts ##
+SCRIPT_SOURCE_DIR = $(SHARED_SOURCE_DIR)/scripts
+SCRIPT_TARGET_DIR = $(SHARED_TARGET_DIR)/scripts
+
+# TypeScript -> JavaScript
+SCRIPT_SHARED_INTERNAL = $(wildcard $(SCRIPT_SOURCE_DIR)/_*.ts)
+SCRIPT_SHARED_SOURCES = $(filter-out $(SCRIPT_SHARED_INTERNAL), $(wildcard $(SCRIPT_SOURCE_DIR)/*.ts))
+SCRIPT_SHARED_TARGETS = $(patsubst $(SCRIPT_SOURCE_DIR)/%.ts, $(SCRIPT_TARGET_DIR)/%.js, $(SCRIPT_SHARED_SOURCES))
+TYPESCRIPT_FLAGS = --module "commonjs" --target "ES3" --newLine "LF" \
+	--removeComments --preserveConstEnums --forceConsistentCasingInFileNames \
+	--strict --alwaysStrict --strictNullChecks \
+	--noEmitOnError --noImplicitAny --noImplicitThis --noImplicitReturns \
+	--noUnusedLocals --noUnusedParameters --noFallthroughCasesInSwitch
+
+$(SCRIPT_TARGET_DIR)/%.js: $(SCRIPT_SOURCE_DIR)/%.ts $(SCRIPT_SHARED_INTERNAL)
+	mkdir -p "$$(dirname "$@")"
+	tsc $(TYPESCRIPT_FLAGS) "$<" --outDir "$$(dirname "$@")"
+	browserify "$@" --outfile "$@"
+
+_build-typescript: $(SCRIPT_SHARED_TARGETS)
+
+_build-scripts: _build-typescript
+
 ## General ##
 # Symlinks from / (root) to /home
 MARKUP_HOME_SYMLINK_SOURCES = $(wildcard $(PAGES_TARGET_DIR)/home/*)
@@ -131,4 +154,4 @@ $(PAGES_TARGET_DIR)/%: $(PAGES_TARGET_DIR)/home/%
 
 _build-symlinks: $(MARKUP_HOME_SYMLINK_TARGETS)
 
-build: _pre-build _build-markup _build-style _build-symlinks
+build: _pre-build _build-markup _build-style _build-scripts _build-symlinks
