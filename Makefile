@@ -72,6 +72,18 @@ SHARED_TARGET_DIR = $(TARGET_DIR)/$(MODE)/_include
 _pre-build:
 	@printf "%s\n" "Building into: $(TARGET_DIR)/$(MODE)"
 
+## Markup ##
+# Mustache -> HTML
+MARKUP_SHARED_SOURCES = $(wildcard $(SHARED_SOURCE_DIR)/markup/*.html.mustache)
+MARKUP_SOURCES = $(wildcard $(PAGES_SOURCE_DIR)/**/content.html.mustache)
+MARKUP_TARGETS = $(patsubst $(PAGES_SOURCE_DIR)/%/content.html.mustache, $(PAGES_TARGET_DIR)/%/index.html, $(MARKUP_SOURCES))
+
+$(PAGES_TARGET_DIR)/%/index.html: $(PAGES_SOURCE_DIR)/%/content.html.mustache $(MARKUP_SHARED_SOURCES)
+	mkdir -p "$$(dirname "$@")"
+	python "./utils/internal/build-mustache.py" --data "$$(dirname "$<")" --output "$$(dirname "$@")"
+
+_build-markup: $(MARKUP_TARGETS)
+
 ## Style ##
 STYLE_SOURCE_DIR = $(SHARED_SOURCE_DIR)/styles
 STYLE_TARGET_DIR = $(SHARED_TARGET_DIR)/styles
@@ -108,18 +120,6 @@ $(PAGES_TARGET_DIR)/%.css: $(PAGES_SOURCE_DIR)/%.scss $(STYLE_INTERNAL)
 _build-sass: $(STYLE_SHARED_TARGETS) $(STYLE_PAGE_TARGETS)
 
 _build-style: _build-normalize _build-sass
-
-## Markup ##
-# Mustache -> HTML
-MARKUP_SHARED_SOURCES = $(wildcard $(SHARED_SOURCE_DIR)/markup/*.html.mustache)
-MARKUP_SOURCES = $(wildcard $(PAGES_SOURCE_DIR)/**/content.html.mustache)
-MARKUP_TARGETS = $(patsubst $(PAGES_SOURCE_DIR)/%/content.html.mustache, $(PAGES_TARGET_DIR)/%/index.html, $(MARKUP_SOURCES))
-
-$(PAGES_TARGET_DIR)/%/index.html: $(PAGES_SOURCE_DIR)/%/content.html.mustache $(MARKUP_SHARED_SOURCES)
-	mkdir -p "$$(dirname "$@")"
-	python "./utils/internal/build-mustache.py" --data "$$(dirname "$<")" --output "$$(dirname "$@")"
-
-_build-markup: $(MARKUP_TARGETS)
 
 ## General ##
 # Symlinks from / (root) to /home
