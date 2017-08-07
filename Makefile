@@ -8,15 +8,12 @@
 ### Config ###
 SHELL = /bin/sh -euf
 MAKEFLAGS += --warn-undefined-variables
-TARGET_DIR = build
-SOURCE_DIR = src
 
-# get compilation mode
-ifeq ($(mode), release)
-	MODE = release
-else
-	MODE = debug
-endif
+### Setup ###
+SOURCE_DIR = src
+TARGET_DIR = build
+DEBUG_DIR = $(TARGET_DIR)/debug
+RELEASE_DIR = $(TARGET_DIR)/release
 
 # Default target
 .PHONY: all
@@ -64,13 +61,13 @@ doc: $(MARKDOWN_TARGETS)
 
 ### Build ###
 PAGES_SOURCE_DIR = $(SOURCE_DIR)/pages
-PAGES_TARGET_DIR = $(TARGET_DIR)/$(MODE)
+PAGES_TARGET_DIR = $(DEBUG_DIR)
 SHARED_SOURCE_DIR = $(SOURCE_DIR)/shared
-SHARED_TARGET_DIR = $(TARGET_DIR)/$(MODE)/_include
+SHARED_TARGET_DIR = $(DEBUG_DIR)/_include
 
 .PHONY: _pre-build
 _pre-build:
-	@printf "%s\n" "Building into: $(TARGET_DIR)/$(MODE)"
+	@printf "%s\n" "Building into: $(DEBUG_DIR)"
 
 ## Markup ##
 # Mustache -> HTML
