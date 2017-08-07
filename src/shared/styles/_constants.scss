@@ -4,4 +4,9 @@
 //
 
 $background-color: #f2f4f5;
-$text-color: #54545d;
+
+$text-color-default: #54545d;
+$text-color-light: lighten($text-color-default, 10%);
+$text-color-super-light: lighten($text-color-light, 10%);
+$text-color-dark: darken($text-color-default, 10%);
+$text-color-super-dark: darken($text-color-dark, 10%);

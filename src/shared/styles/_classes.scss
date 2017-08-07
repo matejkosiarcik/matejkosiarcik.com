@@ -32,16 +32,24 @@
     font-weight: 300;
 }
 
+.text-color-super-dark {
+    color: $text-color-super-dark;
+}
+
 .text-color-dark {
-    color: darken($text-color, 5%);
+    color: $text-color-dark;
 }
 
 .text-color-default {
-    color: $text-color;
+    color: $text-color-default;
 }
 
 .text-color-light {
-    color: lighten($text-color, 5%);
+    color: $text-color-light;
+}
+
+.text-color-super-light {
+    color: $text-color-super-light;
 }
 
 // Positioning
