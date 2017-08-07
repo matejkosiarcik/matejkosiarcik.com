@@ -46,3 +46,14 @@ body {
     padding-bottom: 30px;
     text-align: center;
 }
+
+.info-link {
+    transition: color .25s;
+    color: $text-color-super-light;
+    text-decoration: none;
+
+    &:hover {
+        color: $text-color-dark;
+        text-decoration: underline;
+    }
+}
