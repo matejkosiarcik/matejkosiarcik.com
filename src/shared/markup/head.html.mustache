@@ -16,10 +16,8 @@
 
     <!-- is scripting enabled -->
     <script type="text/javascript">
-        var element = document.querySelector("html");
-        if (element) {
-            element.classList.remove("no-js");
-            element.classList.add("js");
-        }
+        var features = document.documentElement.classList;
+        features.remove("no-js");
+        features.add("js");
 	</script>
 </head>
