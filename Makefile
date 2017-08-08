@@ -10,7 +10,6 @@ SHELL = /bin/sh -euf
 MAKEFLAGS += --warn-undefined-variables
 
 ### Setup ###
-SOURCE_DIR = src
 TARGET_DIR = build
 DEBUG_DIR = $(TARGET_DIR)/debug
 RELEASE_DIR = $(TARGET_DIR)/release
@@ -60,6 +59,7 @@ $(DOCUMENTATION_TARGET_DIR)/%.html: %.md
 doc: $(MARKDOWN_TARGETS)
 
 ### Build ###
+SOURCE_DIR = src
 PAGES_SOURCE_DIR = $(SOURCE_DIR)/pages
 PAGES_TARGET_DIR = $(DEBUG_DIR)
 SHARED_SOURCE_DIR = $(SOURCE_DIR)/shared
@@ -69,7 +69,8 @@ SHARED_TARGET_DIR = $(DEBUG_DIR)/_include
 _pre-build:
 	@printf "%s\n" "Building into: $(DEBUG_DIR)"
 
-## Markup ##
+## Code ##
+# Markup #
 # Mustache -> HTML
 MARKUP_SHARED_SOURCES = $(wildcard $(SHARED_SOURCE_DIR)/markup/*.html.mustache)
 MARKUP_SOURCES = $(wildcard $(PAGES_SOURCE_DIR)/**/content.html.mustache)
@@ -81,7 +82,7 @@ $(PAGES_TARGET_DIR)/%/index.html: $(PAGES_SOURCE_DIR)/%/content.html.mustache $(
 
 _build-markup: $(MARKUP_TARGETS)
 
-## Styles ##
+# Styles #
 STYLE_SOURCE_DIR = $(SHARED_SOURCE_DIR)/styles
 STYLE_TARGET_DIR = $(SHARED_TARGET_DIR)/styles
 
@@ -118,7 +119,7 @@ _build-sass: $(STYLE_SHARED_TARGETS) $(STYLE_PAGE_TARGETS)
 
 _build-style: _build-normalize _build-sass
 
-## Scripts ##
+# Scripts #
 SCRIPT_SOURCE_DIR = $(SHARED_SOURCE_DIR)/scripts
 SCRIPT_TARGET_DIR = $(SHARED_TARGET_DIR)/scripts
 
@@ -141,6 +142,8 @@ _build-typescript: $(SCRIPT_SHARED_TARGETS)
 
 _build-scripts: _build-typescript
 
+_build-code: _build-markup _build-style _build-scripts
+
 ## General ##
 # Symlinks from / (root) to /home
 MARKUP_HOME_SYMLINK_SOURCES = $(wildcard $(PAGES_TARGET_DIR)/home/*)
@@ -151,4 +154,4 @@ $(PAGES_TARGET_DIR)/%: $(PAGES_TARGET_DIR)/home/%
 
 _build-symlinks: $(MARKUP_HOME_SYMLINK_TARGETS)
 
-build: _pre-build _build-markup _build-style _build-scripts _build-symlinks
+build: _pre-build _build-code _build-symlinks
