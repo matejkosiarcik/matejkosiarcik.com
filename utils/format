@@ -33,3 +33,11 @@ if check shfmt; then
         shfmt -i 4 -p -w "${file}"
     done
 fi
+
+# SVG
+if check svgcleaner && check xmllint; then
+    files_ending ".svg" | while IFS= read -r file; do
+        printf "%s\n" "$(svgcleaner "${file}" -c --quiet --coordinates-precision 1 --properties-precision 1 \
+            --transforms-precision 1 --paths-coordinates-precision 1 | xmllint --format -)" >"${file}"
+    done
+fi
