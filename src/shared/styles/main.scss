@@ -7,6 +7,7 @@
 @import "constants";
 @import "functions";
 
+// General
 html,
 body {
     height: 100%;
@@ -28,29 +29,6 @@ body {
     min-height: 100%;
 }
 
-#main-container > header {
-    width: 100%;
-    margin-top: 15px;
-}
-
-#main-container > .content {
-    width: 100%;
-    padding-top: 50px;
-    padding-bottom: 100px;
-}
-
-#main-container > footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding-bottom: 30px;
-    text-align: center;
-}
-
-nav > * {
-    margin-left: 10px;
-}
-
 .info-link {
     transition: color .25s;
     color: $text-color-super-light;
@@ -60,4 +38,30 @@ nav > * {
         color: $text-color-dark;
         text-decoration: underline;
     }
+}
+
+// Header
+#main-container > header {
+    width: 100%;
+    margin-top: 15px;
+}
+
+nav > * {
+    margin-left: 10px;
+}
+
+// Content
+#main-container > .content {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 100px;
+}
+
+// Footer
+#main-container > footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding-bottom: 30px;
+    text-align: center;
 }
