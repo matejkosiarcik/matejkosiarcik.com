@@ -144,6 +144,25 @@ _build-scripts: _build-typescript
 
 _build-code: _build-markup _build-style _build-scripts
 
+## Assets ##
+ASSET_DIR = assets
+IMAGE_SOURCE_DIR = $(ASSET_DIR)/images
+IMAGE_TARGET_DIR = $(SHARED_TARGET_DIR)/images
+
+# SVG -> SVG
+SVG_SHARED_SOURCES = $(wildcard $(IMAGE_SOURCE_DIR)/*.svg)
+SVG_SHARED_TARGETS = $(patsubst $(IMAGE_SOURCE_DIR)/%.svg, $(IMAGE_TARGET_DIR)/%.svg, $(SVG_SHARED_SOURCES))
+
+$(IMAGE_TARGET_DIR)/%.svg: $(IMAGE_SOURCE_DIR)/%.svg
+	mkdir -p "$$(dirname "$@")"
+	cp "$<" "$@"
+
+_build-svg: $(SVG_SHARED_TARGETS)
+
+_build-images: _build-svg
+
+_build-assets: _build-images
+
 ## General ##
 # Symlinks from / (root) to /home
 MARKUP_HOME_SYMLINK_SOURCES = $(wildcard $(PAGES_TARGET_DIR)/home/*)
@@ -154,4 +173,4 @@ $(PAGES_TARGET_DIR)/%: $(PAGES_TARGET_DIR)/home/%
 
 _build-symlinks: $(MARKUP_HOME_SYMLINK_TARGETS)
 
-build: _pre-build _build-code _build-symlinks
+build: _pre-build _build-code _build-assets _build-symlinks
