@@ -17,14 +17,14 @@ text_files | while IFS= read -r file; do
         | sed -E "s~^([0-9]+):(.*)\$~${file}:\1: warning: indentation using <tab> found (tab_indent)~"
 done
 
-# Html
+# HTML
 if check htmlhint; then
     htmlhint --format unix "." | grep -v "^\$" | grep -Ev "^(.*)([0-9]+) problem(s?)(.*)\$" \
         | sed -E "s~\[error/(.*)\]\$~[\1]~" | sed -E "s~(.*):([0-9]+):([0-9]+): ~\1:\2:\3: warning: ~" \
         | sed -E "s~\[(.*)\] \[(.*)\]~'\1' [\2]~"
 fi
 
-# Sass
+# SASS
 if check sass-lint; then
     sass-lint --verbose --no-exit --syntax scss --format unix | grep -Ev "([0-9]+) problems" | grep -v "^\$" \
         | sed -E "s~(w|W)arning/~~" | sed -E "s~(e|E)rror/~~" | sed -E "s~^(.*):([0-9]+):([0-9]+):~\1:\2:\3: warning:~"
