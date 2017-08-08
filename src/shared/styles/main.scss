@@ -47,6 +47,10 @@ body {
     text-align: center;
 }
 
+nav > * {
+    margin-left: 10px;
+}
+
 .info-link {
     transition: color .25s;
     color: $text-color-super-light;
