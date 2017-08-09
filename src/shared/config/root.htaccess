@@ -1,0 +1,40 @@
+### Redirecting ###
+# Serve custom error pages
+ErrorDocument 400 /400
+ErrorDocument 401 /401
+ErrorDocument 403 /403
+ErrorDocument 404 /404
+ErrorDocument 405 /405
+ErrorDocument 406 /406
+
+ErrorDocument 500 /500
+ErrorDocument 501 /501
+ErrorDocument 502 /502
+ErrorDocument 503 /503
+ErrorDocument 504 /504
+ErrorDocument 505 /505
+
+# Turn on rewriting with basic setup
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+</IfModule>
+
+# Force HTTPS
+<IfModule mod_rewrite.c>
+    # local server
+    RewriteCond ${HTTP_HOST} !^binarytrex.com$
+    RewriteCond %{HTTPS} !^on$
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+    # production server
+    RewriteCond %{HTTP_HOST} ^binarytrex.com$
+    RewriteCond %{SERVER_PORT} !^443$
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+# Redirect from "www.server.domain/..." to "server.domain/..."
+<IfModule mod_rewrite.c>
+    RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+    RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+</IfModule>
