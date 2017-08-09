@@ -64,6 +64,7 @@ PAGES_SOURCE_DIR = $(SOURCE_DIR)/pages
 PAGES_TARGET_DIR = $(DEBUG_DIR)
 SHARED_SOURCE_DIR = $(SOURCE_DIR)/shared
 SHARED_TARGET_DIR = $(DEBUG_DIR)/_include
+NODE_DIR = node_modules
 
 .PHONY: _pre-build
 _pre-build:
@@ -87,7 +88,7 @@ STYLE_SOURCE_DIR = $(SHARED_SOURCE_DIR)/styles
 STYLE_TARGET_DIR = $(SHARED_TARGET_DIR)/styles
 
 # normalize.css
-NORMALIZE_SOURCE = node_modules/normalize.css/normalize.css
+NORMALIZE_SOURCE = $(NODE_DIR)/normalize.css/normalize.css
 NORMALIZE_TARGET = $(STYLE_TARGET_DIR)/normalize.css
 
 $(NORMALIZE_TARGET): $(NORMALIZE_SOURCE)
@@ -165,12 +166,12 @@ _build-assets: _build-images
 
 ## General ##
 # Symlinks from "/" (root) to "/home"
-MARKUP_HOME_SYMLINK_SOURCES = $(wildcard $(PAGES_TARGET_DIR)/home/*)
-MARKUP_HOME_SYMLINK_TARGETS = $(patsubst $(PAGES_TARGET_DIR)/home/%, $(PAGES_TARGET_DIR)/%, $(MARKUP_HOME_SYMLINK_SOURCES))
+HOME_SYMLINK_SOURCES = $(wildcard $(PAGES_TARGET_DIR)/home/*)
+HOME_SYMLINK_TARGETS = $(patsubst $(PAGES_TARGET_DIR)/home/%, $(PAGES_TARGET_DIR)/%, $(HOME_SYMLINK_SOURCES))
 
 $(PAGES_TARGET_DIR)/%: $(PAGES_TARGET_DIR)/home/%
 	ln -s "home/$$(basename "$@")" "$@"
 
-_build-symlinks: $(MARKUP_HOME_SYMLINK_TARGETS)
+_build-symlinks: $(HOME_SYMLINK_TARGETS)
 
 build: _pre-build _build-code _build-assets _build-symlinks
