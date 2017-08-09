@@ -70,7 +70,7 @@ if check flake8; then
         | sed -E "s~(.*):([0-9]+):([0-9]+): ~\1:\2:\3: warning: ~" | sed "s~^./~~"
 fi
 if check pep8; then
-    pep8 "."
+    pep8 "." | sed -E "s~(.*):([0-9]+):([0-9]+): ~\1:\2:\3: warning: ~" | sed "s~^./~~"
 fi
 
 # Shell
