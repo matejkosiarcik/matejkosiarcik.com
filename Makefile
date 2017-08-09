@@ -164,7 +164,7 @@ _build-images: _build-svg
 _build-assets: _build-images
 
 ## General ##
-# Symlinks from / (root) to /home
+# Symlinks from "/" (root) to "/home"
 MARKUP_HOME_SYMLINK_SOURCES = $(wildcard $(PAGES_TARGET_DIR)/home/*)
 MARKUP_HOME_SYMLINK_TARGETS = $(patsubst $(PAGES_TARGET_DIR)/home/%, $(PAGES_TARGET_DIR)/%, $(MARKUP_HOME_SYMLINK_SOURCES))
 
