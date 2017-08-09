@@ -79,7 +79,7 @@ MARKUP_TARGETS = $(patsubst $(PAGES_SOURCE_DIR)/%/content.html.mustache, $(PAGES
 
 $(PAGES_TARGET_DIR)/%/index.html: $(PAGES_SOURCE_DIR)/%/content.html.mustache $(MARKUP_SHARED_SOURCES)
 	mkdir -p "$$(dirname "$@")"
-	python "./utils/internal/build-mustache.py" --data "$$(dirname "$<")" --output "$$(dirname "$@")"
+	python "./utils/internal/build_mustache.py" --data "$$(dirname "$<")" --output "$$(dirname "$@")"
 
 _build-markup: $(MARKUP_TARGETS)
 
