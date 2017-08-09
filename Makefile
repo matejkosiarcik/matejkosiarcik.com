@@ -164,6 +164,22 @@ _build-images: _build-svg
 
 _build-assets: _build-images
 
+## Config ##
+CONFIG_DIR = $(SHARED_SOURCE_DIR)/config
+
+# Apache config
+APACHE_DEPENDENCY = $(NODE_DIR)/apache-server-configs/dist/.htaccess
+APACHE_ROOT_SOURCE = $(CONFIG_DIR)/root.htaccess
+APACHE_ROOT_TARGET = $(DEBUG_DIR)/.htaccess
+
+$(APACHE_ROOT_TARGET): $(APACHE_ROOT_SOURCE) $(APACHE_DEPENDENCY)
+	mkdir -p "$$(dirname "$@")"
+	cat $^ >"$@"
+
+_build-apache-config: $(APACHE_ROOT_TARGET)
+
+_build-config: _build-apache-config
+
 ## General ##
 # Symlinks from "/" (root) to "/home"
 HOME_SYMLINK_SOURCES = $(wildcard $(PAGES_TARGET_DIR)/home/*)
@@ -174,4 +190,4 @@ $(PAGES_TARGET_DIR)/%: $(PAGES_TARGET_DIR)/home/%
 
 _build-symlinks: $(HOME_SYMLINK_TARGETS)
 
-build: _pre-build _build-code _build-assets _build-symlinks
+build: _pre-build _build-code _build-assets _build-config _build-symlinks
