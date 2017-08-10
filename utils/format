@@ -27,6 +27,11 @@ if check autopep8; then
     autopep8 "." --recursive --in-place --aggressive --aggressive
 fi
 
+# Swift
+if check swiftlint; then
+    swiftlint autocorrect 2>/dev/null
+fi
+
 # Shell
 if check shfmt; then
     shell_files | while IFS= read -r file; do
