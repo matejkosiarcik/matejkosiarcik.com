@@ -4,14 +4,14 @@
         "no-default-export": true,
         "no-inferrable-types": true,
         "no-require-imports": true,
-        "only-arrow-functions": [ true, "allow-named-functions" ],
+        "only-arrow-functions": [true, "allow-named-functions"],
         "prefer-switch": true,
         "prefer-template": true,
-        "quotemark": [ true, "double", "avoid-escape", "avoid-template" ],
+        "quotemark": [true, "double", "avoid-escape", "avoid-template"],
         "semicolon": false,
         "switch-default": true,
         "triple-equals": true,
-        "variable-name": [ true, "ban-keywords", "check-format" ]
+        "variable-name": [true, "ban-keywords", "check-format"]
     },
     "jsRules": {
         "curly": false,
@@ -19,10 +19,10 @@
         "no-shadowed-variable": false,
         "one-line": false,
         "only-arrow-functions": false,
-        "quotemark": [ true, "double", "avoid-escape", "avoid-template" ],
+        "quotemark": [true, "double", "avoid-escape", "avoid-template"],
         "semicolon": false,
         "triple-equals": false,
-        "variable-name": [ true, "ban-keywords", "check-format" ],
+        "variable-name": [true, "ban-keywords", "check-format"],
         "whitespace": false
     }
 }

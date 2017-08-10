@@ -41,11 +41,11 @@ lint:
 # Dependency resolution
 .PHONY: bootstrap
 bootstrap:
-	npm install
+	npm install --save --saveDev
 
 .PHONY: update
 update:
-	npm install --save
+	npm update --save --saveDev
 
 ### Documentation ###
 DOCUMENTATION_TARGET_DIR = $(TARGET_DIR)/doc

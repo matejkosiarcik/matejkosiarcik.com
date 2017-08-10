@@ -37,7 +37,7 @@ fi
 # SVG
 if check svgcleaner && check xmllint; then
     files_ending ".svg" | while IFS= read -r file; do
-        printf "%s\n" "$(svgcleaner "${file}" -c --quiet --coordinates-precision 1 --properties-precision 1 \
+        printf "%s\n" "$(svgcleaner "${file}" --multipass --stdout --quiet --coordinates-precision 1 --properties-precision 1 \
             --transforms-precision 1 --paths-coordinates-precision 1 | xmllint --format -)" >"${file}"
     done
 fi
