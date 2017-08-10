@@ -10,6 +10,10 @@ build/
 .vscode/
 .sass-cache/
 
+### SwiftPM ###
+/*.xcodeproj
+.build/
+
 ### Node ###
 # Logs
 logs
