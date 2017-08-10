@@ -38,14 +38,20 @@ format:
 lint:
 	./utils/lint
 
+.PHONY: test
+test:
+	swift test
+
 # Dependency resolution
 .PHONY: bootstrap
 bootstrap:
 	npm install --save --saveDev
+	swift package resolve
 
 .PHONY: update
 update:
 	npm update --save --saveDev
+	swift package update
 
 ### Documentation ###
 DOCUMENTATION_TARGET_DIR = $(TARGET_DIR)/doc
