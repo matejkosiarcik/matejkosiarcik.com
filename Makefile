@@ -83,7 +83,7 @@ MARKUP_SHARED_SOURCES = $(wildcard $(SHARED_SOURCE_DIR)/markup/*.html.mustache)
 MARKUP_SOURCES = $(wildcard $(PAGES_SOURCE_DIR)/**/content.html.mustache)
 MARKUP_TARGETS = $(patsubst $(PAGES_SOURCE_DIR)/%/content.html.mustache, $(PAGES_TARGET_DIR)/%/index.html, $(MARKUP_SOURCES))
 
-$(PAGES_TARGET_DIR)/%/index.html: $(PAGES_SOURCE_DIR)/%/content.html.mustache $(MARKUP_SHARED_SOURCES)
+$(PAGES_TARGET_DIR)/%/index.html: $(PAGES_SOURCE_DIR)/%/content.html.mustache $(PAGES_SOURCE_DIR)/%/data.json $(MARKUP_SHARED_SOURCES)
 	mkdir -p "$$(dirname "$@")"
 	python "./utils/internal/build_mustache.py" --data "$$(dirname "$<")" --output "$$(dirname "$@")"
 
