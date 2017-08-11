@@ -16,7 +16,7 @@ RELEASE_DIR = $(TARGET_DIR)/release
 
 # Default target
 .PHONY: all
-all: format doc lint build
+all: fmt doc lint build
 
 # Help message
 .PHONY: help
@@ -30,8 +30,8 @@ clean:
 	rm -rf "$(TARGET_DIR)"
 
 # Just forwarding targets
-.PHONY: format
-format:
+.PHONY: fmt
+fmt:
 	./utils/format
 
 .PHONY: lint
