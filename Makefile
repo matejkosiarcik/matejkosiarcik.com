@@ -157,16 +157,14 @@ IMAGE_SOURCE_DIR = $(ASSET_DIR)/images
 IMAGE_TARGET_DIR = $(SHARED_TARGET_DIR)/images
 
 # SVG -> SVG
-SVG_SHARED_SOURCES = $(wildcard $(IMAGE_SOURCE_DIR)/*.svg)
-SVG_SHARED_TARGETS = $(patsubst $(IMAGE_SOURCE_DIR)/%.svg, $(IMAGE_TARGET_DIR)/%.svg, $(SVG_SHARED_SOURCES))
+IMAGE_SHARED_SOURCES = $(wildcard $(IMAGE_SOURCE_DIR)/*)
+IMAGE_SHARED_TARGETS = $(patsubst $(IMAGE_SOURCE_DIR)/%, $(IMAGE_TARGET_DIR)/%, $(IMAGE_SHARED_SOURCES))
 
-$(IMAGE_TARGET_DIR)/%.svg: $(IMAGE_SOURCE_DIR)/%.svg
+$(IMAGE_TARGET_DIR)/%: $(IMAGE_SOURCE_DIR)/%
 	mkdir -p "$$(dirname "$@")"
 	cp "$<" "$@"
 
-_build-svg: $(SVG_SHARED_TARGETS)
-
-_build-images: _build-svg
+_build-images: $(IMAGE_SHARED_TARGETS)
 
 _build-assets: _build-images
 
@@ -194,6 +192,13 @@ HOME_SYMLINK_TARGETS = $(patsubst $(PAGES_TARGET_DIR)/home/%, $(PAGES_TARGET_DIR
 $(PAGES_TARGET_DIR)/%: $(PAGES_TARGET_DIR)/home/%
 	ln -s "home/$$(basename "$@")" "$@"
 
-_build-symlinks: $(HOME_SYMLINK_TARGETS)
+# favicon symlink
+FAVICON_SYMLINK_SOURCE = $(IMAGE_TARGET_DIR)/favicon.ico
+FAVICON_SYMLINK_TARGET = $(DEBUG_DIR)/favicon.ico
+
+$(FAVICON_SYMLINK_TARGET): $(FAVICON_SYMLINK_SOURCE)
+	ln -s "_include/images/$$(basename "$@")" "$@"
+
+_build-symlinks: $(HOME_SYMLINK_TARGETS) $(FAVICON_SYMLINK_TARGET)
 
 build: _pre-build _build-code _build-assets _build-config _build-symlinks
