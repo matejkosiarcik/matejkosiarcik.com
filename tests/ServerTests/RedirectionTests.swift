@@ -50,7 +50,8 @@ extension RedirectionTests {
 
 // MARK: - Access
 extension RedirectionTests {
-    private func helpTestCombinations(source: String, destination: String, file: StaticString = #file, line: UInt = #line) {
+    private func helpTestCombinations(source: String, destination: String,
+                                      file: StaticString = #file, line: UInt = #line) {
         // given
         let prefices: [String] = ["http://", "https://"].flatMap { form in ["www.", ""].flatMap { form + $0 } }
         let slashes = ["/", "//", "///", "////", "/////"]
@@ -64,12 +65,13 @@ extension RedirectionTests {
         }
 
         // when
-        let responses = sources.map { self.request(url: $0).last! }
+        let responses = sources.map { self.request(url: $0).last }
 
         // then
         responses.enumerated().forEach {
-            XCTAssertEqual($0.element.status, 200, "Fail for url: \(sources[$0.offset])", file: file, line: line)
-            XCTAssertEqual($0.element.destination, destination, "Fail for url: \(sources[$0.offset])", file: file, line: line)
+            XCTAssertEqual($0.element?.status, 200, "Fail for url: \(sources[$0.offset])", file: file, line: line)
+            XCTAssertEqual($0.element?.destination, destination, "Fail for url: \(sources[$0.offset])", file: file,
+                           line: line)
         }
     }
 
