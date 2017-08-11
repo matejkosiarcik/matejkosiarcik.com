@@ -3,9 +3,9 @@
 // See file LICENSE.txt or go to https://github.com/matejkosiarcik/personal-website for full license details.
 //
 
-@import "classes";
-@import "constants";
-@import "functions";
+@import 'classes';
+@import 'constants';
+@import 'functions';
 
 // General
 html,
@@ -16,7 +16,7 @@ body {
 
 body {
     background-color: $background-color;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Open Sans", Helvetica, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Open Sans', Helvetica, sans-serif;
 }
 
 #main-container {
