@@ -113,4 +113,20 @@ extension ServerTests {
             self.helpTestCombinations(source: $0.source, destination: $0.destination)
         }
     }
+
+    func testInvalidLocations() {
+        // given
+        let locations: [String] = [
+            "/error"
+            ].flatMap { self.combinations(for: $0) }
+
+        // when
+        let responses = locations.map { self.request(url: $0).last }
+
+        // then
+        zip(responses, locations).forEach {
+            guard let status = $0.0?.status else { XCTFail("No status code, for \($0.1)"); return }
+            XCTAssertTrue((400...499).contains(status), "For \($0.1)")
+        }
+    }
 }

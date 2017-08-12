@@ -54,10 +54,10 @@ ErrorDocument 505 /505
     RewriteRule ^(.+)/$ $1 [L,R=302]
 </IfModule>
 
-# Redirect home folder to root
-# eg. from "example.com/home" to "example.com"
+# Redirect folders
 <IfModule mod_rewrite.c>
     RewriteRule ^home/ / [L,R=302]
+    RewriteRule ^error/ - [L,R=403]
 </IfModule>
 
 # Internal rewrite favicon location
