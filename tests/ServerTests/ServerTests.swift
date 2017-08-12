@@ -117,7 +117,9 @@ extension ServerTests {
     func testInvalidLocations() {
         // given
         let locations: [String] = [
-            "/error"
+            "/error",
+            "/error/index.html",
+            "/error/index.php",
             ].flatMap { self.combinations(for: $0) }
 
         // when
