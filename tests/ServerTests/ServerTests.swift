@@ -93,6 +93,7 @@ extension ServerTests {
         // given
         let resources = ["favicon.ico",
                          "_include/images/favicon.ico",
+                         "_include/images/favicon.png",
                          "_include/images/favicon_monochrome.svg",
                          "_include/images/logo.svg",
                          ]

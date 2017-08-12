@@ -47,14 +47,14 @@ ErrorDocument 505 /505
     RewriteRule ^(.*)$ $1 [L,R=302]
 </IfModule>
 
-# Redirect favicons
-<IfModule mod_rewrite.c>
-    RewriteRule ^favicon.ico$ _include/images/$0 [L]
-</IfModule>
-
 # Ensure files are accessed without trailing slash
 # eg. from "example.com/favicon.ico/" to "example.com/favicon.ico"
 <IfModule mod_rewrite.c>
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.+)/$ $1 [L,R=302]
+</IfModule>
+
+# Redirect favicons to their real location
+<IfModule mod_rewrite.c>
+    RewriteRule ^favicon\.ico$ _include/images/$0 [L]
 </IfModule>
