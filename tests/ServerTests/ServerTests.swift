@@ -28,6 +28,8 @@ extension ServerTests {
         // given
         var responses: [Response] = []
         let manager = self.manager()
+        guard let request = try? URLRequest(url: url.asURL(), cachePolicy: .reloadIgnoringCacheData)
+            else { XCTFail("Could not create URL from \(url)"); return [] }
 
         // when
         let exp = expectation(description: "Wait for server response")
@@ -37,7 +39,7 @@ extension ServerTests {
                                       destination: request.url?.absoluteString))
             return request
         }
-        manager.request(url).response {
+        manager.request(request).response {
             responses.append(Response(status: $0.response?.statusCode,
                                       source: $0.request?.url?.absoluteString,
                                       destination: $0.response?.url?.absoluteString))
