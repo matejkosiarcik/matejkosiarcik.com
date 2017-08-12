@@ -161,10 +161,12 @@ _build-code: _build-markup _build-style _build-scripts
 
 ## Assets ##
 ASSET_DIR = assets
+
+# Images #
 IMAGE_SOURCE_DIR = $(ASSET_DIR)/images
 IMAGE_TARGET_DIR = $(SHARED_TARGET_DIR)/images
 
-# SVG -> SVG
+# Shared
 IMAGE_SHARED_SOURCES = $(wildcard $(IMAGE_SOURCE_DIR)/*)
 IMAGE_SHARED_TARGETS = $(patsubst $(IMAGE_SOURCE_DIR)/%, $(IMAGE_TARGET_DIR)/%, $(IMAGE_SHARED_SOURCES))
 
