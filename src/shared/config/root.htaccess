@@ -43,5 +43,5 @@ ErrorDocument 505 /505
 # Squeeze multiple slashes
 <IfModule mod_rewrite.c>
     RewriteCond %{THE_REQUEST} //
-    RewriteRule ^(.*)$ $1 [R=302,L]
+    RewriteRule ^(.*)$ $1 [L,R=302]
 </IfModule>
