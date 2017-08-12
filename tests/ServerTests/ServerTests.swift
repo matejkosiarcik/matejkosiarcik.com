@@ -81,30 +81,32 @@ extension ServerTests {
 extension ServerTests {
     func testAccessPages() {
         // given
-        let resources = ["", "/about", "/zenplayer"]
-        let sources = resources.map { self.host + $0 }
-        let destinations = resources.map { "https://" + self.host + $0 + "/" }
+        let locations: [(source: String, destination: String)] = [
+            ("", ""),
+            ("/about", "/about"),
+            ("/zenplayer", "/zenplayer"),
+            ].map { (self.host + $0.0, "https://" + self.host + $0.1 + "/") }
 
         // then
-        zip(sources, destinations).forEach {
-            self.helpTestCombinations(source: $0.0, destination: $0.1)
+        locations.forEach {
+            self.helpTestCombinations(source: $0.source, destination: $0.destination)
         }
     }
 
     func testAccessResources() {
         // given
-        let resources = ["favicon.ico",
-                         "_include/images/favicon.ico",
-                         "_include/images/favicon.png",
-                         "_include/images/favicon_monochrome.svg",
-                         "_include/images/logo.svg",
-                         ]
-        let sources = resources.map { self.host + "/" + $0 }
-        let destinations = resources.map { "https://" + self.host + "/" + $0 }
+        let locations: [(source: String, destination: String)] = [
+            "favicon.ico",
+            "_include/images/favicon.ico",
+            "_include/images/favicon.png",
+            "_include/images/favicon_monochrome.svg",
+            "_include/images/logo.svg",
+            ].map { (self.host + "/" + $0, "https://" + self.host + "/" + $0) }
 
         // then
-        zip(sources, destinations).forEach {
-            self.helpTestCombinations(source: $0.0, destination: $0.1)
+        locations.forEach {
+            self.helpTestCombinations(source: $0.source, destination: $0.destination)
         }
     }
 }
+
