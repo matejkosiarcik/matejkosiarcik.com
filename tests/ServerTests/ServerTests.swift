@@ -88,4 +88,20 @@ extension ServerTests {
             self.helpTestCombinations(source: $0.0, destination: $0.1)
         }
     }
+
+    func testAccessResources() {
+        // given
+        let resources = ["favicon.ico",
+                         "_include/images/favicon.ico",
+                         "_include/images/favicon_monochrome.svg",
+                         "_include/images/logo.svg",
+                         ]
+        let sources = resources.map { self.host + "/" + $0 }
+        let destinations = resources.map { "https://" + self.host + "/" + $0 }
+
+        // then
+        zip(sources, destinations).forEach {
+            self.helpTestCombinations(source: $0.0, destination: $0.1)
+        }
+    }
 }
