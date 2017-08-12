@@ -35,6 +35,24 @@ clean-all: clean
 	rm -rf "node_modules"
 	rm -rf "PersonalWebsite.xcodeproj"
 
+# Dependency resolution
+NODE_DIR = node_modules
+SWIFT_DIR = .build
+
+$(NODE_DIR):
+	npm install --save --saveDev
+
+$(SWIFT_DIR):
+	swift package resolve
+
+.PHONY: bootstrap
+bootstrap: $(NODE_DIR) $(SWIFT_DIR)
+
+.PHONY: update
+update:
+	npm update --save --saveDev
+	swift package update
+
 # Just forwarding targets
 .PHONY: fmt
 fmt:
@@ -45,19 +63,8 @@ lint:
 	./utils/lint
 
 .PHONY: test
-test: build
+test: $(SWIFT_DIR) build
 	swift test
-
-# Dependency resolution
-.PHONY: bootstrap
-bootstrap:
-	npm install --save --saveDev
-	swift package resolve
-
-.PHONY: update
-update:
-	npm update --save --saveDev
-	swift package update
 
 ### Documentation ###
 DOCUMENTATION_TARGET_DIR = $(TARGET_DIR)/doc
@@ -76,11 +83,6 @@ PAGES_SOURCE_DIR = $(SOURCE_DIR)/pages
 PAGES_TARGET_DIR = $(DEBUG_DIR)
 SHARED_SOURCE_DIR = $(SOURCE_DIR)/shared
 SHARED_TARGET_DIR = $(DEBUG_DIR)/_include
-NODE_DIR = node_modules
-
-.PHONY: _pre-build
-_pre-build:
-	@printf "%s\n" "Building into: $(DEBUG_DIR)"
 
 ## Code ##
 # Markup #
@@ -200,4 +202,4 @@ $(PAGES_TARGET_DIR)/%: $(PAGES_TARGET_DIR)/home/%
 
 _build-symlinks: $(HOME_SYMLINK_TARGETS)
 
-build: _pre-build _build-code _build-assets _build-config _build-symlinks
+build: $(NODE_DIR) _build-code _build-assets _build-config _build-symlinks
