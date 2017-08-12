@@ -16,7 +16,7 @@ RELEASE_DIR = $(TARGET_DIR)/release
 
 # Default target
 .PHONY: all
-all: fmt doc lint build
+all: fmt doc lint build test
 
 # Help message
 .PHONY: help
@@ -39,7 +39,7 @@ lint:
 	./utils/lint
 
 .PHONY: test
-test:
+test: build
 	swift test
 
 # Dependency resolution
