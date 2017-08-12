@@ -51,27 +51,31 @@ extension ServerTests {
         return responses
     }
 
-    private func helpTestCombinations(source: String, destination: String,
-                                      file: StaticString = #file, line: UInt = #line) {
-        // given
+    private func combinations(for source: String) -> [String] {
         let prefices: [String] = ["http://", "https://"].flatMap { form in ["www.", ""].flatMap { form + $0 } }
         let slashes = ["/", "//", "///"]
         let trailingSlashes = [""] + slashes
-        let sources: [String] = prefices.flatMap { prefix in
+        return prefices.flatMap { prefix in
             slashes.flatMap { slash in
                 trailingSlashes.flatMap { trailingSlash in
-                    prefix + source.replacingOccurrences(of: "/", with: slash) + trailingSlash
+                    prefix + self.host + source.replacingOccurrences(of: "/", with: slash) + trailingSlash
                 }
             }
         }
+    }
+
+    private func helpTestCombinations(source: String, destination: String,
+                                      file: StaticString = #file, line: UInt = #line) {
+        // given
+        let sources = self.combinations(for: source)
 
         // when
         let responses = sources.map { self.request(url: $0).last }
 
         // then
         responses.enumerated().forEach {
-            XCTAssertEqual($0.element?.status, 200, "Fail for url: \(sources[$0.offset])", file: file, line: line)
-            XCTAssertEqual($0.element?.destination, destination, "Fail for url: \(sources[$0.offset])", file: file,
+            XCTAssertEqual($0.element?.status, 200, "For: \(sources[$0.offset])", file: file, line: line)
+            XCTAssertEqual($0.element?.destination, destination, "For: \(sources[$0.offset])", file: file,
                            line: line)
         }
     }
@@ -79,14 +83,14 @@ extension ServerTests {
 
 // MARK: - Accessing server
 extension ServerTests {
-    func testAccessPages() {
+    func testValidPages() {
         // given
         let locations: [(source: String, destination: String)] = [
             ("", ""),
             ("/home", ""),
             ("/about", "/about"),
             ("/zenplayer", "/zenplayer"),
-            ].map { (self.host + $0.0, "https://" + self.host + $0.1 + "/") }
+            ].map { ($0.0, "https://" + self.host + $0.1 + "/") }
 
         // then
         locations.forEach {
@@ -94,7 +98,7 @@ extension ServerTests {
         }
     }
 
-    func testAccessResources() {
+    func testValidFiles() {
         // given
         let locations: [(source: String, destination: String)] = [
             "favicon.ico",
@@ -102,7 +106,7 @@ extension ServerTests {
             "_include/images/favicon.png",
             "_include/images/favicon_monochrome.svg",
             "_include/images/logo.svg",
-            ].map { (self.host + "/" + $0, "https://" + self.host + "/" + $0) }
+            ].map { ("/" + $0, "https://" + self.host + "/" + $0) }
 
         // then
         locations.forEach {
