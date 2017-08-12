@@ -192,13 +192,6 @@ HOME_SYMLINK_TARGETS = $(patsubst $(PAGES_TARGET_DIR)/home/%, $(PAGES_TARGET_DIR
 $(PAGES_TARGET_DIR)/%: $(PAGES_TARGET_DIR)/home/%
 	ln -s "home/$$(basename "$@")" "$@"
 
-# favicon symlink
-FAVICON_SYMLINK_SOURCE = $(IMAGE_TARGET_DIR)/favicon.ico
-FAVICON_SYMLINK_TARGET = $(DEBUG_DIR)/favicon.ico
-
-$(FAVICON_SYMLINK_TARGET): $(FAVICON_SYMLINK_SOURCE)
-	ln -s "_include/images/$$(basename "$@")" "$@"
-
-_build-symlinks: $(HOME_SYMLINK_TARGETS) $(FAVICON_SYMLINK_TARGET)
+_build-symlinks: $(HOME_SYMLINK_TARGETS)
 
 build: _pre-build _build-code _build-assets _build-config _build-symlinks

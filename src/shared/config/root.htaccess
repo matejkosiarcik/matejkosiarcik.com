@@ -45,3 +45,8 @@ ErrorDocument 505 /505
     RewriteCond %{THE_REQUEST} //
     RewriteRule ^(.*)$ $1 [L,R=302]
 </IfModule>
+
+# Redirect favicons
+<IfModule mod_rewrite.c>
+    RewriteRule ^favicon.ico$ _include/images/$0 [L]
+</IfModule>
