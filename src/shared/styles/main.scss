@@ -7,13 +7,18 @@
 @import 'constants';
 @import 'functions';
 
-// General
+// Normalizers
 html,
 body {
     height: 100%;
     margin: 0;
 }
 
+h1 {
+    margin: 0;
+}
+
+// General
 body {
     background-color: $background-color;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Open Sans', Helvetica, sans-serif;
@@ -35,8 +40,17 @@ body {
     text-decoration: none;
 
     &:hover {
-        color: $text-color-dark;
+        color: $text-color-super-dark;
         text-decoration: underline;
+    }
+}
+
+.content-link {
+    transition: color .25s;
+    color: $text-color-default;
+
+    &:hover {
+        color: $text-color-super-dark;
     }
 }
 
@@ -62,7 +76,7 @@ nav {
 // Content
 #main-container > .content {
     width: 100%;
-    padding-top: 50px;
+    padding-top: 25px;
     padding-bottom: 100px;
 }
 
