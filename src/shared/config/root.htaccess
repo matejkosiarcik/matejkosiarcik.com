@@ -48,13 +48,13 @@ ErrorDocument 505 /505
 </IfModule>
 
 # Ensure files are accessed without trailing slash
-# eg. from "example.com/favicon.ico/" to "example.com/favicon.ico"
+# eg. from "example.com/foo.bar/" to "example.com/foo.bar"
 <IfModule mod_rewrite.c>
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.+)/$ $1 [L,R=302]
 </IfModule>
 
-# Redirect favicons to their real location
+# Internal rewrite favicon location
 <IfModule mod_rewrite.c>
     RewriteRule ^favicon\.ico$ _include/images/$0 [L]
 </IfModule>
