@@ -41,6 +41,7 @@ ErrorDocument 505 /505
 </IfModule>
 
 # Squeeze multiple slashes
+# eg. from "example.com///foo//" to "example.com/foo/"
 <IfModule mod_rewrite.c>
     RewriteCond %{THE_REQUEST} //
     RewriteRule ^(.*)$ $1 [L,R=302]
