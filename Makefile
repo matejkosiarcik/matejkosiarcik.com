@@ -33,6 +33,7 @@ clean:
 clean-all: clean
 	rm -rf ".build"
 	rm -rf "node_modules"
+	rm -rf "PersonalWebsite.xcodeproj"
 
 # Just forwarding targets
 .PHONY: fmt
