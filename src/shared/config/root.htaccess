@@ -54,6 +54,12 @@ ErrorDocument 505 /505
     RewriteRule ^(.+)/$ $1 [L,R=302]
 </IfModule>
 
+# Redirect home folder to root
+# eg. from "example.com/home" to "example.com"
+<IfModule mod_rewrite.c>
+    RewriteRule ^home/ / [L,R=302]
+</IfModule>
+
 # Internal rewrite favicon location
 <IfModule mod_rewrite.c>
     RewriteRule ^favicon\.ico$ _include/images/$0 [L]
