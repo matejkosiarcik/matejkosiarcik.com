@@ -29,6 +29,11 @@ help:
 clean:
 	rm -rf "$(TARGET_DIR)"
 
+.PHONY: clean-all
+clean-all: clean
+	rm -rf ".build"
+	rm -rf "node_modules"
+
 # Just forwarding targets
 .PHONY: fmt
 fmt:
