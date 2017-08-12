@@ -190,7 +190,7 @@ HOME_SYMLINK_SOURCES = $(wildcard $(PAGES_TARGET_DIR)/home/*)
 HOME_SYMLINK_TARGETS = $(patsubst $(PAGES_TARGET_DIR)/home/%, $(PAGES_TARGET_DIR)/%, $(HOME_SYMLINK_SOURCES))
 
 $(PAGES_TARGET_DIR)/%: $(PAGES_TARGET_DIR)/home/%
-	ln -s "home/$$(basename "$@")" "$@"
+	ln -s "home/$$(basename "$<")" "$@"
 
 _build-symlinks: $(HOME_SYMLINK_TARGETS)
 
