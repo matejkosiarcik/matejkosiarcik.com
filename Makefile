@@ -79,7 +79,7 @@ $(DOCUMENTATION_TARGET_DIR)/%.html: %.md
 doc: $(MARKDOWN_TARGETS)
 
 ### Build ###
-PAGES_SOURCE_DIR = $(SOURCE_DIR)/pages
+PAGES_SOURCE_DIR = $(SOURCE_DIR)/web
 PAGES_TARGET_DIR = $(DEBUG_DIR)
 SHARED_SOURCE_DIR = $(SOURCE_DIR)/shared
 SHARED_TARGET_DIR = $(DEBUG_DIR)/_include
@@ -88,10 +88,10 @@ SHARED_TARGET_DIR = $(DEBUG_DIR)/_include
 # Markup #
 # Mustache -> HTML
 MARKUP_SHARED_SOURCES = $(wildcard $(SHARED_SOURCE_DIR)/sources/markup/*.html.mustache)
-MARKUP_SOURCES = $(wildcard $(PAGES_SOURCE_DIR)/**/content.html.mustache)
-MARKUP_TARGETS = $(patsubst $(PAGES_SOURCE_DIR)/%/content.html.mustache, $(PAGES_TARGET_DIR)/%/index.html, $(MARKUP_SOURCES))
+MARKUP_SOURCES = $(shell find "$(PAGES_SOURCE_DIR)" -name "content.html.mustache")
+MARKUP_TARGETS = $(patsubst $(PAGES_SOURCE_DIR)%content.html.mustache, $(PAGES_TARGET_DIR)%index.html, $(MARKUP_SOURCES))
 
-$(PAGES_TARGET_DIR)/%/index.html: $(PAGES_SOURCE_DIR)/%/content.html.mustache $(PAGES_SOURCE_DIR)/%/data.json $(MARKUP_SHARED_SOURCES)
+$(PAGES_TARGET_DIR)%index.html: $(PAGES_SOURCE_DIR)%content.html.mustache $(PAGES_SOURCE_DIR)%data.json $(MARKUP_SHARED_SOURCES)
 	mkdir -p "$$(dirname "$@")"
 	python "./utils/internal/build_mustache.py" --data "$$(dirname "$<")" --output "$$(dirname "$@")"
 
@@ -122,7 +122,7 @@ $(STYLE_TARGET_DIR)/%.css: $(STYLE_SOURCE_DIR)/%.scss $(STYLE_INTERNAL)
 	sass --scss --unix-newlines --style=expanded --load-path="$(STYLE_SOURCE_DIR)" "$<" "$@"
 	printf "%s\n" "$$(cssbeautify "$@")" >"$@"
 
-STYLE_PAGE_SOURCES = $(wildcard $(PAGES_SOURCE_DIR)/**/*.scss)
+STYLE_PAGE_SOURCES = $(shell find "$(PAGES_SOURCE_DIR)" -type f -name "*.scss")
 STYLE_PAGE_TARGETS = $(patsubst $(PAGES_SOURCE_DIR)/%.scss, $(PAGES_TARGET_DIR)/%.css, $(STYLE_PAGE_SOURCES))
 
 $(PAGES_TARGET_DIR)/%.css: $(PAGES_SOURCE_DIR)/%.scss $(STYLE_INTERNAL)
@@ -172,7 +172,7 @@ $(ASSET_TARGET_DIR)/%: $(ASSET_SOURCE_DIR)/%
 	cp -R "$<" "$@"
 
 # Pages
-ASSET_PAGE_SOURCES = $(wildcard $(PAGES_SOURCE_DIR)/**/**/*)
+ASSET_PAGE_SOURCES = $(shell find "$(PAGES_SOURCE_DIR)" -type d -name "_*")
 ASSET_PAGE_TARGETS = $(patsubst $(PAGES_SOURCE_DIR)/%, $(PAGES_TARGET_DIR)/%, $(ASSET_PAGE_SOURCES))
 
 $(PAGES_TARGET_DIR)/%: $(PAGES_SOURCE_DIR)/%
@@ -194,13 +194,4 @@ $(APACHE_ROOT_TARGET): $(APACHE_ROOT_SOURCE) $(APACHE_DEPENDENCY)
 _build-config: $(APACHE_ROOT_TARGET)
 
 ## General ##
-# Symlinks from "/" (root) to "/home"
-HOME_SYMLINK_SOURCES = $(wildcard $(PAGES_TARGET_DIR)/home/*)
-HOME_SYMLINK_TARGETS = $(patsubst $(PAGES_TARGET_DIR)/home/%, $(PAGES_TARGET_DIR)/%, $(HOME_SYMLINK_SOURCES))
-
-$(PAGES_TARGET_DIR)/%: $(PAGES_TARGET_DIR)/home/%
-	ln -s "home/$$(basename "$<")" "$@"
-
-_build-symlinks: $(HOME_SYMLINK_TARGETS)
-
-build: $(NODE_DIR) _build-code _build-assets _build-config _build-symlinks
+build: $(NODE_DIR) _build-code _build-assets _build-config
