@@ -76,6 +76,7 @@ $(DOCUMENTATION_TARGET_DIR)/%.html: %.md
 	mkdir -p "$$(dirname $@)"
 	grip "$<" --export "$@"
 
+.PHONY: doc
 doc: $(MARKDOWN_TARGETS)
 
 ### Build ###
@@ -194,4 +195,5 @@ $(APACHE_ROOT_TARGET): $(APACHE_ROOT_SOURCE) $(APACHE_DEPENDENCY)
 _build-config: $(APACHE_ROOT_TARGET)
 
 ## General ##
+.PHONY: build
 build: $(NODE_DIR) _build-code _build-assets _build-config
