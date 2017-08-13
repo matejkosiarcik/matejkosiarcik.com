@@ -43,7 +43,7 @@ def main(arguments):
         exit(1)
 
     # get paths
-    shared_path = os.path.join("src", "shared", "markup")
+    shared_path = os.path.join("sources", "shared", "sources", "markup")
     template = open(os.path.join(shared_path, "html.html.mustache")).read()
     if six.PY2:
         template = unicode(template)

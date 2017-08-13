@@ -10,6 +10,7 @@ SHELL = /bin/sh -euf
 MAKEFLAGS += --warn-undefined-variables
 
 ### Setup ###
+SOURCE_DIR = sources
 TARGET_DIR = build
 DEBUG_DIR = $(TARGET_DIR)/debug
 RELEASE_DIR = $(TARGET_DIR)/release
@@ -78,7 +79,6 @@ $(DOCUMENTATION_TARGET_DIR)/%.html: %.md
 doc: $(MARKDOWN_TARGETS)
 
 ### Build ###
-SOURCE_DIR = src
 PAGES_SOURCE_DIR = $(SOURCE_DIR)/pages
 PAGES_TARGET_DIR = $(DEBUG_DIR)
 SHARED_SOURCE_DIR = $(SOURCE_DIR)/shared
@@ -87,7 +87,7 @@ SHARED_TARGET_DIR = $(DEBUG_DIR)/_include
 ## Code ##
 # Markup #
 # Mustache -> HTML
-MARKUP_SHARED_SOURCES = $(wildcard $(SHARED_SOURCE_DIR)/markup/*.html.mustache)
+MARKUP_SHARED_SOURCES = $(wildcard $(SHARED_SOURCE_DIR)/sources/markup/*.html.mustache)
 MARKUP_SOURCES = $(wildcard $(PAGES_SOURCE_DIR)/**/content.html.mustache)
 MARKUP_TARGETS = $(patsubst $(PAGES_SOURCE_DIR)/%/content.html.mustache, $(PAGES_TARGET_DIR)/%/index.html, $(MARKUP_SOURCES))
 
@@ -98,7 +98,7 @@ $(PAGES_TARGET_DIR)/%/index.html: $(PAGES_SOURCE_DIR)/%/content.html.mustache $(
 _build-markup: $(MARKUP_TARGETS)
 
 # Styles #
-STYLE_SOURCE_DIR = $(SHARED_SOURCE_DIR)/styles
+STYLE_SOURCE_DIR = $(SHARED_SOURCE_DIR)/sources/styles
 STYLE_TARGET_DIR = $(SHARED_TARGET_DIR)/styles
 
 # normalize.css
@@ -135,7 +135,7 @@ _build-sass: $(STYLE_SHARED_TARGETS) $(STYLE_PAGE_TARGETS)
 _build-style: _build-normalize _build-sass
 
 # Scripts #
-SCRIPT_SOURCE_DIR = $(SHARED_SOURCE_DIR)/scripts
+SCRIPT_SOURCE_DIR = $(SHARED_SOURCE_DIR)/sources/scripts
 SCRIPT_TARGET_DIR = $(SHARED_TARGET_DIR)/scripts
 
 # TypeScript -> JavaScript
@@ -160,30 +160,33 @@ _build-scripts: _build-typescript
 _build-code: _build-markup _build-style _build-scripts
 
 ## Assets ##
-ASSET_DIR = assets
-
-# Images #
-IMAGE_SOURCE_DIR = $(ASSET_DIR)/images
-IMAGE_TARGET_DIR = $(SHARED_TARGET_DIR)/images
+ASSET_SOURCE_DIR = $(SHARED_SOURCE_DIR)/assets
+ASSET_TARGET_DIR = $(SHARED_TARGET_DIR)
 
 # Shared
-IMAGE_SHARED_SOURCES = $(wildcard $(IMAGE_SOURCE_DIR)/*)
-IMAGE_SHARED_TARGETS = $(patsubst $(IMAGE_SOURCE_DIR)/%, $(IMAGE_TARGET_DIR)/%, $(IMAGE_SHARED_SOURCES))
+ASSET_SHARED_SOURCES = $(wildcard $(ASSET_SOURCE_DIR)/*)
+ASSET_SHARED_TARGETS = $(patsubst $(ASSET_SOURCE_DIR)/%, $(ASSET_TARGET_DIR)/%, $(ASSET_SHARED_SOURCES))
 
-$(IMAGE_TARGET_DIR)/%: $(IMAGE_SOURCE_DIR)/%
+$(ASSET_TARGET_DIR)/%: $(ASSET_SOURCE_DIR)/%
 	mkdir -p "$$(dirname "$@")"
-	cp "$<" "$@"
+	cp -R "$<" "$@"
 
-_build-images: $(IMAGE_SHARED_TARGETS)
+# Pages
+ASSET_PAGE_SOURCES = $(wildcard $(PAGES_SOURCE_DIR)/**/**/*)
+ASSET_PAGE_TARGETS = $(patsubst $(PAGES_SOURCE_DIR)/%, $(PAGES_TARGET_DIR)/%, $(ASSET_PAGE_SOURCES))
 
-_build-assets: _build-images
+$(PAGES_TARGET_DIR)/%: $(PAGES_SOURCE_DIR)/%
+	mkdir -p "$$(dirname "$@")"
+	cp -R "$<" "$@"
+
+_build-assets: $(ASSET_SHARED_TARGETS) $(ASSET_PAGE_TARGETS)
 
 ## Config ##
 CONFIG_DIR = $(SHARED_SOURCE_DIR)/config
 
 # Apache config
 APACHE_DEPENDENCY = $(NODE_DIR)/apache-server-configs/dist/.htaccess
-APACHE_ROOT_SOURCE = $(CONFIG_DIR)/root.htaccess
+APACHE_ROOT_SOURCE = $(SOURCE_DIR)/.htaccess
 APACHE_ROOT_TARGET = $(DEBUG_DIR)/.htaccess
 
 $(APACHE_ROOT_TARGET): $(APACHE_ROOT_SOURCE) $(APACHE_DEPENDENCY)
