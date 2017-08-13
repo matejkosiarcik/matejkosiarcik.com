@@ -182,8 +182,6 @@ $(PAGES_TARGET_DIR)/%: $(PAGES_SOURCE_DIR)/%
 _build-assets: $(ASSET_SHARED_TARGETS) $(ASSET_PAGE_TARGETS)
 
 ## Config ##
-CONFIG_DIR = $(SHARED_SOURCE_DIR)/config
-
 # Apache config
 APACHE_DEPENDENCY = $(NODE_DIR)/apache-server-configs/dist/.htaccess
 APACHE_ROOT_SOURCE = $(SOURCE_DIR)/.htaccess
@@ -193,9 +191,7 @@ $(APACHE_ROOT_TARGET): $(APACHE_ROOT_SOURCE) $(APACHE_DEPENDENCY)
 	mkdir -p "$$(dirname "$@")"
 	cat $^ >"$@"
 
-_build-apache-config: $(APACHE_ROOT_TARGET)
-
-_build-config: _build-apache-config
+_build-config: $(APACHE_ROOT_TARGET)
 
 ## General ##
 # Symlinks from "/" (root) to "/home"
