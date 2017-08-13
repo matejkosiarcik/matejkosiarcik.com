@@ -34,7 +34,7 @@ body {
     min-height: 100%;
 
     > * {
-        @include padding-horizontal(5px);
+        @include padding-horizontal(10px);
         box-sizing: border-box;
     }
 }
