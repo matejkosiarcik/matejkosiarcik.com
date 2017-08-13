@@ -64,6 +64,7 @@ git_files() {
 text_files() {
     git_files | while IFS= read -r file; do
         if contains "${file}" "assets/" && ! contains "$(file "${file}")" "text"; then continue; fi
+        if contains "${file}" "images/" && ! contains "$(file "${file}")" "text"; then continue; fi
         printf "%s\n" "${file}"
     done
 }
