@@ -26,12 +26,16 @@ body {
 
 #main-container {
     @include center-horizontal;
-    @include padding-horizontal(5px);
 
     position: relative;
     width: 970px;
     max-width: 100%;
     min-height: 100%;
+
+    > * {
+        @include padding-horizontal(5px);
+        box-sizing: border-box;
+    }
 }
 
 .info-link {
