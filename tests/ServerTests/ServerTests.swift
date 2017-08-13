@@ -87,7 +87,6 @@ extension ServerTests {
         // given
         let locations: [(source: String, destination: String)] = [
             ("", ""),
-            ("/home", ""),
             ("/about", "/about"),
             ("/zenplayer", "/zenplayer"),
             ].map { ($0.0, "https://" + self.host + $0.1 + "/") }
