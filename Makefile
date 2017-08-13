@@ -30,11 +30,11 @@ help:
 clean:
 	rm -rf "$(TARGET_DIR)"
 
-.PHONY: clean-all
-clean-all: clean
-	rm -rf ".build"
-	rm -rf "node_modules"
-	rm -rf "PersonalWebsite.xcodeproj"
+.PHONY: distclean
+distclean: clean
+	rm -rf "$(NODE_DIR)"
+	rm -rf "$(SWIFT_DIR)"
+	rm -rf "$(wildcard *.xcodeproj)"
 
 # Dependency resolution
 NODE_DIR = node_modules
