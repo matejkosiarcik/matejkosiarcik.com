@@ -24,6 +24,11 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Open Sans', Helvetica, sans-serif;
 }
 
+p {
+    margin-top: .5em;
+    margin-bottom: .5em;
+}
+
 #main-container {
     @include center-horizontal;
 
