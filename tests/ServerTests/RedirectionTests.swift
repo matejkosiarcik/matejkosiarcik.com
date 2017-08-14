@@ -6,7 +6,7 @@
 import Alamofire
 import XCTest
 
-class ServerTests: XCTestCase {
+class RedirectionTests: XCTestCase {
     private let isLocal = true
     private let isDebug = true
     private lazy var host: String = self.isLocal ? "example.com" : "binarytrex.com"
@@ -14,7 +14,7 @@ class ServerTests: XCTestCase {
 }
 
 // MARK: - Helpers
-extension ServerTests {
+extension RedirectionTests {
     private func manager() -> Alamofire.SessionManager {
         // disable validating local server, otherwise requests fail
         let policies: [String: ServerTrustPolicy] = [
@@ -82,7 +82,7 @@ extension ServerTests {
 }
 
 // MARK: - Accessing server
-extension ServerTests {
+extension RedirectionTests {
     func testValidPages() {
         // given
         let locations: [(source: String, destination: String)] = [
