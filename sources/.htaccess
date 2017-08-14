@@ -63,3 +63,19 @@ ErrorDocument 505 /505
 
 ### Caching ###
 FileETag None
+
+### Security ###
+# Disable hotlinking (only for production server)
+<IfModule mod_rewrite.c>
+    RewriteCond %{HTTP_HOST} ^binarytrex.com$ [NC]
+    RewriteCond %{HTTP_REFERER} !^$
+    RewriteCond %{HTTP_REFERER} !^http(s?)://(test\.|www\.)?binarytrex.com/(.*)$ [NC]
+    RewriteCond %{REQUEST_URI} !^(.*)/favicon\.(ico|png|svg)$ [NC]
+    RewriteRule \.(bmp|css|gif|ico|jpe?g|js|png|svg)$ - [F,L]
+</IfModule>
+
+# Filter request methods
+<IfModule mod_rewrite.c>
+    RewriteCond %{REQUEST_METHOD} !^(get|head|options|post)$ [NC]
+    RewriteRule ^(.*)$ - [F,L]
+</IfModule>

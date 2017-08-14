@@ -6,51 +6,12 @@
 import Alamofire
 import XCTest
 
-class RedirectionTests: XCTestCase {
-    private let isLocal = true
-    private let isDebug = true
-    private lazy var host: String = self.isLocal ? "example.com" : "binarytrex.com"
+final class RedirectionTests: ServerTests {
     private lazy var redirectCode: Int = self.isDebug ? 302 : 301
 }
 
 // MARK: - Helpers
 extension RedirectionTests {
-    private func manager() -> Alamofire.SessionManager {
-        // disable validating local server, otherwise requests fail
-        let policies: [String: ServerTrustPolicy] = [
-            "example.com": .disableEvaluation,
-            "www.example.com": .disableEvaluation,
-            ]
-        return Alamofire.SessionManager(serverTrustPolicyManager: ServerTrustPolicyManager(policies: policies))
-    }
-
-    private func request(url: URLConvertible) -> [Response] {
-        // given
-        var responses: [Response] = []
-        let manager = self.manager()
-        guard let request = try? URLRequest(url: url.asURL(), cachePolicy: .reloadIgnoringCacheData)
-            else { XCTFail("Could not create URL from \(url)"); return [] }
-
-        // when
-        let exp = expectation(description: "Wait for server response")
-        manager.delegate.taskWillPerformHTTPRedirection = { _, _, response, request in
-            responses.append(Response(status: response.statusCode,
-                                      source: response.url?.absoluteString,
-                                      destination: request.url?.absoluteString))
-            return request
-        }
-        manager.request(request).response {
-            responses.append(Response(status: $0.response?.statusCode,
-                                      source: $0.request?.url?.absoluteString,
-                                      destination: $0.response?.url?.absoluteString))
-            exp.fulfill()
-        }
-
-        // then
-        wait(for: [exp], timeout: self.isLocal ? 0.2 : 1)
-        return responses
-    }
-
     private func combinations(for source: String) -> [String] {
         let prefices: [String] = ["http://", "https://"].flatMap { form in ["www.", ""].flatMap { form + $0 } }
         let slashes = ["/", "//", "///"]
