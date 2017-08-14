@@ -1,4 +1,4 @@
-### Redirecting ###
+### Configuration ###
 # Serve custom error pages
 ErrorDocument 400 /400
 ErrorDocument 401 /401
@@ -14,6 +14,7 @@ ErrorDocument 503 /503
 ErrorDocument 504 /504
 ErrorDocument 505 /505
 
+### Redirecting ###
 # Turn on rewriting with basic setup
 <IfModule mod_rewrite.c>
     RewriteEngine On
@@ -24,7 +25,7 @@ ErrorDocument 505 /505
 <IfModule mod_rewrite.c>
     # local server
     RewriteCond ${HTTP_HOST} !^binarytrex.com$ [NC]
-    RewriteCond %{HTTPS} !^on$ [NC]
+    RewriteCond %{HTTPS} !^on$
     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=302]
 
     # production server
@@ -54,7 +55,11 @@ ErrorDocument 505 /505
     RewriteRule ^(.+)/$ $1 [L,R=302]
 </IfModule>
 
-# Internal rewrite favicon location
+# Internal rewrite for files that should be in root
 <IfModule mod_rewrite.c>
     RewriteRule ^favicon\.ico$ _include/images/$0 [L]
+    RewriteRule ^robots\.txt$ _include/config/$0 [L]
 </IfModule>
+
+### Caching ###
+FileETag None

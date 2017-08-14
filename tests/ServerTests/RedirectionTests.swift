@@ -101,6 +101,8 @@ extension RedirectionTests {
         // given
         let locations: [(source: String, destination: String)] = [
             "favicon.ico",
+            "robots.txt",
+            "_include/config/robots.txt",
             "_include/images/favicon.ico",
             "_include/images/favicon.png",
             "_include/images/favicon_monochrome.svg",
@@ -116,8 +118,8 @@ extension RedirectionTests {
     func testInvalidLocations() {
         // given
         let locations: [String] = [
-            "error",
-            ].flatMap { [$0, "_" + $0] }.map { "/" + $0 }
+            "_error",
+            ].map { "/" + $0 }
             .flatMap { [$0, $0 + "/index.php", $0 + "index.html"] }
             .flatMap { self.combinations(for: $0) }
 
@@ -126,7 +128,7 @@ extension RedirectionTests {
 
         // then
         zip(responses, locations).forEach {
-            guard let status = $0.0?.status else { XCTFail("No status code, for \($0.1)"); return }
+            guard let status = $0.0?.status else { XCTFail("No status code for \($0.1)"); return }
             XCTAssertTrue((400...499).contains(status), "For \($0.1)")
         }
     }
