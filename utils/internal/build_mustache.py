@@ -36,13 +36,17 @@ def main(arguments):
     data = json.loads(open(os.path.join(data_path, "data.json")).read())
     renderer = pystache.Renderer(search_dirs=[data_path, shared_path], string_encoding="utf-8", file_encoding="utf-8")
 
-    # get output content
+    # get output
     print(uni(renderer.render(template, data)))
 
 
+# converts/encodes string to unicode-like valid string
 def uni(string):
     if sys.version_info < (3, 0, 0):
-        return string.encode("utf-8")
+        try:
+            return unicode(string, "utf-8")
+        except:
+            return str(string.encode("utf-8"))
     return str(string)
 
 
