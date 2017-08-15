@@ -109,4 +109,20 @@ extension RedirectionTests {
             XCTAssertTrue(expected.contains { $0 == status }, "For \($0.1) got \(status ?? 0)")
         }
     }
+
+    func testTeapot() {
+        // given
+        let locations = [
+            "teapot",
+            ].map { "/" + $0 }
+            .flatMap { self.combinations(for: $0) }
+
+        // when
+        let responses = locations.map { self.request(url: $0).last }
+
+        // then
+        zip(responses, locations).forEach {
+            XCTAssertEqual($0.0?.status, 418, "For \($0.1)")
+        }
+    }
 }
