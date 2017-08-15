@@ -70,9 +70,6 @@ ErrorDocument 505 /error/505
     RewriteRule ^error/([4|5][0-9]{2})$ error/ [L]
 </IfModule>
 
-### Caching ###
-FileETag None
-
 ### Security ###
 # Disable hotlinking (only for production server)
 <IfModule mod_rewrite.c>
