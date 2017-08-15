@@ -24,7 +24,7 @@ fi
 
 # Python
 if check autopep8; then
-    autopep8 "." --recursive --in-place --aggressive --aggressive
+    autopep8 "." --recursive --in-place
 fi
 
 # Swift

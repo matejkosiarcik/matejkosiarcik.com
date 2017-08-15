@@ -4,6 +4,10 @@
 # See file LICENSE.txt or go to https://github.com/matejkosiarcik/personal-website for full license details.
 #
 
+# This effectively disables missing-module-docstring
+# pylint: disable=missing-docstring
+# pylint: enable=missing-docstring
+
 from __future__ import absolute_import, division, print_function, unicode_literals
 import argparse
 import json
@@ -13,6 +17,7 @@ import pystache
 
 
 def main(arguments):
+    """Main script function"""
     # parse arguments
     parser = argparse.ArgumentParser()
     parser.add_argument("-t", "--template", help="Path for template file")
@@ -31,12 +36,12 @@ def main(arguments):
     print(uni(renderer.render(template, data)))
 
 
-# converts/encodes string to unicode-like valid string
 def uni(string):
+    """Converts/encodes string to unicode-like valid string"""
     if sys.version_info < (3, 0, 0):
         try:
             return unicode(string, "utf-8")
-        except:
+        except StandardError:
             return str(string.encode("utf-8"))
     return str(string)
 
