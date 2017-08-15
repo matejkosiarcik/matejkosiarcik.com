@@ -186,8 +186,8 @@ _build-assets: $(ASSET_SHARED_TARGETS) $(ASSET_PAGE_TARGETS)
 ## Config ##
 # Apache config
 APACHE_DEPENDENCY = $(NODE_DIR)/apache-server-configs/dist/.htaccess
-APACHE_ROOT_SOURCE = $(SOURCE_DIR)/.htaccess
-APACHE_ROOT_TARGET = $(DEBUG_DIR)/.htaccess
+APACHE_ROOT_SOURCE = $(PAGES_SOURCE_DIR)/.htaccess
+APACHE_ROOT_TARGET = $(PAGES_TARGET_DIR)/.htaccess
 
 $(APACHE_ROOT_TARGET): $(APACHE_ROOT_SOURCE) $(APACHE_DEPENDENCY)
 	mkdir -p "$$(dirname "$@")"
