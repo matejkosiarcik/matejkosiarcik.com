@@ -10,7 +10,6 @@ import json
 import os
 import sys
 import pystache
-import six
 
 
 def main(arguments):
@@ -34,20 +33,18 @@ def main(arguments):
 
     # get paths
     shared_path = os.path.join("sources", "shared", "sources", "markup")
-    template = open(os.path.join(shared_path, "html.html.mustache")).read()
-    if six.PY2:
-        template = unicode(template)
+    template = uni(open(os.path.join(shared_path, "html.html.mustache")).read())
     data = json.loads(open(os.path.join(data_path, "data.json")).read())
     renderer = pystache.Renderer(search_dirs=[data_path, shared_path], string_encoding="utf-8", file_encoding="utf-8")
 
     # get output content
-    content = renderer.render(template, data)
-    if six.PY2:
-        content = content.encode("utf-8")
-    else:
-        content = str(content)
+    print(uni(renderer.render(template, data)))
 
-    print(content)
+
+def uni(string):
+    if sys.version_info < (3, 0, 0):
+        return string.encode("utf-8")
+    return str(string)
 
 
 if __name__ == "__main__":
