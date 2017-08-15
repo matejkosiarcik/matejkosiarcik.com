@@ -28,14 +28,15 @@ body {
 // Styles for whole page
 #main-container {
     @include center-horizontal;
+    $page-spacing: 20px;
 
     position: relative;
-    width: 970px;
+    width: $page-width + $page-spacing;
     max-width: 100%;
     min-height: 100%;
 
     > * {
-        @include padding-horizontal(10px);
+        @include padding-horizontal($page-spacing / 2);
         box-sizing: border-box;
     }
 }
