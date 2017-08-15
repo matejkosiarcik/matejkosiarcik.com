@@ -47,27 +47,11 @@
 
 ### Errors ###
 # Serve custom error pages
-ErrorDocument 400 /error/400
-ErrorDocument 401 /error/401
 ErrorDocument 403 /error/403
 ErrorDocument 404 /error/404
-ErrorDocument 405 /error/405
-ErrorDocument 406 /error/406
-ErrorDocument 407 /error/407
-ErrorDocument 408 /error/408
-ErrorDocument 409 /error/409
-ErrorDocument 410 /error/410
-ErrorDocument 411 /error/411
-
-ErrorDocument 500 /error/500
-ErrorDocument 501 /error/501
-ErrorDocument 502 /error/502
-ErrorDocument 503 /error/503
-ErrorDocument 504 /error/504
-ErrorDocument 505 /error/505
 
 <IfModule mod_rewrite.c>
-    RewriteRule ^error/([4|5][0-9]{2})$ error/ [L]
+    RewriteRule ^error/([4|5][0-9]{2})$ error/index.php?code=$1 [L]
 </IfModule>
 
 ### Security ###
