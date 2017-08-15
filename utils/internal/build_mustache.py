@@ -58,7 +58,11 @@ def main(arguments):
         content = str(content)
 
     # get target file
-    target = open(os.path.join(output_path, "index.html"), "w+")
+    if os.path.exists(os.path.join(data_path, "content.php.mustache")):
+        target = "index.php"
+    else:
+        target = "index.html"
+    target = open(os.path.join(output_path, target), "w+")
     target.write(content)
     target.close()
 

@@ -1,0 +1,23 @@
+<?php
+$user_url = $_SERVER["REQUEST_URI"];
+$statuses = array(
+    200 => "You seem curious",
+    403 => "You don't have access to this resource",
+    404 => "The requested URL \"$user_url\" was not found",
+    500 => "Sorry, server error occured",
+);
+
+$status = http_response_code();
+
+$description = $statuses[$status];
+if (empty($description)) { $description = "Unknown error occured"; }
+?>
+<div id="page" class="content clear">
+    <div class="content">
+        <div class="status"> <?php echo $status; ?> </div>
+        <div class="description font-size-l">
+            <p> <?php echo $description; ?> </p>
+            <p> Back to <a class="content-link" href="/">home</a> </p>
+        </div>
+    </div>
+</div>
