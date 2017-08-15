@@ -95,7 +95,7 @@ MARKUP_DATA = $(shell find "$(PAGES_SOURCE_DIR)" -name "data.json")
 
 $(PAGES_TARGET_DIR)%: $(PAGES_SOURCE_DIR)%.mustache $(MARKUP_SHARED_SOURCES) $(MARKUP_DATA)
 	mkdir -p "$$(dirname "$@")"
-	python "./utils/internal/build_mustache.py" --data "$$(dirname "$<")" >"$@"
+	python "./utils/internal/build_mustache.py" --template "$<" --data "$$(dirname "$<")/data.json" >"$@"
 
 _build-markup: $(MARKUP_TARGETS)
 

@@ -15,26 +15,17 @@ import pystache
 def main(arguments):
     # parse arguments
     parser = argparse.ArgumentParser()
-    parser.add_argument("-d", "--data", help="Directory path for json-data and partial-html")
+    parser.add_argument("-t", "--template", help="Path for template file")
+    parser.add_argument("-d", "--data", help="Path for data file")
     arguments = parser.parse_args(arguments[1:])
 
-    if arguments.data is None:
-        print("Missing argument, data path", file=sys.stderr)
-        exit(1)
-
-    # get arguments
-    data_path = arguments.data
-
-    # validate path existencies
-    if not os.path.exists(data_path):
-        print("Path not exists", data_path, file=sys.stderr)
-        exit(1)
-
     # get paths
+    template_path = arguments.template
+    data_path = arguments.data
     shared_path = os.path.join("sources", "shared", "sources", "markup")
-    template = uni(open(os.path.join(shared_path, "html.html.mustache")).read())
-    data = json.loads(open(os.path.join(data_path, "data.json")).read())
-    renderer = pystache.Renderer(search_dirs=[data_path, shared_path], string_encoding="utf-8", file_encoding="utf-8")
+    template = uni(open(template_path).read())
+    data = json.loads(open(data_path).read())
+    renderer = pystache.Renderer(search_dirs=[shared_path], string_encoding="utf-8", file_encoding="utf-8")
 
     # get output
     print(uni(renderer.render(template, data)))
