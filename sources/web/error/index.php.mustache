@@ -15,13 +15,11 @@ if (empty($description)) { $description = "Unknown error occured"; }
 
 {{> start.html}}
 
-<div id="page" class="content clear">
-    <div class="content">
-        <div class="status"> <?php echo $status; ?> </div>
-        <div class="description font-size-l">
-            <p> <?php echo $description; ?> </p>
-            <p> Back to <a class="content-link" href="/">home</a> </p>
-        </div>
+<div class="content">
+    <div class="status"> <?php echo $status; ?> </div>
+    <div class="description font-size-l">
+        <p> <?php echo $description; ?> </p>
+        <p> Back to <a class="content-link" href="/">home</a> </p>
     </div>
 </div>
 
