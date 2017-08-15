@@ -6,7 +6,8 @@ $statuses = array(
     418 => "Don't brew coffee in a teapot",
 );
 
-$status = http_response_code();
+$status = $_GET["code"];
+http_response_code($status);
 
 $description = $statuses[$status];
 if (empty($description)) { $description = "Unknown error occured"; }
