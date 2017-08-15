@@ -12,6 +12,7 @@ $status = http_response_code();
 $description = $statuses[$status];
 if (empty($description)) { $description = "Unknown error occured"; }
 ?>
+
 <div id="page" class="content clear">
     <div class="content">
         <div class="status"> <?php echo $status; ?> </div>
