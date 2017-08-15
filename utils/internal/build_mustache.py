@@ -16,15 +16,9 @@ import six
 def main(arguments):
     # parse arguments
     parser = argparse.ArgumentParser()
-    parser.add_argument("-o", "--output", help="Output directory path")
     parser.add_argument("-d", "--data", help="Directory path for json-data and partial-html")
     arguments = parser.parse_args(arguments[1:])
 
-    # validate arguments
-    if arguments.output is None:
-        print("Missing output filepath")
-        print(arguments.usage)
-        exit(1)
     if arguments.data is None:
         print("Missing data filepath")
         print(arguments.usage)
@@ -32,14 +26,10 @@ def main(arguments):
 
     # get arguments
     data_path = arguments.data
-    output_path = arguments.output
 
     # validate path existencies
     if not os.path.exists(data_path):
         print("File not found", data_path)
-        exit(1)
-    if not os.path.exists(output_path):
-        print("File not found", output_path)
         exit(1)
 
     # get paths
@@ -57,14 +47,7 @@ def main(arguments):
     else:
         content = str(content)
 
-    # get target file
-    if os.path.exists(os.path.join(data_path, "content.php.mustache")):
-        target = "index.php"
-    else:
-        target = "index.html"
-    target = open(os.path.join(output_path, target), "w+")
-    target.write(content)
-    target.close()
+    print(content)
 
 
 if __name__ == "__main__":

@@ -89,20 +89,20 @@ SHARED_TARGET_DIR = $(DEBUG_DIR)/_include
 # Markup #
 # Mustache -> HTML
 MARKUP_SHARED_SOURCES = $(wildcard $(SHARED_SOURCE_DIR)/sources/markup/*.mustache)
-MARKUP_SOURCES = $(shell find "$(PAGES_SOURCE_DIR)" -name "content.html.mustache")
-MARKUP_TARGETS = $(patsubst $(PAGES_SOURCE_DIR)%content.html.mustache, $(PAGES_TARGET_DIR)%index.html, $(MARKUP_SOURCES))
+MARKUP_SOURCES = $(shell find "$(PAGES_SOURCE_DIR)" -name "index.html.mustache")
+MARKUP_TARGETS = $(patsubst $(PAGES_SOURCE_DIR)%index.html.mustache, $(PAGES_TARGET_DIR)%index.html, $(MARKUP_SOURCES))
 
-$(PAGES_TARGET_DIR)%index.html: $(PAGES_SOURCE_DIR)%content.html.mustache $(PAGES_SOURCE_DIR)%data.json $(MARKUP_SHARED_SOURCES)
+$(PAGES_TARGET_DIR)%index.html: $(PAGES_SOURCE_DIR)%index.html.mustache $(PAGES_SOURCE_DIR)%data.json $(MARKUP_SHARED_SOURCES)
 	mkdir -p "$$(dirname "$@")"
-	python "./utils/internal/build_mustache.py" --data "$$(dirname "$<")" --output "$$(dirname "$@")"
+	python "./utils/internal/build_mustache.py" --data "$$(dirname "$<")" >"$@"
 
 # Mustache -> PHP
-SERVER_SOURCES = $(shell find "$(PAGES_SOURCE_DIR)" -name "content.php.mustache")
-SERVER_TARGETS = $(patsubst $(PAGES_SOURCE_DIR)%content.php.mustache, $(PAGES_TARGET_DIR)%index.php, $(SERVER_SOURCES))
+SERVER_SOURCES = $(shell find "$(PAGES_SOURCE_DIR)" -name "index.php.mustache")
+SERVER_TARGETS = $(patsubst $(PAGES_SOURCE_DIR)%index.php.mustache, $(PAGES_TARGET_DIR)%index.php, $(SERVER_SOURCES))
 
-$(PAGES_TARGET_DIR)%index.php: $(PAGES_SOURCE_DIR)%content.php.mustache $(PAGES_SOURCE_DIR)%data.json $(MARKUP_SHARED_SOURCES)
+$(PAGES_TARGET_DIR)%index.php: $(PAGES_SOURCE_DIR)%index.php.mustache $(PAGES_SOURCE_DIR)%data.json $(MARKUP_SHARED_SOURCES)
 	mkdir -p "$$(dirname "$@")"
-	python "./utils/internal/build_mustache.py" --data "$$(dirname "$<")" --output "$$(dirname "$@")"
+	python "./utils/internal/build_mustache.py" --data "$$(dirname "$<")" >"$@"
 
 _build-markup: $(MARKUP_TARGETS) $(SERVER_TARGETS)
 
