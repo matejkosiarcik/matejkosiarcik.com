@@ -3,8 +3,8 @@
 // See file LICENSE.txt or go to https://github.com/matejkosiarcik/personal-website for full license details.
 //
 
-import XCTest
 import Alamofire
+import XCTest
 
 final class SecurityTests: ServerTests {}
 
@@ -26,7 +26,7 @@ private extension HTTPMethod {
     }
 
     static var valid: [HTTPMethod] {
-        return [.get, .head, .options, .post]
+        return [.get, .head, .post]
     }
 
     // these two methods return 400 and 200 respectively
