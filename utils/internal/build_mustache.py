@@ -19,8 +19,7 @@ def main(arguments):
     arguments = parser.parse_args(arguments[1:])
 
     if arguments.data is None:
-        print("Missing data filepath")
-        print(arguments.usage)
+        print("Missing argument, data path", file=sys.stderr)
         exit(1)
 
     # get arguments
@@ -28,7 +27,7 @@ def main(arguments):
 
     # validate path existencies
     if not os.path.exists(data_path):
-        print("File not found", data_path)
+        print("Path not exists", data_path, file=sys.stderr)
         exit(1)
 
     # get paths
