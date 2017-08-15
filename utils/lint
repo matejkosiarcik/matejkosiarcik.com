@@ -24,6 +24,15 @@ if check htmlhint; then
         | sed -E "s~\[(.*)\] \[(.*)\]~'\1' [\2]~"
 fi
 
+# PHP
+if check php; then
+    text_files | grep -E '\.php(\.mustache)?$' | while IFS= read -r file; do
+        php -l "${file}" | grep -Ev '^$' | grep -Ev "^Errors" | grep -Ev "^No " \
+            | sed -E 's~^(.+): (.+) in (.+) on line ([0-9]+)$~\3:\4: warning: \1 (\2)~' \
+            | sed -E "s~\(([a-zA-z0-9]+) ([a-zA-Z0-9]+)\)~(\1_\2)~"
+    done
+fi
+
 # SASS
 if check sass-lint; then
     sass-lint --verbose --no-exit --syntax scss --format unix | grep -Ev "([0-9]+) problems" | grep -v "^\$" \
