@@ -95,7 +95,7 @@ extension RedirectionTests {
     func testRestrictedFiles() {
         // given
         let locations = [
-            ".htaccess"
+            ".htaccess",
             ].map { "/" + $0 }
             .flatMap { self.combinations(for: $0) }
         let expected: [Int?] = [403, 404]
