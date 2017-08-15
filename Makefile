@@ -166,20 +166,20 @@ ASSET_SOURCE_DIR = $(SHARED_SOURCE_DIR)/assets
 ASSET_TARGET_DIR = $(SHARED_TARGET_DIR)
 
 # Shared
-ASSET_SHARED_SOURCES = $(wildcard $(ASSET_SOURCE_DIR)/*)
+ASSET_SHARED_SOURCES = $(shell find "$(ASSET_SOURCE_DIR)" -type f)
 ASSET_SHARED_TARGETS = $(patsubst $(ASSET_SOURCE_DIR)/%, $(ASSET_TARGET_DIR)/%, $(ASSET_SHARED_SOURCES))
 
 $(ASSET_TARGET_DIR)/%: $(ASSET_SOURCE_DIR)/%
 	mkdir -p "$$(dirname "$@")"
-	cp -R "$<" "$@"
+	cp "$<" "$@"
 
 # Pages
-ASSET_PAGE_SOURCES = $(shell find "$(PAGES_SOURCE_DIR)" -type d -name "_*")
+ASSET_PAGE_SOURCES = $(shell find "$(PAGES_SOURCE_DIR)" -type f -path "*/_*/*")
 ASSET_PAGE_TARGETS = $(patsubst $(PAGES_SOURCE_DIR)/%, $(PAGES_TARGET_DIR)/%, $(ASSET_PAGE_SOURCES))
 
 $(PAGES_TARGET_DIR)/%: $(PAGES_SOURCE_DIR)/%
 	mkdir -p "$$(dirname "$@")"
-	cp -R "$<" "$@"
+	cp "$<" "$@"
 
 _build-assets: $(ASSET_SHARED_TARGETS) $(ASSET_PAGE_TARGETS)
 
