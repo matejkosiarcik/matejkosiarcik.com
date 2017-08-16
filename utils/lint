@@ -153,7 +153,6 @@ fi
 # if they differ, there is possibly some glitch in source SVGs
 if check svg2pdf && check rsvg-convert; then
     temp="$(mktemp -d)"
-    trap 'rm -rf "${temp}"' EXIT
     files_ending ".svg" | while IFS= read -r file; do
         target="${temp}/$(basename "${file}" ".svg").pdf"
         svg2pdf "${file}" "${target}.1"
@@ -161,5 +160,4 @@ if check svg2pdf && check rsvg-convert; then
         cmp --silent "${target}.1" "${target}.2" || { printf "%s\n" "${file}: warning: Generated PDFs differ (unstable_svg)"; }
     done
     rm -rf "${temp}"
-    trap - EXIT
 fi
