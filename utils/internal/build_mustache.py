@@ -27,10 +27,11 @@ def main(arguments):
     # get paths
     template_path = arguments.template
     data_path = arguments.data
+    page_path = os.path.dirname(template_path)
     shared_path = os.path.join("sources", "shared", "sources", "markup")
     template = uni(open(template_path).read())
     data = json.loads(open(data_path).read())
-    renderer = pystache.Renderer(search_dirs=[shared_path], string_encoding="utf-8", file_encoding="utf-8")
+    renderer = pystache.Renderer(search_dirs=[page_path, shared_path], string_encoding="utf-8", file_encoding="utf-8")
 
     # get output
     print(uni(renderer.render(template, data)))
