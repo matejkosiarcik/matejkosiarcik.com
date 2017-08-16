@@ -141,12 +141,14 @@ if check yash; then
     done
 fi
 
-# SVG
+# XML
 if check xmllint; then
-    files_ending ".svg" | while IFS= read -r file; do
+    text_files | grep -E '\.(html|svg|xml)$' | while IFS= read -r file; do
         xmllint "${file}" --noout || true
     done
 fi
+
+# SVG
 # generated PDFs should be the same for both methods (svg2pdf and rsvg-convert)
 # if they differ, there is possibly some glitch in source SVGs
 if check svg2pdf && check rsvg-convert; then

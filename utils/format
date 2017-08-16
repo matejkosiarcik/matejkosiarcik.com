@@ -42,7 +42,9 @@ fi
 # SVG
 if check svgcleaner && check xmllint; then
     files_ending ".svg" | while IFS= read -r file; do
-        printf "%s\n" "$(svgcleaner "${file}" --multipass --stdout --quiet --coordinates-precision 1 --properties-precision 1 \
-            --transforms-precision 1 --paths-coordinates-precision 1 --convert-shapes no --remove-gradient-attributes yes | xmllint --format -)" >"${file}"
+        svgcleaner "${file}" "${file}" --quiet --multipass \
+            --coordinates-precision 1 --properties-precision 1 --transforms-precision 3 --paths-coordinates-precision 1 \
+            --convert-shapes no
+        printf "%s\n" "$(xmllint --format "${file}")" >"${file}"
     done
 fi
