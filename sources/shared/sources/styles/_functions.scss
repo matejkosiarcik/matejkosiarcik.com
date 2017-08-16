@@ -3,12 +3,22 @@
 // See file LICENSE.txt or go to https://github.com/matejkosiarcik/personal-website for full license details.
 //
 
-@mixin padding-horizontal ($padding) {
-    padding-right: $padding;
-    padding-left: $padding;
+@mixin padding-horizontal($value) {
+    padding-right: $value;
+    padding-left: $value;
 }
 
-@mixin center-horizontal {
-    margin-right: auto;
-    margin-left: auto;
+@mixin padding-vertical($value) {
+    padding-top: $value;
+    padding-bottom: $value;
+}
+
+@mixin margin-horizontal($value) {
+    margin-right: $value;
+    margin-left: $value;
+}
+
+@mixin margin-vertical($value) {
+    margin-top: $value;
+    margin-bottom: $value;
 }

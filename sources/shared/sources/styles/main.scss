@@ -27,7 +27,7 @@ body {
 
 // Styles for whole page
 #main-container {
-    @include center-horizontal;
+    @include margin-horizontal(auto);
     $page-spacing: 20px;
 
     position: relative;
