@@ -112,8 +112,6 @@ $(NORMALIZE_TARGET): $(NORMALIZE_SOURCE)
 	cp "$<" "$@"
 	printf "%s\n" "$$(cssbeautify "$@")" >"$@"
 
-_build-normalize: $(NORMALIZE_TARGET)
-
 # SASS -> CSS
 STYLE_INTERNAL = $(wildcard $(STYLE_SOURCE_DIR)/_*.scss)
 STYLE_SHARED_SOURCES = $(filter-out $(STYLE_INTERNAL), $(wildcard $(STYLE_SOURCE_DIR)/*.scss))
@@ -132,9 +130,7 @@ $(PAGES_TARGET_DIR)/%.css: $(PAGES_SOURCE_DIR)/%.scss $(STYLE_INTERNAL)
 	sass --scss --unix-newlines --style=expanded --load-path="$(STYLE_SOURCE_DIR)" "$<" "$@"
 	printf "%s\n" "$$(cssbeautify "$@")" >"$@"
 
-_build-sass: $(STYLE_SHARED_TARGETS) $(STYLE_PAGE_TARGETS)
-
-_build-style: _build-normalize _build-sass
+_build-style: $(STYLE_SHARED_TARGETS) $(STYLE_PAGE_TARGETS) $(NORMALIZE_TARGET)
 
 # Scripts #
 SCRIPT_SOURCE_DIR = $(SHARED_SOURCE_DIR)/sources/scripts
@@ -155,9 +151,7 @@ $(SCRIPT_TARGET_DIR)/%.js: $(SCRIPT_SOURCE_DIR)/%.ts $(SCRIPT_SHARED_INTERNAL)
 	tsc $(TYPESCRIPT_FLAGS) "$<" --outDir "$$(dirname "$@")"
 	browserify "$@" --outfile "$@"
 
-_build-typescript: $(SCRIPT_SHARED_TARGETS)
-
-_build-scripts: _build-typescript
+_build-scripts: $(SCRIPT_SHARED_TARGETS)
 
 _build-code: _build-markup _build-style _build-scripts
 
