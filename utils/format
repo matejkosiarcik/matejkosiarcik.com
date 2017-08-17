@@ -14,37 +14,27 @@ text_files | while IFS= read -r file; do
     strip_file "${file}"
 done
 
-# JSON
-if check jsonlint; then
-    project_files | grep -E '.json$' | while IFS= read -r file; do
-        if [ "${file}" = "tslint.json" ]; then continue; fi
-        printf "%s\n" "$(jsonlint "${file}" --indent 4 --pretty-print)" >"${file}"
-    done
-fi
-
 # Python
-if check autopep8; then
-    autopep8 "." --recursive --in-place
-fi
+autopep8 "." --recursive --in-place
 
 # Swift
-if check swiftlint; then
-    swiftlint autocorrect 2>/dev/null
-fi
+swiftlint autocorrect 2>/dev/null
 
 # Shell
-if check shfmt; then
-    shell_files | while IFS= read -r file; do
-        shfmt -i 4 -p -w "${file}"
-    done
-fi
+shell_files | while IFS= read -r file; do
+    shfmt -i 4 -p -w "${file}"
+done
+
+# JSON
+project_files | grep -E '\.json$' | while IFS= read -r file; do
+    if [ "${file}" = "tslint.json" ]; then continue; fi
+    printf "%s\n" "$(jsonlint "${file}" --indent 4 --pretty-print)" >"${file}"
+done
 
 # SVG
-if check svgcleaner && check xmllint; then
-    project_files | grep -E '.svg$' | while IFS= read -r file; do
-        svgcleaner "${file}" "${file}" --quiet --multipass \
-            --coordinates-precision 1 --properties-precision 1 --transforms-precision 3 --paths-coordinates-precision 1 \
-            --convert-shapes no
-        printf "%s\n" "$(xmllint --format "${file}")" >"${file}"
-    done
-fi
+project_files | grep -E '\.svg$' | while IFS= read -r file; do
+    svgcleaner "${file}" "${file}" --quiet --multipass \
+        --coordinates-precision 1 --properties-precision 1 --transforms-precision 3 --paths-coordinates-precision 1 \
+        --convert-shapes no
+    printf "%s\n" "$(xmllint --format "${file}")" >"${file}"
+done
