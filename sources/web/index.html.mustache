@@ -1,7 +1,25 @@
 {{> start.html }}
 
 <header>
-    <h1 class="font-size-xl">This page is currently in reconstruction 👨‍💻</h1>
+    <h1 class="font-size-xl">Check out my apps</h1>
 </header>
+
+<div class="content font-size-s">
+    <ul class="app-icons">
+        {{ #apps }}
+        <li class="app-icon">
+            <div class="content">
+                <a href="{{ url }}" class="no-decoration" title="{{ name }}">
+                    <img class="" src="_images/{{ url }}.svg">
+                </a>
+                <div class="description">
+                    <span class="bold">{{ name }}</span>
+                    {{ description }}
+                </div>
+            </div>
+        </li>
+        {{ /apps }}
+    </ul>
+</div>
 
 {{> end.html}}
