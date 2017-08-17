@@ -113,7 +113,7 @@ $(STYLE_TARGET_DIR)/%.css: $(STYLE_SOURCE_DIR)/%.scss $(STYLE_INTERNAL)
 	sass --scss --unix-newlines --style=expanded --load-path="$(STYLE_SOURCE_DIR)" "$<" "$@"
 	printf "%s\n" "$$(cssbeautify "$@")" >"$@"
 
-STYLE_PAGE_SOURCES = $(shell find "$(PAGES_SOURCE_DIR)" -type f -name "*.scss")
+STYLE_PAGE_SOURCES = $(shell find "$(PAGES_SOURCE_DIR)" -name "*.scss")
 STYLE_PAGE_TARGETS = $(patsubst $(PAGES_SOURCE_DIR)/%.scss, $(PAGES_TARGET_DIR)/%.css, $(STYLE_PAGE_SOURCES))
 
 $(PAGES_TARGET_DIR)/%.css: $(PAGES_SOURCE_DIR)/%.scss $(STYLE_INTERNAL)
