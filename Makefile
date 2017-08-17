@@ -103,15 +103,6 @@ _build-markup: $(MARKUP_TARGETS)
 STYLE_SOURCE_DIR = $(SHARED_SOURCE_DIR)/sources/styles
 STYLE_TARGET_DIR = $(SHARED_TARGET_DIR)/styles
 
-# normalize.css
-NORMALIZE_SOURCE = $(NODE_DIR)/normalize.css/normalize.css
-NORMALIZE_TARGET = $(STYLE_TARGET_DIR)/normalize.css
-
-$(NORMALIZE_TARGET): $(NORMALIZE_SOURCE)
-	mkdir -p "$$(dirname "$@")"
-	cp "$<" "$@"
-	printf "%s\n" "$$(cssbeautify "$@")" >"$@"
-
 # SASS -> CSS
 STYLE_INTERNAL = $(wildcard $(STYLE_SOURCE_DIR)/_*.scss)
 STYLE_SHARED_SOURCES = $(filter-out $(STYLE_INTERNAL), $(wildcard $(STYLE_SOURCE_DIR)/*.scss))
@@ -128,6 +119,15 @@ STYLE_PAGE_TARGETS = $(patsubst $(PAGES_SOURCE_DIR)/%.scss, $(PAGES_TARGET_DIR)/
 $(PAGES_TARGET_DIR)/%.css: $(PAGES_SOURCE_DIR)/%.scss $(STYLE_INTERNAL)
 	mkdir -p "$$(dirname "$@")"
 	sass --scss --unix-newlines --style=expanded --load-path="$(STYLE_SOURCE_DIR)" "$<" "$@"
+	printf "%s\n" "$$(cssbeautify "$@")" >"$@"
+
+# normalize.css
+NORMALIZE_SOURCE = $(NODE_DIR)/normalize.css/normalize.css
+NORMALIZE_TARGET = $(STYLE_TARGET_DIR)/normalize.css
+
+$(NORMALIZE_TARGET): $(NORMALIZE_SOURCE)
+	mkdir -p "$$(dirname "$@")"
+	cp "$<" "$@"
 	printf "%s\n" "$$(cssbeautify "$@")" >"$@"
 
 _build-style: $(STYLE_SHARED_TARGETS) $(STYLE_PAGE_TARGETS) $(NORMALIZE_TARGET)
