@@ -171,7 +171,19 @@ $(ASSET_TARGET_DIR)/%: $(ASSET_SOURCE_DIR)/%
 ASSET_PAGE_SOURCES = $(shell find "$(PAGES_SOURCE_DIR)" -type f -path "*/_*/*")
 ASSET_PAGE_TARGETS = $(patsubst $(PAGES_SOURCE_DIR)/%, $(PAGES_TARGET_DIR)/%, $(ASSET_PAGE_SOURCES))
 
-$(PAGES_TARGET_DIR)/%: $(PAGES_SOURCE_DIR)/%
+$(PAGES_TARGET_DIR)/%.ico: $(PAGES_SOURCE_DIR)/%.ico
+	mkdir -p "$$(dirname "$@")"
+	cp "$<" "$@"
+
+$(PAGES_TARGET_DIR)/%.png: $(PAGES_SOURCE_DIR)/%.png
+	mkdir -p "$$(dirname "$@")"
+	cp "$<" "$@"
+
+$(PAGES_TARGET_DIR)/%.jpg: $(PAGES_SOURCE_DIR)/%.jpg
+	mkdir -p "$$(dirname "$@")"
+	cp "$<" "$@"
+
+$(PAGES_TARGET_DIR)/%.svg: $(PAGES_SOURCE_DIR)/%.svg
 	mkdir -p "$$(dirname "$@")"
 	cp "$<" "$@"
 
@@ -180,14 +192,18 @@ _build-assets: $(ASSET_SHARED_TARGETS) $(ASSET_PAGE_TARGETS)
 ## Config ##
 # Apache config
 APACHE_DEPENDENCY = $(NODE_DIR)/apache-server-configs/dist/.htaccess
-APACHE_ROOT_SOURCE = $(PAGES_SOURCE_DIR)/.htaccess
-APACHE_ROOT_TARGET = $(PAGES_TARGET_DIR)/.htaccess
+APACHE_SOURCES = $(shell find "$(PAGES_SOURCE_DIR)" -name ".htaccess")
+APACHE_TARGETS = $(patsubst $(PAGES_SOURCE_DIR)%.htaccess, $(PAGES_TARGET_DIR)%.htaccess, $(APACHE_SOURCES))
 
-$(APACHE_ROOT_TARGET): $(APACHE_ROOT_SOURCE) $(APACHE_DEPENDENCY)
+$(PAGES_TARGET_DIR)/.htaccess: $(PAGES_SOURCE_DIR)/.htaccess $(APACHE_DEPENDENCY)
 	mkdir -p "$$(dirname "$@")"
 	cat $^ >"$@"
 
-_build-config: $(APACHE_ROOT_TARGET)
+$(PAGES_TARGET_DIR)/%.htaccess: $(PAGES_SOURCE_DIR)/%.htaccess
+	mkdir -p "$$(dirname "$@")"
+	cp "$<" "$@"
+
+_build-config: $(APACHE_TARGETS)
 
 ## General ##
 .PHONY: build
