@@ -69,7 +69,7 @@ test: $(SWIFT_DIR) build
 
 ### Documentation ###
 DOCUMENTATION_TARGET_DIR = $(TARGET_DIR)/doc
-MARKDOWN_SOURCES = $(shell . "./utils/internal/helpers.sh" && files_ending ".md")
+MARKDOWN_SOURCES = $(shell . "./utils/internal/helpers.sh" && project_files | grep -E '.md$$')
 MARKDOWN_TARGETS = $(patsubst %.md, $(DOCUMENTATION_TARGET_DIR)/%.html, $(MARKDOWN_SOURCES))
 
 $(DOCUMENTATION_TARGET_DIR)/%.html: %.md

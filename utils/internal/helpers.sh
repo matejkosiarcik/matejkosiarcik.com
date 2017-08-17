@@ -6,7 +6,7 @@
 
 # this removes excessive whitespace
 # accepts 1 argument of file to format
-strip() {
+strip_file() {
     printf "%s\n" "$(sed "s~\r\n~\n~" "${1}")" >"${1}"         # replace windows to unix newlines
     printf "%s\n" "$(sed "/./,\$!d" "${1}")" >"${1}"           # remove leading newlines
     printf "%s\n" "$(cat -s "${1}")" >"${1}"                   # strip multiple empty lines and trailing newlines
@@ -14,26 +14,21 @@ strip() {
 }
 
 # searches for passed command
-# returns 0 if command was found, non-0 otherwise
+# returns 0/true if command was found, non-0/false otherwise
 # accepts 1 argument of command to look up
 exists() {
     command -v "${1}" >/dev/null 2>&1
 }
 
 # checks if given tool exists
-# print message if not
+# prints message if not
 # accepts 1 argument of command to look up
-# uses () instead of {} for function body because:
-#  - we do not want to expose declared variables inside function
-#  - and also to not override variables declared somewhere else
-check() (
-    exists "${1}"
-    doesExist="${?}"
-    if [ ! "${doesExist}" -eq "0" ]; then
+check() {
+    if ! exists "${1}"; then
         printf "%s\n" "warning: ${1} not found. (tool_not_found)"
+        exit 1
     fi
-    return "${doesExist}"
-)
+}
 
 # helpers returning true/false
 # accepts 2 arguments
@@ -51,19 +46,22 @@ has_suffix() { case "${1}" in *"${2}") true ;; *) false ;; esac; }
 # prints in style without leading "./"
 # also works when command "git" is not found
 # accepts 0 arguments
-git_files() {
-    find "." -type f -not -path "*.git/*" | while IFS= read -r file; do
-        if exists git && git check-ignore "${file}" >/dev/null 2>&1; then continue; fi       # if git exists and ignores this file
-        if has_prefix "${file}" "./"; then file="$(printf "%s\n" "${file}" | cut -c 3-)"; fi # remove leading ./ from file path
-        printf "%s\n" "${file}"
-    done
+_project_files="$(mktemp)"
+project_files() {
+    if [ "$(cat "${_project_files}")" = "" ]; then
+        find "." -type f -not -path "*.git/*" | while IFS= read -r file; do
+            if exists git && git check-ignore "${file}" >/dev/null 2>&1; then continue; fi       # if git exists and ignores this file
+            if has_prefix "${file}" "./"; then file="$(printf "%s\n" "${file}" | cut -c 3-)"; fi # remove leading ./ from file path
+            printf "%s\n" "${file}" >>"${_project_files}"
+        done
+    fi
+    cat "${_project_files}"
 }
 
-# finds all text files in project
-# basically just filters out binary resources from git_files
+# lists all text files in project
+# basically filters out binary resources
 text_files() {
-    git_files | while IFS= read -r file; do
-        if contains "${file}" "assets/" && ! contains "$(file "${file}")" "text"; then continue; fi
+    project_files | while IFS= read -r file; do
         if contains "${file}" "images/" && ! contains "$(file "${file}")" "text"; then continue; fi
         printf "%s\n" "${file}"
     done
@@ -72,12 +70,4 @@ text_files() {
 # lists shell files
 shell_files() {
     find "./utils" -type f -not -name "*.*" -or -name "*.sh"
-}
-
-# lists files ending with given pattern
-# accepts 1 argument:
-# - pattern to be satisfied at end of filepath
-files_ending() {
-    pattern="${1}"
-    git_files | grep "${pattern}\$"
 }

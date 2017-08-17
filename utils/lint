@@ -59,7 +59,7 @@ fi
 
 # JSON
 if check jsonlint; then
-    files_ending ".json" | while IFS= read -r file; do
+    project_files | grep -E '.json$' | while IFS= read -r file; do
         jsonlint "${file}" --quiet --compact 2>&1 | sed -E "s~\.\$~~" \
             | sed -E "s~(.*): line ([0-9]+), col ([0-9]+), ~\1:\2:\3: warning: ~" | sed "s~', '~' or '~g"
     done
@@ -67,7 +67,7 @@ fi
 
 # Python
 if check pylint; then
-    files_ending ".py" | while IFS= read -r file; do
+    project_files | grep -E '.py$' | while IFS= read -r file; do
         pylint --output-format parseable "${file}" | grep -Ev "^([- ]+)\$" | grep -Ev "^\$" \
             | grep -Ev "^([\*]+) Module" | grep -v "^Your code has been rated at " \
             | sed -E "s~(.*)\[(.*)\](.*)~\1\3 [\2]~" | sed -E "s~(.*):([0-9]+): ~\1:\2: warning:~" \
@@ -153,7 +153,7 @@ fi
 # if they differ, there is possibly some glitch in source SVGs
 if check svg2pdf && check rsvg-convert; then
     temp="$(mktemp -d)"
-    files_ending ".svg" | while IFS= read -r file; do
+    project_files | grep -E '.svg$' | while IFS= read -r file; do
         target="${temp}/$(basename "${file}" ".svg").pdf"
         svg2pdf "${file}" "${target}.1"
         rsvg-convert "${file}" -f pdf -o "${target}.2"
