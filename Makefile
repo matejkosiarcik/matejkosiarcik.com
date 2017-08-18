@@ -3,14 +3,11 @@
 # See file LICENSE.txt or go to https://github.com/matejkosiarcik/personal-website for full license details.
 #
 
-# DISCLAIMER: use '_' as prefix for private targets
-
 ### Config ###
 SHELL = /bin/sh -euf
 MAKEFLAGS += --warn-undefined-variables
 
 ### Setup ###
-SOURCE_DIR = sources
 TARGET_DIR = build
 DEBUG_DIR = $(TARGET_DIR)/debug
 RELEASE_DIR = $(TARGET_DIR)/release
@@ -23,7 +20,7 @@ all: fmt doc lint build test
 .PHONY: help
 help:
 	@printf "%s\n" "Available targets:"
-	@grep -E "^([a-z\-]+):" $(MAKEFILE_LIST) | grep -Eo "^([a-z\-]+)" | sort | tr "\n" "," | sed -E "s~(.*)~\1~" | sed -E 's~^(.+),$$~\1~' | sed "s~,~, ~g"
+	@grep -E "^([a-z\-]+):" $(MAKEFILE_LIST) | grep -Eo "^([a-z\-]+)" | sort | tr "\n" "," | sed -E 's~^(.+),$$~\1~' | sed "s~,~, ~g"
 
 # Cleaning
 .PHONY: clean
@@ -80,6 +77,7 @@ $(DOCUMENTATION_TARGET_DIR)/%.html: %.md
 doc: $(MARKDOWN_TARGETS)
 
 ### Build ###
+SOURCE_DIR = sources
 PAGES_SOURCE_DIR = $(SOURCE_DIR)/web
 PAGES_TARGET_DIR = $(DEBUG_DIR)
 SHARED_SOURCE_DIR = $(SOURCE_DIR)/shared
