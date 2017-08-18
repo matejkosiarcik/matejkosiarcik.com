@@ -2,6 +2,10 @@
 options:
     merge-default-rules: true
 
+files:
+    ignore:
+        - node_modules/**/*
+
 rules:
     # disabling
     force-pseudo-nesting:
