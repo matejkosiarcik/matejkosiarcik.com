@@ -1,25 +1,13 @@
 <?xml version="1.0"?>
-<svg xmlns="http://www.w3.org/2000/svg" height="100" viewBox="0 0 100 100" width="100">
-  <rect fill="none" height="98.8" ry="24.5" stroke="#666" stroke-width="1.2" width="98.8" x=".6" y=".6"/>
-  <g fill="#666">
-    <rect height="100" width=".6" x="7.5"/>
-    <rect height="100" width=".6" x="30.8"/>
-    <rect height="100" width=".6" x="49.7"/>
-    <rect height="100" width=".6" x="68.6"/>
-    <rect height="100" width=".6" x="91.9"/>
-    <rect height=".6" width="100" y="7.5"/>
-    <rect height=".6" width="100" y="30.8"/>
-    <rect height=".6" width="100" y="49.7"/>
-    <rect height=".6" width="100" y="68.6"/>
-    <rect height=".6" width="100" y="91.9"/>
-    <g transform="matrix(.707 .707 -.707 .707 50 -20.7)">
-      <rect height="141" width=".6" x="49.7" y="-20.5"/>
-      <rect height=".6" width="141" x="-20.5" y="49.7"/>
-    </g>
-  </g>
-  <g fill="none" stroke="#666" stroke-width=".6">
-    <circle cx="50" cy="50" r="18.8"/>
-    <circle cx="50" cy="50" r="26.7"/>
-    <circle cx="50" cy="50" r="42.2"/>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="100" viewBox="0 0 100 100" width="100">
+  <linearGradient id="fill" gradientUnits="userSpaceOnUse" x1="37" x2="61" y1="12" y2="92">
+    <stop offset="0" stop-color="#59f"/>
+    <stop offset="1" stop-color="#aff"/>
+  </linearGradient>
+  <linearGradient id="stroke" gradientUnits="userSpaceOnUse" x1="37" x2="61" y1="12" y2="92">
+    <stop offset="0" stop-color="#48f"/>
+    <stop offset="1" stop-color="#9df"/>
+  </linearGradient>
+  <path d="m34.7 24.1v8.5 9 25.2c-2.4-1.3-4.9-2.2-7.7-2.2-8.2 0-15 6.7-15 14.9s6.7 14.9 15 14.9c8.2 0 15-6.7 15-14.9v-39.9l38.2-10.8v25.4c-2.4-1.3-4.9-2.2-7.7-2.2-8.2 0-15 6.7-15 14.9s6.7 14.9 15 14.9c7.7 0 14.1-5.8 15-13.3v-41.7-6.3-11.2z" fill="#ccc" stroke="#c0c0c0" stroke-width="1.3"/>
+  <path d="m31.1 20.4v8.5 9 25.2c-2.4-1.3-4.9-2.2-7.7-2.2-8.2 0-15 6.7-15 14.9s6.7 14.9 15 14.9c8.2 0 15-6.7 15-14.9v-39.9l38-10.8v25.4c-2.4-1.3-4.9-2.2-7.7-2.2-8.2 0-15 6.7-15 14.9s6.7 14.9 15 14.9c7.7 0 14.1-5.8 15-13.3v-41.6-6.3-11.2z" fill="url(#fill)" stroke="url(#stroke)" stroke-width=".8"/>
 </svg>
