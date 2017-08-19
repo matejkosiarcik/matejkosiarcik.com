@@ -70,7 +70,7 @@ MARKDOWN_SOURCES = $(shell . "./utils/internal/helpers.sh" && project_files | gr
 MARKDOWN_TARGETS = $(patsubst %.md, $(DOCUMENTATION_TARGET_DIR)/%.html, $(MARKDOWN_SOURCES))
 
 $(DOCUMENTATION_TARGET_DIR)/%.html: %.md
-	mkdir -p "$$(dirname $@)"
+	mkdir -p "$(@D)"
 	grip "$<" --export "$@"
 
 .PHONY: doc
@@ -92,8 +92,8 @@ MARKUP_TARGETS = $(patsubst $(PAGES_SOURCE_DIR)%.mustache, $(PAGES_TARGET_DIR)%,
 MARKUP_DATA = $(shell find "$(PAGES_SOURCE_DIR)" -name "data.json")
 
 $(PAGES_TARGET_DIR)%: $(PAGES_SOURCE_DIR)%.mustache $(MARKUP_SHARED_SOURCES) $(MARKUP_DATA)
-	mkdir -p "$$(dirname "$@")"
-	python "./utils/internal/build_mustache.py" --template "$<" --data "$$(dirname "$<")/data.json" >"$@"
+	mkdir -p "$(@D)"
+	python "./utils/internal/build_mustache.py" --template "$<" --data "$(<D)/data.json" >"$@"
 
 _build-markup: $(MARKUP_TARGETS)
 
@@ -109,7 +109,7 @@ STYLE_SHARED_TARGETS = $(patsubst $(STYLE_SOURCE_DIR)/%.scss, $(STYLE_TARGET_DIR
 SASS_FLAGS = --scss --unix-newlines --style=expanded --load-path="$(STYLE_SOURCE_DIR)"
 
 $(STYLE_TARGET_DIR)/%.css: $(STYLE_SOURCE_DIR)/%.scss $(STYLE_INTERNAL)
-	mkdir -p "$$(dirname "$@")"
+	mkdir -p "$(@D)"
 	sass $(SASS_FLAGS) --load-path="$(NORMALIZE_DIR)" "$<" "$@"
 	printf "%s\n" "$$(cssbeautify "$@")" >"$@"
 
@@ -117,7 +117,7 @@ STYLE_PAGE_SOURCES = $(shell find "$(PAGES_SOURCE_DIR)" -name "*.scss")
 STYLE_PAGE_TARGETS = $(patsubst $(PAGES_SOURCE_DIR)/%.scss, $(PAGES_TARGET_DIR)/%.css, $(STYLE_PAGE_SOURCES))
 
 $(PAGES_TARGET_DIR)/%.css: $(PAGES_SOURCE_DIR)/%.scss $(STYLE_INTERNAL)
-	mkdir -p "$$(dirname "$@")"
+	mkdir -p "$(@D)"
 	sass $(SASS_FLAGS) "$<" "$@"
 	printf "%s\n" "$$(cssbeautify "$@")" >"$@"
 
@@ -138,8 +138,8 @@ TYPESCRIPT_FLAGS = --module "commonjs" --target "ES3" --newLine "LF" \
 	--noUnusedLocals --noUnusedParameters --noFallthroughCasesInSwitch
 
 $(SCRIPT_TARGET_DIR)/%.js: $(SCRIPT_SOURCE_DIR)/%.ts $(SCRIPT_SHARED_INTERNAL)
-	mkdir -p "$$(dirname "$@")"
-	tsc $(TYPESCRIPT_FLAGS) "$<" --outDir "$$(dirname "$@")"
+	mkdir -p "$(@D)"
+	tsc $(TYPESCRIPT_FLAGS) "$<" --outDir "$(@D)"
 	browserify "$@" --outfile "$@"
 
 _build-scripts: $(SCRIPT_SHARED_TARGETS)
@@ -155,7 +155,7 @@ ASSET_SHARED_SOURCES = $(shell find "$(ASSET_SOURCE_DIR)" -type f)
 ASSET_SHARED_TARGETS = $(patsubst $(ASSET_SOURCE_DIR)/%, $(ASSET_TARGET_DIR)/%, $(ASSET_SHARED_SOURCES))
 
 $(ASSET_TARGET_DIR)/%: $(ASSET_SOURCE_DIR)/%
-	mkdir -p "$$(dirname "$@")"
+	mkdir -p "$(@D)"
 	cp "$<" "$@"
 
 # Pages
@@ -163,19 +163,19 @@ ASSET_PAGE_SOURCES = $(shell find "$(PAGES_SOURCE_DIR)" -type f -path "*/_*/*")
 ASSET_PAGE_TARGETS = $(patsubst $(PAGES_SOURCE_DIR)/%, $(PAGES_TARGET_DIR)/%, $(ASSET_PAGE_SOURCES))
 
 $(PAGES_TARGET_DIR)/%.ico: $(PAGES_SOURCE_DIR)/%.ico
-	mkdir -p "$$(dirname "$@")"
+	mkdir -p "$(@D)"
 	cp "$<" "$@"
 
 $(PAGES_TARGET_DIR)/%.png: $(PAGES_SOURCE_DIR)/%.png
-	mkdir -p "$$(dirname "$@")"
+	mkdir -p "$(@D)"
 	cp "$<" "$@"
 
 $(PAGES_TARGET_DIR)/%.jpg: $(PAGES_SOURCE_DIR)/%.jpg
-	mkdir -p "$$(dirname "$@")"
+	mkdir -p "$(@D)"
 	cp "$<" "$@"
 
 $(PAGES_TARGET_DIR)/%.svg: $(PAGES_SOURCE_DIR)/%.svg
-	mkdir -p "$$(dirname "$@")"
+	mkdir -p "$(@D)"
 	cp "$<" "$@"
 
 _build-assets: $(ASSET_SHARED_TARGETS) $(ASSET_PAGE_TARGETS)
@@ -187,11 +187,11 @@ APACHE_SOURCES = $(shell find "$(PAGES_SOURCE_DIR)" -name ".htaccess")
 APACHE_TARGETS = $(patsubst $(PAGES_SOURCE_DIR)%.htaccess, $(PAGES_TARGET_DIR)%.htaccess, $(APACHE_SOURCES))
 
 $(PAGES_TARGET_DIR)/.htaccess: $(PAGES_SOURCE_DIR)/.htaccess $(APACHE_DEPENDENCY)
-	mkdir -p "$$(dirname "$@")"
+	mkdir -p "$(@D)"
 	cat $^ >"$@"
 
 $(PAGES_TARGET_DIR)/%.htaccess: $(PAGES_SOURCE_DIR)/%.htaccess
-	mkdir -p "$$(dirname "$@")"
+	mkdir -p "$(@D)"
 	cp "$<" "$@"
 
 _build-config: $(APACHE_TARGETS)
