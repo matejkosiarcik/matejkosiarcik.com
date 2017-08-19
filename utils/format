@@ -28,7 +28,7 @@ done
 # JSON
 project_files | grep -E '\.json$' | while IFS= read -r file; do
     if [ "${file}" = "tslint.json" ]; then continue; fi
-    printf "%s\n" "$(jsonlint "${file}" --indent 4 --pretty-print)" >"${file}"
+    printf "%s\n" "$(jsonlint "${file}" --indent "    " --pretty-print)" >"${file}"
 done
 
 # SVG
