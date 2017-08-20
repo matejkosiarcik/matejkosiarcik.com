@@ -31,7 +31,7 @@ extension RedirectionTests {
         let sources = self.combinations(for: source)
 
         // when
-        let responses = sources.map { self.request(url: $0).last }
+        let responses = sources.map { self.request(url: $0).headers.last }
 
         // then
         responses.enumerated().forEach {
@@ -64,6 +64,7 @@ extension RedirectionTests {
             "favicon.ico",
             "robots.txt",
             "_include/config/robots.txt",
+            "_include/config/robots-disallow.txt",
             "_include/images/favicon.ico",
             "_include/images/favicon.png",
             "_include/images/favicon_monochrome.svg",
@@ -84,7 +85,7 @@ extension RedirectionTests {
             .flatMap { self.combinations(for: $0) }
 
         // when
-        let responses = locations.map { self.request(url: $0).last }
+        let responses = locations.map { self.request(url: $0).headers.last }
 
         // then
         zip(responses, locations).forEach {
@@ -101,7 +102,7 @@ extension RedirectionTests {
         let expected: [Int?] = [403, 404]
 
         // when
-        let responses = locations.map { self.request(url: $0).last }
+        let responses = locations.map { self.request(url: $0).headers.last }
 
         // then
         zip(responses, locations).forEach {
@@ -118,11 +119,37 @@ extension RedirectionTests {
             .flatMap { self.combinations(for: $0) }
 
         // when
-        let responses = locations.map { self.request(url: $0).last }
+        let responses = locations.map { self.request(url: $0).headers.last }
 
         // then
         zip(responses, locations).forEach {
             XCTAssertEqual($0.0?.status, 418, "For \($0.1)")
+        }
+    }
+}
+
+// MARK: - Content for files
+extension RedirectionTests {
+    func testRobotsFile() {
+        // given
+        let locations = [
+            "",
+            "test.",
+            ].map { "https://" + $0 + self.host + "/robots.txt" }
+        let realLocations = [
+            "robots.txt",
+            "robots-disallow.txt",
+            ].map { "https://" + self.host + "/_include/config/" + $0 }
+
+        // when
+        let tested = locations.map { self.request(url: $0).content }
+        let expected = realLocations.map { self.request(url: $0).content }
+
+        // then
+        XCTAssertEqual(tested, expected)
+        zip(tested, expected).enumerated().forEach {
+            XCTAssertTrue($0.element.0.hasPrefix("User-Agent: *\n"), "At \($0.offset), '\($0.element.0)'")
+            XCTAssertTrue($0.element.1.hasPrefix("User-Agent: *\n"), "At \($0.offset), '\($0.element.1)'")
         }
     }
 }

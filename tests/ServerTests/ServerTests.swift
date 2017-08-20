@@ -18,16 +18,18 @@ extension ServerTests {
         let policies: [String: ServerTrustPolicy] = [
             "example.com": .disableEvaluation,
             "www.example.com": .disableEvaluation,
+            "test.example.com": .disableEvaluation,
             ]
         return Alamofire.SessionManager(serverTrustPolicyManager: ServerTrustPolicyManager(policies: policies))
     }
 
-    func request(url: URLConvertible, method: HTTPMethod = .get) -> [Response] {
+    func request(url: URLConvertible, method: HTTPMethod = .get) -> (headers: [Response], content: String) {
         // given
         var responses: [Response] = []
+        var content = ""
         let manager = self.manager()
         guard var request = try? URLRequest(url: url.asURL(), cachePolicy: .reloadIgnoringCacheData)
-            else { XCTFail("Could not create URL from \(url)"); return [] }
+            else { XCTFail("Could not create URL from \(url)"); return (responses, content) }
         request.httpMethod = method.rawValue
 
         // when
@@ -42,11 +44,12 @@ extension ServerTests {
             responses.append(Response(status: $0.response?.statusCode,
                                       source: $0.request?.url?.absoluteString,
                                       destination: $0.response?.url?.absoluteString))
+            content = $0.data.flatMap { String(data: $0, encoding: .utf8) } ?? ""
             exp.fulfill()
         }
 
         // then
         wait(for: [exp], timeout: self.isLocal ? 0.2 : 1)
-        return responses
+        return (responses, content)
     }
 }

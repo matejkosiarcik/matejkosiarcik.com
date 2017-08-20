@@ -48,7 +48,7 @@ extension SecurityTests {
         let methods = HTTPMethod.valid
 
         // when
-        let responses = methods.map { self.request(url: location, method: $0).last }
+        let responses = methods.map { self.request(url: location, method: $0).headers.last }
 
         // then
         zip(responses, methods).forEach {
@@ -63,7 +63,7 @@ extension SecurityTests {
         let methods = HTTPMethod.invalid
 
         // when
-        let responses = methods.map { self.request(url: location, method: $0).last }
+        let responses = methods.map { self.request(url: location, method: $0).headers.last }
 
         // then
         zip(responses, methods).forEach {

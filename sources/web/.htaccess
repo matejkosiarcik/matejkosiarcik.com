@@ -42,7 +42,12 @@
 # Internal rewrite for files that should be in root
 <IfModule mod_rewrite.c>
     RewriteRule ^favicon\.ico$ _include/images/$0 [L]
-    RewriteRule ^robots\.txt$ _include/config/$0 [L]
+
+    RewriteCond %{HTTP_HOST} ^test\. [NC]
+    RewriteRule ^robots\.txt$ _include/config/robots-disallow.txt [L]
+
+    RewriteCond %{HTTP_HOST} !^test\. [NC]
+    RewriteRule ^robots\.txt$ _include/config/robots.txt [L]
 </IfModule>
 
 ### Errors ###
