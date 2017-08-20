@@ -81,6 +81,7 @@ extension RedirectionTests {
         // given
         let locations = [
             "foo",
+            "42",
             ].map { "/" + $0 }
             .flatMap { self.combinations(for: $0) }
 
