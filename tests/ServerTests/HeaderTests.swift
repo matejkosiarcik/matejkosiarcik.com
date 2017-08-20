@@ -16,7 +16,7 @@ extension ResponseTests {
             (10, "bar", "foo"),
             (3, "foo", "bar"),
             (100, "bar", "foo"),
-            ].map { Response(status: $0.0, source: $0.1, destination: $0.2) }
+            ].map { Header(status: $0.0, source: $0.1, destination: $0.2) }
         let comparator = items[0]
         let expected = [true] + [Bool](repeating: false, count: 4)
 

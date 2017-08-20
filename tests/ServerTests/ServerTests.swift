@@ -23,9 +23,9 @@ extension ServerTests {
         return Alamofire.SessionManager(serverTrustPolicyManager: ServerTrustPolicyManager(policies: policies))
     }
 
-    func request(url: URLConvertible, method: HTTPMethod = .get) -> (headers: [Response], content: String) {
+    func request(url: URLConvertible, method: HTTPMethod = .get) -> (headers: [Header], content: String) {
         // given
-        var responses: [Response] = []
+        var responses: [Header] = []
         var content = ""
         let manager = self.manager()
         guard var request = try? URLRequest(url: url.asURL(), cachePolicy: .reloadIgnoringCacheData)
@@ -35,13 +35,13 @@ extension ServerTests {
         // when
         let exp = expectation(description: "Wait for server response")
         manager.delegate.taskWillPerformHTTPRedirection = { _, _, response, request in
-            responses.append(Response(status: response.statusCode,
+            responses.append(Header(status: response.statusCode,
                                       source: response.url?.absoluteString,
                                       destination: request.url?.absoluteString))
             return request
         }
         manager.request(request).response {
-            responses.append(Response(status: $0.response?.statusCode,
+            responses.append(Header(status: $0.response?.statusCode,
                                       source: $0.request?.url?.absoluteString,
                                       destination: $0.response?.url?.absoluteString))
             content = $0.data.flatMap { String(data: $0, encoding: .utf8) } ?? ""
