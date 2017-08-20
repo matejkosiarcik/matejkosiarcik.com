@@ -7,19 +7,22 @@ import Alamofire
 import XCTest
 
 final class RedirectionTests: ServerTests {
-    private lazy var redirectCode: Int = self.isDebug ? 302 : 301
+    private lazy var redirectCode: Int = self.host == .local ? 302 : 301
 }
 
 // MARK: - Helpers
 extension RedirectionTests {
     private func combinations(for source: String) -> [String] {
-        let prefices: [String] = ["http://", "https://"].flatMap { form in ["www.", ""].flatMap { form + $0 } }
+        let subdomains = self.host == .testing ? [""] : ["", "www."]
+        let protocols = ["http://", "https://"]
+        let prefices: [String] = subdomains.flatMap { subdomain in protocols.flatMap { $0 + subdomain } }
+
         let slashes = ["/", "//", "///"]
         let trailingSlashes = [""] + slashes
         return prefices.flatMap { prefix in
             slashes.flatMap { slash in
                 trailingSlashes.flatMap { trailingSlash in
-                    prefix + self.host + source.replacingOccurrences(of: "/", with: slash) + trailingSlash
+                    prefix + self.domain + source.replacingOccurrences(of: "/", with: slash) + trailingSlash
                 }
             }
         }
@@ -50,7 +53,7 @@ extension RedirectionTests {
             ("", ""),
             ("/about", "/about"),
             ("/zenplayer", "/zenplayer"),
-            ].map { ($0.0, "https://" + self.host + $0.1 + "/") }
+            ].map { ($0.0, "https://" + self.domain + $0.1 + "/") }
 
         // then
         locations.forEach {
@@ -69,7 +72,7 @@ extension RedirectionTests {
             "_include/images/favicon.png",
             "_include/images/favicon_monochrome.svg",
             "_include/images/logo.svg",
-            ].map { ("/" + $0, "https://" + self.host + "/" + $0) }
+            ].map { ("/" + $0, "https://" + self.domain + "/" + $0) }
 
         // then
         locations.forEach {
@@ -133,14 +136,21 @@ extension RedirectionTests {
 extension RedirectionTests {
     func testRobotsFile() {
         // given
-        let locations = [
-            "",
-            "test.",
-            ].map { "https://" + $0 + self.host + "/robots.txt" }
-        let realLocations = [
-            "robots.txt",
-            "robots-disallow.txt",
-            ].map { "https://" + self.host + "/_include/config/" + $0 }
+        var locations: [String]
+        var realLocations: [String]
+        switch self.host {
+        case .local:
+            locations = ["", "test."].map { $0 + self.domain }
+            realLocations = ["robots.txt", "robots-disallow.txt"]
+        case .testing:
+            locations = [self.domain]
+            realLocations = ["robots-disallow.txt"]
+        case .production:
+            locations = [self.domain]
+            realLocations = ["robots.txt"]
+        }
+        locations = locations.map { "https://" + $0 + "/robots.txt" }
+        realLocations = realLocations.map { "https://" + self.domain + "/_include/config/" + $0 }
 
         // when
         let tested = locations.map { self.request(url: $0).content }

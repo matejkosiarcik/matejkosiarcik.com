@@ -7,9 +7,26 @@ import Alamofire
 import XCTest
 
 class ServerTests: XCTestCase {
-    let isLocal = true
-    let isDebug = true
-    lazy var host: String = self.isLocal ? "example.com" : "binarytrex.com"
+    let host = Hosts.current
+    private(set) lazy var domain = self.host.rawValue
+}
+
+enum Hosts: String {
+    case local = "example.com"
+    case testing = "test.binarytrex.com"
+    case production = "binarytrex.com"
+
+    static let current: Hosts = {
+        #if DEBUG || Xcode
+            return .local
+        #elseif BETA
+            return .testing
+        #elseif RELEASE
+            return .production
+        #else
+            fatalError("Invalid compilation mode")
+        #endif
+    }()
 }
 
 extension ServerTests {
@@ -49,7 +66,7 @@ extension ServerTests {
         }
 
         // then
-        wait(for: [exp], timeout: self.isLocal ? 0.2 : 1)
+        wait(for: [exp], timeout: self.host == .local ? 0.2 : 1)
         return (responses, content)
     }
 }

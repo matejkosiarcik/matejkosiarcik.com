@@ -44,7 +44,7 @@ private extension HTTPMethod {
 extension SecurityTests {
     func testValidHTTPMethods() {
         // given
-        let location = "https://" + self.host
+        let location = "https://" + self.domain
         let methods = HTTPMethod.valid
 
         // when
@@ -59,7 +59,7 @@ extension SecurityTests {
 
     func testInvalidHTTPMethods() {
         // given
-        let location = "https://" + self.host
+        let location = "https://" + self.domain
         let methods = HTTPMethod.invalid
 
         // when
