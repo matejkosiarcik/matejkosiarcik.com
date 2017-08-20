@@ -62,7 +62,7 @@ lint:
 
 .PHONY: test
 test: $(SWIFT_DIR) build
-	swift test
+	swift test -Xswiftc -DDEBUG
 
 ### Documentation ###
 DOCUMENTATION_TARGET_DIR = $(TARGET_DIR)/doc
