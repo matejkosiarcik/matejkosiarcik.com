@@ -26,6 +26,7 @@ help:
 .PHONY: clean
 clean:
 	rm -rf "$(TARGET_DIR)"
+	find "." -type f -name ".DS_Store" -exec rm -f {} \;
 
 .PHONY: distclean
 distclean: clean
