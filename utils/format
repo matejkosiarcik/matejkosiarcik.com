@@ -35,6 +35,6 @@ done
 project_files | grep -E '\.svg$' | while IFS= read -r file; do
     svgcleaner "${file}" "${file}" --quiet --multipass \
         --coordinates-precision 1 --properties-precision 1 --transforms-precision 3 --paths-coordinates-precision 1 \
-        --convert-shapes no
+        --convert-shapes no --trim-ids no
     printf "%s\n" "$(xmllint --format "${file}")" >"${file}"
 done
