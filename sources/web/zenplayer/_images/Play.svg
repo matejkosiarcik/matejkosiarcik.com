@@ -2,7 +2,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="100" viewBox="0 0 100 100" width="100">
   <mask id="main">
     <rect fill="#fff" height="100" width="100"/>
-    <path d="m25 18v64l55-32z" stroke="#000" stroke-linejoin="round" stroke-width="8"/>
+    <path d="m30 20v60l48-30z" stroke="#000" stroke-linejoin="round" stroke-width="8"/>
   </mask>
   <rect fill="#3599db" height="100" mask="url(#main)" ry="25" width="100"/>
 </svg>
