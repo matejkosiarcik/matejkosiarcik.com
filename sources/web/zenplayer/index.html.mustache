@@ -1,7 +1,26 @@
 {{> start.html }}
 
 <header>
-    <h1 class="font-size-xl">This page is currently in reconstruction 👨‍💻</h1>
+    <h1 class="font-size-xl">ZenPlayer</h1>
 </header>
+<div class="content font-size-s">
+    <div class="features">
+        {{# features }}
+            <div class="feature">
+                <div class="icon-container">
+                    <img src="_images/{{ image }}" class="icon no-selection" alt="{{ alt }}">
+                </div>
+                <span class="description font-size-l">
+                    {{ description }}
+                </span>
+            </div>
+        {{/ features }}
+    </div>
+    <div class="download font-size-xl">
+        <a href="https://appstore.com/mac/zenplayer" class="download-link" title="ZenPlayer at App Store" target="_blank">
+            Download it on the App&nbsp;Store
+        </a>
+    </div>
+</div>
 
 {{> end.html }}

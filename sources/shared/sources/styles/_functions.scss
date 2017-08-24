@@ -22,3 +22,8 @@
     margin-top: $value;
     margin-bottom: $value;
 }
+
+@mixin size($value) {
+    width: $value;
+    height: $value;
+}
