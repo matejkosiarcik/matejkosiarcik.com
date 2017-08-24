@@ -8,7 +8,7 @@ import * as helpers from "./_helpers"
 function isTouchDevice(): boolean {
    const element = document.createElement("div")
    element.setAttribute("ontouchstart", "return;")
-   return typeof element.ontouchstart === "function"
+   return typeof(element.ontouchstart) === "function"
 }
 
 const root = document.documentElement
