@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="100" viewBox="0 0 100 100" width="100">
+  <mask id="main">
+    <rect fill="#fff" height="100" width="100"/>
+    <rect height="80" ry="8" stroke="#fff" width="56" x="22" y="10"/>
+  </mask>
+  <g fill="#3599db">
+    <rect height="100" mask="url(#main)" ry="25" width="100"/>
+    <rect height="5" ry="2.5" width="40" x="30" y="55"/>
+    <rect height="5" ry="2.5" width="40" x="30" y="66"/>
+    <rect height="5" ry="2.5" width="40" x="30" y="77"/>
+    <path d="m62 10h16v16z"/>
+  </g>
+  <rect fill="none" height="20" stroke="#3599db" stroke-linejoin="round" stroke-width="5" width="20" x="60" y="8"/>
+</svg>

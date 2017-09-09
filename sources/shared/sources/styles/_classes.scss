@@ -1,0 +1,81 @@
+//
+// This file is part of personal-website which is released under MIT license.
+// See file LICENSE.txt or go to https://github.com/matejkosiarcik/personal-website for full license details.
+//
+
+@import 'constants';
+@import 'functions';
+
+// Text
+.font-size-xl {
+    font-size: 45px;
+    font-weight: 200;
+}
+
+.font-size-l {
+    font-size: 28px;
+    font-weight: 200;
+}
+
+.font-size-m {
+    font-size: 22px;
+    font-weight: 200;
+}
+
+.font-size-s {
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.font-size-xs {
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.text-color-super-dark {
+    color: $text-color-super-dark;
+}
+
+.text-color-dark {
+    color: $text-color-dark;
+}
+
+.text-color-default {
+    color: $text-color-default;
+}
+
+.text-color-light {
+    color: $text-color-light;
+}
+
+.text-color-super-light {
+    color: $text-color-super-light;
+}
+
+.bold {
+    font-weight: 600;
+}
+
+// Positioning
+.float-right {
+    float: right;
+}
+
+.float-left {
+    float: left;
+}
+
+.clear::after {
+    display: block;
+    clear: both;
+    content: '';
+}
+
+// Styling
+.no-selection::selection {
+    background-color: transparent;
+}
+
+.no-decoration {
+    text-decoration: none;
+}

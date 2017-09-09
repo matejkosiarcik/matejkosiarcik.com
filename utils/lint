@@ -1,0 +1,108 @@
+#!/bin/sh
+#
+# This file is part of personal-website which is released under MIT license.
+# See file LICENSE.txt or go to https://github.com/matejkosiarcik/personal-website for full license details.
+#
+
+# setup
+set -euf
+cd "$(dirname "${0}")/.."
+. "./utils/internal/helpers.sh"
+
+# All text files
+text_files | while IFS= read -r file; do
+    # check for indentation tabs
+    if [ "${file}" = "Makefile" ]; then continue; fi
+    grep -E "^(\s*)	(\s*)" --line-number <"${file}" \
+        | sed -E "s~^([0-9]+):(.*)\$~${file}:\1: warning: indentation using <tab> found (tab_indent)~"
+done
+
+# HTML
+htmlhint --format unix "." | grep -v "^\$" | grep -Ev "^(.*)([0-9]+) problem(s?)(.*)\$" \
+    | sed -E "s~\[error/(.*)\]\$~[\1]~" | sed -E "s~(.*):([0-9]+):([0-9]+): ~\1:\2:\3: warning: ~" \
+    | sed -E "s~\[(.*)\] \[(.*)\]~'\1' [\2]~"
+
+# PHP
+project_files | grep -E '\.php(\.mustache)?$' | while IFS= read -r file; do
+    php -l "${file}" | grep -Ev '^$' | grep -Ev "^Errors" | grep -Ev "^No " \
+        | sed -E 's~^(.+): (.+) in (.+) on line ([0-9]+)$~\3:\4: warning: \1 (\2)~' \
+        | sed -E "s~\(([a-zA-z0-9]+) ([a-zA-Z0-9]+)\)~(\1_\2)~"
+done
+
+# SASS
+sass-lint --verbose --no-exit --syntax scss --format unix | grep -Ev "([0-9]+) problems" | grep -v "^\$" \
+    | sed -E "s~(w|W)arning/~~" | sed -E "s~(e|E)rror/~~" | sed -E "s~^(.*):([0-9]+):([0-9]+):~\1:\2:\3: warning:~"
+
+# JavaScript
+# shellcheck disable=SC2046
+tslint --force --format "verbose" $(find "." -type f -name "*.js" | tr "\n" " ") | grep -v '^$' \
+    | sed "s~^ERROR: ~~" | sed 's~.$~~' | sed -E 's~^\((.+)\) (.*)$~\2 (\1)~' \
+    | sed -E "s~(.*)\[([0-9]+), ([0-9]+)\]~\1:\2:\3: warning~"
+
+# TypeScript
+# shellcheck disable=SC2046
+tslint --force --format "verbose" $(project_files | grep '\.ts$' | tr "\n" " ") | grep -v '^$' \
+    | sed "s~^ERROR: ~~" | sed 's~.$~~' | sed -E 's~^\((.+)\) (.*)$~\2 (\1)~' \
+    | sed -E "s~(.*)\[([0-9]+), ([0-9]+)\]~\1:\2:\3: warning~"
+
+# Python
+project_files | grep -E '\.py$' | while IFS= read -r file; do
+    pylint --output-format parseable "${file}" | grep -Ev "^([- ]+)\$" | grep -Ev "^\$" \
+        | grep -Ev "^([\*]+) Module" | grep -v "^Your code has been rated at " \
+        | sed -E "s~(.*)\[(.*)\](.*)~\1\3 [\2]~" | sed -E "s~(.*):([0-9]+): ~\1:\2: warning:~" \
+        | sed -E "s~, \]\$~]~"
+done
+flake8 "." | sed -E "s~(.*):([0-9]+):([0-9]+): ([^ ]+) (.*)~\1:\2:\3: \5 [\4]~" \
+    | sed -E "s~(.*):([0-9]+):([0-9]+): ~\1:\2:\3: warning: ~" | sed "s~^./~~"
+pep8 "." | sed -E "s~(.*):([0-9]+):([0-9]+): ~\1:\2:\3: warning: ~" | sed "s~^./~~"
+
+# Swift
+swiftlint lint 2>/dev/null
+
+# Shell
+shell_files | while IFS= read -r file; do
+    shellcheck --external-sources "./utils/internal/helpers.sh" --format gcc "${file}" | sed "s~^./~~"
+    shfmt -i 4 -p -l "${file}" \
+        | sed -E "s~(.*)~\1: warning: file badly formatted, run 'format' script to resolve (bad_format)~" \
+        | sed "s~^./~~"
+    sh -n "${file}" | sed "s~^./~~"
+    bash -n "${file}" | sed "s~^./~~"
+    bash --posix -n "${file}" | sed "s~^./~~"
+    bash -o posix -n "${file}" | sed "s~^./~~"
+    dash -n "${file}" | sed "s~^./~~"
+    ksh -n "${file}" | sed "s~^./~~"
+    mksh -n "${file}" | sed "s~^./~~"
+    zsh -n "${file}" | sed "s~^./~~"
+    yash -n "${file}" | sed "s~^./~~"
+    yash --posix -n "${file}" | sed "s~^./~~"
+    yash -o posixly-correct -n "${file}" | sed "s~^./~~"
+done
+
+# Markdown
+mdl "." --git-recurse || true
+
+# Yaml
+yamllint "." --format parsable --config-file ".yamllint.yml" | sed "s~^./~~"
+
+# JSON
+project_files | grep -E '\.json$' | while IFS= read -r file; do
+    jsonlint "${file}" --quiet --compact 2>&1 | sed -E "s~\.\$~~" \
+        | sed -E "s~(.*): line ([0-9]+), col ([0-9]+), ~\1:\2:\3: warning: ~" | sed "s~', '~' or '~g"
+done
+
+# XML
+project_files | grep -E '\.(html|svg|xml)$' | while IFS= read -r file; do
+    xmllint "${file}" --noout || true
+done
+
+# SVG
+# generated PDFs should be the same for both methods (svg2pdf and rsvg-convert)
+# if they differ, there is possibly some glitch in source image
+temp="$(mktemp -d)"
+project_files | grep -E '\.svg$' | while IFS= read -r file; do
+    target="${temp}/$(basename "${file}" ".svg").pdf"
+    svg2pdf "${file}" "${target}.1"
+    rsvg-convert "${file}" -f pdf -o "${target}.2"
+    cmp --silent "${target}.1" "${target}.2" || { printf "%s\n" "${file}: warning: Generated PDFs differ (unstable_svg)"; }
+done
+rm -rf "${temp}"

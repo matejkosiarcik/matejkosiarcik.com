@@ -6,8 +6,10 @@ ignore: |
     .build/
     .git/
     build/
-    Carthage/
-    fastlane/
-    Packages/
-    Pods/
+    node_modules/
+
+# rule customization
+rules:
+    line-length:
+        max: 120
 ...

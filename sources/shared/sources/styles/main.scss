@@ -1,0 +1,103 @@
+//
+// This file is part of personal-website which is released under MIT license.
+// See file LICENSE.txt or go to https://github.com/matejkosiarcik/personal-website for full license details.
+//
+
+@import 'classes';
+@import 'constants';
+@import 'functions';
+@import 'normalize';
+
+// Normalize / set defaults
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+h1,
+p {
+    margin-top: .5em;
+    margin-bottom: .5em;
+}
+
+body {
+    background-color: $background-color;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Open Sans', Helvetica, sans-serif;
+}
+
+// Styles for whole page
+#main-container {
+    @include margin-horizontal(auto);
+    $page-spacing: 20px;
+
+    position: relative;
+    width: $page-width + $page-spacing;
+    max-width: 100%;
+    min-height: 100%;
+
+    > * {
+        @include padding-horizontal($page-spacing / 2);
+        box-sizing: border-box;
+    }
+}
+
+.info-link {
+    transition: color .25s;
+    color: $text-color-super-light;
+    text-decoration: none;
+
+    &:hover {
+        color: $text-color-super-dark;
+        text-decoration: underline;
+    }
+}
+
+.content-link {
+    transition: color .25s;
+    color: $text-color-default;
+
+    &:hover {
+        color: $text-color-super-dark;
+    }
+}
+
+// Header
+#main-container > header {
+    width: 100%;
+    margin-top: 15px;
+
+    .logo {
+        width: 48px;
+        height: 48px;
+    }
+}
+
+nav {
+    padding-top: 10px;
+
+    > * {
+        margin-left: 12px;
+    }
+}
+
+// Content
+#main-container > .content {
+    width: 100%;
+    margin-top: 15px;
+    padding-bottom: 100px;
+
+    > header {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+}
+
+// Footer
+#main-container > footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin-bottom: 30px;
+    text-align: center;
+}

@@ -1,0 +1,48 @@
+//
+// This file is part of personal-website which is released under MIT license.
+// See file LICENSE.txt or go to https://github.com/matejkosiarcik/personal-website for full license details.
+//
+
+@import 'constants';
+@import 'functions';
+
+.features > .feature {
+    display: table;
+    margin-top: 20px;
+
+    > .icon-container {
+        display: table-cell;
+        height: 100%;
+        vertical-align: middle;
+
+        > .icon {
+            @include size(50px);
+            display: inline-block;
+            margin-right: 20px;
+        }
+    }
+
+    .description {
+        display: table-cell;
+        vertical-align: middle;
+    }
+}
+
+.download {
+    margin-top: 50px;
+    font-weight: 300;
+    text-align: center;
+
+    .download-link {
+        $color: #5066a1;
+        border-bottom: 3px solid $color;
+        color: $color;
+        text-decoration: none;
+
+        &:hover {
+            $color-alt: #5060b0;
+            border-bottom: 4px solid $color-alt;
+            color: $color-alt;
+        }
+    }
+}

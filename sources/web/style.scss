@@ -1,0 +1,36 @@
+//
+// This file is part of personal-website which is released under MIT license.
+// See file LICENSE.txt or go to https://github.com/matejkosiarcik/personal-website for full license details.
+//
+
+@import 'constants';
+@import 'functions';
+
+.app-icons {
+    padding: 0;
+    list-style: none;
+    text-align: center;
+}
+
+.app-icon {
+    @include margin-horizontal(10px);
+    @include margin-vertical(10px);
+
+    display: inline-block;
+}
+
+.app-icon > .content {
+    width: 220px;
+    text-align: center;
+
+    img {
+        width: 150px;
+        margin-bottom: 10px;
+    }
+
+    .description {
+        width: 100%;
+        height: 80px;
+        overflow: hidden;
+    }
+}
