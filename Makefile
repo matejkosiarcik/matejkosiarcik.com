@@ -160,7 +160,7 @@ $(ASSET_TARGET_DIR)/%: $(ASSET_SOURCE_DIR)/%
 	cp "$<" "$@"
 
 # Pages
-ASSET_PAGE_SOURCES = $(shell find "$(PAGES_SOURCE_DIR)" -type f -path "*/_*/*" -and -not -path "*/_error/*")
+ASSET_PAGE_SOURCES = $(shell find "$(PAGES_SOURCE_DIR)" -type f -path "*/_*/*")
 ASSET_PAGE_TARGETS = $(patsubst $(PAGES_SOURCE_DIR)/%, $(PAGES_TARGET_DIR)/%, $(ASSET_PAGE_SOURCES))
 
 $(PAGES_TARGET_DIR)/%.ico: $(PAGES_SOURCE_DIR)/%.ico
