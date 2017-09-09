@@ -118,7 +118,7 @@ extension RedirectionTests {
     func testRestrictedPages() {
         // given
         let locations = [
-            "_error",
+            "error",
             ].map { "/" + $0 }
             .flatMap { self.combinations(for: $0) }
         let expected: [Int?] = [403, 404]
