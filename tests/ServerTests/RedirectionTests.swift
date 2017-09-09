@@ -114,6 +114,24 @@ extension RedirectionTests {
             XCTAssertTrue(expected.contains { $0 == status }, "For \($0.1) got \(status ?? 0)")
         }
     }
+
+    func testRestrictedPages() {
+        // given
+        let locations = [
+            "_error",
+            ].map { "/" + $0 }
+            .flatMap { self.combinations(for: $0) }
+        let expected: [Int?] = [403, 404]
+
+        // when
+        let responses = locations.map { self.request(url: $0).headers.last }
+
+        // then
+        zip(responses, locations).forEach {
+            let status = $0.0?.status
+            XCTAssertTrue(expected.contains { $0 == status }, "For \($0.1) got \(status ?? 0)")
+        }
+    }
 }
 
 // MARK: - Content for files

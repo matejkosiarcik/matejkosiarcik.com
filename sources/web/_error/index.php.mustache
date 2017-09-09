@@ -6,6 +6,7 @@ $statuses = array(
 );
 
 $status = $_GET["code"];
+if (empty($status)) { $status = 404; } // default error
 http_response_code($status);
 
 $description = $statuses[$status];
