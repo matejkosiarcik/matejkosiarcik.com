@@ -61,6 +61,10 @@ fmt:
 lint:
 	./utils/lint
 
+.PHONY: deploy
+deploy:
+	sh utils/deploy.sh
+
 .PHONY: test
 test: $(SWIFT_DIR) build
 	swift test -Xswiftc -DDEBUG
