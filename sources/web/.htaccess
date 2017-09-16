@@ -6,14 +6,8 @@
 </IfModule>
 
 # Force HTTPS
+# eg. from "http://example.com" to "https://example.com"
 <IfModule mod_rewrite.c>
-    # local server
-    RewriteCond ${HTTP_HOST} !^binarytrex.com$ [NC]
-    RewriteCond %{HTTPS} !^on$
-    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=302]
-
-    # production server
-    RewriteCond %{HTTP_HOST} ^binarytrex.com$ [NC]
     RewriteCond %{SERVER_PORT} !^443$
     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=302]
 </IfModule>
