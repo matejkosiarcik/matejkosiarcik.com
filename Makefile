@@ -19,14 +19,13 @@ all: build test
 # Help message
 .PHONY: help
 help:
-	@printf "%s\n" "Available targets:"
-	@grep -E "^([a-z\-]+):" $(MAKEFILE_LIST) | grep -Eo "^([a-z\-]+)" | sort | tr "\n" "," | sed -E 's~^(.+),$$~\1~' | sed "s~,~, ~g"
+	@printf 'Available targets:\n'
+	@grep -E '^([a-z\-]+):' $(MAKEFILE_LIST) | grep -Eo '^([a-z\-]+)' | sort | tr '\n' ',' | sed -E 's~^(.+),$$~\1~' | sed 's~,~, ~g'
 
 # Cleaning
 .PHONY: clean
 clean:
 	rm -rf "$(TARGET_DIR)"
-	find "." -type f -name ".DS_Store" -exec rm -f {} \;
 
 .PHONY: distclean
 distclean: clean
