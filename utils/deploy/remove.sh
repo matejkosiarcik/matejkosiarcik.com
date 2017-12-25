@@ -7,6 +7,10 @@ while getopts 'u:p:' opt; do
     case "${opt}" in
     u) user="${OPTARG}" ;;
     p) password="${OPTARG}" ;;
+    *) {
+        printf 'Unrecognized option: %s\n' "${opt}" >&2
+        exit 1
+    } ;;
     esac
 done
 

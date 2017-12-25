@@ -8,6 +8,10 @@ while getopts 'u:p:d:' opt; do
     u) user="${OPTARG}" ;;
     p) password="${OPTARG}" ;;
     d) path="${OPTARG}" ;;
+    *) {
+        printf 'Unrecognized option: %s\n' "${opt}" >&2
+        exit 1
+    } ;;
     esac
 done
 
