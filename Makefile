@@ -14,7 +14,7 @@ RELEASE_DIR = $(TARGET_DIR)/release
 
 # Default target
 .PHONY: all
-all: fmt doc lint build test
+all: build test
 
 # Help message
 .PHONY: help
@@ -52,34 +52,10 @@ update:
 	npm update --save --saveDev
 	swift package update
 
-# Just forwarding targets
-.PHONY: fmt
-fmt:
-	./utils/format
-
-.PHONY: lint
-lint:
-	./utils/lint
-
-.PHONY: deploy
-deploy:
-	sh utils/deploy.sh
-
+# Testing
 .PHONY: test
 test: $(SWIFT_DIR) build
 	swift test -Xswiftc -DDEBUG
-
-### Documentation ###
-DOCUMENTATION_TARGET_DIR = $(TARGET_DIR)/doc
-MARKDOWN_SOURCES = $(shell . "./utils/internal/helpers.sh" && project_files | grep -E '.md$$')
-MARKDOWN_TARGETS = $(patsubst %.md, $(DOCUMENTATION_TARGET_DIR)/%.html, $(MARKDOWN_SOURCES))
-
-$(DOCUMENTATION_TARGET_DIR)/%.html: %.md
-	mkdir -p "$(@D)"
-	grip "$<" --export "$@"
-
-.PHONY: doc
-doc: $(MARKDOWN_TARGETS)
 
 ### Build ###
 SOURCE_DIR = sources
