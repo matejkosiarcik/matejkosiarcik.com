@@ -5,9 +5,9 @@ server='binarytrex.com'
 # get arguments
 while getopts 'u:p:d:' opt; do
     case "${opt}" in
-        u) user="${OPTARG}" ;;
-        p) password="${OPTARG}" ;;
-        d) path="${OPTARG}" ;;
+    u) user="${OPTARG}" ;;
+    p) password="${OPTARG}" ;;
+    d) path="${OPTARG}" ;;
     esac
 done
 

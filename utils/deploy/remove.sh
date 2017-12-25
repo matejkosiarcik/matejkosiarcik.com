@@ -5,8 +5,8 @@ server='binarytrex.com'
 # get arguments
 while getopts 'u:p:' opt; do
     case "${opt}" in
-        u) user="${OPTARG}" ;;
-        p) password="${OPTARG}" ;;
+    u) user="${OPTARG}" ;;
+    p) password="${OPTARG}" ;;
     esac
 done
 
@@ -16,8 +16,8 @@ done
 
 # get files to remove
 commands="$(mktemp)"
-lftp -u "${user}.${server},${password}" "sftp://${server}" -e 'ls; exit' 2>/dev/null \
-    | rev | cut -d ' ' -f 1 | rev | grep -Ev '^(\.|\.\.)$' | while IFS= read -r file; do
+lftp -u "${user}.${server},${password}" "sftp://${server}" -e 'ls; exit' 2>/dev/null |
+    rev | cut -d ' ' -f 1 | rev | grep -Ev '^(\.|\.\.)$' | while IFS= read -r file; do
         printf 'rm -r %s\n' "${file}" >>"${commands}"
     done
 commands="$(cat "${commands}" && rm -f "${commands}")"
