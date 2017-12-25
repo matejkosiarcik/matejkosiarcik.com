@@ -1,9 +1,9 @@
 # shellcheck shell=sh
 set -eu
-server="binarytrex.com"
+server='binarytrex.com'
 
 # get arguments
-while getopts "u:p:d:" opt; do
+while getopts 'u:p:d:' opt; do
     case "${opt}" in
         u) user="${OPTARG}" ;;
         p) password="${OPTARG}" ;;

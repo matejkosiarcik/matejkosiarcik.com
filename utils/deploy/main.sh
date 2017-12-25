@@ -3,19 +3,19 @@ set -eu
 cd "$(dirname "${0}")/../.."
 
 # find build directory
-path=""
-[ -d "build/release" ] && { path="build/release"; }
-[ -d "build/debug" ] && { path="build/debug"; }
-[ -z "${path}" ] && { printf "%s\n" "No build directory found" >&2 && exit 1; }
+path=''
+[ -d 'build/debug' ] && path='build/debug'
+[ -d 'build/release' ] && path='build/release'
+[ -z "${path}" ] && { printf 'No build directory found\n' >&2 && exit 1; }
 
 # read credentials
-printf "User prefix: "
+printf 'User prefix: '
 read -r user
-printf "Password: "
+printf 'Password: '
 stty -echo
 read -r password
 stty echo
-printf "\n"
+printf '\n'
 
 # execute deployment scripts
 sh "utils/deploy/remove.sh" -u "${user}" -p "${password}"
