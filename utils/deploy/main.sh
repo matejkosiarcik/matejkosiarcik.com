@@ -1,6 +1,6 @@
 # shellcheck shell=sh
 set -eu
-cd "$(dirname "${0}")/.."
+cd "$(dirname "${0}")/../.."
 
 # find build directory
 path=""
@@ -18,5 +18,5 @@ stty echo
 printf "\n"
 
 # execute deployment scripts
-sh "utils/internal/remove.sh" -u "${user}" -p "${password}"
-sh "utils/internal/copy.sh" -u "${user}" -p "${password}" -d "build/debug"
+sh "utils/deploy/remove.sh" -u "${user}" -p "${password}"
+sh "utils/deploy/copy.sh" -u "${user}" -p "${password}" -d "build/debug"
