@@ -3,8 +3,6 @@ extends: default
 
 # For all rules
 ignore: |
-    .build/
-    .git/
     build/
     node_modules/
 

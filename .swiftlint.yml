@@ -1,10 +1,4 @@
 ---
-# exclude paths
-excluded:
-    - .build
-    - .git
-    - build
-
 # rule on/off switching
 disabled_rules:
     - todo
@@ -20,7 +14,6 @@ opt_in_rules:
     - force_unwrapping
     - implicit_return
     - implicitly_unwrapped_optional
-    - missing_docs
     - nimble_operator
     - no_extension_access_modifier
     - number_separator
