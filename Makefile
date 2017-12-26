@@ -142,18 +142,14 @@ _build-assets: $(ASSET_SHARED_TARGETS) $(ASSET_PAGE_TARGETS)
 ## Config ##
 # Apache config
 APACHE_DEPENDENCY = $(NODE_DIR)/apache-server-configs/dist/.htaccess
-APACHE_SOURCES = $(shell find "$(PAGES_SOURCE_DIR)" -name ".htaccess")
-APACHE_TARGETS = $(patsubst $(PAGES_SOURCE_DIR)%.htaccess, $(PAGES_TARGET_DIR)%.htaccess, $(APACHE_SOURCES))
+APACHE_SOURCE = $(PAGES_SOURCE_DIR)/.htaccess
+APACHE_TARGET = $(PAGES_TARGET_DIR)/.htaccess
 
-$(PAGES_TARGET_DIR)/.htaccess: $(PAGES_SOURCE_DIR)/.htaccess $(APACHE_DEPENDENCY)
+$(APACHE_TARGET): $(APACHE_SOURCE) $(APACHE_DEPENDENCY)
 	mkdir -p "$(@D)"
 	cat $^ >"$@"
 
-$(PAGES_TARGET_DIR)/%.htaccess: $(PAGES_SOURCE_DIR)/%.htaccess
-	mkdir -p "$(@D)"
-	cp "$<" "$@"
-
-_build-config: $(APACHE_TARGETS)
+_build-config: $(APACHE_TARGET)
 
 ## General ##
 .PHONY: build
