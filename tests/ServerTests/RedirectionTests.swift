@@ -70,7 +70,7 @@ extension RedirectionTests {
             "_include/config/robots-disallow.txt",
             "_include/images/favicon.ico",
             "_include/images/favicon.png",
-            "_include/images/favicon_monochrome.svg",
+            "_include/images/pinicon.svg",
             "_include/images/logo.svg",
             ].map { ("/" + $0, "https://" + self.domain + "/" + $0) }
 
