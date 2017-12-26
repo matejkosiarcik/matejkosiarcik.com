@@ -17,7 +17,7 @@ import pystache
 
 
 def main(arguments):
-    """Main script function"""
+    """Classic main"""
     # parse arguments
     parser = argparse.ArgumentParser()
     parser.add_argument("-t", "--template", help="Path for template file")
