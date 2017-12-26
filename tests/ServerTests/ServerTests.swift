@@ -13,7 +13,7 @@ class ServerTests: XCTestCase {
 
 enum Hosts: String {
     case local = "example.com"
-    case testing = "test.binarytrex.com"
+    case staging = "test.binarytrex.com"
     case production = "binarytrex.com"
 
     static let current: Hosts = {

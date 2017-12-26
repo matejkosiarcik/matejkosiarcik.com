@@ -13,7 +13,7 @@ final class RedirectionTests: ServerTests {
 // MARK: - Helpers
 extension RedirectionTests {
     private func combinations(for source: String) -> [String] {
-        let subdomains = self.host == .testing ? [""] : ["", "www."]
+        let subdomains = self.host == .staging ? [""] : ["", "www."]
         let protocols = ["http://", "https://"]
         let prefices: [String] = subdomains.flatMap { subdomain in protocols.flatMap { $0 + subdomain } }
 
@@ -144,7 +144,7 @@ extension RedirectionTests {
         case .local:
             locations = ["", "test."].map { $0 + self.domain }
             realLocations = ["robots.txt", "robots-disallow.txt"]
-        case .testing:
+        case .staging:
             locations = [self.domain]
             realLocations = ["robots-disallow.txt"]
         case .production:
