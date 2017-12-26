@@ -12,7 +12,7 @@ class ServerTests: XCTestCase {
 }
 
 enum Hosts: String {
-    case local = "example.com"
+    case local = "binarytrex.localhost"
     case staging = "test.binarytrex.com"
     case production = "binarytrex.com"
 
@@ -33,9 +33,9 @@ extension ServerTests {
     func manager() -> Alamofire.SessionManager {
         // disable validating local server, otherwise requests fail
         let policies: [String: ServerTrustPolicy] = [
-            "example.com": .disableEvaluation,
-            "www.example.com": .disableEvaluation,
-            "test.example.com": .disableEvaluation,
+            "binarytrex.localhost": .disableEvaluation,
+            "www.binarytrex.localhost": .disableEvaluation,
+            "test.binarytrex.localhost": .disableEvaluation,
             ]
         return Alamofire.SessionManager(serverTrustPolicyManager: ServerTrustPolicyManager(policies: policies))
     }
