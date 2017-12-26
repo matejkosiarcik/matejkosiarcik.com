@@ -13,14 +13,26 @@ $description = $statuses[$status];
 if (empty($description)) { $description = "Unknown error occured"; }
 ?>
 
-{{> start.html}}
-
-<div class="content">
-    <div class="status"> <?php echo $status; ?> </div>
-    <div class="description font-size-l">
-        <p> <?php echo $description; ?> </p>
-        <p> Back to <a class="content-link" href="/">home</a> </p>
-    </div>
-</div>
-
-{{> end.html}}
+<!DOCTYPE html>
+<html lang="en" class="no-js no-touch">
+    <head>
+        {{> head.html }}
+        <link rel="stylesheet" type="text/css" href="/error/style.css">
+    </head>
+    <body class="font-size-m text-color-default">
+        <div id="main-container">
+            {{> header.html }}
+            <div id="page" class="content clear">
+                <div class="content">
+                    <div class="status"> <?php echo $status; ?> </div>
+                    <div class="description font-size-l">
+                        <p> <?php echo $description; ?> </p>
+                        <p> Back to <a class="content-link" href="/">home</a> </p>
+                    </div>
+                </div>
+            </div>
+            {{> footer.html }}
+        </div>
+        <script src="/_include/scripts/main.js" defer></script>
+    </body>
+</html>

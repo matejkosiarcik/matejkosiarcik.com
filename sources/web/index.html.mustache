@@ -1,25 +1,36 @@
-{{> start.html }}
-
-<header>
-    <h1 class="font-size-xl">Check out my apps</h1>
-</header>
-
-<div class="content font-size-s">
-    <ul class="app-icons">
-        {{# apps }}
-        <li class="app-icon">
-            <div class="content">
-                <a href="{{ url }}" class="no-decoration" title="{{ name }}">
-                    <img class="" src="_images/{{ url }}.svg">
-                </a>
-                <div class="description">
-                    <span class="bold">{{ name }}</span>
-                    {{ description }}
+<!DOCTYPE html>
+<html lang="en" class="no-js no-touch">
+    <head>
+        {{> head.html }}
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body class="font-size-m text-color-default">
+        <div id="main-container">
+            {{> header.html }}
+            <div id="page" class="content clear">
+                <header>
+                    <h1 class="font-size-xl">Check out my apps</h1>
+                </header>
+                <div class="content font-size-s">
+                    <ul class="app-icons">
+                        {{# apps }}
+                        <li class="app-icon">
+                            <div class="content">
+                                <a href="{{ url }}" class="no-decoration" title="{{ name }}">
+                                    <img class="" src="_images/{{ url }}.svg">
+                                </a>
+                                <div class="description">
+                                    <span class="bold">{{ name }}</span>
+                                    {{ description }}
+                                </div>
+                            </div>
+                        </li>
+                        {{/ apps }}
+                    </ul>
                 </div>
             </div>
-        </li>
-        {{/ apps }}
-    </ul>
-</div>
-
-{{> end.html}}
+            {{> footer.html }}
+        </div>
+        <script src="/_include/scripts/main.js" defer></script>
+    </body>
+</html>
