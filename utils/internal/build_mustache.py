@@ -29,22 +29,12 @@ def main(arguments):
     data_path = arguments.data
     page_path = os.path.dirname(template_path)
     shared_path = os.path.join("sources", "shared", "sources", "markup")
-    template = uni(open(template_path).read())
+    template = open(template_path).read()
     data = json.loads(open(data_path).read())
     renderer = pystache.Renderer(search_dirs=[page_path, shared_path], string_encoding="utf-8", file_encoding="utf-8")
 
     # get output
-    print(uni(renderer.render(template, data)))
-
-
-def uni(string):
-    """Converts/encodes string to unicode-like valid string"""
-    if sys.version_info < (3, 0, 0):
-        try:
-            return unicode(string, "utf-8")
-        except StandardError:
-            return str(string.encode("utf-8"))
-    return str(string)
+    print(renderer.render(template, data))
 
 
 if __name__ == "__main__":
