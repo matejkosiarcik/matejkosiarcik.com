@@ -1,4 +1,7 @@
 ---
+excluded:
+    - .build
+
 # rule on/off switching
 disabled_rules:
     - todo
