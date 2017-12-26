@@ -1,45 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js no-touch">
     <head>
-        <!-- basics -->
-        <meta charset="UTF-8">
-        <title>{{ title }}</title>
-
-        <!-- meta general -->
-        <meta name="author" content="Matej Košiarčik">
-        <meta name="keywords" content="{{ keywords }}">
-        <meta name="description" content="{{ description }}">
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
-        <!-- styles -->
-        <link rel="stylesheet" type="text/css" href="/_include/styles/main.css">
+        {{> head.html }}
         <link rel="stylesheet" type="text/css" href="{{ style-path-prefix }}style.css">
-
-        <!-- favourite icon -->
-        <link rel="icon" type="image/png" href="/_include/images/favicon.png">
-        <!--[if IE]>
-            <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
-        <![endif]-->
-
-        <!-- Safari pin icon -->
-        <link rel="mask-icon" href="/_include/images/pinicon.svg" color="#26ad5f">
-
-        <!-- is scripting enabled -->
-        <script type="text/javascript">
-            var features = document.documentElement.classList;
-            features.remove("no-js");
-            features.add("js");
-        </script>
     </head>
     <body class="font-size-m text-color-default">
         <div id="main-container">
-            <header class="clear">
-                <a class="no-decoration" href="/" title="Go back to home page">
-                    <img class="logo no-selection" src="/_include/images/logo.svg" alt="T-rex">
-                </a>
-                <nav class="float-right">
-                    <a class="info-link" href="/" rel="author" title="Go back to home page">Home</a>
-                    <a class="info-link" href="/about" rel="author" title="Learn more about me">About</a>
-                </nav>
-            </header>
+            {{> header.html }}
             <div id="page" class="content clear">
