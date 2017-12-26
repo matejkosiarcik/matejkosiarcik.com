@@ -103,28 +103,7 @@ $(PAGES_TARGET_DIR)/%.css: $(PAGES_SOURCE_DIR)/%.scss $(STYLE_INTERNAL)
 
 _build-style: $(STYLE_SHARED_TARGETS) $(STYLE_PAGE_TARGETS) #$(NORMALIZE_TARGET)
 
-# Scripts #
-SCRIPT_SOURCE_DIR = $(SHARED_SOURCE_DIR)/sources/scripts
-SCRIPT_TARGET_DIR = $(SHARED_TARGET_DIR)/scripts
-
-# TypeScript -> JavaScript
-SCRIPT_SHARED_INTERNAL = $(wildcard $(SCRIPT_SOURCE_DIR)/_*.ts)
-SCRIPT_SHARED_SOURCES = $(filter-out $(SCRIPT_SHARED_INTERNAL), $(wildcard $(SCRIPT_SOURCE_DIR)/*.ts))
-SCRIPT_SHARED_TARGETS = $(patsubst $(SCRIPT_SOURCE_DIR)/%.ts, $(SCRIPT_TARGET_DIR)/%.js, $(SCRIPT_SHARED_SOURCES))
-TYPESCRIPT_FLAGS = --module "commonjs" --target "ES3" --newLine "LF" \
-	--removeComments --preserveConstEnums --forceConsistentCasingInFileNames \
-	--strict --alwaysStrict --strictNullChecks \
-	--noEmitOnError --noImplicitAny --noImplicitThis --noImplicitReturns \
-	--noUnusedLocals --noUnusedParameters --noFallthroughCasesInSwitch
-
-$(SCRIPT_TARGET_DIR)/%.js: $(SCRIPT_SOURCE_DIR)/%.ts $(SCRIPT_SHARED_INTERNAL)
-	mkdir -p "$(@D)"
-	tsc $(TYPESCRIPT_FLAGS) "$<" --outDir "$(@D)"
-	browserify "$@" --outfile "$@"
-
-_build-scripts: $(SCRIPT_SHARED_TARGETS)
-
-_build-code: _build-markup _build-style _build-scripts
+_build-code: _build-markup _build-style
 
 ## Assets ##
 ASSET_SOURCE_DIR = $(SHARED_SOURCE_DIR)/assets
