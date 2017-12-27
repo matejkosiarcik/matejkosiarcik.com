@@ -1,8 +1,8 @@
 <?php
 $user_url = $_SERVER["REQUEST_URI"];
 $statuses = array(
-    403 => "You don't have access to this resource",
-    404 => "The requested URL \"$user_url\" was not found",
+    403 => "You don't have access to URL $user_url",
+    404 => "The requested URL $user_url was not found",
 );
 
 $status = $_GET["code"];
@@ -14,7 +14,7 @@ if (empty($description)) { $description = "Unknown error occured"; }
 ?>
 
 <!DOCTYPE html>
-<html lang="en" class="no-js no-touch">
+<html lang="en">
     <head>
         {{> head.html }}
         <link rel="stylesheet" type="text/css" href="/error/style.css">
@@ -23,13 +23,11 @@ if (empty($description)) { $description = "Unknown error occured"; }
         <div id="main-container">
             {{> header.html }}
             <div id="page" class="content clear">
-                <div class="content">
-                    <div class="status"> <?php echo $status; ?> </div>
-                    <div class="description font-size-l">
-                        <p> <?php echo $description; ?> </p>
-                        <p> Back to <a class="content-link" href="/">home</a> </p>
-                    </div>
-                </div>
+                <header>
+                    <h1 class="font-size-xl">Ough... <?php echo $status; ?></h1>
+                </header>
+                <p><?php echo $description; ?></p>
+                <p> Back to <a href="/">home</a> </p>
             </div>
             {{> footer.html }}
         </div>
