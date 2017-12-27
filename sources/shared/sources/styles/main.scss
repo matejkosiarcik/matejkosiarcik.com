@@ -20,9 +20,10 @@ p {
 }
 
 body {
-    background-color: $background-color;
+    background-color: #f6faf8;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Open Sans', Helvetica, sans-serif;
     line-height: 1.5em;
+    color: $text-color-default;
 }
 
 a {
