@@ -45,7 +45,7 @@ footer {
 }
 
 // Styles for whole page
-#main-container {
+#wrapper {
     @include margin-horizontal(auto);
     $page-spacing: 20px;
     $page-width: 600px;
@@ -62,7 +62,7 @@ footer {
 }
 
 // Header
-#main-container > header {
+#wrapper > header {
     width: 100%;
     margin-top: 15px;
 
@@ -72,7 +72,7 @@ footer {
 }
 
 // Content
-#main-container > .content {
+#wrapper > .content {
     width: 100%;
     margin-top: 15px;
     padding-bottom: 100px;
@@ -84,7 +84,7 @@ footer {
 }
 
 // Footer
-#main-container > footer {
+#wrapper > footer {
     position: absolute;
     bottom: 0;
     width: 100%;
