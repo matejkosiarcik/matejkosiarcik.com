@@ -51,7 +51,6 @@ extension RedirectionTests {
         // given
         let locations: [(source: String, destination: String)] = [
             ("", ""),
-            ("/about", "/about"),
             ("/zenplayer", "/zenplayer"),
             ].map { ($0.0, "https://" + self.domain + $0.1 + "/") }
 
