@@ -1,12 +1,5 @@
 {
     "title": "Binary T-Rex - apps for iPhone, iPad, Mac and more",
     "keywords": "app, mac, iphone, music",
-    "description": "Cool apps for iPhone, iPad, Mac and more.",
-    "apps": [
-        {
-            "name": "ZenPlayer",
-            "url": "zenplayer",
-            "description": "- minimalist way of listening to music"
-        }
-    ]
+    "description": "Cool apps for iPhone, iPad, Mac and more."
 }

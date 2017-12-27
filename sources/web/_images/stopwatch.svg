@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="100" viewBox="0 0 100 100" width="100">
+  <rect y="10" x="2" width="96" height="80" fill-opacity="0" stroke="#444" stroke-width="4" rx="8" ry="8"/>
+  <path d="m15 20l15 15l-15 15" fill-opacity="0" stroke="#444" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="m40 50h20" fill-opacity="0" stroke="#444" stroke-width="4" stroke-linecap="round"/>
+</svg>

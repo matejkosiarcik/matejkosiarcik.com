@@ -8,26 +8,34 @@
         <div id="main-container">
             {{> header.html }}
             <div id="page" class="content clear">
-                <header>
-                    <h1 class="font-size-xl">Check out my apps</h1>
-                </header>
-                <div class="content font-size-s">
-                    <ul class="app-icons">
-                        {{# apps }}
-                        <li class="app-icon">
-                            <div class="content">
-                                <a href="{{ url }}" class="no-decoration" title="{{ name }}">
-                                    <img class="" src="_images/{{ url }}.svg">
-                                </a>
-                                <div class="description">
-                                    <span class="bold">{{ name }}</span>
-                                    {{ description }}
-                                </div>
-                            </div>
-                        </li>
-                        {{/ apps }}
-                    </ul>
-                </div>
+                <p>Hi, I am Matej Košiarčik</p>
+                <p>
+                    I'm 22, live in Slovakia, study Computer science, and
+                    create apps for Mac, iPhone and good ol' terminal.
+                </p>
+                <p>Check out my projects:</p>
+                <table class="apps">
+                    <tr>
+                        <td>
+                            <img src="_images/zenplayer.svg" width="50" class="app-icon">
+                        </td>
+                        <td>
+                            ZenPlayer - Minimalistic music player for Mac
+                            <br>
+                            <a href="zenplayer">Check it out</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="_images/stopwatch.svg" width="45" class="app-icon">
+                        </td>
+                        <td>
+                            Stopwatch - Simple stopwatch in your terminal
+                            <br>
+                            Check it out on <a href="https://github.com/matejkosiarcik/stopwatch">GitHub</a>
+                        </td>
+                    </tr>
+                </table>
             </div>
             {{> footer.html }}
         </div>
