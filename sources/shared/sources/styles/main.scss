@@ -20,11 +20,12 @@ p {
 
 // Styling
 body {
-    background-color: #f6faf8;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Open Sans', Helvetica, sans-serif;
-    line-height: 1.5em;
+    $background-color: #f6faf8;
+    background-color: $background-color;
     color: $text-color-default;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Open Sans', Helvetica, sans-serif;
     font-size: 20px;
+    line-height: 1.5em;
 }
 
 a {
