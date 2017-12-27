@@ -3,10 +3,6 @@
 // See file LICENSE.txt or go to https://github.com/matejkosiarcik/personal-website for full license details.
 //
 
-$page-width: 600px;
-
 $text-color-default: #54545d;
-$text-color-light: lighten($text-color-default, 10%);
-$text-color-super-light: lighten($text-color-light, 10%);
-$text-color-dark: darken($text-color-default, 10%);
-$text-color-super-dark: darken($text-color-dark, 10%);
+$text-color-light: lighten($text-color-default, 15%);
+$text-color-dark: darken($text-color-default, 15%);
