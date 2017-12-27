@@ -25,6 +25,15 @@ body {
     line-height: 1.5em;
 }
 
+a {
+    transition: color .25s;
+    color: $text-color-light;
+
+    &:hover {
+        color: $text-color-super-dark;
+    }
+}
+
 // Styles for whole page
 #main-container {
     @include margin-horizontal(auto);
@@ -38,26 +47,6 @@ body {
     > * {
         @include padding-horizontal($page-spacing / 2);
         box-sizing: border-box;
-    }
-}
-
-.info-link {
-    transition: color .25s;
-    color: $text-color-super-light;
-    text-decoration: none;
-
-    &:hover {
-        color: $text-color-super-dark;
-        text-decoration: underline;
-    }
-}
-
-.content-link {
-    transition: color .25s;
-    color: $text-color-default;
-
-    &:hover {
-        color: $text-color-super-dark;
     }
 }
 
