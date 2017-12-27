@@ -1,22 +1,5 @@
 {
     "title": "ZenPlayer - minimal music player for Mac",
     "keywords": "app, mac, iphone, music",
-    "description": "ZenPlayer - minimalistic way to listen to music. From Mac user. To Mac users.",
-    "features": [
-        {
-            "image": "File.svg",
-            "alt": "File",
-            "description": "Play all your favourite music like mp3, m4a, aac and more."
-        },
-        {
-            "image": "Dock.svg",
-            "alt": "Dock",
-            "description": "Your dock stays crystal clean, see just tiny menu bar icon."
-        },
-        {
-            "image": "Shuffle.svg",
-            "alt": "Shuffle",
-            "description": "Repeat, random, linear, all your favourite looping mechanisms."
-        }
-    ]
+    "description": "ZenPlayer - minimalistic way to listen to music. From Mac user. To Mac users."
 }

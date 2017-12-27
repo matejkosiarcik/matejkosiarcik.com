@@ -11,24 +11,28 @@
                 <header>
                     <h1 class="font-size-xl">ZenPlayer</h1>
                 </header>
-                <div class="content font-size-s">
-                    <div class="features">
-                        {{# features }}
-                            <div class="feature">
-                                <div class="icon-container">
-                                    <img src="_images/{{ image }}" class="icon no-selection" alt="{{ alt }}">
-                                </div>
-                                <span class="description font-size-l">
-                                    {{ description }}
-                                </span>
-                            </div>
-                        {{/ features }}
-                    </div>
-                    <div class="download font-size-xl">
-                        <a href="https://appstore.com/mac/zenplayer" class="download-link" title="ZenPlayer at App Store" target="_blank">
-                            Download on the App&nbsp;Store
+                <div class="content font-size-m">
+                    <p>ZenPlayer is simple music player for Mac.</p>
+                    <table>
+                        <tr>
+                            <td><img class="feature-icon" src="_images/File.svg" width="50px"></td>
+                            <td>Play all your favourite music in .mp3, .m4a, .aac and more.</td>
+                        </tr>
+                        <tr>
+                            <td><img class="feature-icon" src="_images/Dock.svg" width="50px"></td>
+                            <td>Your dock stays clean, app shows just tiny menu bar icon.</td>
+                        </tr>
+                        <tr>
+                            <td><img class="feature-icon" src="_images/Shuffle.svg" width="50px"></td>
+                            <td>Repeat, random, linear, all your favourite looping mechanisms.</td>
+                        </tr>
+                    </table>
+                    <p>
+                        Check it out on the
+                        <a href="https://appstore.com/mac/zenplayer" title="ZenPlayer at App Store" target="_blank">
+                            App Store
                         </a>
-                    </div>
+                    </p>
                 </div>
             </div>
         {{> footer.html }}
