@@ -12,10 +12,8 @@
 html,
 body {
     height: 100%;
-    margin: 0;
 }
 
-h1,
 p {
     margin-top: .5em;
     margin-bottom: .5em;
@@ -24,6 +22,7 @@ p {
 body {
     background-color: $background-color;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Open Sans', Helvetica, sans-serif;
+    line-height: 1.5em;
 }
 
 // Styles for whole page
