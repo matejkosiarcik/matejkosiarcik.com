@@ -65,8 +65,6 @@ extension RedirectionTests {
         let locations: [(source: String, destination: String)] = [
             "favicon.ico",
             "robots.txt",
-            "_include/config/robots.txt",
-            "_include/config/robots-disallow.txt",
             "_include/images/favicon.ico",
             "_include/images/favicon.png",
             "_include/images/pinicon.svg",
