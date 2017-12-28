@@ -1,10 +1,12 @@
 <?xml version="1.0"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="100" viewBox="0 0 100 100" width="100">
-  <rect height="80" ry="8" fill="none" stroke="#3599db" stroke-width="5" width="56" x="22" y="10"/>
-  <g fill="none" stroke="#3599db" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
-    <path d="m32.5 55h35"/>
-    <path d="m32.5 66h35"/>
-    <path d="m32.5 77h35"/>
-    <path d="m53 10l25 25"/>
+<svg xmlns="http://www.w3.org/2000/svg" height="100" viewBox="0 0 100 100" width="100">
+  <g fill="none" stroke="#3599db" stroke-width="5">
+    <rect height="80" ry="8" width="56" x="22" y="10"/>
+    <g stroke-linecap="round" stroke-linejoin="round">
+      <path d="m32.5 55h35"/>
+      <path d="m32.5 66h35"/>
+      <path d="m32.5 77h35"/>
+      <path d="m53 10 25 25"/>
+    </g>
   </g>
 </svg>
