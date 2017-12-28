@@ -19,15 +19,15 @@ if (empty($description)) { $description = "Unknown error occured"; }
         {{> head.html }}
     </head>
     <body>
-        <div id="wrapper">
+        <div class="container">
             {{> header.html }}
-            <div class="content">
+            <section class="body">
                 <header>
                     <h1>Ough... <?php echo $status; ?></h1>
                 </header>
                 <p><?php echo $description; ?></p>
                 <p> Back to <a href="/">home</a> </p>
-            </div>
+            </section>
             {{> footer.html }}
         </div>
     </body>

@@ -41,29 +41,27 @@ a {
 }
 
 // Positioning & Styling
-#wrapper {
+.container {
     position: relative;
     width: 600px;
     max-width: 100%;
     min-height: 100%;
     margin: 0 auto;
-
-    > header,
-    > .content,
-    > footer {
-        padding-right: 10px;
-        padding-left: 10px;
-        box-sizing: border-box;
-    }
 }
 
-// main header
-#wrapper > header {
+header.header,
+section.body,
+footer.footer {
+    padding-right: 10px;
+    padding-left: 10px;
+    box-sizing: border-box;
+}
+
+header.header {
     margin-top: 15px;
 }
 
-// main content
-#wrapper > .content {
+section.body {
     // for desktop/wide-screen could be 70
     // but for mobile/narrow-screen is 80+ minimum
     padding-bottom: 85px;
@@ -73,8 +71,7 @@ a {
     }
 }
 
-// main footer
-#wrapper > footer {
+footer.footer {
     position: absolute;
     bottom: 0;
     width: 100%;
