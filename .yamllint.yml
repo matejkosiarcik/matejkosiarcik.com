@@ -4,8 +4,6 @@ extends: default
 # For all rules
 ignore: |
     .build/
-    build/
-    node_modules/
 
 # rule customization
 rules:

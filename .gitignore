@@ -1,5 +1,6 @@
 ### Generic ###
 build/
+dist/
 
 ### Project specific ###
 .vscode/
