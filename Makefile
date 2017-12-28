@@ -86,6 +86,7 @@ SASS_FLAGS = --scss --unix-newlines --style=expanded --load-path="$(STYLE_SOURCE
 $(STYLE_TARGET_DIR)/%.css: $(STYLE_SOURCE_DIR)/%.scss $(STYLE_INTERNAL)
 	mkdir -p "$(@D)"
 	sass $(SASS_FLAGS) --load-path="$(NORMALIZE_DIR)" "$<" "$@"
+	postcss "$@" --use autoprefixer -o "$@" 2>/dev/null
 	printf "%s\n" "$$(cssbeautify "$@")" >"$@"
 
 STYLE_PAGE_SOURCES = $(shell find "$(PAGES_SOURCE_DIR)" -name "*.scss")
