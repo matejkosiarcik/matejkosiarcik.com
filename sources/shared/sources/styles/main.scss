@@ -13,11 +13,6 @@ body {
     height: 100%;
 }
 
-p {
-    margin-top: .6em;
-    margin-bottom: .6em;
-}
-
 // Styling
 body {
     $background-color: #f6faf8;
@@ -26,6 +21,15 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Open Sans', Helvetica, sans-serif;
     font-size: 20px;
     line-height: 1.5em;
+}
+
+h1 {
+    font-weight: normal;
+}
+
+p {
+    margin-top: .6em;
+    margin-bottom: .6em;
 }
 
 a {
@@ -37,11 +41,7 @@ a {
     }
 }
 
-h1 {
-    font-weight: normal;
-}
-
-// Styles for whole page
+// Positioning & Styling
 #wrapper {
     @include margin-horizontal(auto);
     $page-spacing: 20px;
@@ -58,22 +58,23 @@ h1 {
     }
 }
 
-// Header
+// main header
 #wrapper > header {
     margin-top: 15px;
 }
 
-// Content
+// main content
 #wrapper > .content {
-    margin-top: 15px;
-    padding-bottom: 70px;
+    // for desktop/wide-screen could be 70
+    // but for mobile/narrow-screen is 80+ minimum
+    padding-bottom: 85px;
 
     > header {
         text-align: center;
     }
 }
 
-// Footer
+// main footer
 #wrapper > footer {
     position: absolute;
     bottom: 0;
