@@ -43,17 +43,17 @@ a {
 
 // Positioning & Styling
 #wrapper {
-    @include margin-horizontal(auto);
-    $page-spacing: 20px;
-    $page-width: 600px;
-
     position: relative;
-    width: $page-width + $page-spacing;
+    width: 600px;
     max-width: 100%;
     min-height: 100%;
+    margin: 0 auto;
 
-    > * {
-        @include padding-horizontal($page-spacing / 2);
+    > header,
+    > .content,
+    > footer {
+        padding-right: 10px;
+        padding-left: 10px;
         box-sizing: border-box;
     }
 }
