@@ -1,0 +1,34 @@
+<?php
+$user_url = $_SERVER["REQUEST_URI"];
+$statuses = array(
+    403 => "You don't have access to URL $user_url",
+    404 => "The requested URL $user_url was not found",
+);
+
+$status = $_GET["code"];
+if (empty($status)) { $status = 404; } // default error
+http_response_code($status);
+
+$description = $statuses[$status];
+if (empty($description)) { $description = "Unknown error occured"; }
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {{> head.html }}
+    </head>
+    <body>
+        <div class="container">
+            {{> header.html }}
+            <section class="body">
+                <header>
+                    <h1>Ough... <?php echo $status; ?></h1>
+                </header>
+                <p><?php echo $description; ?></p>
+                <p>Back to <a href="/">home</a></p>
+            </section>
+            {{> footer.html }}
+        </div>
+    </body>
+</html>

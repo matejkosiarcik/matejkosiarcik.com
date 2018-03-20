@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {{> head.html }}
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            {{> header.html }}
+            <section class="body">
+                <p>Hi, I am Matej Košiarčik</p>
+                <p>
+                    I'm 22, live in Slovakia, study Computer science, and
+                    create apps for Mac, iPhone and good ol' terminal.
+                </p>
+                <p>Check out my projects:</p>
+                <table class="apps">
+                    <tr>
+                        <td><img src="_images/zenplayer.svg" width="50" class="app-icon" alt=""/></td>
+                        <td>
+                            ZenPlayer - Minimalistic music player for Mac<br>
+                            <a href="zenplayer">Check it out</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="_images/stopwatch.svg" width="45" class="app-icon" alt=""></td>
+                        <td>
+                            Stopwatch - Simple stopwatch in your terminal<br>
+                            Check it out on <a href="https://github.com/matejkosiarcik/stopwatch" rel="nofollow">GitHub</a>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+            {{> footer.html }}
+        </div>
+    </body>
+</html>

@@ -1,0 +1,78 @@
+### Redirecting ###
+# Turn on rewriting with basic setup
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+</IfModule>
+
+# Force HTTPS
+# eg. from "http://example.com" to "https://example.com"
+<IfModule mod_rewrite.c>
+    RewriteCond %{SERVER_PORT} !^443$
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=302]
+</IfModule>
+
+# Remove leading www
+# eg. from "www.server.domain/..." to "server.domain/..."
+<IfModule mod_rewrite.c>
+    # http
+    RewriteCond %{SERVER_PORT} !^443$
+    RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+    RewriteRule ^(.*)$ http://%1/$1 [L,R=302]
+
+    # https
+    RewriteCond %{SERVER_PORT} ^443$
+    RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+    RewriteRule ^(.*)$ https://%1/$1 [L,R=302]
+</IfModule>
+
+# Squeeze multiple slashes
+# eg. from "example.com///foo//" to "example.com/foo/"
+<IfModule mod_rewrite.c>
+    RewriteCond %{THE_REQUEST} //
+    RewriteRule ^(.*)$ $1 [L,R=302]
+</IfModule>
+
+# Ensure files are accessed without trailing slash
+# eg. from "example.com/foo.bar/" to "example.com/foo.bar"
+<IfModule mod_rewrite.c>
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.+)/$ $1 [L,R=302]
+</IfModule>
+
+# Internal rewrite for files that should be in root
+<IfModule mod_rewrite.c>
+    RewriteRule ^favicon\.ico$ _include/images/$0 [L]
+
+    RewriteCond %{HTTP_HOST} ^test\. [NC]
+    RewriteRule ^robots\.txt$ _include/config/robots-disallow.txt [L]
+
+    RewriteCond %{HTTP_HOST} !^test\. [NC]
+    RewriteRule ^robots\.txt$ _include/config/robots.txt [L]
+</IfModule>
+
+### Errors ###
+# Declare custom error pages
+ErrorDocument 403 /error/403
+ErrorDocument 404 /error/404
+
+# Handle errors
+<IfModule mod_rewrite.c>
+    RewriteRule ^error/([4|5][0-9]{2})$ error/index.php?code=$1 [L]
+</IfModule>
+
+### Security ###
+# Disable hotlinking (only for production server)
+<IfModule mod_rewrite.c>
+    RewriteCond %{HTTP_HOST} ^binarytrex.com$ [NC]
+    RewriteCond %{HTTP_REFERER} !^$
+    RewriteCond %{HTTP_REFERER} !^http(s?)://(test\.|www\.)?binarytrex.com/(.*)$ [NC]
+    RewriteCond %{REQUEST_URI} !^(.*)/favicon\.(ico|png|svg)$ [NC]
+    RewriteRule \.(bmp|css|gif|ico|jpe?g|js|png|svg)$ - [F,L]
+</IfModule>
+
+# Filter request methods
+<IfModule mod_rewrite.c>
+    RewriteCond %{REQUEST_METHOD} !^(get|head|post)$ [NC]
+    RewriteRule ^(.*)$ - [F,L]
+</IfModule>
