@@ -4,9 +4,11 @@
 # Released under MIT license
 #
 
-# This effectively disables missing-module-docstring
-# pylint: disable=missing-docstring
-# pylint: enable=missing-docstring
+"""
+Mustache builder
+
+Generates output from mustache template and json data.
+"""
 
 from __future__ import (
     absolute_import, division, print_function, unicode_literals
@@ -19,7 +21,7 @@ import pystache
 
 
 def main(arguments):
-    """Classic main"""
+    """Execute program."""
     # parse arguments
     parser = argparse.ArgumentParser()
     parser.add_argument("-t", "--template", help="Path for template file")
