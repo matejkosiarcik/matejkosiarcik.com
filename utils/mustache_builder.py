@@ -1,14 +1,16 @@
 # -*- coding: utf-8 -*-
 #
-# This file is part of personal-website which is released under MIT license.
-# See file LICENSE.txt or go to https://github.com/matejkosiarcik/personal-website for full license details.
+# This file is part of personal-website by Matej Košiarčik
+# Released under MIT license
 #
 
 # This effectively disables missing-module-docstring
 # pylint: disable=missing-docstring
 # pylint: enable=missing-docstring
 
-from __future__ import absolute_import, division, print_function, unicode_literals
+from __future__ import (
+    absolute_import, division, print_function, unicode_literals
+)
 import argparse
 import json
 import os
@@ -31,7 +33,9 @@ def main(arguments):
     shared_path = os.path.join("sources", "shared", "sources", "markup")
     template = open(template_path).read()
     data = json.loads(open(data_path).read())
-    renderer = pystache.Renderer(search_dirs=[page_path, shared_path], string_encoding="utf-8", file_encoding="utf-8")
+    renderer = pystache.Renderer(search_dirs=[page_path, shared_path],
+                                 string_encoding="utf-8",
+                                 file_encoding="utf-8")
 
     # get output
     print(renderer.render(template, data))
