@@ -1,6 +1,6 @@
 //
-// This file is part of personal-website which is released under MIT license.
-// See file LICENSE.txt or go to https://github.com/matejkosiarcik/personal-website for full license details.
+// This file is part of personal-website by Matej Košiarčik
+// Released under MIT license
 //
 
 import Alamofire
