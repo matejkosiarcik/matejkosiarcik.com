@@ -33,8 +33,9 @@ def main(arguments):
     data_path = arguments.data
     page_path = os.path.dirname(template_path)
     shared_path = os.path.join("sources", "shared", "sources", "markup")
-    template = open(template_path).read()
-    data = json.loads(open(data_path).read())
+    with open(template_path) as template_file, open(data_path) as data_file:
+        template = template_file.read()
+        data = json.loads(data_file.read())
     renderer = pystache.Renderer(search_dirs=[page_path, shared_path],
                                  string_encoding="utf-8",
                                  file_encoding="utf-8")
