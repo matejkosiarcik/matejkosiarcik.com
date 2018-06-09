@@ -1,12 +1,10 @@
 section.body {
-    text-align: center;
+    // for desktop/wide-screen could be 70
+    // but for mobile/narrow-screen is 80+ minimum
+    padding-bottom: 85px;
 }
 
 // fix for elinks, does not support multiple classes or html5 elements
-p {
-    text-align: center;
-}
-
 .hidden {
     display: none;
 }
@@ -14,6 +12,7 @@ p {
 ul.apps {
     margin-top: 40px;
     padding: 0;
+    text-align: center;
 }
 
 .app {
@@ -44,4 +43,12 @@ ul.apps {
             opacity: 1;
         }
     }
+}
+
+footer.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin-bottom: 30px;
+    text-align: center;
 }

@@ -7,14 +7,16 @@
     <body>
         <div class="container">
             <section class="body">
-                <h1 class="font-XL">
-                    <span class="hidden">&nbsp;</span> <!-- fix for elinks centering (off by 1 char) -->
-                    Hi, I am Matej Košiarčik
-                </h1>
+                <div class="header">
+                    <h1 class="font-XL">
+                        <span class="hidden">&nbsp;</span> <!-- fix for elinks centering (off by 1 char) -->
+                        Hi, I am Matej Košiarčik
+                    </h1>
 
-                <p class="font-L">
-                    and I create software
-                </p>
+                    <p class="font-L">
+                        and I create software
+                    </p>
+                </div>
 
                 <ul class="apps">
                     <li class="app">
@@ -40,7 +42,13 @@
                     </li>
                 </ul>
             </section>
-            {{> footer.html }}
+            <footer class="footer">
+                Contact:
+                <a href="https://twitter.com/matejkosiarcik" rel="nofollow" title="@matejkosiarcik" target="_blank">TWITTER</a> |
+                <a href="https://linkedin.com/in/matejkosiarcik" rel="nofollow" title="@matejkosiarcik" target="_blank">LINKEDIN</a> |
+                <a href="https://github.com/matejkosiarcik" rel="nofollow" title="@matejkosiarcik" target="_blank">GITHUB</a> |
+                <a href="mailto:matejkosiarcik@gmail.com" rel="nofollow" title="matejkosiarcik@gmail.com" target="">EMAIL</a>
+            </footer>
         </div>
     </body>
 </html>

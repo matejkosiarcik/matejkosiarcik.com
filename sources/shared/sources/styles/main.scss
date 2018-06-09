@@ -51,34 +51,11 @@ a {
     max-width: 100%;
     min-height: 100%;
     margin: 0 auto;
-}
-
-header.header,
-section.body,
-footer.footer {
     padding-right: 10px;
     padding-left: 10px;
     box-sizing: border-box;
 }
 
-header.header {
-    margin-top: 15px;
-}
-
-section.body {
-    // for desktop/wide-screen could be 70
-    // but for mobile/narrow-screen is 80+ minimum
-    padding-bottom: 85px;
-
-    > header {
-        text-align: center;
-    }
-}
-
-footer.footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    margin-bottom: 30px;
+.header {
     text-align: center;
 }
