@@ -1,8 +1,59 @@
-.app-icon {
-    display: block;
-    margin-right: 15px;
+.font-large {
+    font-size: 2.1em;
 }
 
-.apps td {
-    padding-bottom: .6em;
+.font-medium {
+    font-size: 1.7em;
+}
+
+.font-small {
+    font-size: 1.1em;
+}
+
+section.body {
+    text-align: center;
+}
+
+// fix for elinks, does not support multiple classes or html5 elements
+p {
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+ul.apps {
+    margin-top: 40px;
+    padding: 0;
+}
+
+.app {
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+    vertical-align: top;
+
+    .icon {
+        width: 45%;
+        transition: width .5s;
+    }
+
+    .description {
+        position: relative;
+        left: -50%;
+        width: 200%;
+        transition: opacity .25s;
+        opacity: 0;
+    }
+
+    &:hover {
+        .icon {
+            width: 65%;
+        }
+
+        .description {
+            opacity: 1;
+        }
+    }
 }
