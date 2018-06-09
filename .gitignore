@@ -3,7 +3,6 @@ build/
 dist/
 
 ### Project specific ###
-.vscode/
 .sass-cache/
 
 ### SwiftPM ###
