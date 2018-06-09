@@ -9,26 +9,20 @@ body {
 
 // Styling
 body {
-    $background-color: #f2f2f2;
-    background-color: $background-color;
+    background-color: #f2f2f2;
     color: $text-color-default;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Open Sans', Helvetica, sans-serif;
-    font-size: 20px;
-    line-height: 1.5em;
 }
 
 h1 {
     font-weight: normal;
 }
 
-p {
-    margin-top: .6em;
-    margin-bottom: .6em;
-}
 
 a {
     transition: color .25s;
     color: $text-color-light;
+    text-decoration: underline;
 
     &:hover {
         color: $text-color-dark;
@@ -71,6 +65,5 @@ footer.footer {
     bottom: 0;
     width: 100%;
     margin-bottom: 30px;
-    font-size: 16px;
     text-align: center;
 }
