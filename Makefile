@@ -20,13 +20,13 @@ help:
 # Cleaning
 .PHONY: clean
 clean:
-	rm -rf "$(TARGET_DIR)"
+	rm -rf '$(TARGET_DIR)'
 
 .PHONY: distclean
 distclean: clean
-	rm -rf "$(NODE_DIR)"
-	rm -rf "$(SWIFT_DIR)"
-	rm -rf "$(wildcard *.xcodeproj)"
+	rm -rf '$(NODE_DIR)'
+	rm -rf '$(SWIFT_DIR)'
+	rm -rf '$(wildcard *.xcodeproj)'
 
 # Dependency resolution
 NODE_DIR = node_modules
@@ -62,13 +62,13 @@ SHARED_TARGET_DIR = $(DEBUG_DIR)/_include
 # Markup #
 # Mustache -> HTML
 MARKUP_SHARED_SOURCES = $(wildcard $(SHARED_SOURCE_DIR)/sources/markup/*.mustache)
-MARKUP_SOURCES = $(shell find "$(PAGES_SOURCE_DIR)" -name "*.mustache")
+MARKUP_SOURCES = $(shell find '$(PAGES_SOURCE_DIR)' -name '*.mustache')
 MARKUP_TARGETS = $(patsubst $(PAGES_SOURCE_DIR)%.mustache, $(PAGES_TARGET_DIR)%, $(MARKUP_SOURCES))
-MARKUP_DATA = $(shell find "$(PAGES_SOURCE_DIR)" -name "data.json")
+MARKUP_DATA = $(shell find '$(PAGES_SOURCE_DIR)' -name 'data.json')
 
 $(PAGES_TARGET_DIR)%: $(PAGES_SOURCE_DIR)%.mustache $(MARKUP_SHARED_SOURCES) $(MARKUP_DATA)
-	mkdir -p "$(@D)"
-	python3 'utils/mustache_builder.py' --template "$<" --data "$(<D)/data.json" >"$@"
+	mkdir -p '$(@D)'
+	python3 'utils/mustache_builder.py' --template '$<' --data '$(<D)/data.json' >'$@'
 
 _build-markup: $(MARKUP_TARGETS)
 
@@ -81,21 +81,21 @@ STYLE_TARGET_DIR = $(SHARED_TARGET_DIR)/styles
 STYLE_INTERNAL = $(wildcard $(STYLE_SOURCE_DIR)/_*.scss)
 STYLE_SHARED_SOURCES = $(filter-out $(STYLE_INTERNAL), $(wildcard $(STYLE_SOURCE_DIR)/*.scss))
 STYLE_SHARED_TARGETS = $(patsubst $(STYLE_SOURCE_DIR)/%.scss, $(STYLE_TARGET_DIR)/%.css, $(STYLE_SHARED_SOURCES))
-SASS_FLAGS = --scss --unix-newlines --style=expanded --load-path="$(STYLE_SOURCE_DIR)"
+SASS_FLAGS = --scss --unix-newlines --style=expanded --load-path='$(STYLE_SOURCE_DIR)'
 
 $(STYLE_TARGET_DIR)/%.css: $(STYLE_SOURCE_DIR)/%.scss $(STYLE_INTERNAL)
-	mkdir -p "$(@D)"
-	sass $(SASS_FLAGS) --load-path="$(NORMALIZE_DIR)" "$<" "$@"
-	postcss "$@" --use autoprefixer -o "$@" 2>/dev/null
-	printf "%s\n" "$$(cssbeautify "$@")" >"$@"
+	mkdir -p '$(@D)'
+	sass $(SASS_FLAGS) --load-path='$(NORMALIZE_DIR)' '$<' '$@'
+	postcss '$@' --use autoprefixer -o '$@' 2>/dev/null
+	printf '%s\n' "$$(cssbeautify '$@')" >'$@'
 
-STYLE_PAGE_SOURCES = $(shell find "$(PAGES_SOURCE_DIR)" -name "*.scss")
+STYLE_PAGE_SOURCES = $(shell find '$(PAGES_SOURCE_DIR)' -name '*.scss')
 STYLE_PAGE_TARGETS = $(patsubst $(PAGES_SOURCE_DIR)/%.scss, $(PAGES_TARGET_DIR)/%.css, $(STYLE_PAGE_SOURCES))
 
 $(PAGES_TARGET_DIR)/%.css: $(PAGES_SOURCE_DIR)/%.scss $(STYLE_INTERNAL)
-	mkdir -p "$(@D)"
-	sass $(SASS_FLAGS) "$<" "$@"
-	printf "%s\n" "$$(cssbeautify "$@")" >"$@"
+	mkdir -p '$(@D)'
+	sass $(SASS_FLAGS) '$<' '$@'
+	printf '%s\n' "$$(cssbeautify '$@')" >'$@'
 
 _build-style: $(STYLE_SHARED_TARGETS) $(STYLE_PAGE_TARGETS) #$(NORMALIZE_TARGET)
 
@@ -106,32 +106,32 @@ ASSET_SOURCE_DIR = $(SHARED_SOURCE_DIR)/assets
 ASSET_TARGET_DIR = $(SHARED_TARGET_DIR)
 
 # Shared
-ASSET_SHARED_SOURCES = $(shell find "$(ASSET_SOURCE_DIR)" -type f)
+ASSET_SHARED_SOURCES = $(shell find '$(ASSET_SOURCE_DIR)' -type f)
 ASSET_SHARED_TARGETS = $(patsubst $(ASSET_SOURCE_DIR)/%, $(ASSET_TARGET_DIR)/%, $(ASSET_SHARED_SOURCES))
 
 $(ASSET_TARGET_DIR)/%: $(ASSET_SOURCE_DIR)/%
-	mkdir -p "$(@D)"
-	cp "$<" "$@"
+	mkdir -p '$(@D)'
+	cp '$<' '$@'
 
 # Pages
-ASSET_PAGE_SOURCES = $(shell find "$(PAGES_SOURCE_DIR)" -type f -path "*/_*/*")
+ASSET_PAGE_SOURCES = $(shell find '$(PAGES_SOURCE_DIR)' -type f -path '*/_*/*')
 ASSET_PAGE_TARGETS = $(patsubst $(PAGES_SOURCE_DIR)/%, $(PAGES_TARGET_DIR)/%, $(ASSET_PAGE_SOURCES))
 
 $(PAGES_TARGET_DIR)/%.ico: $(PAGES_SOURCE_DIR)/%.ico
-	mkdir -p "$(@D)"
-	cp "$<" "$@"
+	mkdir -p '$(@D)'
+	cp '$<' '$@'
 
 $(PAGES_TARGET_DIR)/%.png: $(PAGES_SOURCE_DIR)/%.png
-	mkdir -p "$(@D)"
-	cp "$<" "$@"
+	mkdir -p '$(@D)'
+	cp '$<' '$@'
 
 $(PAGES_TARGET_DIR)/%.jpg: $(PAGES_SOURCE_DIR)/%.jpg
-	mkdir -p "$(@D)"
-	cp "$<" "$@"
+	mkdir -p '$(@D)'
+	cp '$<' '$@'
 
 $(PAGES_TARGET_DIR)/%.svg: $(PAGES_SOURCE_DIR)/%.svg
-	mkdir -p "$(@D)"
-	cp "$<" "$@"
+	mkdir -p '$(@D)'
+	cp '$<' '$@'
 
 _build-assets: $(ASSET_SHARED_TARGETS) $(ASSET_PAGE_TARGETS)
 
@@ -142,8 +142,8 @@ APACHE_SOURCE = $(PAGES_SOURCE_DIR)/.htaccess
 APACHE_TARGET = $(PAGES_TARGET_DIR)/.htaccess
 
 $(APACHE_TARGET): $(APACHE_SOURCE) $(APACHE_DEPENDENCY)
-	mkdir -p "$(@D)"
-	cat $^ >"$@"
+	mkdir -p '$(@D)'
+	cat $^ >'$@'
 
 _build-config: $(APACHE_TARGET)
 
