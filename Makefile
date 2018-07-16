@@ -9,7 +9,7 @@ RELEASE_DIR = $(TARGET_DIR)/release
 
 # Default target
 .PHONY: all
-all: build test
+all: build
 
 # Help message
 .PHONY: help
@@ -25,31 +25,20 @@ clean:
 .PHONY: distclean
 distclean: clean
 	rm -rf '$(NODE_DIR)'
-	rm -rf '$(SWIFT_DIR)'
 	rm -rf '$(wildcard *.xcodeproj)'
 
 # Dependency resolution
 NODE_DIR = node_modules
-SWIFT_DIR = .build
 
 $(NODE_DIR):
 	npm install --save --saveDev
 
-$(SWIFT_DIR):
-	swift package resolve
-
 .PHONY: bootstrap
-bootstrap: $(NODE_DIR) $(SWIFT_DIR)
+bootstrap: $(NODE_DIR)
 
 .PHONY: update
 update:
 	npm update --save --saveDev
-	swift package update
-
-# Testing
-.PHONY: test
-test: $(SWIFT_DIR) build
-	swift test -Xswiftc -DDEBUG
 
 ### Build ###
 SOURCE_DIR = sources
