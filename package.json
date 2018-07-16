@@ -1,19 +1,10 @@
 {
-    "name": "personal-website",
-    "version": "0.1.0",
-    "description": "My personal website https://binarytrex.com",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/matejkosiarcik/personal-website.git"
-    },
-    "author": "Matej Košiarčik <matejkosiarcik@gmail.com>",
-    "license": "MIT",
-    "homepage": "https://github.com/matejkosiarcik/personal-website#readme",
+    "private": true,
     "dependencies": {
         "apache-server-configs": "^2.0.0",
         "normalize.css": "^7.0.0"
     },
     "scripts": {
-        "postinstall": "cd node_modules/normalize.css && cp normalize.css normalize.scss"
+        "postinstall": "cd 'node_modules/normalize.css' && cp 'normalize.css' 'normalize.scss'"
     }
 }
