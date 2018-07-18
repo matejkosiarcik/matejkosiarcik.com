@@ -124,18 +124,6 @@ $(PAGES_TARGET_DIR)/%.svg: $(PAGES_SOURCE_DIR)/%.svg
 
 _build-assets: $(ASSET_SHARED_TARGETS) $(ASSET_PAGE_TARGETS)
 
-## Config ##
-# Apache config
-APACHE_DEPENDENCY = $(NODE_DIR)/apache-server-configs/dist/.htaccess
-APACHE_SOURCE = $(PAGES_SOURCE_DIR)/.htaccess
-APACHE_TARGET = $(PAGES_TARGET_DIR)/.htaccess
-
-$(APACHE_TARGET): $(APACHE_SOURCE) $(APACHE_DEPENDENCY)
-	mkdir -p '$(@D)'
-	cat $^ >'$@'
-
-_build-config: $(APACHE_TARGET)
-
 ## General ##
 .PHONY: build
-build: $(NODE_DIR) _build-code _build-assets _build-config
+build: $(NODE_DIR) _build-code _build-assets
