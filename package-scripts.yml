@@ -1,13 +1,13 @@
 scripts:
   build:
     default: nps build.prepare build.config
-    prepare: mkdirp 'build/debug'
+    prepare: mkdirp 'build'
     config:
       default: nps build.config.robots build.config.htaccess
       robots:
         default: nps build.config.robots.main build.config.robots.alt
-        main: cp 'sources/web/robots.txt' 'build/debug/'
-        alt: cp 'sources/web/robots-disallow.txt' 'build/debug/'
-      htaccess: cat 'sources/web/.htaccess' 'node_modules/apache-server-configs/dist/.htaccess' >'build/debug/.htaccess'
+        main: cp 'sources/web/robots.txt' 'build/'
+        alt: cp 'sources/web/robots-disallow.txt' 'build/'
+      htaccess: cat 'sources/web/.htaccess' 'node_modules/apache-server-configs/dist/.htaccess' >'build/.htaccess'
   clean:
     default: rimraf 'build'

@@ -4,8 +4,6 @@ MAKEFLAGS += --warn-undefined-variables
 
 ### Setup ###
 TARGET_DIR = build
-DEBUG_DIR = $(TARGET_DIR)/debug
-RELEASE_DIR = $(TARGET_DIR)/release
 
 # Default target
 .PHONY: all
@@ -43,9 +41,9 @@ update:
 ### Build ###
 SOURCE_DIR = sources
 PAGES_SOURCE_DIR = $(SOURCE_DIR)/web
-PAGES_TARGET_DIR = $(DEBUG_DIR)
+PAGES_TARGET_DIR = $(TARGET_DIR)
 SHARED_SOURCE_DIR = $(SOURCE_DIR)/shared
-SHARED_TARGET_DIR = $(DEBUG_DIR)/_include
+SHARED_TARGET_DIR = $(TARGET_DIR)/_include
 
 ## Code ##
 # Markup #
