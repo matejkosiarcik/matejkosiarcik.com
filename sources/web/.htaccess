@@ -53,8 +53,7 @@
 
 ### Errors ###
 # Declare custom error pages
-ErrorDocument 403 /error/403
-ErrorDocument 404 /error/404
+ErrorDocument 404 /error.php
 
 # Handle errors
 <IfModule mod_rewrite.c>

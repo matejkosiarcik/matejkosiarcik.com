@@ -32,7 +32,7 @@ def main(arguments):
     template_path = arguments.template
     data_path = arguments.data
     page_path = os.path.dirname(template_path)
-    shared_path = os.path.join("sources", "shared", "sources", "markup")
+    shared_path = os.path.join("sources", "web", "markup")
     with open(template_path) as template_file, open(data_path) as data_file:
         template = template_file.read()
         data = json.loads(data_file.read())
