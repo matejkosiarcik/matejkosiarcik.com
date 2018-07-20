@@ -42,8 +42,6 @@
 
 # Internal rewrite for files that should be in root
 <IfModule mod_rewrite.c>
-    RewriteRule ^favicon\.ico$ _include/images/$0 [L]
-
     RewriteCond %{HTTP_HOST} ^test\. [NC]
     RewriteRule ^robots\.txt$ robots-disallow.txt [L]
 

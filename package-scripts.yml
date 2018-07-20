@@ -17,7 +17,7 @@ scripts:
     assets:
       default: nps build.assets.images build.assets.favicon
       images: cp -R 'sources/web/images' 'build/images'
-      favicon: cp -R 'sources/web/favicon' 'build/favicon'
+      favicon: cp -R 'sources/web/favicon' 'build'
 
     # zenplayer subpage is planned to be moved elsewhere
     # so we move it aside to be ready to be removed
