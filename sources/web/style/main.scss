@@ -1,15 +1,13 @@
 @import 'constants';
 @import 'normalize';
 
-// Normalizing
 html,
 body {
     height: 100%;
 }
 
-// Styling
 body {
-    background-color: #f2f2f2;
+    background-color: #fbfdff;
     color: $text-color-default;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Open Sans', Helvetica, sans-serif;
 }
@@ -19,7 +17,7 @@ h1 {
 }
 
 a {
-    transition: color .25s;
+    transition: color .4s ease-in-out;
     color: $text-color-light;
     text-decoration: underline;
 
@@ -60,5 +58,5 @@ a {
 }
 
 .footer {
-    padding-bottom: 30px;
+    padding-bottom: 20px;
 }
