@@ -4,7 +4,7 @@ scripts:
     prepare: mkdirp 'build'
     config:
       default: nps build.config.robots build.config.htaccess
-      robots: cp -R 'sources/web/robots' 'build'
+      robots: cp -R 'sources/web/robots/' 'build'
       htaccess: cat 'sources/web/.htaccess' 'node_modules/apache-server-configs/dist/.htaccess' >'build/.htaccess'
     markup:
       default: nps build.markup.index build.markup.error
@@ -16,8 +16,8 @@ scripts:
       prefix: postcss 'build/css' --use autoprefixer --no-map --replace
     assets:
       default: nps build.assets.images build.assets.favicon
-      images: cp -R 'sources/web/images' 'build/images'
-      favicon: cp -R 'sources/web/favicon' 'build'
+      images: cp -R 'sources/web/images/' 'build/images'
+      favicon: cp -R 'sources/web/favicon/' 'build'
 
     # zenplayer subpage is planned to be moved elsewhere
     # so we move it aside to be ready to be removed
@@ -31,7 +31,7 @@ scripts:
         prefix: postcss 'build/zenplayer/css' --use autoprefixer --no-map --replace
       assets:
         default: nps build.zenplayer.assets.images
-        images: cp -R 'sources/zenplayer/images' 'build/zenplayer/images'
+        images: cp -R 'sources/zenplayer/images/' 'build/zenplayer/images'
 
   clean:
     default: rimraf 'build'
