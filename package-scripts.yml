@@ -4,10 +4,7 @@ scripts:
     prepare: mkdirp 'build'
     config:
       default: nps build.config.robots build.config.htaccess
-      robots:
-        default: nps build.config.robots.main build.config.robots.alt
-        main: cp 'sources/web/robots.txt' 'build/'
-        alt: cp 'sources/web/robots-disallow.txt' 'build/'
+      robots: cp -R 'sources/web/robots' 'build'
       htaccess: cat 'sources/web/.htaccess' 'node_modules/apache-server-configs/dist/.htaccess' >'build/.htaccess'
     markup:
       default: nps build.markup.index build.markup.error
