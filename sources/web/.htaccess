@@ -53,12 +53,7 @@
 
 ### Errors ###
 # Declare custom error pages
-ErrorDocument 404 /error.php
-
-# Handle errors
-<IfModule mod_rewrite.c>
-    RewriteRule ^error/([4|5][0-9]{2})$ error/index.php?code=$1 [L]
-</IfModule>
+ErrorDocument 404 /error.html
 
 ### Security ###
 # Disable hotlinking (only for production server)

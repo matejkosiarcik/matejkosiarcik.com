@@ -9,7 +9,7 @@ scripts:
     markup:
       default: nps build.markup.index build.markup.error
       index: python3 'utils/mustache_builder.py' --template 'sources/web/index.html.mustache' --data 'sources/web/index.json' >'build/index.html'
-      error: python3 'utils/mustache_builder.py' --template 'sources/web/error.php.mustache' --data 'sources/web/error.json' >'build/error.php'
+      error: python3 'utils/mustache_builder.py' --template 'sources/web/error.html.mustache' --data 'sources/web/error.json' >'build/error.html'
     style:
       default: nps build.style.scss build.style.prefix
       scss: node-sass 'sources/web/style' --include-path 'node_modules/normalize.css' --linefeed lf --output-style expanded --output 'build/css'
