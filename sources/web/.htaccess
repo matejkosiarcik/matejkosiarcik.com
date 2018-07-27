@@ -60,11 +60,11 @@ ErrorDocument 404 /error.html
     RewriteCond %{HTTP_REFERER} !^$
     RewriteCond %{HTTP_REFERER} !^http(s?)://(test\.|www\.)?binarytrex.com/(.*)$ [NC]
     RewriteCond %{REQUEST_URI} !^(.*)/favicon\.(ico|png|svg)$ [NC]
-    RewriteRule \.(bmp|css|gif|ico|jpe?g|js|png|svg)$ - [F,L]
+    RewriteRule \.(css|ico|png|svg)$ - [F,L]
 </IfModule>
 
 # Filter request methods
 <IfModule mod_rewrite.c>
-    RewriteCond %{REQUEST_METHOD} !^(get|head|post)$ [NC]
+    RewriteCond %{REQUEST_METHOD} !^(get|head)$ [NC]
     RewriteRule ^(.*)$ - [F,L]
 </IfModule>
