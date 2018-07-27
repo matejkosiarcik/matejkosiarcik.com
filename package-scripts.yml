@@ -8,8 +8,8 @@ scripts:
       htaccess: cat 'sources/web/.htaccess' 'node_modules/apache-server-configs/dist/.htaccess' >'build/.htaccess'
     markup:
       default: nps build.markup.index build.markup.error
-      index: python3 'utils/mustache_builder.py' --template 'sources/web/index.html.mustache' --data 'sources/web/index.json' >'build/index.html'
-      error: python3 'utils/mustache_builder.py' --template 'sources/web/error.html.mustache' --data 'sources/web/error.json' >'build/error.html'
+      index: python3 'utils/mustache.py' --template 'sources/web/index.html.mustache' --data 'sources/web/index.json' >'build/index.html'
+      error: python3 'utils/mustache.py' --template 'sources/web/error.html.mustache' --data 'sources/web/error.json' >'build/error.html'
     style:
       default: nps build.style.scss build.style.prefix
       scss: node-sass 'sources/web/style' --include-path 'node_modules/normalize.css' --linefeed lf --output-style expanded --output 'build/css'
@@ -24,7 +24,7 @@ scripts:
     zenplayer:
       default: nps build.zenplayer.prepare build.zenplayer.markup build.zenplayer.style
       prepare: mkdirp 'build/zenplayer'
-      markup: python3 'utils/mustache_builder.py' --template 'sources/zenplayer/index.html.mustache' --data 'sources/zenplayer/index.json' >'build/zenplayer/index.html'
+      markup: python3 'utils/mustache.py' --template 'sources/zenplayer/index.html.mustache' --data 'sources/zenplayer/index.json' >'build/zenplayer/index.html'
       style:
         default: nps build.zenplayer.style.scss build.zenplayer.style.prefix
         scss: node-sass 'sources/zenplayer/index.scss' --linefeed lf --output-style expanded --output 'build/zenplayer/css'
