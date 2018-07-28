@@ -16,15 +16,19 @@
 }
 
 .app {
+    $animation-enlarge: 10px;
+    $size: 40px;
+
     display: inline-block;
     width: 100px;
     text-align: center;
     vertical-align: top;
 
     .icon {
-        width: 45%;
-        padding-top: 20%;
-        transition: .5s width, .5s padding;
+        height: $size;
+        margin-top: 10px; // fixes safari animation twitching
+        padding-top: $animation-enlarge;
+        transition: .3s height, .3s padding-top;
     }
 
     .description {
@@ -37,7 +41,7 @@
 
     &:hover {
         .icon {
-            width: 65%;
+            height: $size + $animation-enlarge;
             padding-top: 0;
         }
 
