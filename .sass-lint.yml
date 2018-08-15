@@ -5,6 +5,7 @@ options:
 files:
   ignore:
     - node_modules/**/*
+    - web/node_modules/**/*
 
 rules:
   # disabling
@@ -12,9 +13,6 @@ rules:
   no-qualifying-elements: 0
 
   # customization
-  indentation:
-    - 2
-    - size: 4
   property-sort-order:
     - 2
     - order: smacss
