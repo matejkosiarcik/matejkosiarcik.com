@@ -1,3 +1,6 @@
+# This Makefile does not contain any build steps
+# It only groups scripts to use in project
+
 # setup
 MAKEFLAGS += --warn-undefined-variables
 FORCE:
