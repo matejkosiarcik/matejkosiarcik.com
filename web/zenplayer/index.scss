@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.content {
+  margin-bottom: 5vh;
+  text-align: center;
+}
+
+img {
+  height: 1.4em;
+  padding-bottom: .15em;
+  vertical-align: middle;
+}
