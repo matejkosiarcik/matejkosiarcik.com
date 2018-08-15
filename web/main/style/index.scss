@@ -1,56 +1,56 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 // fix for elinks, does not support multiple classes or html5 elements
 .hidden {
-    display: none;
+  display: none;
 }
 
 .apps {
-    margin-top: 40px;
-    padding: 0;
-    text-align: center;
+  margin-top: 40px;
+  padding: 0;
+  text-align: center;
 }
 
 .app {
-    $animation-enlarge: 10px;
-    $size: 40px;
+  $animation-enlarge: 10px;
+  $size: 40px;
 
-    display: inline-block;
-    width: 100px;
-    text-align: center;
-    vertical-align: top;
+  display: inline-block;
+  width: 100px;
+  text-align: center;
+  vertical-align: top;
 
+  .icon {
+    height: $size;
+    margin-top: 10px; // fixes safari animation twitching
+    padding-top: $animation-enlarge;
+    transition: .3s height, .3s padding-top;
+  }
+
+  .description {
+    position: relative;
+    left: -50%;
+    width: 200%;
+    transition: opacity .3s;
+    opacity: 0;
+  }
+
+  &:hover {
     .icon {
-        height: $size;
-        margin-top: 10px; // fixes safari animation twitching
-        padding-top: $animation-enlarge;
-        transition: .3s height, .3s padding-top;
+      height: $size + $animation-enlarge;
+      padding-top: 0;
     }
 
     .description {
-        position: relative;
-        left: -50%;
-        width: 200%;
-        transition: opacity .3s;
-        opacity: 0;
+      opacity: 1;
     }
-
-    &:hover {
-        .icon {
-            height: $size + $animation-enlarge;
-            padding-top: 0;
-        }
-
-        .description {
-            opacity: 1;
-        }
-    }
+  }
 }
 
 .footer {
-    text-align: center;
+  text-align: center;
 }
