@@ -4,30 +4,30 @@ scripts:
     prepare: mkdirp 'build'
     config:
       default: nps build.config.robots build.config.htaccess
-      robots: cp -R 'main/robots/' 'build'
-      htaccess: cat 'main/.htaccess' 'node_modules/apache-server-configs/dist/.htaccess' >'build/.htaccess'
+      robots: cp -R 'web/main/robots/' 'build'
+      htaccess: cat 'web/main/.htaccess' 'node_modules/apache-server-configs/dist/.htaccess' >'build/.htaccess'
     markup:
       default: nps build.markup.index build.markup.error
-      index: mustache -p 'main/markup/head.html.mustache' 'main/index.json' 'main/index.html.mustache' >'build/index.html'
-      error: mustache -p 'main/markup/head.html.mustache' 'main/error.json' 'main/error.html.mustache' >'build/error.html'
+      index: mustache -p 'web/main/markup/head.html.mustache' 'web/main/index.json' 'web/main/index.html.mustache' >'build/index.html'
+      error: mustache -p 'web/main/markup/head.html.mustache' 'web/main/error.json' 'web/main/error.html.mustache' >'build/error.html'
     style:
       default: nps build.style.scss build.style.prefix
-      scss: node-sass 'main/style' --include-path 'node_modules/normalize.css' --linefeed lf --output-style expanded --output 'build/css'
+      scss: node-sass 'web/main/style' --include-path 'node_modules/normalize.css' --linefeed lf --output-style expanded --output 'build/css'
       prefix: postcss 'build/css' --use autoprefixer --no-map --replace
     assets:
       default: nps build.assets.images build.assets.favicon
-      images: cp -R 'main/images/' 'build/images'
-      favicon: cp -R 'main/favicon/' 'build'
+      images: cp -R 'web/main/images/' 'build/images'
+      favicon: cp -R 'web/main/favicon/' 'build'
 
     # zenplayer subpage is planned to be moved elsewhere
     # so we move it aside to be ready to be removed
     zenplayer:
       default: nps build.zenplayer.prepare build.zenplayer.markup build.zenplayer.style
       prepare: mkdirp 'build/zenplayer'
-      markup: mustache -p 'main/markup/head.html.mustache' 'zenplayer/index.json' 'zenplayer/index.html.mustache' >'build/zenplayer/index.html'
+      markup: mustache -p 'web/main/markup/head.html.mustache' 'web/zenplayer/index.json' 'web/zenplayer/index.html.mustache' >'build/zenplayer/index.html'
       style:
         default: nps build.zenplayer.style.scss build.zenplayer.style.prefix
-        scss: node-sass 'zenplayer/index.scss' --linefeed lf --output-style expanded --output 'build/zenplayer/css'
+        scss: node-sass 'web/zenplayer/index.scss' --linefeed lf --output-style expanded --output 'build/zenplayer/css'
         prefix: postcss 'build/zenplayer/css' --use autoprefixer --no-map --replace
 
   clean:

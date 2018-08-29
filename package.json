@@ -15,7 +15,7 @@
         "rimraf": "*"
     },
     "scripts": {
-        "watch": "npm run build && onchange '**/*' --wait -- npm run build",
+        "watch": "npm run build && onchange 'web/**/*' --wait -- npm run build",
         "build": "nps build",
         "postinstall": "cd 'node_modules/normalize.css' && if [ -f 'normalize.css' ]; then mv 'normalize.css' '_normalize.scss'; fi",
         "clean": "nps clean"
