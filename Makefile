@@ -18,7 +18,11 @@ update: FORCE
 	if [ "$(shell uname)" == "Darwin" ]; then brew bundle; fi
 
 clean: FORCE
-	npm run clean
+	rm -rf 'build'
+
+distclean: clean
+	rm -rf 'node_modules'
+	rm -f 'package-lock.json'
 
 ## Running ##
 
