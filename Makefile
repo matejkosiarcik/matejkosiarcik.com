@@ -22,6 +22,9 @@ clean: FORCE
 
 distclean: clean
 	rm -rf 'node_modules'
+	rm -rf 'tests/node_modules'
+
+maintainer-clean: distclean
 	rm -f 'package-lock.json'
 
 ## Running ##
@@ -42,3 +45,14 @@ watch: FORCE
 
 dist: FORCE
 	npm run dist
+
+## Testing ##
+
+test-local: FORCE
+	cd 'tests' && npm run test:local
+
+test-staging: FORCE
+	cd 'tests' && npm run test:staging
+
+test-production: FORCE
+	cd 'tests' && npm run test-production
