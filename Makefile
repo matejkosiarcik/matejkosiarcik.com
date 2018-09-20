@@ -37,3 +37,8 @@ watch: FORCE
 
 dist: FORCE
 	npm run dist
+
+## Deploying project ##
+
+deploy: FORCE
+	sh '$(PWD)/utils/deploy.sh'
