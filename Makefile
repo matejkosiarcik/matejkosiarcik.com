@@ -8,7 +8,7 @@ FORCE:
 ## Installing dependencies ##
 
 pre-bootstrap: FORCE
-	if [ "$(shell uname)" == "Darwin" ]; then brew bundle; fi
+	if [ '$(shell uname)' == 'Darwin' ]; then brew bundle; fi
 
 bootstrap: FORCE
 	npm install
