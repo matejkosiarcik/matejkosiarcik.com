@@ -12,11 +12,9 @@ pre-bootstrap: FORCE
 
 bootstrap: FORCE
 	npm install
-	cd 'tests' && npm install
 
 update: pre-bootstrap
 	npm update
-	cd 'tests' && npm update
 
 clean: FORCE
 	rm -rf 'build'
@@ -39,14 +37,3 @@ watch: FORCE
 
 dist: FORCE
 	npm run dist
-
-## Testing project ##
-
-test-local: FORCE
-	cd 'tests' && npm run test:local
-
-test-staging: FORCE
-	cd 'tests' && npm run test:staging
-
-test-production: FORCE
-	cd 'tests' && npm run test-production
