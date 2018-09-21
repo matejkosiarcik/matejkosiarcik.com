@@ -10,7 +10,7 @@ FORCE:
 pre-bootstrap: FORCE
 	if [ '$(shell uname)' == 'Darwin' ]; then brew bundle; fi
 
-bootstrap: FORCE
+bootstrap: pre-bootstrap
 	npm install
 
 update: pre-bootstrap
