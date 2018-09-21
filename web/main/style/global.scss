@@ -18,7 +18,7 @@ h2 {
 }
 
 a {
-  transition: color .4s ease-in-out;
+  transition: color .4s;
   color: $text-color-light;
 
   &:hover {
@@ -78,7 +78,7 @@ footer {
     height: $size;
     margin-top: 10px; // fixes safari animation twitching
     padding-top: $animation-enlarge;
-    transition: .3s height, .3s padding-top;
+    transition: height .3s, padding-top .3s;
   }
 
   .description {
