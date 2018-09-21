@@ -1,25 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        {{> head.html }}
-        <link rel="stylesheet" type="text/css" href="css/index.css">
-    </head>
+    {{> head.html }}
     <body>
         <div class="container">
-            <!-- placeholder, this item goes on top -->
-            <!-- so that content goes in center -->
-            <div></div>
+            <div></div> {{! placeholder for flex }}
 
             <div class="content">
-                <div class="header">
+                <div class="text-center">
                     <h1>
-                        <!-- fix for elinks centering (off by 1 char) -->
-                        <span class="hidden">&nbsp;</span>
                         I'm Matej Košiarčik
                     </h1>
-                    <p class="text-large">
+                    <h2>
                         software developer & student
-                    </p>
+                    </h2>
                 </div>
                 <ul class="apps">
                     <li class="app">
@@ -46,9 +39,9 @@
                 </ul>
             </div>
 
-            <!-- this is div and not footer -->
-            <!-- because elinks does not recognize html5 tags -->
-            <!-- and subsequently does not center it -->
+            {{! this is div and not footer }}
+            {{! because elinks does not recognize html5 tags }}
+            {{! and subsequently does not center it }}
             <div class="footer">
                 <a href="https://twitter.com/matejkosiarcik" rel="nofollow" target="_blank">TWITTER</a>
                 |

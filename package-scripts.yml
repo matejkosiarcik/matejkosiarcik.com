@@ -22,13 +22,9 @@ scripts:
     # zenplayer subpage is planned to be moved elsewhere
     # so we move it aside to be ready to be removed
     zenplayer:
-      default: nps build.zenplayer.prepare build.zenplayer.markup build.zenplayer.style
+      default: nps build.zenplayer.prepare build.zenplayer.markup
       prepare: mkdirp 'build/zenplayer'
       markup: mustache -p 'web/main/markup/head.html.mustache' 'web/zenplayer/index.json' 'web/zenplayer/index.html.mustache' >'build/zenplayer/index.html'
-      style:
-        default: nps build.zenplayer.style.scss build.zenplayer.style.prefix
-        scss: node-sass 'web/zenplayer/index.scss' --linefeed lf --output-style expanded --output 'build/zenplayer/css'
-        prefix: postcss 'build/zenplayer/css' --use autoprefixer --no-map --replace
 
   clean:
     default: rimraf 'build' 'dist'
