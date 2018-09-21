@@ -12,7 +12,7 @@ scripts:
       error: mustache -p 'web/main/markup/head.html.mustache' 'web/main/error.json' 'web/main/error.html.mustache' >'build/error.html'
     style:
       default: nps build.style.scss build.style.prefix
-      scss: node-sass 'web/main/style' --include-path 'node_modules/normalize.css' --linefeed lf --output-style expanded --output 'build/css'
+      scss: node-sass 'web/main/style' --include-path 'node_modules' --linefeed lf --output-style expanded --output 'build/css'
       prefix: postcss 'build/css' --use autoprefixer --no-map --replace
     assets:
       default: nps build.assets.images build.assets.favicon
