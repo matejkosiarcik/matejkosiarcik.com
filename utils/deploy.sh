@@ -1,5 +1,5 @@
 # shellcheck shell=sh
-set -eu
+set -euf
 cd "$(dirname "${0}")/.."
 server='binarytrex.com'
 
