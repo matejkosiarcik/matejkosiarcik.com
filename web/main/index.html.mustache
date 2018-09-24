@@ -2,37 +2,46 @@
 <html lang="en">
     {{> head.html }}
     <body>
+        <div class="aside">
+            <h2>Check out my projects</h2>
+            <ul>
+                <li>
+                    <table>
+                        <tr>
+                            <td>
+                                <img src="images/zenplayer.svg" alt="ZenPlayer"/>
+                            </td>
+                            <td>
+                                <h3>ZenPlayer</h3>
+                                <p>minimal music player for Mac</p>
+                                <p>See it on <a href="https://appstore.com/mac/zenplayer" rel="nofollow" target="_blank">App Store</a></p>
+                            </td>
+                        </tr>
+                    </table>
+                </li>
+                <li>
+                    <table>
+                        <tr>
+                            <td>
+                                <img src="images/terminal.svg" alt="Stopwatch"/>
+                            </td>
+                            <td>
+                                <h3>Stopwatch</h3>
+                                <p>simple time tracking cli app</p>
+                                <p>See it on <a href="https://github.com/matejkosiarcik/stopwatch" target="_blank">GitHub</a></p>
+                            </td>
+                        </tr>
+                    </table>
+                </li>
+            </ul>
+        </div>
+
         <div class="container">
             <div></div> {{! placeholder for flex }}
 
-            <div class="content">
-                <div class="text-center">
-                    <h1>I'm Matej Košiarčik</h1>
-                    <h2>software developer & student</h2>
-                </div>
-                <ul class="apps">
-                    <li class="app">
-                        <a href="https://appstore.com/mac/zenplayer" target="_blank">
-                            <img src="images/zenplayer.svg" class="icon" alt="ZenPlayer"/>
-                        </a>
-                        <p class="description">
-                            <strong>ZenPlayer</strong>
-                            <br>
-                            minimal music player
-                            for Mac
-                        </p>
-                    </li>
-                    <li class="app">
-                        <a href="https://github.com/matejkosiarcik/stopwatch" target="_blank">
-                            <img src="images/terminal.svg" class="icon" alt="Stopwatch"/>
-                        </a>
-                        <p class="description">
-                            <strong>Stopwatch</strong>
-                            <br>
-                            simple time tracking cli app
-                        </p>
-                    </li>
-                </ul>
+            <div class="content text-center">
+                <h1>I'm Matej Košiarčik</h1>
+                <h2>software developer & student</h2>
             </div>
 
             <footer>
