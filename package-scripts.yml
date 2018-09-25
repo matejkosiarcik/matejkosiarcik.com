@@ -1,15 +1,16 @@
 scripts:
   build:
-    default: nps build.prepare build.config build.markup build.style build.assets build.zenplayer
-    prepare: mkdirp 'build'
+    default: nps build.prepare build.config build.markup build.style build.assets
+    prepare: mkdirp 'build' 'build/zenplayer'
     config:
       default: nps build.config.robots build.config.htaccess
       robots: cp -R 'web/main/robots/' 'build'
       htaccess: cat 'web/main/.htaccess' 'node_modules/apache-server-configs/dist/.htaccess' >'build/.htaccess'
     markup:
-      default: nps build.markup.index build.markup.error
+      default: nps build.markup.index build.markup.error build.markup.zenplayer
       index: mustache -p 'web/main/markup/head.html.mustache' 'web/main/data/index.json' 'web/main/markup/index.html.mustache' >'build/index.html'
       error: mustache -p 'web/main/markup/head.html.mustache' 'web/main/data/error.json' 'web/main/markup/error.html.mustache' >'build/error.html'
+      zenplayer: mustache -p 'web/main/markup/head.html.mustache' 'web/main/data/zenplayer.json' 'web/main/markup/zenplayer.html.mustache' >'build/zenplayer/index.html'
     style:
       default: nps build.style.scss build.style.prefix
       scss: node-sass 'web/main/style' --include-path 'node_modules' --linefeed lf --output-style expanded --output 'build/css'
@@ -18,13 +19,6 @@ scripts:
       default: nps build.assets.images build.assets.favicon
       images: cp -R 'web/main/images/' 'build/images'
       favicon: cp -R 'web/main/favicon/' 'build'
-
-    # zenplayer subpage is planned to be moved elsewhere
-    # so we move it aside to be ready to be removed
-    zenplayer:
-      default: nps build.zenplayer.prepare build.zenplayer.markup
-      prepare: mkdirp 'build/zenplayer'
-      markup: mustache -p 'web/main/markup/head.html.mustache' 'web/zenplayer/index.json' 'web/zenplayer/index.html.mustache' >'build/zenplayer/index.html'
 
   clean:
     default: rimraf 'build' 'dist'
