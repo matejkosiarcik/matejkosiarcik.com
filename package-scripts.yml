@@ -1,20 +1,22 @@
 scripts:
   build:
-    default: nps build.prepare && concurrently 'nps build.config' 'nps build.markup' 'nps build.style' 'nps build.assets'
+    default: nps build.prepare && concurrently 'nps build.config' 'nps build.code' 'nps build.assets'
     prepare: mkdirp 'build' 'build/zenplayer'
     config:
       default: concurrently 'nps build.config.robots' 'nps build.config.htaccess'
       robots: cp -R 'web/robots/' 'build'
       htaccess: cat 'web/.htaccess' 'node_modules/apache-server-configs/dist/.htaccess' >'build/.htaccess'
-    markup:
-      default: concurrently 'nps build.markup.index' 'nps build.markup.error' 'nps build.markup.zenplayer'
-      index: mustache -p 'web/markup/head.html.mustache' 'web/data/index.json' 'web/markup/index.html.mustache' >'build/index.html'
-      error: mustache -p 'web/markup/head.html.mustache' 'web/data/error.json' 'web/markup/error.html.mustache' >'build/error.html'
-      zenplayer: mustache -p 'web/markup/head.html.mustache' 'web/data/zenplayer.json' 'web/markup/zenplayer.html.mustache' >'build/zenplayer/index.html'
-    style:
-      default: nps build.style.scss build.style.prefix
-      scss: node-sass 'web/style' --include-path 'node_modules' --linefeed lf --output-style expanded --output 'build/css'
-      prefix: postcss 'build/css' --use autoprefixer --no-map --replace
+    code:
+      default: concurrently 'nps build.code.markup' 'nps build.code.style'
+      markup:
+        default: concurrently 'nps build.code.markup.index' 'nps build.code.markup.error' 'nps build.code.markup.zenplayer'
+        index: mustache -p 'web/markup/head.html.mustache' 'web/data/index.json' 'web/markup/index.html.mustache' >'build/index.html'
+        error: mustache -p 'web/markup/head.html.mustache' 'web/data/error.json' 'web/markup/error.html.mustache' >'build/error.html'
+        zenplayer: mustache -p 'web/markup/head.html.mustache' 'web/data/zenplayer.json' 'web/markup/zenplayer.html.mustache' >'build/zenplayer/index.html'
+      style:
+        default: nps build.code.style.scss build.code.style.prefix
+        scss: node-sass 'web/style' --include-path 'node_modules' --linefeed lf --output-style expanded --output 'build/css'
+        prefix: postcss 'build/css' --use autoprefixer --no-map --replace
     assets:
       default: concurrently 'nps build.assets.images' 'nps build.assets.favicon'
       images: cp -R 'web/images/' 'build/images'
