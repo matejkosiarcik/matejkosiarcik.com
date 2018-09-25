@@ -20,6 +20,6 @@
         "build": "nps build",
         "watch": "nps watch",
         "dist": "nps dist",
-        "clean": "rimraf 'build' 'dist' 'public'"
+        "clean": "rimraf 'build'"
     }
 }

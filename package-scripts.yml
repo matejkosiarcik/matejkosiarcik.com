@@ -1,27 +1,27 @@
 scripts:
   build:
     default: concurrently 'nps build.prepare' 'nps build.relink' && concurrently 'nps build.config' 'nps build.code' 'nps build.assets'
-    prepare: mkdirp 'build' 'build/zenplayer'
-    relink: rimraf 'public' && ln -s build public
+    prepare: mkdirp 'build/debug' 'build/debug/zenplayer'
+    relink: rimraf 'build/public' && ln -s debug build/public
     config:
       default: concurrently 'nps build.config.robots' 'nps build.config.htaccess'
-      robots: cp -R 'web/robots/' 'build'
-      htaccess: cat 'web/.htaccess' 'node_modules/apache-server-configs/dist/.htaccess' >'build/.htaccess'
+      robots: cp -R 'web/robots/' 'build/debug'
+      htaccess: cat 'web/.htaccess' 'node_modules/apache-server-configs/dist/.htaccess' >'build/debug/.htaccess'
     code:
       default: concurrently 'nps build.code.markup' 'nps build.code.style'
       markup:
         default: concurrently 'nps build.code.markup.index' 'nps build.code.markup.error' 'nps build.code.markup.zenplayer'
-        index: mustache -p 'web/markup/head.html.mustache' 'web/data/index.json' 'web/markup/index.html.mustache' >'build/index.html'
-        error: mustache -p 'web/markup/head.html.mustache' 'web/data/404.json' 'web/markup/404.html.mustache' >'build/404.html'
-        zenplayer: mustache -p 'web/markup/head.html.mustache' 'web/data/zenplayer.json' 'web/markup/zenplayer.html.mustache' >'build/zenplayer/index.html'
+        index: mustache -p 'web/markup/head.html.mustache' 'web/data/index.json' 'web/markup/index.html.mustache' >'build/debug/index.html'
+        error: mustache -p 'web/markup/head.html.mustache' 'web/data/404.json' 'web/markup/404.html.mustache' >'build/debug/404.html'
+        zenplayer: mustache -p 'web/markup/head.html.mustache' 'web/data/zenplayer.json' 'web/markup/zenplayer.html.mustache' >'build/debug/zenplayer/index.html'
       style:
         default: nps build.code.style.scss build.code.style.prefix
-        scss: node-sass 'web/style' --include-path 'node_modules' --linefeed lf --output-style expanded --output 'build/css'
-        prefix: postcss 'build/css' --use autoprefixer --no-map --replace
+        scss: node-sass 'web/style' --include-path 'node_modules' --linefeed lf --output-style expanded --output 'build/debug/css'
+        prefix: postcss 'build/debug/css' --use autoprefixer --no-map --replace
     assets:
       default: concurrently 'nps build.assets.images' 'nps build.assets.favicon'
-      images: cp -R 'web/images/' 'build/images'
-      favicon: cp -R 'web/favicon/' 'build'
+      images: cp -R 'web/images/' 'build/debug/images'
+      favicon: cp -R 'web/favicon/' 'build/debug'
 
   watch:
     default: concurrently 'nps build.prepare' 'nps build.relink' && concurrently 'nps watch.config' 'nps watch.code' 'nps watch.assets'
@@ -40,5 +40,5 @@ scripts:
 
   dist:
     default: nps dist.relink && nps dist.copy
-    relink: rimraf 'public' && ln -s dist public
-    copy: cp -R 'build/' 'dist'
+    relink: rimraf 'build/public' && ln -s dist build/public
+    copy: cp -R 'build/debug/' 'build/dist'

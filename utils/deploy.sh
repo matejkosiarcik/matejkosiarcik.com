@@ -4,9 +4,9 @@ cd "$(dirname "${0}")/.."
 server='binarytrex.com'
 
 # find build directory
-path='dist'
+path='build/dist'
 if [ ! -d "${path}" ]; then
-    printf 'No build:release directory found\n' >&2
+    printf '"build/release/" directory found\n' >&2
     exit 1
 fi
 
