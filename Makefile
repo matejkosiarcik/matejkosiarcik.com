@@ -17,7 +17,7 @@ update: pre-bootstrap
 	npm update
 
 clean: FORCE
-	rm -rf 'build'
+	npm run clean
 
 ## Running server ##
 
