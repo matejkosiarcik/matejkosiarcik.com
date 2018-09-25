@@ -22,5 +22,20 @@ scripts:
       images: cp -R 'web/images/' 'build/images'
       favicon: cp -R 'web/favicon/' 'build'
 
+  watch:
+    default: nps build.prepare && concurrently 'nps watch.config' 'nps watch.code' 'nps watch.assets'
+    config:
+      default: concurrently 'nps watch.config.robots' 'nps watch.config.htaccess'
+      robots: onchange 'web/robots/*' -- nps build.config.robots
+      htaccess: onchange 'web/.htaccess' -- nps build.config.htaccess
+    code:
+      default: concurrently 'nps watch.code.markup' 'nps watch.code.style'
+      markup: onchange 'web/markup/*' 'web/data/*' -- nps build.code.markup
+      style: onchange 'web/style/*' -- nps build.code.style
+    assets:
+      default: concurrently 'nps watch.assets.images' 'nps watch.assets.favicon'
+      images: onchange 'web/images/*' -- nps build.assets.images
+      favicon: onchange 'web/favicon/*' -- nps build.assets.favicon
+
   clean:
     default: rimraf 'build' 'dist'

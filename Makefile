@@ -22,6 +22,7 @@ clean: FORCE
 ## Running server ##
 
 run: FORCE
+	make build
 	make watch & make serve
 
 serve: FORCE
