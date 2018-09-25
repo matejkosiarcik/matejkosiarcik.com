@@ -51,7 +51,7 @@
 
 ### Errors ###
 # Declare custom error pages
-ErrorDocument 404 /error.html
+ErrorDocument 404 /404.html
 
 ### Security ###
 # Disable hotlinking (only for production server)
