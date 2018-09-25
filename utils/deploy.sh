@@ -4,10 +4,11 @@ cd "$(dirname "${0}")/.."
 server='binarytrex.com'
 
 # find build directory
-path=''
-[ -d 'build' ] && path='build'
-[ -d 'dist' ] && path='dist'
-[ -z "${path}" ] && { printf 'No build directory found\n' >&2 && exit 1; }
+path='dist'
+if [ ! -d "${path}" ]; then
+    printf 'No build:release directory found\n' >&2
+    exit 1
+fi
 
 # read credentials
 printf 'User prefix: '
