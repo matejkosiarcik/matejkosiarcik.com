@@ -16,9 +16,6 @@ bootstrap: pre-bootstrap
 update: pre-bootstrap
 	npm update
 
-clean: FORCE
-	npm run clean
-
 ## Running server ##
 
 run: FORCE
@@ -38,6 +35,9 @@ watch: FORCE
 
 dist: FORCE
 	npm run dist
+
+clean: FORCE
+	npm run clean
 
 ## Deploying project ##
 

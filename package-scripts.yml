@@ -36,3 +36,8 @@ scripts:
       default: concurrently 'nps watch.assets.images' 'nps watch.assets.favicon'
       images: onchange 'web/images/*' -- nps build.assets.images
       favicon: onchange 'web/favicon/*' -- nps build.assets.favicon
+
+  dist:
+    default: nps build dist.prepare dist.copy
+    prepare: mkdirp 'dist'
+    copy: cp -R 'build/' 'dist'

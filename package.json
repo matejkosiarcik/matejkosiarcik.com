@@ -16,9 +16,10 @@
         "rimraf": "*"
     },
     "scripts": {
+        "postinstall": "cd 'node_modules/normalize.css' && if [ -f 'normalize.css' ]; then mv 'normalize.css' '_normalize.scss'; fi",
         "build": "nps build",
         "watch": "nps watch",
-        "clean": "rimraf 'build' 'dist' 'public'",
-        "postinstall": "cd 'node_modules/normalize.css' && if [ -f 'normalize.css' ]; then mv 'normalize.css' '_normalize.scss'; fi"
+        "dist": "nps dist",
+        "clean": "rimraf 'build' 'dist' 'public'"
     }
 }
