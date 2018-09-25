@@ -60,9 +60,11 @@ footer {
 }
 
 .aside {
+  display: flex;
   position: absolute;
   top: 0;
   right: 0;
+  flex-direction: column;
   width: 300px;
   height: 100%;
   padding: 0 20px;
@@ -71,15 +73,30 @@ footer {
   text-align: center;
   overflow-y: auto;
 
+  h2 {
+    flex: 0;
+  }
+
   ul {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
     width: 100%;
     margin: 0;
-    padding: 0;
+    padding: 20px 0;
     list-style: none;
   }
 
   li {
-    margin: 40px 0;
+    flex: 0;
+    margin: 20px 0;
+    text-align: left;
+  }
+
+  td {
+    padding: 0 7px;
   }
 
   img {
