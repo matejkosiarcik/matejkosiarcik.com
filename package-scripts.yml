@@ -8,8 +8,8 @@ scripts:
       htaccess: cat 'web/main/.htaccess' 'node_modules/apache-server-configs/dist/.htaccess' >'build/.htaccess'
     markup:
       default: nps build.markup.index build.markup.error
-      index: mustache -p 'web/main/markup/head.html.mustache' 'web/main/index.json' 'web/main/index.html.mustache' >'build/index.html'
-      error: mustache -p 'web/main/markup/head.html.mustache' 'web/main/error.json' 'web/main/error.html.mustache' >'build/error.html'
+      index: mustache -p 'web/main/markup/head.html.mustache' 'web/main/data/index.json' 'web/main/markup/index.html.mustache' >'build/index.html'
+      error: mustache -p 'web/main/markup/head.html.mustache' 'web/main/data/error.json' 'web/main/markup/error.html.mustache' >'build/error.html'
     style:
       default: nps build.style.scss build.style.prefix
       scss: node-sass 'web/main/style' --include-path 'node_modules' --linefeed lf --output-style expanded --output 'build/css'
