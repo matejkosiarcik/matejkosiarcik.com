@@ -23,8 +23,11 @@ scripts:
       images:
         default: nps build.assets.images.copy build.assets.images.vector2raster
         copy: cp -R 'web/images/' 'build/debug/images'
-        vector2raster: cd 'build/debug/images' && find '.' -type f -name '*.svg' -print0 | xargs -0 -I % sh -c 'convert -resize 256x256 -density 1000 -background none % "$(basename % .svg).png"'
-      favicon: cp -R 'web/favicon/' 'build/debug'
+        vector2raster: cd 'build/debug/images' && find '.' -type f -name '*.svg' -print0 | xargs -0 -I % sh -c 'convert -resize 256x256 -density 1000 -background none "%" "$(basename % .svg).png"'
+      favicon:
+        default: nps build.assets.favicon.copy build.assets.favicon.vector2raster
+        copy: cp -R 'web/favicon/' 'build/debug'
+        vector2raster: convert -resize 64x64 -density 1000 -background none 'build/debug/favicon.svg' 'build/debug/favicon.png'
 
   watch:
     default: concurrently 'nps build.prepare' 'nps build.relink' && concurrently 'nps watch.config' 'nps watch.code' 'nps watch.assets'
