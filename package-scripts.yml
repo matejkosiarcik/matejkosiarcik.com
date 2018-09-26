@@ -20,7 +20,10 @@ scripts:
         prefix: postcss 'build/debug/css' --use autoprefixer --no-map --replace
     assets:
       default: concurrently 'nps build.assets.images' 'nps build.assets.favicon'
-      images: cp -R 'web/images/' 'build/debug/images'
+      images:
+        default: nps build.assets.images.copy build.assets.images.vector2raster
+        copy: cp -R 'web/images/' 'build/debug/images'
+        vector2raster: cd 'build/debug/images' && find '.' -type f -name '*.svg' -print0 | xargs -0 -I % sh -c 'convert -resize 256x256 -density 1000 -background none % "$(basename % .svg).png"'
       favicon: cp -R 'web/favicon/' 'build/debug'
 
   watch:
