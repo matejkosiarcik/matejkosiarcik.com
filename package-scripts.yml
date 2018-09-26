@@ -16,8 +16,8 @@ scripts:
         zenplayer: mustache -p 'web/markup/head.html.mustache' 'web/data/zenplayer.json' 'web/markup/zenplayer.html.mustache' >'build/debug/zenplayer/index.html'
       style:
         default: nps build.code.style.scss build.code.style.prefix
-        scss: node-sass 'web/style' --include-path 'node_modules' --linefeed lf --output-style expanded --output 'build/debug/css'
-        prefix: postcss 'build/debug/css' --use autoprefixer --no-map --replace
+        scss: node-sass 'web/style' --include-path 'node_modules' --linefeed lf --output-style expanded --output 'build/debug'
+        prefix: postcss 'build/debug/style.css' --use autoprefixer --no-map --replace
     assets:
       default: concurrently 'nps build.assets.images' 'nps build.assets.favicon'
       images:
