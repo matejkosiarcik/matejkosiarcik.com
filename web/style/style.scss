@@ -55,17 +55,13 @@ a {
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  padding-top: 40px;
-  padding-bottom: 60px;
+  padding: 40px 20px;
   text-align: center;
-
-  @media #{$media-big} {
-    height: calc(100% - 100px);
-  }
+  box-sizing: border-box;
 
   &--left {
     @media #{$media-big} {
-      width: calc(100% - 340px);
+      width: calc(100% - 350px);
     }
   }
 }
@@ -73,8 +69,9 @@ a {
 .footer {
   flex: 0;
   width: 100%;
-  padding: 20px 0;
+  padding: 20px;
   text-align: center;
+  box-sizing: border-box;
 
   @media #{$media-small} {
     background: $color-background-dark;
@@ -82,7 +79,7 @@ a {
 
   &--left {
     @media #{$media-big} {
-      width: calc(100% - 340px);
+      width: calc(100% - 350px);
     }
   }
 }
@@ -92,11 +89,12 @@ a {
   top: 0;
   right: 0;
   flex: 0;
-  width: 300px;
+  width: 350px;
   height: 100%;
-  padding: 0 20px;
+  padding: 20px;
   background: $color-background-dark;
   color: $color-text-light;
+  box-sizing: border-box;
 
   @media #{$media-small} {
     position: relative;
@@ -157,7 +155,7 @@ a {
 
   h2 {
     flex: 0;
-    margin-top: 20px;
+    margin: 0;
     margin-bottom: 10px;
     text-align: center;
 
