@@ -8,6 +8,8 @@ $layout-change: 768px;
 $media-small: 'all and (max-width: #{$layout-change - 1px})';
 $media-big: 'all and (min-width: #{$layout-change})';
 
+$aside-width: 320px;
+
 @mixin link-light {
   color: $color-text-light;
 

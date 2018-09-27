@@ -61,7 +61,7 @@ a {
 
   &--left {
     @media #{$media-big} {
-      width: calc(100% - 350px);
+      width: calc(100% - #{$aside-width});
     }
   }
 }
@@ -79,7 +79,7 @@ a {
 
   &--left {
     @media #{$media-big} {
-      width: calc(100% - 350px);
+      width: calc(100% - #{$aside-width});
     }
   }
 }
@@ -89,7 +89,7 @@ a {
   top: 0;
   right: 0;
   flex: 0;
-  width: 350px;
+  width: $aside-width;
   height: 100%;
   padding: 20px;
   background: $color-background-dark;
@@ -113,7 +113,7 @@ a {
 
   ul {
     margin: 0;
-    padding: 0;
+    padding: 20px 0;
     background: $color-background-dark;
     list-style: none;
     text-align: center;
@@ -140,7 +140,8 @@ a {
 
     @media #{$media-small} {
       display: inline-block;
-      width: 320px;
+      width: 350px;
+      margin: 0 20px;
     }
   }
 
