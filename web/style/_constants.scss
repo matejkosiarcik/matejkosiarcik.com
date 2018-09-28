@@ -3,7 +3,7 @@ $color-background-light: #ebebeb;
 $color-text-light: #d5d5d5;
 $color-text-dark: #444455;
 
-$layout-change: 768px;
+$layout-change: 900px;
 
 $media-small: 'all and (max-width: #{$layout-change - 1px})';
 $media-big: 'all and (min-width: #{$layout-change})';
