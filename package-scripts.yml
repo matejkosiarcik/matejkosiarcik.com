@@ -8,7 +8,7 @@ scripts:
       robots: cp -R 'web/robots/' 'build/debug'
       htaccess: cat 'web/.htaccess' 'node_modules/apache-server-configs/dist/.htaccess' >'build/debug/.htaccess'
     code:
-      default: concurrently 'nps build.code.markup' 'nps build.code.style'
+      default: concurrently 'nps build.code.markup' 'nps build.code.style' 'nps build.code.script'
       markup:
         default: concurrently 'nps build.code.markup.index' 'nps build.code.markup.error' 'nps build.code.markup.zenplayer'
         index: mustache -p 'web/markup/head.html.mustache' 'web/data/index.json' 'web/markup/index.html.mustache' >'build/debug/index.html'
@@ -18,6 +18,7 @@ scripts:
         default: nps build.code.style.scss build.code.style.prefix
         scss: node-sass 'web/style' --include-path 'node_modules' --linefeed lf --output-style expanded --output 'build/debug'
         prefix: postcss 'build/debug/style.css' --use autoprefixer --no-map --replace
+      script: tsc
     assets:
       default: concurrently 'nps build.assets.images' 'nps build.assets.favicon'
       images:
@@ -37,9 +38,10 @@ scripts:
       robots: onchange 'web/robots/*' -- nps build.config.robots
       htaccess: onchange 'web/.htaccess' -- nps build.config.htaccess
     code:
-      default: concurrently 'nps watch.code.markup' 'nps watch.code.style'
+      default: concurrently 'nps watch.code.markup' 'nps watch.code.style' 'nps watch.code.script'
       markup: onchange 'web/markup/*' 'web/data/*' -- nps build.code.markup
       style: onchange 'web/style/*' -- nps build.code.style
+      script: onchange 'web/script/*' -- nps build.code.script
     assets:
       default: concurrently 'nps watch.assets.images' 'nps watch.assets.favicon'
       images: onchange 'web/images/*' -- nps build.assets.images

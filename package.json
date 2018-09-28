@@ -13,7 +13,8 @@
         "nps": "*",
         "onchange": "*",
         "postcss-cli": "*",
-        "rimraf": "*"
+        "rimraf": "*",
+        "typescript": "^3"
     },
     "scripts": {
         "postinstall": "cd 'node_modules/normalize.css' && if [ -f 'normalize.css' ]; then mv 'normalize.css' '_normalize.scss'; fi",

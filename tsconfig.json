@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+      "outDir": "build/debug",
+      "rootDir": "web/script",
+      "lib": ["dom", "esnext"],
+      "importHelpers": true,
+      "downlevelIteration": true,
+      "strict": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "noImplicitReturns": true,
+      "noFallthroughCasesInSwitch": true,
+      "esModuleInterop": true
+    }
+}
