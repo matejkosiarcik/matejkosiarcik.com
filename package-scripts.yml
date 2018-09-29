@@ -11,9 +11,9 @@ scripts:
       default: concurrently 'nps build.code.markup' 'nps build.code.style' 'nps build.code.script'
       markup:
         default: concurrently 'nps build.code.markup.index' 'nps build.code.markup.error' 'nps build.code.markup.zenplayer'
-        index: mustache -p 'web/markup/head.html.mustache' 'web/data/index.json' 'web/markup/index.html.mustache' >'build/debug/index.html'
-        error: mustache -p 'web/markup/head.html.mustache' 'web/data/404.json' 'web/markup/404.html.mustache' >'build/debug/404.html'
-        zenplayer: mustache -p 'web/markup/head.html.mustache' 'web/data/zenplayer.json' 'web/markup/zenplayer.html.mustache' >'build/debug/zenplayer/index.html'
+        index: jinja2 'web/markup/index.html.j2' >'build/debug/index.html'
+        error: jinja2 'web/markup/404.html.j2' >'build/debug/404.html'
+        zenplayer: jinja2 'web/markup/zenplayer.html.j2' >'build/debug/zenplayer/index.html'
       style:
         default: nps build.code.style.scss build.code.style.prefix
         scss: node-sass 'web/style' --include-path 'node_modules' --linefeed lf --output-style expanded --output 'build/debug'
