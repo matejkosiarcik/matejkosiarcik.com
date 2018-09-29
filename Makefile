@@ -9,6 +9,7 @@ FORCE:
 
 pre-bootstrap: FORCE
 	if [ '$(shell uname)' == 'Darwin' ]; then brew bundle; fi
+	pip install -r 'requirements.txt'
 
 bootstrap: pre-bootstrap
 	npm install
