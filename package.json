@@ -17,10 +17,10 @@
         "typescript": "^3"
     },
     "scripts": {
-        "postinstall": "cd 'node_modules/normalize.css' && if [ -f 'normalize.css' ]; then mv 'normalize.css' '_normalize.scss'; fi",
         "build": "nps build",
-        "watch": "nps watch",
+        "clean": "rimraf 'build'",
         "dist": "nps dist",
-        "clean": "rimraf 'build'"
+        "postinstall": "cd 'node_modules/normalize.css' && if [ -f 'normalize.css' ]; then mv 'normalize.css' 'normalize.scss'; fi",
+        "watch": "nps watch"
     }
 }
