@@ -8,17 +8,17 @@ scripts:
       robots: cp -R 'web/robots/' 'build/debug'
       htaccess: cat 'web/.htaccess' 'node_modules/apache-server-configs/dist/.htaccess' >'build/debug/.htaccess'
     code:
-      default: concurrently 'nps build.code.markup' 'nps build.code.style' 'nps build.code.script'
-      markup:
-        default: concurrently 'nps build.code.markup.index' 'nps build.code.markup.error' 'nps build.code.markup.zenplayer'
+      default: concurrently 'nps build.code.html' 'nps build.code.css' 'nps build.code.js'
+      html:
+        default: concurrently 'nps build.code.html.index' 'nps build.code.html.error' 'nps build.code.html.zenplayer'
         index: jinja2 'web/markup/index.html.j2' >'build/debug/index.html'
         error: jinja2 'web/markup/404.html.j2' >'build/debug/404.html'
         zenplayer: jinja2 'web/markup/zenplayer.html.j2' >'build/debug/zenplayer/index.html'
-      style:
-        default: nps build.code.style.scss build.code.style.prefix
+      css:
+        default: nps build.code.css.scss build.code.css.prefix
         scss: node-sass 'web/style' --include-path 'node_modules' --linefeed lf --output-style expanded --output 'build/debug'
         prefix: postcss 'build/debug/style.css' --use autoprefixer --no-map --replace
-      script: tsc
+      js: tsc
     assets:
       default: concurrently 'nps build.assets.images' 'nps build.assets.favicon'
       images:
