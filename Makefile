@@ -19,9 +19,8 @@ update: pre-bootstrap
 
 ## Running server ##
 
-run: FORCE
-	make build
-	make watch & make serve
+run: build
+	$(MAKE) watch & $(MAKE) serve
 
 serve: FORCE
 	docker run -p 80:80 -p 443:443 --rm --name apache -v '$(PWD)/public:/app' bitnami/apache:latest
