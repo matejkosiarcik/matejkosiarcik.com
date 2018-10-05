@@ -2,7 +2,7 @@ scripts:
   build:
     default: concurrently 'nps build.prepare' 'nps build.relink' && concurrently 'nps build.config' 'nps build.code' 'nps build.assets'
     prepare: mkdirp 'build/debug' 'build/debug/zenplayer'
-    relink: rimraf 'build/public' && ln -s debug build/public
+    relink: rimraf 'public' && ln -s 'build/debug' 'public'
     config:
       default: concurrently 'nps build.config.robots' 'nps build.config.htaccess'
       robots: cp -R 'web/robots/' 'build/debug'
@@ -49,5 +49,5 @@ scripts:
 
   dist:
     default: nps dist.relink && nps dist.copy
-    relink: rimraf 'build/public' && ln -s dist build/public
+    relink: rimraf 'public' && ln -s 'build/release' 'public'
     copy: cp -R 'build/debug/' 'build/dist'

@@ -24,7 +24,7 @@ run: FORCE
 	make watch & make serve
 
 serve: FORCE
-	docker run -p 80:80 -p 443:443 --rm --name apache -v '$(PWD)/build/public:/app' bitnami/apache:latest
+	docker run -p 80:80 -p 443:443 --rm --name apache -v '$(PWD)/public:/app' bitnami/apache:latest
 
 ## Building project ##
 
