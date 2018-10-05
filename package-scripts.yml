@@ -48,6 +48,6 @@ scripts:
       favicon: onchange 'web/favicon/*' -- nps build.assets.favicon
 
   dist:
-    default: nps dist.relink && nps dist.copy
+    default: nps build dist.relink dist.copy
     relink: rimraf 'public' && ln -s 'build/release' 'public'
     copy: cp -R 'build/debug/' 'build/dist'
