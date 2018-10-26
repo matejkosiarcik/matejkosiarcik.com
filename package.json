@@ -5,14 +5,14 @@
         "normalize.css": "^7"
     },
     "devDependencies": {
-        "autoprefixer": "*",
+        "autoprefixer": "^9",
         "concurrently": "*",
         "mkdirp": "*",
         "mustache": "*",
-        "node-sass": "*",
+        "node-sass": "^4",
         "nps": "*",
-        "onchange": "*",
-        "postcss-cli": "*",
+        "onchange": "^5",
+        "postcss-cli": "^6",
         "rimraf": "*",
         "typescript": "^3"
     },
