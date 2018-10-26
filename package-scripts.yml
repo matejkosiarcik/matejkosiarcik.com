@@ -4,8 +4,8 @@ scripts:
     prepare: mkdirp 'build/debug' 'build/debug/zenplayer'
     relink: rimraf 'public' && ln -s 'build/debug' 'public'
     config:
-      default: concurrently 'nps build.config.robots' 'nps build.config.htaccess'
-      robots: cp -R 'web/robots/' 'build/debug'
+      default: concurrently 'nps build.config.setup' 'nps build.config.htaccess'
+      setup: cp -R 'web/setup/' 'build/debug'
       htaccess: cat 'web/.htaccess' 'node_modules/apache-server-configs/dist/.htaccess' >'build/debug/.htaccess'
     code:
       default: concurrently 'nps build.code.html' 'nps build.code.css' 'nps build.code.js'
@@ -34,8 +34,8 @@ scripts:
   watch:
     default: concurrently 'nps build.prepare' 'nps build.relink' && concurrently 'nps watch.config' 'nps watch.code' 'nps watch.assets'
     config:
-      default: concurrently 'nps watch.config.robots' 'nps watch.config.htaccess'
-      robots: onchange 'web/robots/*' -- nps build.config.robots
+      default: concurrently 'nps watch.config.setup' 'nps watch.config.htaccess'
+      setup: onchange 'web/setup/*' -- nps build.config.setup
       htaccess: onchange 'web/.htaccess' -- nps build.config.htaccess
     code:
       default: concurrently 'nps watch.code.markup' 'nps watch.code.style' 'nps watch.code.script'
