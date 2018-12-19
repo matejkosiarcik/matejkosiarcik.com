@@ -1,35 +1,35 @@
 scripts:
   build:
     default: concurrently 'nps build.prepare' 'nps build.relink' && concurrently 'nps build.config' 'nps build.code' 'nps build.assets'
-    prepare: mkdirp 'build/debug' 'build/debug/zenplayer'
-    relink: rimraf 'public' && ln -s 'build/debug' 'public'
+    prepare: mkdirp 'build/dev' 'build/dev/zenplayer'
+    relink: rimraf 'public' && ln -s 'build/dev' 'public'
     config:
       default: concurrently 'nps build.config.setup' 'nps build.config.htaccess'
-      setup: cp -R 'web/setup/' 'build/debug'
-      htaccess: cat 'web/.htaccess' 'node_modules/apache-server-configs/dist/.htaccess' >'build/debug/.htaccess'
+      setup: cp -R 'web/setup/' 'build/dev'
+      htaccess: cat 'web/.htaccess' 'node_modules/apache-server-configs/dist/.htaccess' >'build/dev/.htaccess'
     code:
       default: concurrently 'nps build.code.html' 'nps build.code.css' 'nps build.code.js'
       html:
         default: concurrently 'nps build.code.html.index' 'nps build.code.html.error' 'nps build.code.html.zenplayer'
-        index: jinja2 'web/markup/index.html.j2' >'build/debug/index.html'
-        error: jinja2 'web/markup/404.html.j2' >'build/debug/404.html'
-        zenplayer: jinja2 'web/markup/zenplayer.html.j2' >'build/debug/zenplayer/index.html'
+        index: jinja2 'web/markup/index.html.j2' >'build/dev/index.html'
+        error: jinja2 'web/markup/404.html.j2' >'build/dev/404.html'
+        zenplayer: jinja2 'web/markup/zenplayer.html.j2' >'build/dev/zenplayer/index.html'
       css:
         default: nps build.code.css.scss build.code.css.prefix
-        scss: node-sass 'web/style' --include-path 'node_modules' --linefeed lf --output-style expanded --output 'build/debug'
-        prefix: postcss 'build/debug/style.css' --use autoprefixer --no-map --replace
+        scss: node-sass 'web/style' --include-path 'node_modules' --linefeed lf --output-style expanded --output 'build/dev'
+        prefix: postcss 'build/dev/style.css' --use autoprefixer --no-map --replace
       js: tsc
     assets:
       default: concurrently 'nps build.assets.images' 'nps build.assets.favicon'
       images:
         default: nps build.assets.images.copy build.assets.images.png
-        copy: cp -R 'web/images/' 'build/debug/images'
-        png: cd 'build/debug/images' && find '.' -type f -name '*.svg' -print0 | xargs -0 -I % sh -c 'convert -resize 256x256 -density 1000 -background none "%" "$(basename % .svg).png"'
+        copy: cp -R 'web/images/' 'build/dev/images'
+        png: cd 'build/dev/images' && find '.' -type f -name '*.svg' -print0 | xargs -0 -I % sh -c 'convert -resize 256x256 -density 1000 -background none "%" "$(basename % .svg).png"'
       favicon:
         default: concurrently 'nps build.assets.favicon.copy' 'nps build.assets.favicon.png' 'nps build.assets.favicon.ico'
-        copy: cp -R 'web/favicon/' 'build/debug'
-        png: convert -resize 64x64 -density 1000 -background none 'web/favicon/favicon.svg' 'build/debug/favicon.png'
-        ico: convert -define icon:auto-resize=32,16 -background none -colors 256 -density 1000 'web/favicon/favicon.svg' 'build/debug/favicon.ico'
+        copy: cp -R 'web/favicon/' 'build/dev'
+        png: convert -resize 64x64 -density 1000 -background none 'web/favicon/favicon.svg' 'build/dev/favicon.png'
+        ico: convert -define icon:auto-resize=32,16 -background none -colors 256 -density 1000 'web/favicon/favicon.svg' 'build/dev/favicon.ico'
 
   watch:
     default: concurrently 'nps build.prepare' 'nps build.relink' && concurrently 'nps watch.config' 'nps watch.code' 'nps watch.assets'
@@ -50,4 +50,4 @@ scripts:
   dist:
     default: nps build dist.relink dist.copy
     relink: rimraf 'public' && ln -s 'build/release' 'public'
-    copy: cp -R 'build/debug/' 'build/dist'
+    copy: cp -R 'build/dev/' 'build/dist'

@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-      "outDir": "build/debug",
+      "outDir": "build/dev",
       "rootDir": "web/script",
       "lib": ["dom", "esnext"],
       "importHelpers": true,
