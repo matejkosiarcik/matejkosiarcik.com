@@ -5,10 +5,15 @@
         "normalize.css": "^7"
     },
     "devDependencies": {
+        "@babel/cli": "^7",
+        "@babel/core": "^7",
+        "@babel/polyfill": "^7",
+        "@babel/preset-env": "^7",
         "autoprefixer": "^9",
+        "browserify": "^16",
         "concurrently": "*",
+        "exorcist": "^1",
         "mkdirp": "*",
-        "mustache": "*",
         "node-sass": "^4",
         "nps": "*",
         "onchange": "^5",

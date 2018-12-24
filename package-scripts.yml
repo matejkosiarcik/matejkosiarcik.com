@@ -20,7 +20,11 @@ scripts:
         default: nps build.code.css.scss build.code.css.prefix
         scss: node-sass 'web/style' --include-path 'node_modules' --linefeed lf --output-style expanded --output 'build/dev'
         prefix: postcss 'build/dev/style.css' --use autoprefixer --no-map --replace
-      js: tsc
+      js:
+        default: nps build.code.js.typescript build.code.js.babel build.code.js.browserify
+        typescript: tsc
+        babel: babel 'build/tmp/js/1' --out-dir 'build/tmp/js/2'
+        browserify: browserify 'build/tmp/js/2/app.js' --debug | exorcist 'build/dev/bundle.js.map' >'build/dev/bundle.js'
     assets:
       default: concurrently 'nps build.assets.images' 'nps build.assets.favicon'
       images:
