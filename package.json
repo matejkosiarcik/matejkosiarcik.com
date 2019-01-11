@@ -2,7 +2,8 @@
     "private": true,
     "dependencies": {
         "apache-server-configs": "^2",
-        "normalize.css": "^7"
+        "normalize.css": "^7",
+        "tslib": "^1"
     },
     "devDependencies": {
         "@babel/cli": "^7",
