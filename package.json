@@ -1,8 +1,8 @@
 {
     "private": true,
     "dependencies": {
-        "apache-server-configs": "^2",
-        "normalize.css": "^7",
+        "apache-server-configs": "^3",
+        "normalize.css": "^8",
         "tslib": "^1"
     },
     "devDependencies": {
