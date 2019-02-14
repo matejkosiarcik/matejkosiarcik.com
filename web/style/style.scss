@@ -178,3 +178,7 @@ a {
     @include link-light;
   }
 }
+
+.strike-through {
+  text-decoration: line-through;
+}
