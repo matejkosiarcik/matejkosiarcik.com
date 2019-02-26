@@ -1,0 +1,29 @@
+$color-background-dark: #111111;
+$color-background-light: #ebebeb;
+$color-text-light: #d5d5d5;
+$color-text-dark: #444455;
+
+$layout-change-width: 900px;
+
+$media-small: 'all and (max-width: #{$layout-change-width - 1px})';
+$media-big: 'all and (min-width: #{$layout-change-width})';
+
+$aside-width: 320px;
+
+@mixin link-light {
+  color: $color-text-light;
+
+  &:hover,
+  &:focus {
+    color: lighten($color-text-light, 30%);
+  }
+}
+
+@mixin link-dark {
+  color: $color-text-dark;
+
+  &:hover,
+  &:focus {
+    color: darken($color-text-dark, 30%);
+  }
+}

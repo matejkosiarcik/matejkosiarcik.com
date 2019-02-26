@@ -1,7 +1,7 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" height="100" viewBox="0 0 100 100" width="100">
-  <g stroke="#666">
-    <rect fill="none" height="98.8" ry="24.5" stroke-width="1.2" width="98.8" x=".6" y=".6"/>
+  <g fill="none" stroke="#000">
+    <rect height="98.8" ry="24.5" stroke-width="1.2" width="98.8" x=".6" y=".6"/>
     <g stroke-width=".6">
       <path d="m7.8 0v100"/>
       <path d="m31.2 0v100"/>
@@ -15,11 +15,9 @@
       <path d="m0 92.2h100"/>
       <path d="m0 0l100 100"/>
       <path d="m100 0l-100 100"/>
-      <g fill="none">
-        <circle cx="50" cy="50" r="18.8"/>
-        <circle cx="50" cy="50" r="26.7"/>
-        <circle cx="50" cy="50" r="42.2"/>
-      </g>
+      <circle cx="50" cy="50" r="18.8"/>
+      <circle cx="50" cy="50" r="26.7"/>
+      <circle cx="50" cy="50" r="42.2"/>
     </g>
   </g>
 </svg>

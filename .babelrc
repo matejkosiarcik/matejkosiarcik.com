@@ -1,0 +1,7 @@
+{
+    "presets": [
+        ["@babel/preset-env", { "forceAllTransforms": true, "spec": true, "useBuiltIns": "usage" }]
+    ],
+    "plugins": [
+    ]
+}
