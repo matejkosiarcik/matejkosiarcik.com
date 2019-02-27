@@ -43,10 +43,10 @@ scripts:
       config: onchange 'web/config/*' -- nps build.config.config
       htaccess: onchange 'web/.htaccess' -- nps build.config.htaccess
     code:
-      default: concurrently 'nps watch.code.markup' 'nps watch.code.style' 'nps watch.code.script'
-      markup: onchange 'web/markup/*' 'web/data/*' -- nps build.code.markup
-      style: onchange 'web/style/*' -- nps build.code.style
-      script: onchange 'web/script/*' -- nps build.code.script
+      default: concurrently 'nps watch.code.html' 'nps watch.code.css' 'nps watch.code.js'
+      html: onchange 'web/markup/*' -- nps build.code.html
+      css: onchange 'web/style/*' -- nps build.code.css
+      js: onchange 'web/script/*' -- nps build.code.js
     assets:
       default: concurrently 'nps watch.assets.images' 'nps watch.assets.favicon'
       images: onchange 'web/images/*' -- nps build.assets.images
