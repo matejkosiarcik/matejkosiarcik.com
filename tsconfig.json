@@ -1,7 +1,6 @@
 {
     "compilerOptions": {
       "rootDir": "web/script",
-      "outDir": "build/tmp/js/1",
       "lib": ["dom", "esnext"],
       "importHelpers": true,
       "downlevelIteration": true,
