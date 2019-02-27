@@ -3,7 +3,7 @@ scripts:
     default: nps build.prepare && concurrently 'nps build.config' 'nps build.code' 'nps build.assets'
     prepare:
       default: concurrently 'nps build.prepare.mkdir' 'nps build.prepare.relink'
-      mkdir: mkdirp 'build/dev' 'build/dev/zenplayer'
+      mkdir: mkdirp 'build/dev'
       relink: rimraf 'public' && ln -s 'build/dev' 'public'
     config:
       default: concurrently 'nps build.config.config' 'nps build.config.htaccess'
@@ -12,10 +12,9 @@ scripts:
     code:
       default: concurrently 'nps build.code.html' 'nps build.code.css' 'nps build.code.js'
       html:
-        default: concurrently 'nps build.code.html.index' 'nps build.code.html.error' 'nps build.code.html.zenplayer'
+        default: concurrently 'nps build.code.html.index' 'nps build.code.html.error'
         index: jinja2 'web/markup/index.html.j2' >'build/dev/index.html'
         error: jinja2 'web/markup/404.html.j2' >'build/dev/404.html'
-        zenplayer: jinja2 'web/markup/zenplayer.html.j2' >'build/dev/zenplayer/index.html'
       css:
         default: nps build.code.css.scss build.code.css.prefix
         scss: node-sass 'web/style' --include-path 'node_modules' --linefeed lf --output-style expanded --output 'build/dev'
