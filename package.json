@@ -5,21 +5,21 @@
         "normalize.css": "^8"
     },
     "devDependencies": {
-        "@babel/cli": "^7",
-        "@babel/core": "^7",
-        "@babel/polyfill": "^7",
-        "@babel/preset-env": "^7",
-        "autoprefixer": "^9",
+        "@babel/cli": "^7.4.3",
+        "@babel/core": "^7.4.3",
+        "@babel/polyfill": "^7.4.3",
+        "@babel/preset-env": "^7.4.3",
+        "autoprefixer": "^9.5.1",
         "browserify": "^16",
         "concurrently": "^4",
         "exorcist": "^1",
         "mkdirp": "^0.5",
         "node-sass": "^4",
-        "nps": "^5",
+        "nps": "^5.9.5",
         "onchange": "^5",
         "postcss-cli": "^6",
         "rimraf": "^2",
-        "typescript": "^3"
+        "typescript": "^3.4.3"
     },
     "scripts": {
         "build": "nps build",
