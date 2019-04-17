@@ -9,12 +9,13 @@ FORCE:
 
 pre-dependencies: FORCE
 	if [ '$(shell uname)' == 'Darwin' ]; then brew bundle; fi
-	pip install -r 'requirements.txt'
 
 bootstrap: pre-dependencies
+	pip install -r 'requirements.txt'
 	npm install
 
 update: pre-dependencies
+	pip install -r 'requirements.txt' --upgrade
 	npm update
 
 ## Running server ##
