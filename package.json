@@ -2,6 +2,7 @@
     "private": true,
     "dependencies": {
         "apache-server-configs": "^3",
+        "core-js": "^3",
         "normalize.css": "^8"
     },
     "devDependencies": {

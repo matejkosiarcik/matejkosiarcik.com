@@ -1,6 +1,14 @@
 {
     "presets": [
-        ["@babel/preset-env", { "forceAllTransforms": true, "spec": true, "useBuiltIns": "usage" }]
+        [
+            "@babel/preset-env",
+            {
+                "forceAllTransforms": true,
+                "spec": true,
+                "useBuiltIns": "usage",
+                "corejs": 3
+            }
+        ]
     ],
     "plugins": [
     ]
