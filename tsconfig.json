@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+      "target": "esnext",
       "rootDir": "web/script",
       "lib": ["dom", "esnext"],
       "importHelpers": true,
