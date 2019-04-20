@@ -18,7 +18,7 @@ scripts:
       css:
         default: nps build.code.css.scss build.code.css.postcss
         scss: node-sass 'web/style' --include-path 'node_modules' --linefeed lf --output-style expanded --output 'build/dev'
-        postcss: postcss 'build/dev/style.css' --use autoprefixer --no-map --replace
+        postcss: postcss 'build/dev/style.css' --config '.' --no-map --replace
       js:
         default: nps build.code.js.typescript build.code.js.babel build.code.js.browserify
         typescript: tsc --outDir 'build/tmp/js/1'
