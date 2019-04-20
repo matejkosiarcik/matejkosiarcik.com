@@ -16,9 +16,9 @@ scripts:
         index: jinja2 'web/markup/index.html.j2' >'build/dev/index.html'
         error: jinja2 'web/markup/404.html.j2' >'build/dev/404.html'
       css:
-        default: nps build.code.css.scss build.code.css.prefix
+        default: nps build.code.css.scss build.code.css.postcss
         scss: node-sass 'web/style' --include-path 'node_modules' --linefeed lf --output-style expanded --output 'build/dev'
-        prefix: postcss 'build/dev/style.css' --use autoprefixer --no-map --replace
+        postcss: postcss 'build/dev/style.css' --use autoprefixer --no-map --replace
       js:
         default: nps build.code.js.typescript build.code.js.babel build.code.js.browserify
         typescript: tsc --outDir 'build/tmp/js/1'
