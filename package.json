@@ -15,11 +15,11 @@
         "concurrently": "^4",
         "exorcist": "^1",
         "mkdirp": "^0.5",
-        "node-sass": "^4",
         "nps": "^5.9.5",
         "onchange": "^5",
         "postcss-cli": "^6",
         "rimraf": "^2",
+        "sass": "^1.19.0",
         "typescript": "^3.4.3"
     },
     "scripts": {

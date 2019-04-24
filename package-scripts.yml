@@ -17,7 +17,7 @@ scripts:
         error: jinja2 'web/markup/404.html.j2' >'build/dev/404.html'
       css:
         default: nps build.code.css.scss build.code.css.postcss
-        scss: node-sass 'web/style' --include-path 'node_modules' --linefeed lf --output-style expanded --output 'build/dev'
+        scss: sass 'web/style:build/dev' --load-path 'node_modules' --no-source-map
         postcss: postcss 'build/dev/style.css' --config '.' --no-map --replace
       js:
         default: nps build.code.js.typescript build.code.js.babel build.code.js.browserify
