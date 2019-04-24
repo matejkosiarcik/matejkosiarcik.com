@@ -1,0 +1,18 @@
+language: node_js
+sudo: false
+dist: trusty
+
+node_js:
+  - 12
+  - 11
+  - 10
+  - 9
+  - 8
+  - 7
+  - 6
+
+install:
+  - npm ci
+
+script:
+  - npm run build
