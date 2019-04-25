@@ -1,15 +1,19 @@
 {
     "compilerOptions": {
       "target": "esnext",
-      "rootDir": "web/script",
       "lib": ["dom", "esnext"],
-      "importHelpers": true,
-      "downlevelIteration": true,
+
+      "declaration": true,
+      "outDir": "build/tmp/js/1",
+      "rootDir": "web/script",
+
       "strict": true,
       "noUnusedLocals": true,
       "noUnusedParameters": true,
       "noImplicitReturns": true,
       "noFallthroughCasesInSwitch": true,
+
+      "allowSyntheticDefaultImports": true,
       "esModuleInterop": true
     }
 }
