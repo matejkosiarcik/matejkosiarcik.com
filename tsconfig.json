@@ -4,7 +4,6 @@
       "lib": ["dom", "esnext"],
 
       "declaration": true,
-      "outDir": "build/tmp/js/1",
       "rootDir": "web/script",
 
       "strict": true,
