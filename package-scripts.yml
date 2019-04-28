@@ -21,7 +21,7 @@ scripts:
         postcss: postcss 'build/dev/style.css' --config '.' --no-map --replace
       js:
         default: nps build.code.js.babel build.code.js.browserify
-        babel: babel 'web/script' --out-dir 'build/tmp/js' --extensions ".ts,.tsx" --source-maps inline
+        babel: babel 'web/script' --out-dir 'build/tmp/js' --extensions ".ts" --source-maps inline
         browserify: browserify 'build/tmp/js/bundle.js' --debug | exorcist 'build/dev/bundle.js.map' >'build/dev/bundle.js'
     assets:
       default: concurrently 'nps build.assets.images' 'nps build.assets.favicon'
