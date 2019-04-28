@@ -53,5 +53,5 @@ scripts:
 
   dist:
     default: nps build dist.relink dist.copy
-    relink: rimraf 'public' && ln -s 'build/release' 'public'
-    copy: cp -R 'build/dev/' 'build/dist'
+    relink: rimraf 'public' && ln -s 'build/prod' 'public'
+    copy: cp -R 'build/dev/' 'build/prod'
