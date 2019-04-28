@@ -1,9 +1,7 @@
 scripts:
   build:
     default: nps build.prepare && concurrently 'nps build.config' 'nps build.code' 'nps build.assets'
-    prepare:
-      default: concurrently 'nps build.prepare.mkdir' 'nps build.prepare.relink'
-      mkdir: mkdirp 'build/dev'
+    prepare: mkdirp 'build/dev'
     config:
       default: concurrently 'nps build.config.config' 'nps build.config.htaccess'
       config: cp -R 'web/config/' 'build/dev'
@@ -50,6 +48,4 @@ scripts:
       images: onchange 'web/images/*' -- nps build.assets.images
       favicon: onchange 'web/favicon/*' -- nps build.assets.favicon
 
-  dist:
-    default: nps build dist.relink dist.copy
-    copy: cp -R 'build/dev/' 'build/prod'
+  dist: cp -R 'build/dev/' 'build/prod'
