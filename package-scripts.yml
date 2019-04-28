@@ -4,7 +4,6 @@ scripts:
     prepare:
       default: concurrently 'nps build.prepare.mkdir' 'nps build.prepare.relink'
       mkdir: mkdirp 'build/dev'
-      relink: rimraf 'public' && ln -s 'build/dev' 'public'
     config:
       default: concurrently 'nps build.config.config' 'nps build.config.htaccess'
       config: cp -R 'web/config/' 'build/dev'
@@ -53,5 +52,4 @@ scripts:
 
   dist:
     default: nps build dist.relink dist.copy
-    relink: rimraf 'public' && ln -s 'build/prod' 'public'
     copy: cp -R 'build/dev/' 'build/prod'
