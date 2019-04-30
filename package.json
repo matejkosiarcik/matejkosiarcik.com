@@ -1,9 +1,9 @@
 {
     "private": true,
     "dependencies": {
-        "apache-server-configs": "^3",
-        "core-js": "^3",
-        "normalize.css": "^8"
+        "apache-server-configs": "^3.1.0",
+        "core-js": "^3.0.1",
+        "normalize.css": "^8.0.1"
     },
     "devDependencies": {
         "@babel/cli": "^7.4.3",
@@ -15,14 +15,14 @@
         "@babel/preset-typescript": "^7.3.3",
         "autoprefixer": "^9.5.1",
         "babelify": "^10.0.0",
-        "browserify": "^16",
-        "concurrently": "^4",
-        "exorcist": "^1",
-        "mkdirp": "^0.5",
+        "browserify": "^16.2.3",
+        "concurrently": "^4.1.0",
+        "exorcist": "^1.0.1",
+        "mkdirp": "^0.5.1",
         "nps": "^5.9.5",
-        "onchange": "^5",
-        "postcss-cli": "^6",
-        "rimraf": "^2",
+        "onchange": "^5.2.0",
+        "postcss-cli": "^6.1.2",
+        "rimraf": "^2.6.3",
         "sass": "^1.19.0",
         "typescript": "^3.4.3"
     },
