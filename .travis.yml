@@ -12,7 +12,7 @@ node_js:
   - 6
 
 install:
-  - npm ci
+  - npm install
 
 script:
   - npm run build
