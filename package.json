@@ -14,6 +14,7 @@
         "@babel/preset-env": "^7.4.3",
         "@babel/preset-typescript": "^7.3.3",
         "autoprefixer": "^9.5.1",
+        "babelify": "^10.0.0",
         "browserify": "^16",
         "concurrently": "^4",
         "exorcist": "^1",
