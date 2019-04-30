@@ -10,8 +10,8 @@ scripts:
       default: concurrently 'nps build.code.html' 'nps build.code.css' 'nps build.code.js'
       html:
         default: concurrently 'nps build.code.html.index' 'nps build.code.html.error'
-        index: jinja2 'web/markup/index.html.j2' >'build/dev/index.html'
-        error: jinja2 'web/markup/404.html.j2' >'build/dev/404.html'
+        index: mustache -p 'web/markup/_head.html.mustache' 'web/markup/index.json' 'web/markup/index.html.mustache' >'build/dev/index.html'
+        error: mustache -p 'web/markup/_head.html.mustache' 'web/markup/404.json' 'web/markup/404.html.mustache' >'build/dev/404.html'
       css:
         default: nps build.code.css.scss build.code.css.postcss
         scss: sass 'web/style:build/dev' --load-path 'node_modules' --no-source-map
