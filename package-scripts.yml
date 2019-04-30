@@ -24,7 +24,7 @@ scripts:
         copy: cp -R 'web/images/' 'build/dev/images'
         png: find 'web/images' -type f -name '*.svg' -print0 | xargs -0 -I % sh -c 'convert -resize 256x256 -density 1000 -background none "%" "build/dev/images/$(basename "%" .svg).png"'
       favicon:
-        default: nps build.assets.favicon.copy build.assets.favicon.png build.assets.favicon.ico
+        default: concurrently 'nps build.assets.favicon.copy' 'nps build.assets.favicon.png build.assets.favicon.ico'
         copy: cp -R 'web/favicon/' 'build/dev'
         png: convert -resize 64x64 -density 1000 -background none 'web/favicon/favicon.svg' 'build/dev/favicon.png'
         ico: convert -define icon:auto-resize=32,16 -background none -colors 256 -density 1000 'build/dev/favicon.png' 'build/dev/favicon.ico'
