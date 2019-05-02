@@ -8,10 +8,10 @@ commands:
           command: npm install
   build:
     steps:
-      - run
+      - run:
           name: Build project in dev config
           command: npm run build
-      - run
+      - run:
           name: Build project in prod config
           command: npm run dist
 
