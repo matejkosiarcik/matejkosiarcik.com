@@ -2,15 +2,18 @@ version: 2.1
 
 commands:
   install:
-    - run:
-        name: Install dependencies
-        command: npm install
+    steps:
+      - run:
+          name: Install dependencies
+          command: npm install
   build:
-    - run
-        name: Build project
-        command: |
-          npm run build
-          npm run dist
+    steps:
+      - run
+          name: Build project in dev config
+          command: npm run build
+      - run
+          name: Build project in prod config
+          command: npm run dist
 
 jobs:
   build:
