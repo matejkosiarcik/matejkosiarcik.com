@@ -25,12 +25,14 @@
         "postcss-cli": "^6.1.2",
         "rimraf": "^2.6.3",
         "sass": "^1.19.0",
+        "tslint": "^5.16.0",
         "typescript": "^3.4.3"
     },
     "scripts": {
         "build": "nps build",
         "clean": "rimraf 'build'",
         "dist": "nps dist",
+        "lint": "tslint -p '.'",
         "postinstall": "cd 'node_modules/normalize.css' && if [ -f 'normalize.css' ]; then mv 'normalize.css' 'normalize.scss'; fi",
         "serve:dev": "cd 'build/dev' && browser-sync start --server --files '**/*'",
         "serve:prod": "docker-compose up",
