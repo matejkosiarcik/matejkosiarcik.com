@@ -16,25 +16,6 @@ bootstrap: pre-dependencies
 update: pre-dependencies
 	npm update
 
-## Running server ##
-
-run: build
-	npm run start
-
-## Building project ##
-
-build: FORCE
-	npm run build
-
-watch: FORCE
-	npm run watch
-
-dist: FORCE
-	npm run dist
-
-clean: FORCE
-	npm run clean
-
 ## Deploying project ##
 
 deploy: FORCE
