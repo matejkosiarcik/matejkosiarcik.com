@@ -19,7 +19,8 @@ jobs:
   build:
     docker:
       - image: circleci/node:latest
-    steps:
+    pre-steps:
       - checkout
       - install
+    steps:
       - build
