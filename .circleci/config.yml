@@ -15,12 +15,23 @@ commands:
           name: Build project [prod]
           command: npm run dist
 
-jobs:
-  build:
+executors:
+  node-latest:
     docker:
       - image: circleci/node:latest
-    pre-steps:
-      - checkout
-      - install
-    steps:
-      - build
+  node-lts:
+    docker:
+      - image: circleci/node:lts
+
+build-template: &build-template
+  executor: ${CIRCLE_JOB}
+  steps:
+    - checkout
+    - install
+    - build
+
+workflows:
+  build:
+    jobs:
+      - node-latest: { <<: *build-template }
+      - node-lts: { <<: *build-template }
