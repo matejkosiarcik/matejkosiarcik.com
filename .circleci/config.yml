@@ -9,10 +9,10 @@ commands:
   build:
     steps:
       - run:
-          name: Build project in dev config
+          name: Build project [dev]
           command: npm run build
       - run:
-          name: Build project in prod config
+          name: Build project [prod]
           command: npm run dist
 
 jobs:
