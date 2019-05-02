@@ -33,5 +33,15 @@ build-template: &build-template
 workflows:
   build:
     jobs:
-      - node-latest: { <<: *build-template }
-      - node-lts: { <<: *build-template }
+      - node-latest:
+          executor: ${CIRCLE_JOB}
+          steps:
+            - checkout
+            - install
+            - build
+      - node-lts:
+          executor: ${CIRCLE_JOB}
+          steps:
+            - checkout
+            - install
+            - build
