@@ -33,6 +33,7 @@
         "dist": "nps dist",
         "postinstall": "cd 'node_modules/normalize.css' && if [ -f 'normalize.css' ]; then mv 'normalize.css' 'normalize.scss'; fi",
         "serve:dev": "cd 'build/dev' && browser-sync start --server --files '**/*'",
+        "serve:prod": "docker-compose up",
         "start": "concurrently 'npm run watch' 'npm run serve:dev'",
         "watch": "nps watch"
     }
