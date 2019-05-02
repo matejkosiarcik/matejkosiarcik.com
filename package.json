@@ -29,9 +29,11 @@
     },
     "scripts": {
         "build": "nps build",
-        "clean": "rimraf 'build' 'public'",
+        "clean": "rimraf 'build'",
         "dist": "nps dist",
         "postinstall": "cd 'node_modules/normalize.css' && if [ -f 'normalize.css' ]; then mv 'normalize.css' 'normalize.scss'; fi",
+        "serve:dev": "cd 'build/dev' && browser-sync start --server --files '**/*'",
+        "start": "concurrently 'npm run watch' 'npm run serve:dev'",
         "watch": "nps watch"
     }
 }
