@@ -32,7 +32,7 @@
         "build": "nps build",
         "clean": "rimraf 'build'",
         "dist": "nps dist",
-        "lint": "tslint -p '.'",
+        "lint": "tslint -p 'tsconfig.json'",
         "serve:dev": "cd 'build/dev' && browser-sync start --server --files '**/*'",
         "serve:prod": "docker-compose up",
         "start": "concurrently 'npm run watch' 'npm run serve:dev'",
