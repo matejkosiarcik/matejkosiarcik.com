@@ -1,10 +1,16 @@
 language: node_js
 sudo:
+  -
   - false
   - true
-dist: trusty
+  - required
+dist:
+  - precise
+  - trusty
+  - xenial
 
 node_js:
+  - node
   - 12
   - 11
   - 10
