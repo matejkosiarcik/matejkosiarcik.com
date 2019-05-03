@@ -4,10 +4,6 @@ sudo:
   - false
   - true
   - required
-dist:
-  - precise
-  - trusty
-  - xenial
 
 node_js:
   - node
