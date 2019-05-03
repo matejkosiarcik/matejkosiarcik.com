@@ -13,10 +13,6 @@ platform:
   - x64
   - Any CPU
 
-configuration:
-  - Debug
-  - Release
-
 environment:
   matrix:
     - nodejs_version: "12"
@@ -29,6 +25,8 @@ environment:
 
 install:
   - ps: Install-Product node $env:nodejs_version $env:platform
+  - node --version
+  - npm --version
   - npm install
 
 build: script
