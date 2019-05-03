@@ -1,5 +1,22 @@
 version: "{build}"
 
+image:
+  - Visual Studio 2013
+  - Previous Visual Studio 2013
+  - Visual Studio 2015
+  - Previous Visual Studio 2015
+  - Visual Studio 2017
+  - Previous Visual Studio 2017
+
+platform:
+  - x86
+  - x64
+  - Any CPU
+
+configuration:
+  - Debug
+  - Release
+
 environment:
   matrix:
     - nodejs_version: "12"
@@ -10,11 +27,6 @@ environment:
     - nodejs_version: "7"
     - nodejs_version: "6"
 
-platform:
-  - x86
-  - x64
-  - Any CPU
-
 install:
   - ps: Install-Product node $env:nodejs_version $env:platform
   - npm install
@@ -22,5 +34,5 @@ install:
 build: script
 build_script:
   - npm run lint
-  - npm run build
+  - sh: npm run build
   - npm run dist
