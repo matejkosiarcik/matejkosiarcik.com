@@ -19,48 +19,24 @@ commands:
       - run:
           name: Build project [prod]
           command: npm run dist
-
-executors:
-  node-latest:
-    docker:
-      - image: circleci/node:latest
-  node-lts:
-    docker:
-      - image: circleci/node:lts
-
-lint-template: &lint-template
-  steps:
-    - checkout
-    - install
-    - lint
-build-template: &build-template
-  steps:
-    - checkout
-    - install
-    - build
+  all:
+    steps:
+      - checkout
+      - install
+      - lint
+      - build
 
 jobs:
-  lint-latest:
-    executor: node-latest
-    <<: *lint-template
-  lint-lts:
-    executor: node-lts
-    <<: *lint-template
-  build-latest:
-    executor: node-latest
-    <<: *build-template
-  build-lts:
-    executor: node-lts
-    <<: *build-template
+  node-latest:
+    image: circleci/node:latest
+    steps: [ all ]
+  node-lts:
+    image: circleci/node:lts
+    steps: [ all ]
 
 workflows:
   version: 2
-  lint:
-    jobs:
-      - lint-latest
-      - lint-lts
   build:
-    requires: lint
     jobs:
-      - build-latest
-      - build-lts
+      - node-latest
+      - node-lts
