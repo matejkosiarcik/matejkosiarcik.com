@@ -1,3 +1,5 @@
+version: "{build}"
+
 environment:
   matrix:
     - nodejs_version: "12"
@@ -11,12 +13,14 @@ environment:
 platform:
   - x86
   - x64
+  - Any CPU
 
 install:
   - ps: Install-Product node $env:nodejs_version $env:platform
   - npm install
 
+build: script
 build_script:
-  - npm run lint
+  - ps: npm run lint
   - npm run build
   - npm run dist
