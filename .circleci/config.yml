@@ -31,7 +31,7 @@ jobs:
     docker: [ image: circleci/node:latest ]
     steps: [ all ]
   node-lts:
-  docker: [ image: circleci/node:lts ]
+    docker: [ image: circleci/node:lts ]
     steps: [ all ]
 
 workflows:
