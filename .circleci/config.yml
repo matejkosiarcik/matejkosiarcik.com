@@ -11,21 +11,21 @@ commands:
   install:
     steps:
       - run:
-          name: Install dependencies
-          command: npm install
+        name: Install dependencies
+        command: npm install
   lint:
     steps:
       - run:
-          name: Lint source
-          command: npm run lint
+        name: Lint source
+        command: npm run lint
   build:
     steps:
       - run:
-          name: Build project [dev]
-          command: npm run build
+        name: Build project [dev]
+        command: npm run build
       - run:
-          name: Build project [prod]
-          command: npm run dist
+        name: Build project [prod]
+        command: npm run dist
   all:
     steps:
       - checkout
