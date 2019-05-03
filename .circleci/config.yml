@@ -26,14 +26,20 @@ commands:
       - lint
       - build
 
+executors:
+  node:
+    docker:
+      - image: circleci/node:<< parameters.tag >>
+    parameters:
+      tag:
+        type: string
+
 jobs:
   node-latest:
-    docker:
-      - image: circleci/node:latest
+    executor: { node, tag: latest }
     steps: [ all ]
   node-lts:
-    docker:
-      - image: circleci/node:lts
+    executor: { node, tag: lts }
     steps: [ all ]
 
 workflows:
