@@ -40,18 +40,18 @@ build-template: &build-template
     - build
 
 jobs:
-  - lint-latest:
-      executor: node-latest
-      <<: *lint-template
-  - lint-lts:
-      executor: node-lts
-      <<: *lint-template
-  - build-latest:
-      executor: node-latest
-      <<: *build-template
-  - build-lts:
-      executor: node-lts
-      <<: *build-template
+  lint-latest:
+    executor: node-latest
+    <<: *lint-template
+  lint-lts:
+    executor: node-lts
+    <<: *lint-template
+  build-latest:
+    executor: node-latest
+    <<: *build-template
+  build-lts:
+    executor: node-lts
+    <<: *build-template
 
 workflows:
   version: 2
