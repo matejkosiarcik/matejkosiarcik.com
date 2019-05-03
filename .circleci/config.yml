@@ -6,6 +6,11 @@ commands:
       - run:
           name: Install dependencies
           command: npm install
+  lint:
+    steps:
+      - run:
+          name: Lint source
+          command: npm run lint
   build:
     steps:
       - run:
@@ -23,26 +28,39 @@ executors:
     docker:
       - image: circleci/node:lts
 
+lint-template: &lint-template
+  steps:
+    - checkout
+    - install
+    - lint
 build-template: &build-template
-  executor: ${CIRCLE_JOB}
   steps:
     - checkout
     - install
     - build
 
+jobs:
+  - lint-latest:
+      executor: node-latest
+      <<: *lint-template
+  - lint-lts:
+      executor: node-lts
+      <<: *lint-template
+  - build-latest:
+      executor: node-latest
+      <<: *build-template
+  - build-lts:
+      executor: node-lts
+      <<: *build-template
+
 workflows:
   version: 2
-  build:
+  lint:
     jobs:
-      - node-latest:
-          executor: ${CIRCLE_JOB}
-          steps:
-            - checkout
-            - install
-            - build
-      - node-lts:
-          executor: ${CIRCLE_JOB}
-          steps:
-            - checkout
-            - install
-            - build
+      - lint-latest
+      - lint-lts
+  build:
+    requires: lint
+    jobs:
+      - build-latest
+      - build-lts
