@@ -1,6 +1,13 @@
 version: 2.1
 
 commands:
+  env_info:
+    steps:
+      - run:
+        name: Print env info
+        command: |
+          node --version
+          npm --version
   install:
     steps:
       - run:
