@@ -5,6 +5,7 @@ node_js:
 
 build:
   ci:
+    - uname -a
     - node --version
     - npm --version
     - npm install
