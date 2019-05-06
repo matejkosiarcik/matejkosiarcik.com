@@ -1,0 +1,18 @@
+language: node_js
+
+build:
+  ci:
+    - node --version
+    - npm --version
+    - npm install
+    - npm run lint
+    - npm run build
+    - npm run dist
+
+integrations:
+  notifications:
+    - integrationName: email
+      type: email
+      on_success: never
+      on_failure: always
+      on_pull_request: never
