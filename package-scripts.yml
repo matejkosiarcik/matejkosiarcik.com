@@ -4,13 +4,13 @@ scripts:
     prepare: mkdirp 'build/dev'
     build: concurrently "nps build.config" "nps build.code" "nps build.assets"
     config:
-      default: concurrently 'nps build.config.config' 'nps build.config.htaccess'
+      default: concurrently "nps build.config.config" "nps build.config.htaccess"
       config: cp -R 'web/config/' 'build/dev'
       htaccess: cat 'web/.htaccess' 'node_modules/apache-server-configs/dist/.htaccess' >'build/dev/.htaccess'
     code:
-      default: concurrently 'nps build.code.html' 'nps build.code.css' 'nps build.code.js'
+      default: concurrently "nps build.code.html" "nps build.code.css" "nps build.code.js"
       html:
-        default: concurrently 'nps build.code.html.index' 'nps build.code.html.error'
+        default: concurrently "nps build.code.html.index" "nps build.code.html.error"
         index: mustache -p 'web/markup/_head.html.mustache' 'web/markup/index.json' 'web/markup/index.html.mustache' >'build/dev/index.html'
         error: mustache -p 'web/markup/_head.html.mustache' 'web/markup/404.json' 'web/markup/404.html.mustache' >'build/dev/404.html'
       css:
@@ -19,30 +19,30 @@ scripts:
         postcss: postcss 'build/dev/style.css' --config '.' --no-map --replace
       js: browserify 'web/script/bundle.ts' --debug -t [ babelify --extensions '.ts' ] | exorcist 'build/dev/bundle.js.map' >'build/dev/bundle.js'
     assets:
-      default: concurrently 'nps build.assets.images' 'nps build.assets.favicon'
+      default: concurrently "nps build.assets.images" "nps build.assets.favicon"
       images:
-        default: concurrently 'nps build.assets.images.copy' 'nps build.assets.images.png'
+        default: concurrently "nps build.assets.images.copy" "nps build.assets.images.png"
         copy: cp -R 'web/images/' 'build/dev/images'
         png: find 'web/images' -type f -name '*.svg' -print0 | xargs -0 -I % sh -c 'convert -resize 256x256 -density 1000 -background none "%" "build/dev/images/$(basename "%" .svg).png"'
       favicon:
-        default: concurrently 'nps build.assets.favicon.copy' 'nps build.assets.favicon.png build.assets.favicon.ico'
+        default: concurrently "nps build.assets.favicon.copy" "nps build.assets.favicon.png build.assets.favicon.ico"
         copy: cp -R 'web/favicon/' 'build/dev'
         png: convert -resize 64x64 -density 1000 -background none 'web/favicon/favicon.svg' 'build/dev/favicon.png'
         ico: convert -define icon:auto-resize=32,16 -background none -colors 256 -density 1000 'build/dev/favicon.png' 'build/dev/favicon.ico'
 
   watch:
-    default: nps build && concurrently 'nps watch.config' 'nps watch.code' 'nps watch.assets'
+    default: nps build && concurrently "nps watch.config" "nps watch.code" "nps watch.assets"
     config:
-      default: concurrently 'nps watch.config.config' 'nps watch.config.htaccess'
+      default: concurrently "nps watch.config.config" "nps watch.config.htaccess"
       config: onchange 'web/config/*' -- nps build.config.config
       htaccess: onchange 'web/.htaccess' -- nps build.config.htaccess
     code:
-      default: concurrently 'nps watch.code.html' 'nps watch.code.css' 'nps watch.code.js'
+      default: concurrently "nps watch.code.html" "nps watch.code.css" "nps watch.code.js"
       html: onchange 'web/markup/*' -- nps build.code.html
       css: onchange 'web/style/*' -- nps build.code.css
       js: onchange 'web/script/*' -- nps build.code.js
     assets:
-      default: concurrently 'nps watch.assets.images' 'nps watch.assets.favicon'
+      default: concurrently "nps watch.assets.images" "nps watch.assets.favicon"
       images: onchange 'web/images/*' -- nps build.assets.images
       favicon: onchange 'web/favicon/*' -- nps build.assets.favicon
 
