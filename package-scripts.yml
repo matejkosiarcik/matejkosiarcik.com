@@ -2,7 +2,7 @@ scripts:
   build:
     default: nps build.prepare build.build
     prepare: mkdirp 'build/dev'
-    build: concurrently 'nps build.config' 'nps build.code' 'nps build.assets'
+    build: concurrently "nps build.config" "nps build.code" "nps build.assets"
     config:
       default: concurrently 'nps build.config.config' 'nps build.config.htaccess'
       config: cp -R 'web/config/' 'build/dev'
