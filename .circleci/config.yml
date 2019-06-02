@@ -29,6 +29,7 @@ commands:
   all:
     steps:
       - checkout
+      - env_info
       - install
       - lint
       - build
