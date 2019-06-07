@@ -24,7 +24,7 @@
         "onchange": "^5.2.0",
         "postcss-cli": "^6.1.2",
         "rimraf": "^2.6.3",
-        "sass": "^1.20.1",
+        "sass": "^1.21.0",
         "tslint": "^5.16.0",
         "typescript": "^3.4.3"
     },
