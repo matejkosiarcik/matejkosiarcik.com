@@ -8,9 +8,12 @@ image:
 platform:
   - x86
   - x64
+  # TODO: - Any CPU
 
 environment:
   matrix:
+    - nodejs_version: Current
+    - nodejs_version: LTS
     - nodejs_version: "12"
     - nodejs_version: "11"
     - nodejs_version: "10"
@@ -18,6 +21,9 @@ environment:
     - nodejs_version: "8"
     - nodejs_version: "7"
     - nodejs_version: "6"
+    # TODO: include choco versions
+    # - nodejs_choco: latest
+    # - nodejs_choco: lts
 
 install:
   - ps: Install-Product node $env:nodejs_version $env:platform
