@@ -1,6 +1,6 @@
-brew "node"
-brew "nvm"
-brew "python"
-
 tap "homebrew/cask"
+
+brew "node"
+
+brew "docker"
 cask "docker"

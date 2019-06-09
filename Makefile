@@ -7,14 +7,8 @@ FORCE:
 
 ## Installing dependencies ##
 
-pre-dependencies: FORCE
-	if [ '$(shell uname)' == 'Darwin' ]; then brew bundle; fi
-
-bootstrap: pre-dependencies
+bootstrap: FORCE
 	npm install
-
-update: pre-dependencies
-	npm update
 
 ## Deploying project ##
 

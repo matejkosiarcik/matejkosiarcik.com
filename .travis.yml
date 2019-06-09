@@ -5,6 +5,13 @@ sudo:
   - true
   - required
 
+addons:
+  apt:
+    update: true
+  homebrew:
+    update: true
+    brewfile: true
+
 node_js:
   - node # latest
   - 12
@@ -14,6 +21,12 @@ node_js:
   - 8
   - 7
   - 6
+
+matrix:
+  fast_finish: true
+  include:
+    - os: osx
+      language: generic
 
 install:
   - npm install
