@@ -5,9 +5,10 @@ commands:
     steps:
       - run:
           name: Print env info
-          command: |
-            node --version
-            npm --version
+          command:
+            - uname -a
+            - node --version
+            - npm --version
   install:
     steps:
       - run:
