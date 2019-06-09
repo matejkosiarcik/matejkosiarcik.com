@@ -33,6 +33,5 @@ install:
 
 build: script
 build_script:
-  - npm run lint
   - ps: npm run build
   - npm run dist
