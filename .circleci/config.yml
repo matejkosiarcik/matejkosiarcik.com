@@ -6,7 +6,6 @@ commands:
       - run:
           name: Print env info
           command:
-            - uname -a
             - node --version
             - npm --version
   install:
