@@ -1,9 +1,4 @@
 language: node_js
-sudo:
-  -
-  - false
-  - true
-  - required
 
 addons:
   apt:
@@ -27,6 +22,7 @@ matrix:
   include:
     - os: osx
       language: generic
+      if: branch = master
 
 install:
   - npm install
