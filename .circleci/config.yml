@@ -6,6 +6,7 @@ commands:
       - run:
           name: Print env info
           command: |
+            uname -a
             node --version
             npm --version
   install:
@@ -13,11 +14,6 @@ commands:
       - run:
           name: Install dependencies
           command: npm install
-  lint:
-    steps:
-      - run:
-          name: Lint source
-          command: npm run lint
   build:
     steps:
       - run:
@@ -31,7 +27,6 @@ commands:
       - checkout
       - env_info
       - install
-      - lint
       - build
 
 jobs:

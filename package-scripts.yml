@@ -8,7 +8,7 @@ scripts:
       config: cp -R 'web/config/' 'build/dev'
       htaccess: cat 'web/.htaccess' 'node_modules/apache-server-configs/dist/.htaccess' >'build/dev/.htaccess'
     code:
-      default: concurrently "nps build.code.html" "nps build.code.css" "nps build.code.js"
+      default: concurrently "nps build.code.html" "nps build.code.css"
       html:
         default: concurrently "nps build.code.html.index" "nps build.code.html.error"
         index: mustache -p 'web/markup/_head.html.mustache' 'web/markup/index.json' 'web/markup/index.html.mustache' >'build/dev/index.html'
@@ -17,7 +17,6 @@ scripts:
         default: nps build.code.css.scss build.code.css.postcss
         scss: sass 'web/style:build/dev' --load-path 'node_modules' --no-source-map
         postcss: postcss 'build/dev/style.css' --config '.' --no-map --replace
-      js: browserify 'web/script/bundle.ts' --debug -t [ babelify --extensions '.ts' ] | exorcist 'build/dev/bundle.js.map' >'build/dev/bundle.js'
     assets:
       default: concurrently "nps build.assets.images" "nps build.assets.favicon"
       images:
@@ -37,10 +36,9 @@ scripts:
       config: onchange 'web/config/*' -- nps build.config.config
       htaccess: onchange 'web/.htaccess' -- nps build.config.htaccess
     code:
-      default: concurrently "nps watch.code.html" "nps watch.code.css" "nps watch.code.js"
+      default: concurrently "nps watch.code.html" "nps watch.code.css"
       html: onchange 'web/markup/*' -- nps build.code.html
       css: onchange 'web/style/*' -- nps build.code.css
-      js: onchange 'web/script/*' -- nps build.code.js
     assets:
       default: concurrently "nps watch.assets.images" "nps watch.assets.favicon"
       images: onchange 'web/images/*' -- nps build.assets.images
