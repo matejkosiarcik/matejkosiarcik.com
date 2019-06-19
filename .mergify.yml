@@ -1,0 +1,14 @@
+pull_request_rules:
+  - name: Automatic merge for Owner
+    conditions:
+      - author=matejkosiarcik
+      - status-success=stickler-ci
+      - status-success=continuous-integration/travis-ci/pr
+      - status-success=continuous-integration/travis-ci/push
+      - status-success=ci/circleci
+      - status-success=Shippable
+      - base=master
+    actions:
+      merge:
+        method: merge
+        strict: true
