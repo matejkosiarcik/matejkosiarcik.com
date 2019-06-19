@@ -4,18 +4,11 @@ node_js:
   - "11.10"
 
 build:
-  ci:
+  pre_ci:
     - uname -a
     - node --version
     - npm --version
+  ci:
     - npm install
     - npm run build
     - npm run dist
-
-integrations:
-  notifications:
-    - integrationName: email
-      type: email
-      on_success: never
-      on_failure: always
-      on_pull_request: never
