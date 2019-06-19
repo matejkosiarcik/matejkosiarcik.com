@@ -22,7 +22,6 @@ matrix:
   include:
     - os: osx
       language: generic
-      if: branch = master
 
 install:
   - npm install
