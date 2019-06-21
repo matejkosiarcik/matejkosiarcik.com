@@ -1,26 +1,26 @@
 version: "{build}"
 
 image:
-  - Visual Studio 2013
+  # - Visual Studio 2013
   - Visual Studio 2015
   - Visual Studio 2017
 
 platform:
   - x86
   - x64
-  # TODO: - Any CPU
+  # - Any CPU
 
 environment:
   matrix:
     - nodejs_version: Current
     - nodejs_version: LTS
-    - nodejs_version: "12"
-    - nodejs_version: "11"
-    - nodejs_version: "10"
-    - nodejs_version: "9"
-    - nodejs_version: "8"
-    - nodejs_version: "7"
-    - nodejs_version: "6"
+    # - nodejs_version: "12"
+    # - nodejs_version: "11"
+    # - nodejs_version: "10"
+    # - nodejs_version: "9"
+    # - nodejs_version: "8"
+    # - nodejs_version: "7"
+    # - nodejs_version: "6"
     # TODO: include choco versions
     # - nodejs_choco: latest
     # - nodejs_choco: lts
