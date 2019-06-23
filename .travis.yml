@@ -3,6 +3,10 @@ language: node_js
 os:
   - linux
   - osx
+      osx_image:
+        -
+        - xcode10.2
+        - xcode10.1
 
 node_js:
   - node # latest
@@ -13,11 +17,6 @@ node_js:
   - 8
   - 7
   - 6
-
-osx_image:
-  -
-  - xcode10.2
-  - xcode10.1
 
 addons:
   apt:
