@@ -3,10 +3,6 @@ language: node_js
 os:
   - linux
   - osx
-      osx_image:
-        -
-        - xcode10.2
-        - xcode10.1
 
 node_js:
   - node # latest
@@ -17,6 +13,11 @@ node_js:
   - 8
   - 7
   - 6
+
+osx_image:
+  -
+  - xcode10.2
+  - xcode10.1
 
 addons:
   apt:
@@ -36,6 +37,9 @@ matrix:
     - { os: osx, node_js: 8 }
     - { os: osx, node_js: 7 }
     - { os: osx, node_js: 6 }
+    - { os: linux, osx_image: "" }
+    - { os: linux, osx_image: xcode10.2 }
+    - { os: linux, osx_image: xcode10.1 }
 
 install:
   - npm install
