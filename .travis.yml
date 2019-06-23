@@ -14,6 +14,11 @@ node_js:
   - 7
   - 6
 
+osx_image:
+  -
+  - xcode10.2
+  - xcode10.1
+
 addons:
   apt:
     update: true
@@ -25,15 +30,13 @@ matrix:
   fast_finish: true
 
   exclude:
-    - os: osx
-      node_js:
-        - 12
-        - 11
-        - 10
-        - 9
-        - 8
-        - 7
-        - 6
+    - { os: osx, node_js: 12 }
+    - { os: osx, node_js: 11 }
+    - { os: osx, node_js: 10 }
+    - { os: osx, node_js: 9 }
+    - { os: osx, node_js: 8 }
+    - { os: osx, node_js: 7 }
+    - { os: osx, node_js: 6 }
 
 install:
   - npm install
