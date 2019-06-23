@@ -1,6 +1,10 @@
 language: node_js
 
-node_js:
+os:
+  - linux
+  - osx
+
+node_js: &nodejs_versions
   - node # latest
   - 12
   - 11
@@ -20,13 +24,10 @@ addons:
 matrix:
   fast_finish: true
 
-  include:
+  exclude:
     - os: osx
-      language: generic
-      osx_image:
-        -
-        - xcode10.2
-        - xcode10.1
+      node_js:
+        <<: *nodejs_versions
 
 install:
   - npm install
