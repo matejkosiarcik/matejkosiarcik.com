@@ -4,7 +4,7 @@ os:
   - linux
   - osx
 
-node_js: &nodejs_versions
+node_js:
   - node # latest
   - 12
   - 11
@@ -27,7 +27,13 @@ matrix:
   exclude:
     - os: osx
       node_js:
-        <<: *nodejs_versions
+        - 12
+        - 11
+        - 10
+        - 9
+        - 8
+        - 7
+        - 6
 
 install:
   - npm install
