@@ -1,11 +1,12 @@
 language: node_js
 
-addons:
-  apt:
-    update: true
-  homebrew:
-    update: true
-    brewfile: true
+os:
+  - linux
+  -
+    - osx
+    - osx_image:
+        - ""
+        - xcode10.2
 
 node_js:
   - node # latest
@@ -17,12 +18,15 @@ node_js:
   - 7
   - 6
 
+addons:
+  apt:
+    update: true
+  homebrew:
+    update: true
+    brewfile: true
+
 matrix:
   fast_finish: true
-  include:
-    - os: osx
-      language: generic
-      if: branch = master
 
 install:
   - npm install
