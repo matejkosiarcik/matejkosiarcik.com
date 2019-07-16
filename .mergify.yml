@@ -5,7 +5,7 @@ pull_request_rules:
       - status-success=stickler-ci
       - status-success=continuous-integration/travis-ci/pr
       - status-success=continuous-integration/travis-ci/push
-      - status-success=circleci-build # circle-ci
+      - status-success=circleci/build # circle-ci
       - status-success=Shippable
       - base=master
     actions:

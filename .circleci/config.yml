@@ -39,7 +39,7 @@ jobs:
 
 workflows:
   version: 2
-  circleci-build:
+  circle-ci/build:
     jobs:
       - node-latest
       - node-lts
