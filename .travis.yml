@@ -28,13 +28,12 @@ addons:
 matrix:
   fast_finish: true
 
-    # run these jobs on all branches
-    - os: osx
+  include:
+    # additional mac jobs with brew installed node
+    - os: osx # run all branches
       language: generic
-      if: branch!=master
-
-    # only run most mac jobs on master
-    - &mac
+      if: branch!=masters
+    - &mac # run these only on master
       os: osx
       language: generic
       if: branch=master
