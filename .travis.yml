@@ -32,7 +32,7 @@ matrix:
     # additional mac jobs with brew installed node
     - os: osx # run all branches
       language: generic
-      if: branch!=masters
+      if: branch!=master
     - &mac # run these only on master
       os: osx
       language: generic
