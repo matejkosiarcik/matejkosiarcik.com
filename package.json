@@ -20,6 +20,7 @@
     "scripts": {
         "build": "nps build",
         "clean": "rimraf 'build'",
+        "deploy": "sh '$(PWD)/utils/deploy.sh'",
         "dist": "nps dist",
         "serve:dev": "cd 'build/dev' && browser-sync start --server --files '**/*'",
         "serve:prod": "docker-compose up",
