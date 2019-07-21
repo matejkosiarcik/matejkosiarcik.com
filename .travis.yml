@@ -34,7 +34,7 @@ matrix:
     - &mac # run these only on master
       os: osx
       language: generic
-      if: branch=master
+      if: (branch=master) AND (type=push)
     - { <<: *mac, osx_image: xcode11 }
     - { <<: *mac, osx_image: xcode10.2 }
     - { <<: *mac, osx_image: xcode10.1 }
