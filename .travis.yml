@@ -1,12 +1,12 @@
 language: node_js
+sudo: false
 
 os:
   - linux
-  -
-    - osx
-    - osx_image:
-        - ""
-        - xcode10.2
+  - osx
+
+services:
+  - docker
 
 node_js:
   - node # latest
@@ -15,8 +15,6 @@ node_js:
   - 10
   - 9
   - 8
-  - 7
-  - 6
 
 addons:
   apt:
@@ -27,6 +25,29 @@ addons:
 
 matrix:
   fast_finish: true
+
+  include:
+    # additional mac jobs with brew installed node
+    - os: osx # run all branches
+      language: generic
+      if: branch!=master
+    - &mac # run these only on master
+      os: osx
+      language: generic
+      if: (branch=master) AND (type=push)
+    - { <<: *mac, osx_image: xcode11 }
+    - { <<: *mac, osx_image: xcode10.2 }
+    - { <<: *mac, osx_image: xcode10.1 }
+    - { <<: *mac, osx_image: xcode10 }
+    - { <<: *mac, osx_image: xcode9.4 }
+    - { <<: *mac, osx_image: xcode9.3 }
+    - { <<: *mac, osx_image: xcode9.2 }
+    - { <<: *mac, osx_image: xcode9.1 }
+    - { <<: *mac, osx_image: xcode9 }
+    - { <<: *mac, osx_image: xcode8.3 }
+    - { <<: *mac, osx_image: xcode8 }
+    - { <<: *mac, osx_image: xcode7.3 }
+    - { <<: *mac, osx_image: xcode6.4 }
 
 install:
   - npm install

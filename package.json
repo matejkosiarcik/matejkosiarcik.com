@@ -13,11 +13,14 @@
         "onchange": "^6.0.0",
         "postcss-cli": "^6.1.3",
         "rimraf": "^2.6.3",
-        "sass": "^1.22.7"
+        "sass": "^1.22.7",
+        "webpack": "^4.36.1",
+        "webpack-cli": "^3.3.6"
     },
     "scripts": {
         "build": "nps build",
         "clean": "rimraf 'build'",
+        "deploy": "sh '$(PWD)/utils/deploy.sh'",
         "dist": "nps dist",
         "serve:dev": "cd 'build/dev' && browser-sync start --server --files '**/*'",
         "serve:prod": "docker-compose up",
