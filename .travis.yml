@@ -9,7 +9,6 @@ services:
   - docker
 
 node_js:
-  - # default
   - node # latest
   - 12
   - 11
