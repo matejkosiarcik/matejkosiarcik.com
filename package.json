@@ -10,7 +10,7 @@
         "mkdirp": "^0.5.1",
         "mustache": "^3.1.0",
         "nps": "^5.9.8",
-        "onchange": "^6.0.0",
+        "onchange": "^6.1.0",
         "postcss-cli": "^6.1.3",
         "rimraf": "^3.0.0",
         "sass": "^1.22.12",
