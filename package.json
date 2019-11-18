@@ -5,7 +5,7 @@
         "normalize.css": "^8.0.1"
     },
     "devDependencies": {
-        "autoprefixer": "^9.6.5",
+        "autoprefixer": "^9.7.2",
         "concurrently": "^4.1.2",
         "mkdirp": "^0.5.1",
         "mustache": "^3.1.0",
