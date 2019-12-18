@@ -6,7 +6,7 @@
     },
     "devDependencies": {
         "autoprefixer": "^9.6.5",
-        "concurrently": "^4.1.2",
+        "concurrently": "^5.0.2",
         "mkdirp": "^0.5.1",
         "mustache": "^3.1.0",
         "nps": "^5.9.8",
