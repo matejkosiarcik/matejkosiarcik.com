@@ -1,0 +1,8 @@
+@import 'normalize.css';
+
+@import './general/*.css';
+@import './pages/*.css';
+
+body {
+  background: var(--background);
+}
