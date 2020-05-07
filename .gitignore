@@ -1,5 +1,5 @@
 ### Generic ###
-build/
+.bundle/
 
 # Created by https://www.gitignore.io/api/ruby,jekyll,node,jspm,venv,virtualenv,jetbrains+all,visualstudiocode,sublimetext,emacs,vim,macos,linux,windows
 # Edit at https://www.gitignore.io/?templates=ruby,jekyll,node,jspm,venv,virtualenv,jetbrains+all,visualstudiocode,sublimetext,emacs,vim,macos,linux,windows

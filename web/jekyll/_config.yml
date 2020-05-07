@@ -1,0 +1,40 @@
+title: Matej Košiarčik
+permalink: /title/  # for posts
+# future: true  # allow future articles # TODO: consider what to do with this
+strict_front_matter: true
+encoding: utf-8
+incremental: true
+
+include:
+  - _pages  # hard-coded pages (not posts)
+
+plugins:
+  - jekyll-last-modified-at
+  - jekyll-sitemap
+  - jekyll-tidy
+  - jekyll-toc
+  - jekyll-regex-replace
+
+toc:
+  min_level: 1
+  max_level: 3
+  no_toc_section_class: no-toc
+  list_class: toc
+  sublist_class: ''
+  item_class: ''
+
+highlighter: none  # highlight with js instead
+markdown: Pandoc
+
+defaults:
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: default
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      toc: true
