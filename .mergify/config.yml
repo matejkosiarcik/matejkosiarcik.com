@@ -1,0 +1,36 @@
+pull_request_rules:
+  - name: Automatic Merge (for Owner)
+    conditions:
+      - author=matejkosiarcik
+      - assignee=matejkosiarcik
+      - base=master
+      - label!=work-in-progress
+      - -title~=^.*((wip)|(WIP)|(Wip)).*$
+      - -conflict
+      - -merged
+      - -locked
+      - head~=^(develop|feature-.+)$
+    actions:
+      merge:
+        method: merge
+        strict: smart
+        strict_method: rebase
+
+  - name: Remove merged branches (for Owner)
+    conditions:
+      - author=matejkosiarcik
+      - base=master
+      - merged
+      - head~=^(develop|feature-.+)$
+    actions:
+      delete_head_branch: {}
+
+  # TODO: enable dependabot after refactoring is complete
+  # - name: Automatic merge for dependabot
+  #   conditions:
+  #     - author=dependabot[bot]
+  #     - base=master
+  #   actions:
+  #     merge:
+  #       method: rebase
+  #       strict: true
