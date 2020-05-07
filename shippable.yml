@@ -1,6 +1,8 @@
 language: node_js
 
 node_js:
+  - 14
+  - 13
   - 12
   - 11
   - 10
@@ -10,9 +12,5 @@ node_js:
 build:
   pre_ci:
     - uname -a
-    - node --version
-    - npm --version
   ci:
-    - npm install
-    - npm run build
-    - npm run dist
+    - "true"

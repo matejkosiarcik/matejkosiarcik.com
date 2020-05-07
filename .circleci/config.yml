@@ -1,45 +1,42 @@
 version: 2.1
 
-commands:
-  env_info:
-    steps:
-      - run:
-          name: Print env info
-          command: |
-            uname -a
-            node --version
-            npm --version
-  install:
-    steps:
-      - run:
-          name: Install dependencies
-          command: npm install
-  build:
-    steps:
-      - run:
-          name: Build project [dev]
-          command: npm run build
-      - run:
-          name: Build project [prod]
-          command: npm run dist
-  all:
-    steps:
-      - checkout
-      - env_info
-      - install
-      - build
-
-jobs:
-  node-latest:
-    docker: [ image: circleci/node:latest ]
-    steps: [ all ]
-  node-lts:
-    docker: [ image: circleci/node:lts ]
-    steps: [ all ]
-
 workflows:
   version: 2
   circleci-build:
     jobs:
-      - node-latest
-      - node-lts
+      - debian: { matrix: { parameters: { base: [ debian ], tag: [ latest, stable, stable-slim, oldstable, oldstable-slim ] }}}
+      - debian: { matrix: { parameters: { base: [ ubuntu ], tag: [ latest, rolling, "20.04", "18.04", "16.04" ] }}}
+
+commands:
+  prepare:
+    steps:
+      - checkout
+      - run:
+          name: Print env info
+          command: |
+            uname -a
+            sw_vers || true
+      - run:
+          name: Update system package managers
+          command: |
+            if command -v apt-get >/dev/null 2>&1; then apt-get update --yes; fi
+            if command -v apk >/dev/null 2>&1; then apk update --no-cache; fi
+            if command -v yum >/dev/null 2>&1; then command -v dnf >/dev/null 2>&1 || yum install -y dnf; fi
+  build:
+    steps:
+      - run: make
+
+jobs:
+  debian:
+    parameters:
+      base:
+        type: string
+      tag:
+        type: string
+    docker:
+      image: << parameters.base >>:<< parameters.tag >>
+    steps:
+      - prepare
+      - run: printf 'en_US.UTF-8 UTF-8\n' >/etc/locale.gen && locale-gen
+      - run: curl -sL https://deb.nodesource.com/setup_13.x | bash - && apt-get install --yes --no-install-recommends nodejs
+      - build
