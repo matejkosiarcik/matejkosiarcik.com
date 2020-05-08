@@ -1,11 +1,51 @@
+const color = require('css-color-converter')
+const convert = require('color-convert')
+const fs = require('fs')
+
+function numberToHexDigit(number) {
+    const hexDigits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'] // this is stupid, but whatever
+    return hexDigits[Math.floor(number)]
+}
+
+Number.prototype.clamp = function (min, max) {
+    return Math.min(Math.max(this, min), max)
+}
+
 const plugins = [
     require('postcss-easy-import')({
         extensions: ['.css', '.scss'],
         prefix: '_',
     }),
+    require('postcss-for'),
+    require('postcss-nested'),
     require('postcss-css-variables')({
         preserve: false,
     }),
+    require('postcss-hexrgba')(),
+    require('postcss-functions')({
+        functions: {
+            darken: (value, delta) => {
+                fs.writeFileSync('/Users/matej/Desktop/log.txt', value)
+                const fraction = delta.includes('%') ? parseFloat(delta) : parseFloat(delta) * 100
+                const oldRgba = color(value).toRgbaArray()
+                const oldHsl = convert.rgb.hsl([oldRgba[0], oldRgba[1], oldRgba[2]])
+                const lightness = (parseFloat(oldHsl[2]) - fraction).clamp(0, 100)
+                const newRgb = convert.hsl.rgb([oldHsl[0], oldHsl[1], lightness])
+                const hexString = `#${convert.rgb.hex(newRgb)}`
+                return oldRgba[3] == 1 ? hexString : `${hexString}${numberToHexDigit(oldRgba[3] / 16)}${numberToHexDigit(oldRgba[3] % 16)}`
+            },
+            lighten: (value, delta) => {
+                const fraction = delta.includes('%') ? parseFloat(delta) : parseFloat(delta) * 100
+                const oldRgba = color(value).toRgbaArray()
+                const oldHsl = convert.rgb.hsl([oldRgba[0], oldRgba[1], oldRgba[2]])
+                const lightness = (parseFloat(oldHsl[2]) + fraction).clamp(0, 100)
+                const newRgb = convert.hsl.rgb([oldHsl[0], oldHsl[1], lightness])
+                const hexString = `#${convert.rgb.hex(newRgb)}`
+                return oldRgba[3] == 1 ? hexString : `${hexString}${numberToHexDigit(oldRgba[3] / 16)}${numberToHexDigit(oldRgba[3] % 16)}`
+            },
+        }
+    }),
+    require('postcss-calc'),
     require('postcss-preset-env')({
         preserve: false,
         autoprefixer: false,
@@ -19,6 +59,7 @@ const plugins = [
     require('postcss-inline-svg')({
         paths: ['/'],
     }),
+    require('postcss-svg-slimming'),
     require('autoprefixer')(),
 ]
 

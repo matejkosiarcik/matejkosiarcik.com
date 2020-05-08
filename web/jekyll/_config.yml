@@ -1,9 +1,7 @@
 title: Matej Košiarčik
-permalink: /title/  # for posts
-# future: true  # allow future articles # TODO: consider what to do with this
+permalink: /:title/  # for posts
 strict_front_matter: true
 encoding: utf-8
-incremental: true
 
 include:
   - _pages  # hard-coded pages (not posts)

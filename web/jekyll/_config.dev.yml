@@ -1,0 +1,4 @@
+future: true  # allow future articles
+incremental: true
+env: development
+minify_html: false

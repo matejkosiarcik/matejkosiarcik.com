@@ -1,0 +1,27 @@
+// links
+a {
+  transition: color 0.2s;
+  color: var(--fg-color);
+
+  &:hover {
+    color: var(--fg-color-alt);
+  }
+}
+
+// heading fonts
+@for $i from 1 to 2 { // in postcss this is inclusive
+  h$i {
+    font-weight: 300;
+  }
+}
+
+h3,
+th {
+  font-weight: 500;
+}
+
+@for $i from 4 to 6 { // in postcss this is inclusive
+  h$i {
+    font-weight: 600;
+  }
+}

@@ -1,0 +1,24 @@
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+
+  @media (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--fg-color);
+  font-family: system-ui, sans-serif;
+}
+
+html.no-js .js {
+  display: none;
+}
