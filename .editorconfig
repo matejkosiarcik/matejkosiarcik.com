@@ -9,7 +9,7 @@ insert_final_newline = true
 trim_trailing_whitespace = true
 
 # Make these files half-indent size
-[*.{css,handlebars,html,json,svg,yml}]
+[*.{scss,css,handlebars,html,json,svg,yml}]
 indent_size = 2
 indent_style = space
 

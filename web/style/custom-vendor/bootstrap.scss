@@ -15,9 +15,3 @@
     padding-left: 0;
   }
 }
-
-// fix for main, the only container, where we want padding
-body > .container {
-  padding-right: 15px;
-  padding-left: 15px;
-}
