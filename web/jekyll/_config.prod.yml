@@ -1,3 +1,5 @@
 env: production
 url: https://example.com  # TODO: put real url
 minify_html: true
+future: false
+show_drafts: false

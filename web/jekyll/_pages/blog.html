@@ -1,9 +1,10 @@
 ---
 permalink: /blog/
 title: Blog
+published: false
 ---
 {% for post in site.posts %}
-  <article class="post post-teaser">
+  <article class="teaser">
     <header>
       <h1>{{ post.title }}</h1>
     </header>
@@ -17,3 +18,8 @@ title: Blog
     </footer>
   </article>
 {% endfor %}
+
+{% assign post_count = site.posts | size %}
+{% if post_count == 0 %}
+  There are currently no posts...
+{% endif %}
