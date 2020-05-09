@@ -54,12 +54,9 @@ const plugins = glob.sync(`${htmlDir}/**/*.html`, { nodir: true }).map(file => n
         glob.sync(path.join(__dirname, 'assets', 'favicon', '{pinicon,favicon}.*')).map(file => {
             return { from: `${file}`, to: '' }
         }).concat([
-            // { from: path.join(__dirname, 'server-config/.htaccess'), to: '' },
-            // { from: path.join(__dirname, 'server-config/robots.txt'), to: '' },
+            { from: path.join(__dirname, 'config', '.htaccess'), to: '' },
+            { from: path.join(__dirname, 'config', 'robots.txt'), to: '' },
             { from: path.join(__dirname, 'jekyll', '_site', 'sitemap.xml'), to: '' },
-            // { from: path.join(__dirname, '_site', 'posts.json'), to: '' },
-            // { from: path.join(__dirname, 'img'), to: 'img', ignore: ['.keep'] },
-            // { from: path.join(__dirname, 'data'), to: 'data', ignore: ['.keep'] },
         ]))
 )
 
