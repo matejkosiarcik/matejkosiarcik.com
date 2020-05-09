@@ -1,5 +1,4 @@
 import { ready, listen } from './utils'
-import 'velocity-animate'
 
 // header collapsing
 ready(() => {
@@ -18,18 +17,45 @@ ready(() => {
 
     listen(checkbox, 'change', () => {
         const duration = 200
+
         if (checkbox.checked) {
             navigation.style.height = 'auto'
             const newHeight = navigation.offsetHeight
             navigation.style.height = '0'
 
-            window['Velocity'](navigation, { height: newHeight }, duration, () => {
-                navigation.style.height = 'auto'
-            })
+            // animate 0 -> new-height
+            let start: number | null = null
+            function step(timestamp: number) {
+                if (!start) {
+                    start = timestamp
+                }
+                const progress = timestamp - start
+                if (progress < duration) {
+                    navigation.style.height = `${newHeight * progress / duration}px`
+                    window.requestAnimationFrame(step)
+                } else {
+                    navigation.style.height = `${newHeight}px`
+                }
+            }
+            window.requestAnimationFrame(step)
         } else {
-            window['Velocity'](navigation, { height: 0 }, duration, () => {
-                navigation.style.height = '0'
-            })
+            const oldHeight = parseFloat(navigation.style.height)
+
+            // animate old-height -> 0
+            let start: number | null = null
+            function step(timestamp: number) {
+                if (!start) {
+                    start = timestamp
+                }
+                const progress = timestamp - start
+                if (progress < duration) {
+                    navigation.style.height = `${oldHeight * (1 - progress / duration)}px`
+                    window.requestAnimationFrame(step)
+                } else {
+                    navigation.style.height = `0`
+                }
+            }
+            window.requestAnimationFrame(step)
         }
     })
 })

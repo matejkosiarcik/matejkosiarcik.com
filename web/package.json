@@ -18,8 +18,7 @@
     "document-ready": "^2.0.2",
     "hamburgers": "^1.1.3",
     "instant.page": "^3.0.0",
-    "normalize.css": "^8.0.1",
-    "velocity-animate": "^1.5.2"
+    "normalize.css": "^8.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
