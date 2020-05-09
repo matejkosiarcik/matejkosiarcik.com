@@ -1,7 +1,6 @@
 const presets = [
     ['@babel/env', {
         'corejs': '3',
-        'forceAllTransforms': true,
         'loose': true,
         'useBuiltIns': 'usage',
     }],
@@ -18,5 +17,5 @@ module.exports = {
         '@babel/proposal-class-properties',
         '@babel/proposal-numeric-separator',
         '@babel/proposal-object-rest-spread',
-    ]
+    ],
 }

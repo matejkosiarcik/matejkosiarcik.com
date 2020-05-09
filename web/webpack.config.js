@@ -49,7 +49,7 @@ const plugins = glob.sync(`${htmlDir}/**/*.html`, { nodir: true }).map(file => n
         minifyJS: true,
         minifyURLs: true,
     }
-})).concat(
+})).concat([
     new CopyPlugin(
         glob.sync(path.join(__dirname, 'assets', 'favicon', '{pinicon,favicon}.*')).map(file => {
             return { from: `${file}`, to: '' }
@@ -57,8 +57,8 @@ const plugins = glob.sync(`${htmlDir}/**/*.html`, { nodir: true }).map(file => n
             { from: path.join(__dirname, 'config', '.htaccess'), to: '' },
             { from: path.join(__dirname, 'config', 'robots.txt'), to: '' },
             { from: path.join(__dirname, 'jekyll', '_site', 'sitemap.xml'), to: '' },
-        ]))
-)
+        ])),
+])
 
 if (process.env.NODE_ENV === 'development') {
     plugins.push(new webpack.HotModuleReplacementPlugin())
@@ -125,7 +125,7 @@ const config = {
     output: {
         filename: '[name].js',
         path: path.join(__dirname, outputDir),
-        publicPath: process.env.NODE_ENV === 'production' ? '/tp' : '/',
+        publicPath: '/',
         crossOriginLoading: 'anonymous',
     },
     entry: {
