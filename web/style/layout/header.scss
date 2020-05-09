@@ -1,4 +1,9 @@
 body > header {
+  @media (--media-no-phone) {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
   @media (--media-phone) {
     border-bottom: 1px solid rgba(var(--fg-color), 0.2);
   }
@@ -26,8 +31,6 @@ body > header {
 
     @media (--media-no-phone) {
       height: auto !important;
-      margin-top: 15px;
-      margin-bottom: 15px;
     }
   }
 
