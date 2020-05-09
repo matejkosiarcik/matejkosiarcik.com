@@ -23,18 +23,24 @@ bootstrap:
 lint:
 	npm run --prefix web lint
 
+.PHONY: prebuild
+prebuild:
+	convert -resize 64x64 -density 1000 -background none web/assets/favicon/favicon.svg web/assets/favicon/favicon.png
+	convert -define icon:auto-resize=32,16 -background none -colors 256 -density 1000 web/assets/favicon/favicon.png web/assets/favicon/favicon.ico
+
 .PHONY: build
-build:
+build: prebuild
 	BUNDLE_GEMFILE=$(CURDIR)/web/jekyll/Gemfile bundle exec rake -f $(CURDIR)/web/jekyll/Rakefile build
 	npm run --prefix $(CURDIR)/web build
 
 .PHONY: clean
 clean:
+	rm -f web/assets/favicon/favicon.png web/assets/favicon/favicon.ico
 	BUNDLE_GEMFILE=$(CURDIR)/web/jekyll/Gemfile bundle exec rake -f $(CURDIR)/web/jekyll/Rakefile clean
 	npm run --prefix $(CURDIR)/web clean
 
 .PHONY: run
-run:
+run: prebuild
 	BUNDLE_GEMFILE=$(CURDIR)/web/jekyll/Gemfile bundle exec rake -f $(CURDIR)/web/jekyll/Rakefile prestart
 	@$(MAKE) -j2 -C$(CURDIR) -f$(MAKEFILE_PATH) _run
 
