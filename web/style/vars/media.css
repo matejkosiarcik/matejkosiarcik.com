@@ -1,3 +1,8 @@
-@custom-media --phone-viewport (max-width < 550px);
-@custom-media --tablet-viewport (min-width > 550px) and (max-width < 1000px);
-@custom-media --desktop-viewport (min-width >= 1000px);
+@custom-media --media-phone (width < 550px);
+@custom-media --media-no-phone (width >= 550px);
+
+@custom-media --media-tablet (width >= 550px) and (width < 1000px);
+@custom-media --media-no-tablet (width < 550px), (width >= 1000px);
+
+@custom-media --media-desktop (width >= 1000px);
+@custom-media --media-no-desktop (width < 1000px);

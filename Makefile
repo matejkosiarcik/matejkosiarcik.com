@@ -28,8 +28,14 @@ build:
 	BUNDLE_GEMFILE=$(CURDIR)/web/jekyll/Gemfile bundle exec rake -f $(CURDIR)/web/jekyll/Rakefile build
 	npm run --prefix $(CURDIR)/web build
 
+.PHONY: clean
+clean:
+	BUNDLE_GEMFILE=$(CURDIR)/web/jekyll/Gemfile bundle exec rake -f $(CURDIR)/web/jekyll/Rakefile clean
+	npm run --prefix $(CURDIR)/web clean
+
 .PHONY: run
 run:
+	BUNDLE_GEMFILE=$(CURDIR)/web/jekyll/Gemfile bundle exec rake -f $(CURDIR)/web/jekyll/Rakefile prestart
 	@$(MAKE) -j2 -C$(CURDIR) -f$(MAKEFILE_PATH) _run
 
 # this target should be invoked with -j2 option to run dependant targets in parallel

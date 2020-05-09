@@ -8,6 +8,6 @@
     --bg-color: #242025;
     --bg-color-alt: lighten(var(--bg-color), 20%);
     --fg-color: #fff;
-    --fg-color-alt: darken(var(--fg-color), 20%);
+    --fg-color-alt: darken(var(--fg-color), 15%);
   }
 }

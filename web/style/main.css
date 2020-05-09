@@ -1,3 +1,10 @@
-@import './vars/*.css';
-@import './global/*.css';
-@import './pages/*.css';
+/* vendor */
+@import 'normalize.css';
+@import 'bootstrap/dist/css/bootstrap-grid';
+@import 'hamburgers/dist/hamburgers';
+
+/* custom */
+@import './vars/*';
+@import './custom-vendor/*';
+@import './global/*';
+@import './pages/*';

@@ -1,5 +1,5 @@
 title: Matej Košiarčik
-permalink: /:title/  # for posts
+permalink: /blog/:title/  # for posts
 strict_front_matter: true
 encoding: utf-8
 

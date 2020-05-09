@@ -10,10 +10,16 @@ task :build => ["clean"] do
     end
 end
 
-task :start do
+task :prestart do
     ENV['JEKYLL_ENV'] = 'development'
     Dir.chdir(File.dirname(__FILE__)) do
         sh "bundle", "exec", "jekyll", "build", "--config", "_config.yml,_config.dev.yml"
+    end
+end
+
+task :start do
+    ENV['JEKYLL_ENV'] = 'development'
+    Dir.chdir(File.dirname(__FILE__)) do
         sh "bundle", "exec", "jekyll", "serve", "--config", "_config.yml,_config.dev.yml"
     end
 end

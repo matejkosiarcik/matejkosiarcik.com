@@ -45,6 +45,7 @@ const plugins = [
             },
         }
     }),
+    require('postcss-extend-rule'),
     require('postcss-calc'),
     require('postcss-preset-env')({
         preserve: false,
@@ -53,9 +54,12 @@ const plugins = [
             'custom-properties': false, // instead using css-variables
             'css-prefers-color-scheme': false, // do not translate dark mode
             'css-blank-pseudo': true, // TODO: add js
-            'custom-media': true,
         },
     }),
+    require('postcss-custom-media')({
+        preserve: false,
+    }),
+    require('postcss-media-minmax'),
     require('postcss-inline-svg')({
         paths: ['/'],
     }),

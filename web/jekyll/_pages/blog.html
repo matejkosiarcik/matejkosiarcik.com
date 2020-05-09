@@ -1,0 +1,19 @@
+---
+permalink: /blog/
+title: Blog
+---
+{% for post in site.posts %}
+  <article class="post post-teaser">
+    <header>
+      <h1>{{ post.title }}</h1>
+    </header>
+
+    <main>
+      {{ post.excerpt }}
+    </main>
+
+    <footer>
+      <a href="{{ post.url | relative_url }}">Čítaj viac</a>
+    </footer>
+  </article>
+{% endfor %}
