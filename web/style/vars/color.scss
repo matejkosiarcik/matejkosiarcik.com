@@ -5,7 +5,7 @@
   --bg-color-alt: darken(var(--bg-color), 20%);
 
   @media (prefers-color-scheme: dark) {
-    --bg-color: #242025;
+    --bg-color: #242125;
     --bg-color-alt: lighten(var(--bg-color), 20%);
     --fg-color: #fff;
     --fg-color-alt: darken(var(--fg-color), 15%);

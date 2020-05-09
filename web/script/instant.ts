@@ -1,7 +1,7 @@
-import $ from 'jquery'
 import 'instant.page'
+import { ready } from './utils'
 
 // config for instant.page
-$(document).ready(() => {
+ready(() => {
     document.body.dataset['instantAllowExternalLinks'] = 'true'
 })
