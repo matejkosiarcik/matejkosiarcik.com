@@ -16,7 +16,6 @@ const plugins = [
         extensions: ['.css', '.scss'],
         prefix: '_',
     }),
-    require('postcss-for'),
     require('postcss-nested'),
     require('postcss-css-variables')({
         preserve: false,
@@ -45,7 +44,9 @@ const plugins = [
             },
         }
     }),
-    require('postcss-extend-rule'),
+    require('@csstools/postcss-sass')({
+        outputStyle: 'expanded',
+    }),
     require('postcss-calc'),
     require('postcss-preset-env')({
         preserve: false,

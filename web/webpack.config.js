@@ -82,7 +82,6 @@ if (process.env.NODE_ENV === 'production') {
             paths: glob2.sync([
                 `${htmlDir}/**/*.html`,
                 './script/**/*.{ts,js}',
-                // './node_modules/clndr/src/*.js',
                 // './node_modules/prismjs/*.js',
                 // './node_modules/prismjs/themes/*.css',
             ], { nodir: true }),
@@ -130,7 +129,7 @@ const config = {
     },
     entry: {
         bundle: path.join(__dirname, 'script', 'main.ts'),
-        style: path.join(__dirname, 'style', 'main.css'),
+        style: path.join(__dirname, 'style', 'main.scss'),
     },
     target: 'web',
     module: {
@@ -155,7 +154,7 @@ const config = {
                 loader: 'babel-loader'
             },
             {
-                test: /\.css$/,
+                test: /\.scss$/,
                 use: cssLoaders,
             },
         ],

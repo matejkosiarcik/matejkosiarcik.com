@@ -1,15 +1,11 @@
 body > header {
-  /* position: relative; */
-  /* background: var(--background-complement); */
-  /* color: var(--fg-color); */
-
   @media (--media-phone) {
     border-bottom: 1px solid rgba(var(--fg-color), 0.2);
   }
 
   ul {
     margin: 0;
-    padding-left: 0; /* reset default browser style */
+    padding-left: 0; // reset default browser style
     list-style: none;
   }
 
@@ -30,10 +26,12 @@ body > header {
 
     @media (--media-no-phone) {
       height: auto !important;
+      margin-top: 15px;
+      margin-bottom: 15px;
     }
   }
 
-  /* hide checkbox */
+  // hide checkbox
   input[type='checkbox'] {
     position: absolute;
     top: 0;
@@ -49,14 +47,15 @@ body > header {
   label {
     @media (--media-phone) {
       display: inline-block;
-      padding: 25px 35px;
+      padding-top: 25px;
+      padding-bottom: 25px;
+      // padding: 25px 35px;
       background: inherit;
     }
   }
 
   a {
     width: 100%;
-    /* color: inherit; */
     text-decoration: none;
 
     @media (--media-no-phone) {
@@ -103,7 +102,7 @@ body > header {
 .no-js header {
   @media (--media-phone) {
     input[type='checkbox'] ~ nav {
-      transition: height 0.2s;
+      transition: height 0.4s;
     }
 
     input[type='checkbox']:checked ~ nav {

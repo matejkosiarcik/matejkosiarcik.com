@@ -1,4 +1,4 @@
-/* links */
+// links
 a {
   transition: color 0.2s;
   color: var(--fg-color);
@@ -8,9 +8,9 @@ a {
   }
 }
 
-/* heading fonts */
-@for $i from 1 to 2 { /* in postcss this is inclusive */
-  h$i {
+// heading fonts
+@for $i from 1 through 2 {
+  h#{$i} {
     font-weight: 300;
   }
 }
@@ -20,8 +20,8 @@ th {
   font-weight: 500;
 }
 
-@for $i from 4 to 6 { /* in postcss this is inclusive */
-  h$i {
+@for $i from 4 through 6 {
+  h#{$i} {
     font-weight: 600;
   }
 }

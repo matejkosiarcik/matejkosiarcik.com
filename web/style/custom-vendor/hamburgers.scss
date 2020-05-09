@@ -13,6 +13,6 @@
   &::before,
   &::after {
     height: 3px;
-    background-color: currentColor;
+    background-color: currentColor !important;
   }
 }
