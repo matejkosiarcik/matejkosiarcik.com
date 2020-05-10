@@ -51,10 +51,9 @@ const plugins = glob.sync(`${htmlDir}/**/*.html`, { nodir: true }).map(file => n
     }
 })).concat([
     new CopyPlugin(
-        glob.sync(path.join(__dirname, 'assets', 'favicon', '{pinicon,favicon}.*')).map(file => {
+        glob.sync(`${__dirname}/assets/favicon/{pinicon,favicon}.*`).map(file => {
             return { from: `${file}`, to: '' }
         }).concat([
-            { from: path.join(__dirname, 'config', '.htaccess'), to: '' },
             { from: path.join(__dirname, 'config', 'robots.txt'), to: '' },
             { from: path.join(__dirname, 'jekyll', '_site', 'sitemap.xml'), to: '' },
         ])),
