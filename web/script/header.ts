@@ -37,7 +37,11 @@ ready(() => {
                     navigation.style.height = `${newHeight}px`
                 }
             }
-            window.requestAnimationFrame(step)
+            if (window.requestAnimationFrame) {
+                window.requestAnimationFrame(step)
+            } else {
+                navigation.style.height = `${newHeight}px`
+            }
         } else {
             const oldHeight = parseFloat(navigation.style.height)
 
@@ -55,7 +59,11 @@ ready(() => {
                     navigation.style.height = `0`
                 }
             }
-            window.requestAnimationFrame(step)
+            if (window.requestAnimationFrame) {
+                window.requestAnimationFrame(step)
+            } else {
+                navigation.style.height = `0`
+            }
         }
     })
 })
