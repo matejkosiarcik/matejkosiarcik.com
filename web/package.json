@@ -3,7 +3,7 @@
   "scripts": {
     "build": "run-s clean build:webpack build:apache",
     "build:webpack": "cross-env NODE_ENV=production webpack -p --mode production",
-    "build:apache": "cat config/.htaccess node_modules/apache-server-configs/dist/.htaccess >public/.htaccess",
+    "build:apache": "concat config/.htaccess node_modules/apache-server-configs/dist/.htaccess --output public/.htaccess",
     "clean": "rimraf public",
     "lint:css": "stylelint \"style/**/*.{css,scss}\"",
     "lint:html": "htmllint \"jekyll/_includes/**/*.html\" \"jekyll/_layouts/**/*.html\" \"jekyll/_pages/**/*.html\" \"jekyll/_posts/**/*.html\"",
@@ -34,6 +34,7 @@
     "autoprefixer": "^9.7.6",
     "babel-loader": "^8.1.0",
     "color-convert": "^2.0.1",
+    "concat": "^1.0.3",
     "copy-webpack-plugin": "^5.1.1",
     "cross-env": "^7.0.2",
     "css-color-converter": "^1.1.1",
