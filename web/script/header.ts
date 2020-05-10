@@ -4,13 +4,13 @@ import { ready, listen } from './utils'
 ready(() => {
     // must set the initial value
     // for some reason without it 1st click can result in checked=false
-    const checkbox = <HTMLInputElement>document.querySelector('header input[type="checkbox"]')
+    const checkbox = document.querySelector('header input[type="checkbox"]') as HTMLInputElement
     if (!checkbox) {
         return
     }
     checkbox.checked = false
 
-    const navigation = <HTMLElement>document.querySelector('header nav')
+    const navigation = document.querySelector('header nav') as HTMLElement
     if (!navigation) {
         return
     }
@@ -25,7 +25,7 @@ ready(() => {
 
             // animate 0 -> new-height
             let start: number | null = null
-            function step(timestamp: number) {
+            function step(timestamp: number): void {
                 if (!start) {
                     start = timestamp
                 }
@@ -47,7 +47,7 @@ ready(() => {
 
             // animate old-height -> 0
             let start: number | null = null
-            function step(timestamp: number) {
+            function step(timestamp: number): void {
                 if (!start) {
                     start = timestamp
                 }

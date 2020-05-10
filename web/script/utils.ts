@@ -1,9 +1,9 @@
-export function ready(callback: () => void) {
+export function ready(callback: () => void): void {
     if (typeof document === 'undefined') {
         throw new Error('document-ready only runs in the browser')
     }
 
-    var state = document.readyState
+    const state = document.readyState
     if (state === 'complete' || state === 'interactive') {
         setTimeout(callback, 0)
     }
@@ -11,19 +11,19 @@ export function ready(callback: () => void) {
     if (document.addEventListener) {
         document.addEventListener('DOMContentLoaded', callback)
     } else {
-        (<any>document).attachEvent('onreadystatechange', function () {
+        (document as any).attachEvent('onreadystatechange', function () {
             if (document.readyState === 'complete') {
-                (<any>document).detachEvent('onreadystatechange', arguments.callee)
+                (document as any).detachEvent('onreadystatechange', arguments.callee)
                 callback()
             }
         })
     }
 }
 
-export function listen(element: HTMLElement, event: string, callback: (event: Event) => void) {
+export function listen(element: HTMLElement, event: string, callback: (event: Event) => void): void {
     if (element.addEventListener) {
         element.addEventListener(event, callback)
     } else {
-        (<any>element).attachEvent(`on${event}`, callback)
+        (element as any).attachEvent(`on${event}`, callback)
     }
 }

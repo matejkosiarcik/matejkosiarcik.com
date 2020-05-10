@@ -14,5 +14,6 @@ module.exports = {
         'comma-dangle': ['error', 'always-multiline'],
         'eqeqeq': ['error', 'always'],
         'semi': ['error', 'never', { 'beforeStatementContinuationChars': 'never' }],
+        'no-inner-declarations': 0,
     }
 }
