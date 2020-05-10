@@ -15,6 +15,5 @@ brew "rbenv-bundler"
 brew "rbenv-bundle-exec"
 brew "pandoc"
 
-#TODO: what is this used for?
 brew "docker"
 cask "docker"

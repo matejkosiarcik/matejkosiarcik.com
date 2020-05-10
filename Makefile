@@ -8,10 +8,7 @@ MAKEFILE_PATH := $(abspath $(lastword $(MAKEFILE_LIST)))
 
 .DEFAULT: all
 .PHONY: all
-all: bootstrap lint test build build-test
-
-.PHONY: unit
-unit: bootstrap lint test
+all: bootstrap clean lint build
 
 .PHONY: bootstrap
 bootstrap:
@@ -21,7 +18,13 @@ bootstrap:
 
 .PHONY: lint
 lint:
-	npm run --prefix web lint
+	npm run --prefix $(CURDIR)/web lint
+
+.PHONY: clean
+clean:
+	rm -f web/assets/favicon/favicon.png web/assets/favicon/favicon.ico
+	BUNDLE_GEMFILE=$(CURDIR)/web/jekyll/Gemfile bundle exec rake -f $(CURDIR)/web/jekyll/Rakefile clean
+	npm run --prefix $(CURDIR)/web clean
 
 .PHONY: prebuild
 prebuild:
@@ -33,23 +36,12 @@ build: prebuild
 	BUNDLE_GEMFILE=$(CURDIR)/web/jekyll/Gemfile bundle exec rake -f $(CURDIR)/web/jekyll/Rakefile build
 	npm run --prefix $(CURDIR)/web build
 
-.PHONY: clean
-clean:
-	rm -f web/assets/favicon/favicon.png web/assets/favicon/favicon.ico
-	BUNDLE_GEMFILE=$(CURDIR)/web/jekyll/Gemfile bundle exec rake -f $(CURDIR)/web/jekyll/Rakefile clean
-	npm run --prefix $(CURDIR)/web clean
-
-.PHONY: prod-serve
-prod-serve:
-	docker-compose up
-
 .PHONY: run
 run: prebuild
 	BUNDLE_GEMFILE=$(CURDIR)/web/jekyll/Gemfile bundle exec rake -f $(CURDIR)/web/jekyll/Rakefile prestart
 	@$(MAKE) -j2 -C$(CURDIR) -f$(MAKEFILE_PATH) _run
 
-# this target should be invoked with -j2 option to run dependant targets in parallel
-.PHONY: _run
+.PHONY: _run # this target should be invoked with -j2 option to run dependant targets in paralle
 _run: run_npm run_rake
 
 .PHONY: run_npm

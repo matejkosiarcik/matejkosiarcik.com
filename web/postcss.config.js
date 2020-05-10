@@ -24,7 +24,6 @@ const plugins = [
     require('postcss-functions')({
         functions: {
             darken: (value, delta) => {
-                fs.writeFileSync('/Users/matej/Desktop/log.txt', value)
                 const fraction = delta.includes('%') ? parseFloat(delta) : parseFloat(delta) * 100
                 const oldRgba = color(value).toRgbaArray()
                 const oldHsl = convert.rgb.hsl([oldRgba[0], oldRgba[1], oldRgba[2]])
