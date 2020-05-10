@@ -7,10 +7,6 @@ const presets = [
     '@babel/typescript',
 ]
 
-if (process.env.NODE_ENV === 'production') {
-    presets.push(['minify', { removeDebugger: true }])
-}
-
 module.exports = {
     presets: presets,
     plugins: [
