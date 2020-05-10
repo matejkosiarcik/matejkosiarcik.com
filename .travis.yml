@@ -22,12 +22,7 @@ addons:
     update: true
     brewfile: true
 
-install:
-  - |
-    if command -v apt-get >/dev/null 2>&1; then
-      curl -sL https://deb.nodesource.com/setup_13.x | bash -
-      apt-get install --yes --no-install-recommends nodejs
-    fi
+install: skip
 
 script:
   - make

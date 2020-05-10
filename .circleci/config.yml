@@ -34,7 +34,7 @@ jobs:
       tag:
         type: string
     docker:
-      image: << parameters.base >>:<< parameters.tag >>
+      - image: "<< parameters.base >>:<< parameters.tag >>"
     steps:
       - prepare
       - run: apt-get install --yes --no-install-recommends build-essential curl ruby ruby-dev pandoc zlib1g zlib1g-dev imagemagick librsvg2-bin
