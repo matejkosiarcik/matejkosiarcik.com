@@ -20,7 +20,7 @@ const plugins = [
     require('postcss-css-variables')({
         preserve: false,
     }),
-    require('postcss-hexrgba')(),
+    require('postcss-hexrgba'),
     require('postcss-functions')({
         functions: {
             darken: (value, delta) => {
@@ -54,7 +54,6 @@ const plugins = [
         features: {
             'custom-properties': false, // instead using css-variables
             'css-prefers-color-scheme': false, // do not translate dark mode
-            'css-blank-pseudo': true, // TODO: add js
         },
     }),
     require('postcss-custom-media')({
@@ -65,7 +64,7 @@ const plugins = [
         paths: ['/'],
     }),
     require('postcss-svg-slimming'),
-    require('autoprefixer')(),
+    require('autoprefixer'),
 ]
 
 if (process.env.NODE_ENV === 'production') {
