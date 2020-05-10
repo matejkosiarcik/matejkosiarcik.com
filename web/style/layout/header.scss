@@ -1,10 +1,10 @@
 body > header {
-  @media (--media-no-phone) {
+  @media (--media-big) {
     padding-top: 20px;
     padding-bottom: 20px;
   }
 
-  @media (--media-phone) {
+  @media (--media-small) {
     border-bottom: 1px solid rgba(var(--fg-color), 0.2);
   }
 
@@ -20,7 +20,7 @@ body > header {
     float: left;
     text-align: center;
 
-    @media (--media-phone) {
+    @media (--media-small) {
       width: 100%;
     }
   }
@@ -29,7 +29,7 @@ body > header {
     height: 0;
     overflow: hidden;
 
-    @media (--media-no-phone) {
+    @media (--media-big) {
       height: auto !important;
     }
   }
@@ -48,7 +48,7 @@ body > header {
 
   a,
   label {
-    @media (--media-phone) {
+    @media (--media-small) {
       display: inline-block;
       padding-top: 25px;
       padding-bottom: 25px;
@@ -61,11 +61,11 @@ body > header {
     width: 100%;
     text-decoration: none;
 
-    @media (--media-no-phone) {
+    @media (--media-big) {
       margin-right: 15px;
     }
 
-    @media (--media-phone) {
+    @media (--media-small) {
       transition: background-color 0.2s;
     }
   }
@@ -77,7 +77,7 @@ body > header {
     text-align: center;
     cursor: pointer;
 
-    @media (--media-no-phone) {
+    @media (--media-big) {
       display: none;
     }
 
@@ -89,7 +89,7 @@ body > header {
 
   a:hover,
   label:hover {
-    @media (--media-phone) {
+    @media (--media-small) {
       background-color: var(--bg-color-alt);
       color: var(--fg-color);
     }
@@ -103,7 +103,7 @@ body > header {
 }
 
 .no-js header {
-  @media (--media-phone) {
+  @media (--media-small) {
     input[type='checkbox'] ~ nav {
       transition: height 0.4s;
     }
