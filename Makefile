@@ -39,6 +39,10 @@ clean:
 	BUNDLE_GEMFILE=$(CURDIR)/web/jekyll/Gemfile bundle exec rake -f $(CURDIR)/web/jekyll/Rakefile clean
 	npm run --prefix $(CURDIR)/web clean
 
+.PHONY: prod-serve
+prod-serve:
+	docker-compose up
+
 .PHONY: run
 run: prebuild
 	BUNDLE_GEMFILE=$(CURDIR)/web/jekyll/Gemfile bundle exec rake -f $(CURDIR)/web/jekyll/Rakefile prestart

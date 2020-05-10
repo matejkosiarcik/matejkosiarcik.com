@@ -30,6 +30,7 @@
     "@csstools/postcss-sass": "^4.0.0",
     "@typescript-eslint/eslint-plugin": "^2.30.0",
     "@typescript-eslint/parser": "^2.30.0",
+    "apache-server-configs": "^4.0.0",
     "autoprefixer": "^9.7.6",
     "babel-loader": "^8.1.0",
     "color-convert": "^2.0.1",
