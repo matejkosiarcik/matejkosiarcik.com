@@ -8,11 +8,26 @@ os:
 addons:
   apt:
     update: true
+    packages:
+      - build-essential
+      - curl
+      - ruby
+      - ruby-dev
+      - pandoc
+      - zlib1g
+      - zlib1g-dev
+      - imagemagick
+      - librsvg2-bin
   homebrew:
     update: true
     brewfile: true
 
-install: skip
+install:
+  - |
+    if command -v apt-get >/dev/null 2>&1; then
+      curl -sL https://deb.nodesource.com/setup_13.x | bash -
+      apt-get install --yes --no-install-recommends nodejs
+    fi
 
 script:
   - make

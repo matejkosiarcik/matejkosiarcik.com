@@ -10,9 +10,9 @@ brew "png2ico"
 # main environments
 brew "node"
 brew "ruby"
-brew "rbenv"
-brew "rbenv-bundler"
-brew "rbenv-bundle-exec"
+# brew "rbenv"
+# brew "rbenv-bundler"
+# brew "rbenv-bundle-exec"
 brew "pandoc"
 
 brew "docker"

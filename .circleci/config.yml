@@ -37,6 +37,6 @@ jobs:
       image: << parameters.base >>:<< parameters.tag >>
     steps:
       - prepare
-      - run: printf 'en_US.UTF-8 UTF-8\n' >/etc/locale.gen && locale-gen
+      - run: apt-get install --yes --no-install-recommends build-essential curl ruby ruby-dev pandoc zlib1g zlib1g-dev imagemagick librsvg2-bin
       - run: curl -sL https://deb.nodesource.com/setup_13.x | bash - && apt-get install --yes --no-install-recommends nodejs
       - build

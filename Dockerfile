@@ -9,7 +9,7 @@ ENV BUNDLE_PATH=/src/.bundle
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update --yes && \
-    apt-get install --yes --no-install-recommends build-essential curl ruby ruby-dev pandoc zlib1g zlib1g-dev imagemagick librsvg2-common librsvg2-bin librsvg2-dev && \
+    apt-get install --yes --no-install-recommends build-essential curl ruby ruby-dev pandoc zlib1g zlib1g-dev imagemagick librsvg2-bin && \
     curl -sL https://deb.nodesource.com/setup_13.x | bash - && \
     apt-get install --yes --no-install-recommends nodejs && \
     make bootstrap clean build
