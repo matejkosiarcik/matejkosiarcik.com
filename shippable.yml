@@ -1,16 +1,23 @@
 language: node_js
 
 node_js:
+  - node
+  - lts
   - 14
   - 13
   - 12
-  - 11
-  - 10
-  - 9
-  - 8
+  # - 11
+  # - 10
+  # - 9
+  # - 8
 
 build:
   pre_ci:
     - uname -a
+    - apt-get update --yes
+    - DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-install-recommends ruby ruby-dev pandoc zlib1g zlib1g-dev imagemagick librsvg2-bin
+    - ruby --version
+    - node --version
+    - npm --version
   ci:
-    - "true"
+    - make
