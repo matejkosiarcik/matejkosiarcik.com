@@ -15,7 +15,7 @@ build:
   pre_ci:
     - uname -a
     - apt-get update --yes
-    - DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-install-recommends ruby ruby-dev pandoc zlib1g zlib1g-dev imagemagick librsvg2-bin
+    - DEBIAN_FRONTEND=noninteractive apt-get install --yes ruby ruby-dev pandoc zlib1g zlib1g-dev imagemagick librsvg2-bin
     - ruby --version
     - node --version
     - npm --version

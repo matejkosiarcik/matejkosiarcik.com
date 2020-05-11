@@ -37,6 +37,6 @@ jobs:
       - image: "<< parameters.base >>:<< parameters.tag >>"
     steps:
       - prepare
-      - run: DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-install-recommends build-essential curl ruby ruby-dev pandoc zlib1g zlib1g-dev imagemagick librsvg2-bin
-      - run: curl -sL https://deb.nodesource.com/setup_14.x | bash - && apt-get install --yes --no-install-recommends nodejs
+      - run: DEBIAN_FRONTEND=noninteractive apt-get install --yes build-essential curl ruby ruby-dev pandoc zlib1g zlib1g-dev imagemagick librsvg2-bin
+      - run: curl -sL https://deb.nodesource.com/setup_14.x | bash - && apt-get install --yes nodejs
       - build
