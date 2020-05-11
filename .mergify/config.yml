@@ -25,12 +25,11 @@ pull_request_rules:
     actions:
       delete_head_branch: {}
 
-  # TODO: enable dependabot after refactoring is complete
-  # - name: Automatic merge for dependabot
-  #   conditions:
-  #     - author=dependabot[bot]
-  #     - base=master
-  #   actions:
-  #     merge:
-  #       method: rebase
-  #       strict: true
+  - name: Automatic merge for dependabot
+    conditions:
+      - author=dependabot[bot]
+      - base=master
+    actions:
+      merge:
+        method: rebase
+        strict: true
