@@ -1,0 +1,15 @@
+---
+layout:
+title:
+permalink: /blog-posts.json
+---
+{% comment %} TODO: generate more metadata {% endcomment %}
+[
+  {% for post in site.posts %}
+    {
+      "date": "{{ post.date | date: "%F" }}",
+      "url": "{{ post.url | relative_url }}"
+    }
+    {% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]

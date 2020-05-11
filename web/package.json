@@ -1,9 +1,10 @@
 {
   "private": true,
   "scripts": {
-    "build": "run-s clean build:webpack build:apache",
+    "build": "run-s clean build:webpack build:apache build:robots",
     "build:webpack": "cross-env NODE_ENV=production webpack -p --mode production",
     "build:apache": "concat config/.htaccess node_modules/apache-server-configs/dist/.htaccess --output public/.htaccess",
+    "build:robots": "concat jekyll/_site/robots.txt config/robots.txt --output public/robots.txt",
     "clean": "rimraf public",
     "lint:css": "stylelint \"style/**/*.{css,scss}\"",
     "lint:html": "htmllint \"jekyll/_includes/**/*.html\" \"jekyll/_layouts/**/*.html\" \"jekyll/_pages/**/*.html\" \"jekyll/_posts/**/*.html\"",

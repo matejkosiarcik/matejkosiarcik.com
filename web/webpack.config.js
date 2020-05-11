@@ -56,7 +56,7 @@ const plugins = glob.sync(`${htmlDir}/**/*.html`, { nodir: true }).map(file => n
         }).concat(glob.sync(`${__dirname}/assets/img/*.{jpg,png,svg,bmp,gif}`).map(file => {
             return { from: `${file}`, to: 'img' }
         })).concat([
-            { from: path.join(__dirname, 'config', 'robots.txt'), to: '' },
+            { from: path.join(__dirname, 'jekyll', '_site', 'blog-posts.json'), to: '' },
             { from: path.join(__dirname, 'jekyll', '_site', 'sitemap.xml'), to: '' },
         ])),
 ])
