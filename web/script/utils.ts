@@ -1,6 +1,6 @@
 export function ready(callback: () => void): void {
     if (typeof document === 'undefined') {
-        throw new Error('document-ready only runs in the browser')
+        throw new Error('not a browser')
     }
 
     const state = document.readyState
