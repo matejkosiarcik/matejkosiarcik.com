@@ -1,23 +1,17 @@
-language: node_js
+language: none
 
-node_js:
-  - node
-  - lts
-  - 14
-  - 13
-  - 12
-  # - 11
-  # - 10
-  # - 9
-  # - 8
+env:
+  - NODE_VERSION=14
+  - NODE_VERSION=13
+  - NODE_VERSION=12
 
 build:
-  pre_ci:
-    - uname -a
-    - apt-get update --yes
-    - DEBIAN_FRONTEND=noninteractive apt-get install --yes ruby ruby-dev pandoc zlib1g zlib1g-dev imagemagick librsvg2-bin
-    - ruby --version
-    - node --version
-    - npm --version
+  pre_ci_boot:
+    image_name: ubuntu
+    image_tag: latest
+    pull: true
   ci:
+    - apt-get update --yes
+    - DEBIAN_FRONTEND=noninteractive apt-get install --yes build-essential curl ruby ruby-dev pandoc zlib1g zlib1g-dev imagemagick librsvg2-bin
+    - curl -sL "https://deb.nodesource.com/setup_${NODE_VERSION}.x" | bash - && apt-get install --yes nodejs
     - make
