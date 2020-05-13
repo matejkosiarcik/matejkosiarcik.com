@@ -59,10 +59,6 @@ const plugins = [
         preserve: false,
     }),
     require('postcss-media-minmax'),
-    require('postcss-inline-svg')({
-        paths: ['/'],
-    }),
-    require('postcss-svg-slimming'),
     require('autoprefixer'),
 ]
 
