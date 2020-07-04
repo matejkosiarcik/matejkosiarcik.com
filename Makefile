@@ -6,6 +6,8 @@ SHELL := /bin/sh  # for compatibility (mainly with redhat distros)
 .SHELLFLAGS := -ec
 MAKEFILE_PATH := $(abspath $(lastword $(MAKEFILE_LIST)))
 
+.POSIX:
+
 .DEFAULT: all
 .PHONY: all
 all: bootstrap clean lint build
