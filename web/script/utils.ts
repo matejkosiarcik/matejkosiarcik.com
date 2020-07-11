@@ -13,7 +13,7 @@ export function ready(callback: () => void): void {
     } else {
         (document as any).attachEvent('onreadystatechange', function () {
             if (document.readyState === 'complete') {
-                (document as any).detachEvent('onreadystatechange', arguments.callee)
+                (document as any).detachEvent('onreadystatechange', arguments.callee) // arguments.callee is allegedly not supported in strict mode
                 callback()
             }
         })

@@ -1,6 +1,5 @@
 const color = require('css-color-converter')
 const convert = require('color-convert')
-const fs = require('fs')
 
 function numberToHexDigit(number) {
     const hexDigits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'] // this is stupid, but whatever

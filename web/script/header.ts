@@ -25,20 +25,20 @@ ready(() => {
 
             // animate 0 -> new-height
             let start: number | null = null
-            function step(timestamp: number): void {
+            function step1(timestamp: number): void {
                 if (!start) {
                     start = timestamp
                 }
                 const progress = timestamp - start
                 if (progress < duration) {
                     navigation.style.height = `${newHeight * progress / duration}px`
-                    window.requestAnimationFrame(step)
+                    window.requestAnimationFrame(step1)
                 } else {
                     navigation.style.height = `${newHeight}px`
                 }
             }
             if (window.requestAnimationFrame) {
-                window.requestAnimationFrame(step)
+                window.requestAnimationFrame(step1)
             } else {
                 navigation.style.height = `${newHeight}px`
             }
@@ -47,20 +47,20 @@ ready(() => {
 
             // animate old-height -> 0
             let start: number | null = null
-            function step(timestamp: number): void {
+            function step2(timestamp: number): void {
                 if (!start) {
                     start = timestamp
                 }
                 const progress = timestamp - start
                 if (progress < duration) {
                     navigation.style.height = `${oldHeight * (1 - progress / duration)}px`
-                    window.requestAnimationFrame(step)
+                    window.requestAnimationFrame(step2)
                 } else {
                     navigation.style.height = `0`
                 }
             }
             if (window.requestAnimationFrame) {
-                window.requestAnimationFrame(step)
+                window.requestAnimationFrame(step2)
             } else {
                 navigation.style.height = `0`
             }
