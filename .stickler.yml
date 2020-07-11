@@ -1,5 +1,10 @@
 linters:
   shellcheck:
     shell: sh
+  remarklint:
+    fixer: true
+  yamllint:
+    config: .yamllint.yml
+
 fixers:
   enable: true
