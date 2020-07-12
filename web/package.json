@@ -1,7 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "build": "run-s clean build:webpack build:apache build:robots",
+    "prebuild": "node favicon.js",
+    "build": "run-s clean prebuild build:webpack build:apache build:robots",
     "build:webpack": "cross-env NODE_ENV=production webpack -p --mode production",
     "build:apache": "concat config/.htaccess node_modules/apache-server-configs/dist/.htaccess --output public/.htaccess",
     "build:robots": "concat jekyll/_site/robots.txt config/robots.txt --output public/robots.txt",
@@ -12,7 +13,8 @@
     "lint:js-tsc": "tsc --noEmit --skipLibCheck",
     "lint:js": "eslint --max-warnings 0 \"script/**/*.{ts,js}\"",
     "lint": "run-p lint:*",
-    "start": "cross-env NODE_ENV=development webpack-dev-server -d"
+    "start": "run-s prebuild serve",
+    "serve": "cross-env NODE_ENV=development webpack-dev-server -d"
   },
   "dependencies": {
     "bootstrap": "^4.4.1",
@@ -45,6 +47,7 @@
     "cssnano-webpack-plugin": "^1.0.3",
     "csso-webpack-plugin": "^2.0.0-beta.1",
     "eslint": "^6.8.0",
+    "execa": "^4.0.3",
     "glob": "^7.1.6",
     "glob-all": "^3.2.1",
     "html-loader": "^1.1.0",
