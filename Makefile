@@ -14,6 +14,7 @@ all: bootstrap clean lint build
 
 .PHONY: bootstrap
 bootstrap:
+	if command -v rbenv >/dev/null 2>&1; then rbenv install --skip-existing; fi
 	gem install bundler
 	bundle install --gemfile $(CURDIR)/web/jekyll/Gemfile
 	npm install --prefix $(CURDIR)/web
