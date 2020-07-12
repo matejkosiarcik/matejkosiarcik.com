@@ -1,0 +1,18 @@
+.hamburger {
+  padding-top: 0;
+  padding-bottom: 0;
+  pointer-events: none;
+}
+
+.hamburger:hover {
+  opacity: 1 !important;
+}
+
+.hamburger-inner {
+  &,
+  &::before,
+  &::after {
+    height: 3px;
+    background-color: currentColor !important;
+  }
+}

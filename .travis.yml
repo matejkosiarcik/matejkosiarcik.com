@@ -1,62 +1,32 @@
-language: node_js
-sudo: false
+language: generic
 
 os:
   - linux
   - osx
 
-services:
-  - docker
-
-node_js:
-  - node # latest
-  - 12
-  - 11
-  - 10
-  - 9
-  - 8
-
 addons:
   apt:
     update: true
+    packages:
+      - build-essential
+      - curl
+      - ruby
+      - ruby-dev
+      - pandoc
+      - zlib1g
+      - zlib1g-dev
+      - imagemagick
+      - librsvg2-bin
   homebrew:
     update: true
     brewfile: true
 
-matrix:
-  fast_finish: true
-
-  include:
-    # additional mac jobs with brew installed node
-    - os: osx # run all branches
-      language: generic
-      if: branch!=master
-    - &mac # run these only on master
-      os: osx
-      language: generic
-      if: (branch=master) AND (type=push)
-    - { <<: *mac, osx_image: xcode11 }
-    - { <<: *mac, osx_image: xcode10.2 }
-    - { <<: *mac, osx_image: xcode10.1 }
-    - { <<: *mac, osx_image: xcode10 }
-    - { <<: *mac, osx_image: xcode9.4 }
-    - { <<: *mac, osx_image: xcode9.3 }
-    - { <<: *mac, osx_image: xcode9.2 }
-    - { <<: *mac, osx_image: xcode9.1 }
-    - { <<: *mac, osx_image: xcode9 }
-    - { <<: *mac, osx_image: xcode8.3 }
-    - { <<: *mac, osx_image: xcode8 }
-    - { <<: *mac, osx_image: xcode7.3 }
-    - { <<: *mac, osx_image: xcode6.4 }
-
 install:
-  - npm install
-
-before_script:
-  - uname -a
-  - node --version
-  - npm --version
+  - |
+    if [ "$(uname -s)" = Linux ]; then
+      nvm install node
+      nvm use node
+    fi
 
 script:
-  - npm run build
-  - npm run dist
+  - make

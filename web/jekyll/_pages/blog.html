@@ -1,0 +1,25 @@
+---
+permalink: /blog/
+title: Blog
+published: false
+---
+{% for post in site.posts %}
+  <article class="teaser">
+    <header>
+      <h1>{{ post.title }}</h1>
+    </header>
+
+    <main>
+      {{ post.excerpt }}
+    </main>
+
+    <footer>
+      <a href="{{ post.url | relative_url }}">Read</a>
+    </footer>
+  </article>
+{% endfor %}
+
+{% assign post_count = site.posts | size %}
+{% if post_count == 0 %}
+  There are currently no posts...
+{% endif %}

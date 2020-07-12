@@ -1,0 +1,10 @@
+.error-404 {
+  text-align: center;
+
+  > main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 30px;
+  }
+}

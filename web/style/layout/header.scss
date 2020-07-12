@@ -1,0 +1,115 @@
+body > header {
+  @media (--media-big) {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  @media (--media-small) {
+    border-bottom: 1px solid rgba(var(--fg-color), 0.2);
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 0; // reset default browser style
+    list-style: none;
+  }
+
+  li {
+    display: block;
+    margin-right: 0;
+    float: left;
+    text-align: center;
+
+    @media (--media-small) {
+      width: 100%;
+    }
+  }
+
+  nav {
+    height: 0;
+    overflow: hidden;
+
+    @media (--media-big) {
+      height: auto !important;
+    }
+  }
+
+  // hide checkbox
+  input[type='checkbox'] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  a,
+  label {
+    @media (--media-small) {
+      display: inline-block;
+      padding-top: 25px;
+      padding-bottom: 25px;
+      // padding: 25px 35px;
+      background: inherit;
+    }
+  }
+
+  a {
+    width: 100%;
+    text-decoration: none;
+
+    @media (--media-big) {
+      margin-right: 15px;
+    }
+
+    @media (--media-small) {
+      transition: background-color 0.2s;
+    }
+  }
+
+  label {
+    width: 100%;
+    background-color: var(--bg-color);
+    color: var(--fg-color);
+    text-align: center;
+    cursor: pointer;
+
+    @media (--media-big) {
+      display: none;
+    }
+
+    svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  a:hover,
+  label:hover {
+    @media (--media-small) {
+      background-color: var(--bg-color-alt);
+      color: var(--fg-color);
+    }
+  }
+
+  // hamburgers
+
+  input[type='checkbox']:checked ~ label button {
+    @extend .is-active;
+  }
+}
+
+.no-js header {
+  @media (--media-small) {
+    input[type='checkbox'] ~ nav {
+      transition: height 0.4s;
+    }
+
+    input[type='checkbox']:checked ~ nav {
+      height: auto;
+    }
+  }
+}

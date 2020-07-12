@@ -4,9 +4,9 @@ cd "$(dirname "${0}")/.."
 server='binarytrex.com'
 
 # find build directory
-path='build/prod'
+path='web/public'
 if [ ! -d "${path}" ]; then
-    printf 'directory "build/prod/" NOT found\n' >&2
+    printf 'directory "web/public/" NOT found\n' >&2
     exit 1
 fi
 
