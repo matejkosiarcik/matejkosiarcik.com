@@ -1,8 +1,8 @@
 :root {
-  --fg-color: #333;
-  --fg-color-alt: lighten(var(--fg-color), 20%);
   --bg-color: #fafafa;
   --bg-color-alt: darken(var(--bg-color), 20%);
+  --fg-color: #333;
+  --fg-color-alt: lighten(var(--fg-color), 20%);
 
   @media (prefers-color-scheme: dark) {
     --bg-color: #242125;
