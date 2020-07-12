@@ -28,18 +28,13 @@ clean:
 	BUNDLE_GEMFILE=$(CURDIR)/web/jekyll/Gemfile bundle exec rake -f $(CURDIR)/web/jekyll/Rakefile clean
 	npm run --prefix $(CURDIR)/web clean
 
-.PHONY: prebuild
-prebuild:
-	node web/favicon.js
-	convert -define icon:auto-resize=32,16 -background none -colors 256 -density 1000 web/assets/favicon/favicon.png web/assets/favicon/favicon.ico
-
 .PHONY: build
-build: prebuild
+build:
 	BUNDLE_GEMFILE=$(CURDIR)/web/jekyll/Gemfile bundle exec rake -f $(CURDIR)/web/jekyll/Rakefile build
 	npm run --prefix $(CURDIR)/web build
 
 .PHONY: run
-run: prebuild
+run:
 	BUNDLE_GEMFILE=$(CURDIR)/web/jekyll/Gemfile bundle exec rake -f $(CURDIR)/web/jekyll/Rakefile prestart
 	@$(MAKE) -j2 -C$(CURDIR) -f$(MAKEFILE_PATH) _run
 
