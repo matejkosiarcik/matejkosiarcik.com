@@ -30,7 +30,7 @@ clean:
 
 .PHONY: prebuild
 prebuild:
-	convert -resize 64x64 -density 1000 -background none web/assets/favicon/favicon.svg web/assets/favicon/favicon.png
+	node web/favicon.js
 	convert -define icon:auto-resize=32,16 -background none -colors 256 -density 1000 web/assets/favicon/favicon.png web/assets/favicon/favicon.ico
 
 .PHONY: build
