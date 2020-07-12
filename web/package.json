@@ -88,7 +88,7 @@
     "webpack-cli": "^3.3.12",
     "webpack-common-shake": "^2.1.0",
     "webpack-dev-server": "^3.11.0",
-    "webpack-fix-style-only-entries": "^0.4.0",
+    "webpack-fix-style-only-entries": "^0.5.1",
     "webpack-subresource-integrity": "^1.4.1"
   }
 }
