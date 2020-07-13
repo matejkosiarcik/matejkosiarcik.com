@@ -29,7 +29,7 @@
     "@babel/preset-env": "^7.9.6",
     "@babel/preset-typescript": "^7.9.0",
     "@csstools/postcss-sass": "^4.0.0",
-    "@typescript-eslint/eslint-plugin": "^2.30.0",
+    "@typescript-eslint/eslint-plugin": "^2.34.0",
     "@typescript-eslint/parser": "^2.34.0",
     "apache-server-configs": "^4.0.0",
     "autoprefixer": "^9.7.6",
