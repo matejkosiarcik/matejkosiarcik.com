@@ -61,7 +61,7 @@
     "postcss-csso": "^4.0.0",
     "postcss-easy-import": "^3.0.0",
     "postcss-functions": "^3.0.0",
-    "postcss-hexrgba": "^2.0.0",
+    "postcss-hexrgba": "^2.0.1",
     "postcss-loader": "^3.0.0",
     "postcss-media-minmax": "^4.0.0",
     "postcss-nested": "^4.2.1",
