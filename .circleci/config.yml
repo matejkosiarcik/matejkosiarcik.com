@@ -27,7 +27,7 @@ commands:
       - run: make
 
 jobs:
-  debian:
+  linux:
     parameters:
       image:
         type: string
