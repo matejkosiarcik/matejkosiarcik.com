@@ -8,4 +8,4 @@
 
 ## Plans
 
-- TODO: adpot dark mode according to https://web.dev/prefers-color-scheme/#reacting-on-dark-mode-changes
+-   TODO: adpot dark mode according to <https://web.dev/prefers-color-scheme/#reacting-on-dark-mode-changes>
