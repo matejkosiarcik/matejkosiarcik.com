@@ -4,6 +4,8 @@
 
 <!-- toc -->
 
+- [Plans](#plans)
+
 <!-- tocstop -->
 
 ## Plans
