@@ -24,10 +24,14 @@ matrix:
 
 install:
   - |
-    nvm install
-    nvm use
-  - node --version
-  - npm --version
+    node --version
+    npm --version
+
+  - nvm install
+
+  - |
+    node --version
+    npm --version
 
 script:
   - make
