@@ -64,7 +64,7 @@
     "postcss-hexrgba": "^2.0.1",
     "postcss-loader": "^3.0.0",
     "postcss-media-minmax": "^4.0.0",
-    "postcss-nested": "^4.2.1",
+    "postcss-nested": "^4.2.3",
     "postcss-preset-env": "^6.7.0",
     "postcss-scss": "^2.1.1",
     "posthtml-attrs-sorter": "^1.1.0",
