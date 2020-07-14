@@ -48,7 +48,7 @@ const plugins = glob.sync(`${htmlDir}/**/*.html`, { nodir: true }).map(file => n
         minifyCSS: true,
         minifyJS: true,
         minifyURLs: true,
-    }
+    },
 })).concat([
     new CopyPlugin({
         patterns:
@@ -108,7 +108,7 @@ const cssLoaders = process.env.NODE_ENV === 'production' ?
             options: {
                 url: false,
                 import: false,
-            }
+            },
         },
         'postcss-loader',
     ] : [
@@ -146,11 +146,11 @@ const config = {
                         options: {
                             attributes: false,
                             minimize: process.env.NODE_ENV === 'production',
-                        }
+                        },
                     },
                     {
                         loader: 'posthtml-loader',
-                    }
+                    },
                 ],
             },
             {
