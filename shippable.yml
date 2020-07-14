@@ -3,6 +3,6 @@ language: ruby
 build:
   ci:
     - apt-get update --yes
-    - DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-install-recommends build-essential pandoc imagemagick
+    - DEBIAN_FRONTEND=noninteractive apt-get install --yes build-essential curl pandoc zlib1g zlib1g-dev imagemagick
     - curl -sL "https://deb.nodesource.com/setup_14.x" | bash - && apt-get install --yes nodejs
     - make
