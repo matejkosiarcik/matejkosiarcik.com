@@ -50,15 +50,17 @@ const plugins = glob.sync(`${htmlDir}/**/*.html`, { nodir: true }).map(file => n
         minifyURLs: true,
     }
 })).concat([
-    new CopyPlugin(
-        glob.sync('assets/favicon/{pinicon,favicon}.*').map(file => {
-            return { from: `${file}`, to: '' }
-        }).concat(glob.sync('assets/img/*.{jpg,png,svg,bmp,gif}').map(file => {
-            return { from: `${file}`, to: 'img' }
-        })).concat([
-            { from: path.join(__dirname, 'jekyll', '_site', 'blog-posts.json'), to: '' },
-            { from: path.join(__dirname, 'jekyll', '_site', 'sitemap.xml'), to: '' },
-        ])),
+    new CopyPlugin({
+        patterns:
+            glob.sync('assets/favicon/{pinicon,favicon}.*').map(file => {
+                return { from: `${file}`, to: '' }
+            }).concat(glob.sync('assets/img/*.{jpg,png,svg,bmp,gif}').map(file => {
+                return { from: `${file}`, to: 'img' }
+            })).concat([
+                { from: path.join(__dirname, 'jekyll', '_site', 'blog-posts.json'), to: '' },
+                { from: path.join(__dirname, 'jekyll', '_site', 'sitemap.xml'), to: '' },
+            ]),
+    }),
 ])
 
 if (process.env.NODE_ENV === 'development') {
