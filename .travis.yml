@@ -1,8 +1,5 @@
 language: generic
 
-os:
-  - linux
-
 addons:
   apt:
     update: true
@@ -22,6 +19,7 @@ addons:
 matrix:
   fast_finish: true
   include:
+    - { os: linux }
     - { os: osx, if: branch == master }
 
 install:
