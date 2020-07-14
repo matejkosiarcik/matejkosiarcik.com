@@ -12,9 +12,9 @@ addons:
       - zlib1g
       - zlib1g-dev
       - imagemagick
-  homebrew:
-    update: true
-    brewfile: true
+  # homebrew:
+  #   update: true
+  #   brewfile: true
 
 matrix:
   fast_finish: true
@@ -24,32 +24,14 @@ matrix:
 
 install:
   - |
-    which node
-    which npm
-    node --version
-    npm --version
-
-  - |
     if [ "$(uname -s)" = Linux ]; then
       nvm install
-    fi
-
-  - |
-    which node
-    which npm
-    node --version
-    npm --version
-
-  - |
-    if [ "$(uname -s)" = Darwin ]; then
+    elif [ "$(uname -s)" = Darwin ]; then
+      time brew update
+      time brew bundle
+      time brew upgrade node
       nvm use system
     fi
-
-  - |
-    which node
-    which npm
-    node --version
-    npm --version
 
 script:
   - make
