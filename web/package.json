@@ -34,7 +34,7 @@
     "@typescript-eslint/eslint-plugin": "^2.34.0",
     "@typescript-eslint/parser": "^2.34.0",
     "apache-server-configs": "^4.0.0",
-    "autoprefixer": "^9.7.6",
+    "autoprefixer": "^9.8.5",
     "babel-loader": "^8.1.0",
     "color-convert": "^2.0.1",
     "concat": "^1.0.3",
@@ -79,7 +79,7 @@
     "rimraf": "^3.0.2",
     "script-ext-html-webpack-plugin": "^2.1.4",
     "style-loader": "^1.2.1",
-    "stylelint": "^13.3.3",
+    "stylelint": "^13.6.1",
     "stylelint-config-property-sort-order-smacss": "^6.3.0",
     "stylelint-config-recommended-scss": "^4.2.0",
     "stylelint-config-standard": "^20.0.0",
@@ -93,5 +93,8 @@
     "webpack-dev-server": "^3.11.0",
     "webpack-fix-style-only-entries": "^0.5.1",
     "webpack-subresource-integrity": "^1.4.1"
+  },
+  "optionalDependencies": {
+    "colorette": "1.2.0"
   }
 }
