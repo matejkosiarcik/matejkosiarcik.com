@@ -1,4 +1,4 @@
-tap "homebrew/cask"
+# tap "homebrew/cask"
 
 # image conversion
 brew "imagemagick"
