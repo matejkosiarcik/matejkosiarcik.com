@@ -51,9 +51,9 @@ const plugins = glob.sync(`${htmlDir}/**/*.html`, { nodir: true }).map(file => n
     }
 })).concat([
     new CopyPlugin(
-        glob.sync(`${__dirname}/assets/favicon/{pinicon,favicon}.*`).map(file => {
+        glob.sync('assets/favicon/{pinicon,favicon}.*').map(file => {
             return { from: `${file}`, to: '' }
-        }).concat(glob.sync(`${__dirname}/assets/img/*.{jpg,png,svg,bmp,gif}`).map(file => {
+        }).concat(glob.sync('assets/img/*.{jpg,png,svg,bmp,gif}').map(file => {
             return { from: `${file}`, to: 'img' }
         })).concat([
             { from: path.join(__dirname, 'jekyll', '_site', 'blog-posts.json'), to: '' },

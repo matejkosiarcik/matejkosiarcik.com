@@ -8,7 +8,6 @@ updates:
       interval: daily
       time: "02:00"
       timezone: "Europe/Bratislava"
-    open-pull-requests-limit: 10
     reviewers:
       - matejkosiarcik
     assignees:
@@ -21,7 +20,6 @@ updates:
       interval: daily
       time: "02:00"
       timezone: "Europe/Bratislava"
-    open-pull-requests-limit: 10
     reviewers:
       - matejkosiarcik
     assignees:
