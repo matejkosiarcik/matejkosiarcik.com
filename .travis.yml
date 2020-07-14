@@ -2,7 +2,6 @@ language: generic
 
 os:
   - linux
-  - osx
 
 addons:
   apt:
@@ -19,6 +18,11 @@ addons:
   homebrew:
     update: true
     brewfile: true
+
+matrix:
+  fast_finish: true
+  include:
+    - { os: osx, if: branch == master }
 
 install:
   - |
