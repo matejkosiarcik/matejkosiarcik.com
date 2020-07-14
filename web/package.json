@@ -93,5 +93,8 @@
     "webpack-dev-server": "^3.11.0",
     "webpack-fix-style-only-entries": "^0.5.1",
     "webpack-subresource-integrity": "^1.4.1"
+  },
+  "optionalDependencies": {
+    "colorette": "1.2.0"
   }
 }
