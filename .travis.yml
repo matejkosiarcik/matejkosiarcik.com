@@ -23,6 +23,9 @@ matrix:
     - { os: osx, if: branch == master }
 
 install:
+  - |
+    nvm install
+    nvm use
   - node --version
   - npm --version
 
