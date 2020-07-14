@@ -24,12 +24,30 @@ matrix:
 
 install:
   - |
+    which node
+    which npm
     node --version
     npm --version
 
-  - nvm install
+  - |
+    if [ "$(uname -s)" = Linux ]; then
+      nvm install
+    fi
 
   - |
+    which node
+    which npm
+    node --version
+    npm --version
+
+  - |
+    if [ "$(uname -s)" = Darwin ]; then
+      brew upgrade node
+    fi
+
+  - |
+    which node
+    which npm
     node --version
     npm --version
 
