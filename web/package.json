@@ -49,7 +49,7 @@
     "glob-all": "^3.2.1",
     "html-loader": "^1.1.0",
     "html-webpack-plugin": "^4.3.0",
-    "htmlhint": "^0.11.0",
+    "htmlhint": "^0.14.1",
     "htmllint-cli": "0.0.7",
     "htmlnano": "^0.2.5",
     "jshint": "^2.11.1",
