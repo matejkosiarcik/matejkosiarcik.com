@@ -4,13 +4,8 @@ addons:
   apt:
     update: true
     packages:
-      - build-essential
-      - curl
       - ruby
-      - ruby-dev
       - pandoc
-      - zlib1g
-      - zlib1g-dev
       - imagemagick
   homebrew:
     update: true
@@ -20,15 +15,9 @@ matrix:
   fast_finish: true
   include:
     - { os: linux }
-    - { os: osx, if: branch == master }
+    - { os: osx, osx_image: xcode12, if: branch == master }
 
 install:
-  - |
-    which node
-    which npm
-    node --version
-    npm --version
-
   - |
     if [ "$(uname -s)" = Linux ]; then
       nvm install
@@ -43,7 +32,8 @@ install:
   - |
     if [ "$(uname -s)" = Darwin ]; then
       brew upgrade node
-      # nvm use system
+      nvm alias default system
+      nvm use default
     fi
 
   - |
