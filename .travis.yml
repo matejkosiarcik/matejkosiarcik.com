@@ -15,7 +15,7 @@ matrix:
   fast_finish: true
   include:
     - { os: linux }
-    - { os: osx, if: branch == master }
+    - { os: osx, osx_image: xcode12, if: branch == master }
 
 install:
   - |
