@@ -43,7 +43,8 @@ install:
   - |
     if [ "$(uname -s)" = Darwin ]; then
       brew upgrade node
-      # nvm use system
+      nvm alias default system
+      nvm use default
     fi
 
   - |
