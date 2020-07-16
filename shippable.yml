@@ -1,5 +1,5 @@
 build:
   ci:
     - rvm install && rvm use && ruby --version
-    - nvm install && nvm use && node --version && npm --version
+    - nvm install && nvm use && node --version
     - make

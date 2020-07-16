@@ -10,7 +10,7 @@ MAKEFILE_PATH := $(abspath $(lastword $(MAKEFILE_LIST)))
 
 .DEFAULT: all
 .PHONY: all
-all: bootstrap clean lint build
+all: bootstrap lint build
 
 .PHONY: bootstrap
 bootstrap:

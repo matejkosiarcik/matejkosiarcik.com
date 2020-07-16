@@ -19,12 +19,6 @@ matrix:
 
 install:
   - |
-    which node
-    which npm
-    node --version
-    npm --version
-
-  - |
     if [ "$(uname -s)" = Linux ]; then
       nvm install
     fi
