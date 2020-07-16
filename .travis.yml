@@ -4,12 +4,8 @@ addons:
   apt:
     update: true
     packages:
-      - build-essential
-      - curl
       - ruby
       - pandoc
-      - zlib1g
-      - zlib1g-dev
       - imagemagick
   homebrew:
     update: true

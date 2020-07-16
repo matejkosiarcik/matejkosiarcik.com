@@ -18,9 +18,9 @@ commands:
       - run:
           name: Update system package managers
           command: |
-            if command -v apt-get >/dev/null 2>&1; then apt-get update --yes; fi
-            if command -v apk >/dev/null 2>&1; then apk update --no-cache; fi
-            if command -v yum >/dev/null 2>&1; then command -v dnf >/dev/null 2>&1 || yum install -y dnf; fi
+            if command -v apt-get >/dev/null 2>&1; then
+              apt-get update;
+            fi
   build:
     steps:
       - run: make
