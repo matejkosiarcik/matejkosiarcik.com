@@ -7,7 +7,6 @@ addons:
       - build-essential
       - curl
       - ruby
-      - ruby-dev
       - pandoc
       - zlib1g
       - zlib1g-dev
