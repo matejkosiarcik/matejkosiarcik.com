@@ -21,25 +21,10 @@ install:
   - |
     if [ "$(uname -s)" = Linux ]; then
       nvm install
-    fi
-
-  - |
-    which node
-    which npm
-    node --version
-    npm --version
-
-  - |
-    if [ "$(uname -s)" = Darwin ]; then
+    elif [ "$(uname -s)" = Darwin ]; then
       nvm unload
       rm -rf "${NVM_DIR}"
     fi
-
-  - |
-    which node
-    which npm
-    node --version
-    npm --version
 
 script:
   - make
