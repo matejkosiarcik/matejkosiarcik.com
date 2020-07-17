@@ -31,9 +31,8 @@ install:
 
   - |
     if [ "$(uname -s)" = Darwin ]; then
-      brew upgrade node
-      nvm alias default system
-      nvm use default
+      nvm unload
+      rm -rf "${NVM_DIR}"
     fi
 
   - |
