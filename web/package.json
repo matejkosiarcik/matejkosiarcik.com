@@ -32,7 +32,7 @@
     "@babel/preset-typescript": "^7.10.4",
     "@csstools/postcss-sass": "^4.0.0",
     "@typescript-eslint/eslint-plugin": "^3.7.0",
-    "@typescript-eslint/parser": "^3.6.1",
+    "@typescript-eslint/parser": "^3.7.0",
     "apache-server-configs": "^4.0.0",
     "autoprefixer": "^9.8.5",
     "babel-loader": "^8.1.0",
