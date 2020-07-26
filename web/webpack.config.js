@@ -29,7 +29,7 @@ const outputDir = 'public'
 // TODO: try google-closure-compiler or YUI compressor
 
 // search all jekyll generated html pages
-const htmlDir = path.join('jekyll', '_site')
+const htmlDir = 'jekyll/_site' // always want "/" slash for globs
 const plugins = glob.sync(`${htmlDir}/**/*.html`, { nodir: true }).map(file => new HtmlPlugin({
     filename: file.replace(/.*_site[\\/]/, ''),
     template: file,

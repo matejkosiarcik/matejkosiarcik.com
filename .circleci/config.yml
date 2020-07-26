@@ -4,13 +4,7 @@ workflows:
   version: 2
   circleci-build:
     jobs:
-      - linux:
-          matrix:
-            parameters:
-              image:
-                - debian:stable
-                - ubuntu
-                - ubuntu:rolling
+      - linux: { matrix: { parameters: { image: [ debian:stable, ubuntu, ubuntu:rolling ]}}}
 
 commands:
   prepare:
