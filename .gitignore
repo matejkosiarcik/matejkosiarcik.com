@@ -3,6 +3,7 @@
 /web/assets/favicon/favicon.png
 /web/assets/favicon/favicon.ico
 public/
+generated/
 
 # Created by https://www.gitignore.io/api/ruby,jekyll,node,jspm,venv,virtualenv,jetbrains+all,visualstudiocode,sublimetext,emacs,vim,macos,linux,windows
 # Edit at https://www.gitignore.io/?templates=ruby,jekyll,node,jspm,venv,virtualenv,jetbrains+all,visualstudiocode,sublimetext,emacs,vim,macos,linux,windows
