@@ -30,13 +30,22 @@ clean:
 	$(BUNDLE_ENV) bundle exec rake -f $(PROJECT_DIR)/web/jekyll/Rakefile clean
 	npm run --prefix $(PROJECT_DIR)/web clean
 
+.PHONY: prebuild
+prebuild:
+	mkdir -p web/icons/generated
+
+	find web/icons -name '*.svg' | sed -E 's~.*/~~' | while read -r file; do \
+		filename="$$(basename "$${file}" .svg)" && \
+		sed 's~#333~#eee~g' <"web/icons/$${file}" >"web/icons/generated/$${filename}-dark.svg" \
+	;done
+
 .PHONY: build
-build:
+build: prebuild
 	$(BUNDLE_ENV) bundle exec rake -f $(PROJECT_DIR)/web/jekyll/Rakefile build
 	npm run --prefix $(PROJECT_DIR)/web build
 
 .PHONY: run
-run:
+run: prebuild
 	$(BUNDLE_ENV) bundle exec rake -f $(PROJECT_DIR)/web/jekyll/Rakefile prestart
 	@$(MAKE) -j2 -C$(PROJECT_DIR) -f$(MAKEFILE_PATH) _run
 

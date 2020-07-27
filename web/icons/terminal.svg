@@ -7,5 +7,5 @@
       <path d="m40 55h20" />
     </g>
   </mask>
-  <rect fill="#445" height="80" rx="8" width="100" y="10" mask="url(#mask)" />
+  <rect fill="#333" height="80" rx="8" width="100" y="10" mask="url(#mask)" />
 </svg>

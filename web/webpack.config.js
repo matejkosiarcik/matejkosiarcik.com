@@ -54,7 +54,7 @@ const plugins = glob.sync(`${htmlDir}/**/*.html`, { nodir: true }).map(file => n
         patterns:
             glob.sync('favicon/{,generated/}*.{svg,png,ico}').map(file => {
                 return { from: file, to: '' }
-            }).concat(glob.sync('assets/*.{jpg,png,svg,bmp,gif}').map(file => {
+            }).concat(glob.sync('{assets,icons,icons/generated}/*.{jpg,png,svg,bmp,gif}').map(file => {
                 return { from: file, to: 'img' }
             })).concat([
                 { from: path.join(__dirname, 'jekyll', '_site', 'blog-posts.json'), to: '' },
