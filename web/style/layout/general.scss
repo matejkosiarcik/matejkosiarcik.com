@@ -12,7 +12,7 @@ body > main {
 
 body > header .container,
 body > footer .container {
-  @media (--media-big) {
+  @media (--desktop) {
     padding-right: 15px !important;
     padding-left: 15px !important;
   }
