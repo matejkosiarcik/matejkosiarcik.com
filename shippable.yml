@@ -2,4 +2,4 @@ build:
   ci:
     - rvm get stable && rvm install ruby && rvm use ruby
     - nvm install node && nvm use node
-    - make
+    - cd web && make

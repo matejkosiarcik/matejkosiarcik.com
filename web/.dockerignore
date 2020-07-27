@@ -1,0 +1,5 @@
+node_modules/
+public/
+**/.bundle/
+**/.jekyll-cache/
+**/_site/

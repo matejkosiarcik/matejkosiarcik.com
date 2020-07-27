@@ -25,6 +25,7 @@ install:
       nvm unload
       rm -rf "${NVM_DIR}"
     fi
+  - (cd web && travis_retry make bootstrap)
 
 script:
-  - make
+  - (cd web && make lint build)

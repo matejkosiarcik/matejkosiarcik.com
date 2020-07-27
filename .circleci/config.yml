@@ -19,7 +19,7 @@ commands:
             fi
   build:
     steps:
-      - run: make
+      - run: cd web && make
 
 jobs:
   linux:

@@ -14,4 +14,4 @@ RUN apt-get update --yes && \
     make bootstrap clean build
 
 FROM bitnami/apache:latest
-COPY --from=build /src/web/public /app
+COPY --from=build /src/public /app
