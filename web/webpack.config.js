@@ -29,7 +29,7 @@ const outputDir = 'public'
 // TODO: try google-closure-compiler or YUI compressor
 
 // search all jekyll generated html pages
-const htmlDir = path.join('jekyll', '_site')
+const htmlDir = 'jekyll/_site' // always want "/" slash for globs
 const plugins = glob.sync(`${htmlDir}/**/*.html`, { nodir: true }).map(file => new HtmlPlugin({
     filename: file.replace(/.*_site[\\/]/, ''),
     template: file,
@@ -52,10 +52,10 @@ const plugins = glob.sync(`${htmlDir}/**/*.html`, { nodir: true }).map(file => n
 })).concat([
     new CopyPlugin({
         patterns:
-            glob.sync('assets/favicon/{pinicon,favicon}.*').map(file => {
-                return { from: `${file}`, to: '' }
-            }).concat(glob.sync('assets/img/*.{jpg,png,svg,bmp,gif}').map(file => {
-                return { from: `${file}`, to: 'img' }
+            glob.sync('favicon/{,generated/}*.{svg,png,ico}').map(file => {
+                return { from: file, to: '' }
+            }).concat(glob.sync('{assets,icons,icons/generated}/*.{jpg,png,svg,bmp,gif}').map(file => {
+                return { from: file, to: 'img' }
             })).concat([
                 { from: path.join(__dirname, 'jekyll', '_site', 'blog-posts.json'), to: '' },
                 { from: path.join(__dirname, 'jekyll', '_site', 'sitemap.xml'), to: '' },

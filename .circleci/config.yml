@@ -4,13 +4,7 @@ workflows:
   version: 2
   circleci-build:
     jobs:
-      - linux:
-          matrix:
-            parameters:
-              image:
-                - debian:stable
-                - ubuntu
-                - ubuntu:rolling
+      - linux: { matrix: { parameters: { image: [ debian:stable, ubuntu, ubuntu:rolling ]}}}
 
 commands:
   prepare:
@@ -19,11 +13,13 @@ commands:
           name: Update system package managers
           command: |
             if command -v apt-get >/dev/null 2>&1; then
-              apt-get update;
+              apt-get update
+              DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-install-recommends build-essential curl ruby ruby-dev pandoc zlib1g zlib1g-dev imagemagick
+              curl -sL https://deb.nodesource.com/setup_14.x | bash - && apt-get install --yes --no-install-recommends nodejs
             fi
   build:
     steps:
-      - run: make
+      - run: cd web && make
 
 jobs:
   linux:
@@ -35,6 +31,4 @@ jobs:
     steps:
       - checkout
       - prepare
-      - run: DEBIAN_FRONTEND=noninteractive apt-get install --yes build-essential curl ruby ruby-dev pandoc zlib1g zlib1g-dev imagemagick
-      - run: curl -sL https://deb.nodesource.com/setup_14.x | bash - && apt-get install --yes nodejs
       - build
