@@ -1,7 +1,7 @@
 // links
 a {
   transition: color 0.2s;
-  color: var(--fg-color);
+  color: inherit;
 
   &:hover {
     color: var(--fg-color-alt);
