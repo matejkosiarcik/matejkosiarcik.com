@@ -29,7 +29,7 @@ const plugins = [
                 const lightness = (parseFloat(oldHsl[2]) - fraction).clamp(0, 100)
                 const newRgb = convert.hsl.rgb([oldHsl[0], oldHsl[1], lightness])
                 const hexString = `#${convert.rgb.hex(newRgb)}`
-                return oldRgba[3] == 1 ? hexString : `${hexString}${numberToHexDigit(oldRgba[3] / 16)}${numberToHexDigit(oldRgba[3] % 16)}`
+                return oldRgba[3] === 1 ? hexString : `${hexString}${numberToHexDigit(oldRgba[3] / 16)}${numberToHexDigit(oldRgba[3] % 16)}`
             },
             lighten: (value, delta) => {
                 const fraction = delta.includes('%') ? parseFloat(delta) : parseFloat(delta) * 100
@@ -38,9 +38,9 @@ const plugins = [
                 const lightness = (parseFloat(oldHsl[2]) + fraction).clamp(0, 100)
                 const newRgb = convert.hsl.rgb([oldHsl[0], oldHsl[1], lightness])
                 const hexString = `#${convert.rgb.hex(newRgb)}`
-                return oldRgba[3] == 1 ? hexString : `${hexString}${numberToHexDigit(oldRgba[3] / 16)}${numberToHexDigit(oldRgba[3] % 16)}`
+                return oldRgba[3] === 1 ? hexString : `${hexString}${numberToHexDigit(oldRgba[3] / 16)}${numberToHexDigit(oldRgba[3] % 16)}`
             },
-        }
+        },
     }),
     require('@csstools/postcss-sass')({
         outputStyle: 'expanded',
