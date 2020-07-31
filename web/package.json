@@ -34,7 +34,7 @@
     "@typescript-eslint/eslint-plugin": "^3.7.1",
     "@typescript-eslint/parser": "^3.7.1",
     "apache-server-configs": "^4.0.0",
-    "autoprefixer": "^9.8.5",
+    "autoprefixer": "^9.8.6",
     "babel-loader": "^8.1.0",
     "color-convert": "^2.0.1",
     "concat": "^1.0.3",
