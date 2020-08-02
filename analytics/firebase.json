@@ -4,19 +4,20 @@
       "npm --prefix \"$RESOURCE_DIR\" run lint",
       "npm --prefix \"$RESOURCE_DIR\" run build"
     ],
-    "source": "project"
+    "source": "."
   },
   "database": {
     "rules": "database.rules.json"
   },
   "emulators": {
+    "port": "4001",
     "functions": {
       "host": "localhost",
-      "port": "6788"
+      "port": "8081"
     },
     "database": {
       "host": "localhost",
-      "port": "6789"
+      "port": "8082"
     }
   }
 }
