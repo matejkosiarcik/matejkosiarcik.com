@@ -51,6 +51,7 @@
     "glob": "^7.1.6",
     "glob-all": "^3.2.1",
     "html-loader": "^1.1.0",
+    "html-webpack-inject-plugin": "^4.0.2",
     "html-webpack-plugin": "^4.3.0",
     "htmlhint": "^0.14.1",
     "htmllint-cli": "0.0.7",
