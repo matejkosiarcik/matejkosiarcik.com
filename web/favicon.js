@@ -15,7 +15,7 @@ if (!fs.existsSync(outDir)) {
             (_, buffer) => {
                 fs.writeFileSync(path.join(outDir, 'favicon.png'), buffer)
                 resolve()
-            }
+            },
         )
     })
 

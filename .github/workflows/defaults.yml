@@ -1,0 +1,35 @@
+name: Update defaults
+
+on:  # yamllint disable-line rule:truthy
+  schedule:
+    - cron: "0 1 * * *"
+
+jobs:
+  update-default:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cehckout project
+        uses: actions/checkout@v2
+        with:
+          path: project
+      - name: Checkout default
+        uses: actions/checkout@v2
+        with:
+          repository: matejkosiarcik/defaults
+          fetch-depth: 0
+          path: defaults
+      - name: Install dependencies
+        run: |
+          sudo apt-get update && \
+          sudo apt-get install --yes --no-install-recommends snapd && \
+          sudo snap install yq
+      - name: Update defaults
+        run: |
+          yq read project/.defaults.yml 'files.*' | \
+          awk -F ': ' '{printf "defaults/%s project/%s\n", match($2, /[^ ]/) ? $2 : $1, $1}' | \
+          xargs -n2 cp -r
+      - name: Create Pull Request
+        path: project
+        uses: peter-evans/create-pull-request@v3
+        assignees: matejkosiarcik
+        reviewers: matejkosiarcik

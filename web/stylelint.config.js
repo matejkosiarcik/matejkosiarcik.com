@@ -17,5 +17,5 @@ module.exports = {
         "function-url-quotes": "always",
         "selector-attribute-quotes": "always",
         "string-quotes": "single",
-    }
+    },
 }
