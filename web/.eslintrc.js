@@ -9,6 +9,11 @@ module.exports = {
         'plugin:@typescript-eslint/eslint-recommended',
         'plugin:@typescript-eslint/recommended',
     ],
+    env: {
+        'es2020': true,
+        'browser': true,
+        'node': true,
+    },
     rules: {
         '@typescript-eslint/no-explicit-any': 0,
         'comma-dangle': ['error', 'always-multiline'],

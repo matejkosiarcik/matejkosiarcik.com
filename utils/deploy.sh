@@ -25,8 +25,8 @@ credentials="${user}.${server},${password}"
 files_to_remove="$(mktemp)"
 lftp -u "${credentials}" "sftp://${server}" -e 'ls; exit' |
     rev | cut -d ' ' -f 1 | rev | grep -Ev '^(\.|\.\.)$' | while IFS= read -r file; do
-        printf 'rm -r %s;' "${file}" >>"${files_to_remove}"
-    done
+    printf 'rm -r %s;' "${file}" >>"${files_to_remove}"
+done
 
 # remove files
 lftp -u "${credentials}" "sftp://${server}" -e "$(cat "${files_to_remove}"); exit"
