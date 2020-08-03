@@ -5,7 +5,7 @@ workflows:
   circleci-build:
     jobs:
       - azlint
-      - web: { matrix: { parameters: { image: [ debian:stable, ubuntu, ubuntu:rolling ]}}}
+      - web
       - analytics
 
 jobs:
@@ -18,11 +18,8 @@ jobs:
       - run: azlint
 
   web:
-    parameters:
-      image:
-        type: string
     docker:
-      - image: "<< parameters.image >>"
+      - image: debian:stable
     steps:
       - checkout
       - run: |
