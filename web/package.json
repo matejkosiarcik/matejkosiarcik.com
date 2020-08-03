@@ -41,7 +41,7 @@
     "copy-webpack-plugin": "^6.0.3",
     "cross-env": "^7.0.2",
     "css-color-converter": "^1.1.1",
-    "css-loader": "^4.1.0",
+    "css-loader": "^4.2.0",
     "csslint": "^1.0.5",
     "cssnano": "^4.1.10",
     "cssnano-webpack-plugin": "^1.0.3",
