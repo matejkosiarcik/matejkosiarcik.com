@@ -1,8 +1,0 @@
-version: '2'
-
-services:
-  apache:
-    build: .
-    ports:
-      - '80:8080'
-      - '443:8443'
