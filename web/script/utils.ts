@@ -11,12 +11,13 @@ export function ready(callback: () => void): void {
     if (document.addEventListener) {
         document.addEventListener('DOMContentLoaded', callback)
     } else {
-        (document as any).attachEvent('onreadystatechange', function () {
+        function onReadyStateChange() {
             if (document.readyState === 'complete') {
-                (document as any).detachEvent('onreadystatechange', arguments.callee) // arguments.callee is allegedly not supported in strict mode
+                (document as any).detachEvent('onreadystatechange', onReadyStateChange)
                 callback()
             }
-        })
+        }
+        (document as any).attachEvent('onreadystatechange', onReadyStateChange)
     }
 }
 

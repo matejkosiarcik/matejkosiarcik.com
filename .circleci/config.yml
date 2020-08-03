@@ -4,31 +4,35 @@ workflows:
   version: 2
   circleci-build:
     jobs:
-      - linux: { matrix: { parameters: { image: [ debian:stable, ubuntu, ubuntu:rolling ]}}}
-
-commands:
-  prepare:
-    steps:
-      - run:
-          name: Update system package managers
-          command: |
-            if command -v apt-get >/dev/null 2>&1; then
-              apt-get update
-              DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-install-recommends build-essential curl ruby ruby-dev pandoc zlib1g zlib1g-dev imagemagick
-              curl -sL https://deb.nodesource.com/setup_14.x | bash - && apt-get install --yes --no-install-recommends nodejs
-            fi
-  build:
-    steps:
-      - run: cd web && make
+      - azlint
+      - web
+      - analytics
 
 jobs:
-  linux:
-    parameters:
-      image:
-        type: string
+  azlint:
     docker:
-      - image: "<< parameters.image >>"
+      - image: matejkosiarcik/azlint
     steps:
       - checkout
-      - prepare
-      - build
+      - setup_remote_docker
+      - run: azlint
+
+  web:
+    docker:
+      - image: debian:stable
+    steps:
+      - checkout
+      - run: |
+          apt-get update
+          DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-install-recommends build-essential curl ruby ruby-dev pandoc zlib1g zlib1g-dev imagemagick
+          curl -sL https://deb.nodesource.com/setup_14.x | bash - && apt-get install --yes --no-install-recommends nodejs
+      - run: cd web && make bootstrap
+      - run: cd web && make build
+
+  analytics:
+    docker:
+      - image: node
+    steps:
+      - checkout
+      - run: npm install --prefix analytics
+      - run: npm run --prefix analytics build

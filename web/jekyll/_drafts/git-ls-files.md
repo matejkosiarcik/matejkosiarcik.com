@@ -1,10 +1,13 @@
 ---
+author: Matej Kosiarcik
 ---
 # Efficiently listing files in a git repository
 
 [TL;DR](#put-it-in-a-script)
 
-Recently I have been working on my little side project [azlint](https://github.com/matejkosiarcik/azlint) where I need to run external programs on project files.
+Recently I have been working on my little side project
+[azlint](https://github.com/matejkosiarcik/azlint) where I need to run external
+programs on project files.
 To do that I need to tell these programs which files to analyze.
 
 Before we start, let's create a little playground where we can check things.
@@ -53,7 +56,8 @@ commited.txt dirty.txt ignored.txt staged.txt
 ```
 
 Not bad for first try.
-Only the `ignored.txt` file should not be there. And it's missing so called "hidden" files like `.gitignore`.
+Only the `ignored.txt` file should not be there. And it's missing so called
+"hidden" files like `.gitignore`.
 
 ```bash
 $ echo **/* **/.*
@@ -92,8 +96,10 @@ staged.txt
 ```
 
 Hmm, progress?
-We got rid of `ignored.txt` and unecessarily of `.gitignore`, but also introduced `commited-deleted.txt` and `staged-deleted.txt` which is a step back.
-We can pass our custom pattern to `git ls-files` to also include hidden files (works recursively automatically).
+We got rid of `ignored.txt` and unecessarily of `.gitignore`, but also
+introduced `commited-deleted.txt` and `staged-deleted.txt` which is a step back.
+We can pass our custom pattern to `git ls-files` to also include hidden files
+(works recursively automatically).
 
 ```bash
 $ git ls-files '*' '.*'
@@ -105,7 +111,8 @@ staged.txt
 ```
 
 We got back our `.gitignore`, but the rest remains as before.
-We can eleminate the non-existing files with passing concrete file names by shell globbing.
+We can eleminate the non-existing files with passing concrete file names by
+shell globbing.
 
 ```bash
 $ git ls-files **/* **/.*
@@ -114,7 +121,8 @@ commited.txt
 staged.txt
 ```
 
-This works because shell resolves the glob patterns into concrete file paths (notice no **\'** around arguments) before passing it to our git command.
+This works because shell resolves the glob patterns into concrete file paths
+(notice no **\'** around arguments) before passing it to our git command.
 Problem 1 our `dirty.txt` is still missing.
 Problem 2 if you try it on a real repository, this is probably what you'll see:
 
@@ -126,7 +134,8 @@ zsh: argument list too long: git
 Turns out you can't pass unlimited amount of arguments to commands. <!-- TODO: put footnote -->
 To find your platform's limit run `getconf ARG_MAX`.
 
-> in my experience *ls-tree* can be used in the same way as plain *ls-files* via `git ls-tree --full-tree -r --name-only HEAD`.
+> in my experience *ls-tree* can be used in the same way as plain *ls-files*
+via `git ls-tree --full-tree -r --name-only HEAD`.
 
 ## git check-ignore
 
@@ -146,13 +155,18 @@ $ done
 Eureka!?
 Except the performance really sucks.
 Spawning git command for each individual file is... not ideal.
-Think of all the files in `node_modules/` it has to check (hint [It's going to be a long long time](https://www.youtube.com/watch?v=BdEe5SpdIuo)).
+Think of all the files in `node_modules/` it has to check (hint
+[It's going to be a long long time](https://www.youtube.com/watch?v=BdEe5SpdIuo)
+).
 
 ## Custom script with git check-ignore
 
-We can improve previous snippet by batching files to check-ignore (minding the ARG\_MAX limit).
-But this apporoaches complexity not suitable for shell scripts (subjetive opinion).
-We can try with NodeJS (hold your criticism, it doesn't really matter what language we choose for this small script).
+We can improve previous snippet by batching files to check-ignore
+(minding the ARG\_MAX limit).
+But this apporoaches complexity not suitable for shell scripts
+(subjetive opinion).
+We can try with NodeJS (hold your criticism, it doesn't really matter what
+language we choose for this small script).
 
 ```js
 #!/usr/bin/env node
@@ -172,13 +186,15 @@ const git = require('simple-git/promise'); // npm package
 })()
 ```
 
-This batches found files by thousand (you can make this limit dynamic, it depends on ARG\_MAX, I didn't feel like it ¯\\_(ツ)_/¯).
+This batches found files by thousand (you can make this limit dynamic, it
+depends on ARG\_MAX, I didn't feel like it ¯\\_(ツ)_/¯).
 It runs great even on big repositories.
 However what I observed is that git ls-files still runs several magnitudes quicker.
 
 ## git ls-files again
 
-I was not satisfied with the solution so I turned to googling, stackoverflow and `git ls-files --help` to check if I can configure it to behave.
+I was not satisfied with the solution so I turned to googling, stackoverflow and
+`git ls-files --help` to check if I can configure it to behave.
 What I found is not amazing, but still encouraging.
 
 I found the following combination:
@@ -204,8 +220,11 @@ dirty.txt
 ```
 
 And it runs blazingly fast as well.
-All three invocations together take somewhere between 1% and 20% of my check-ignore based script.
-What I can do with that is start with `git ls-files`, subtract `git ls-files --deleted`, add `git ls-files --others --exclude-standard` and we have complete list of files.
+All three invocations together take somewhere between 1% and 20% of my
+check-ignore based script.
+What I can do with that is start with `git ls-files`, subtract
+`git ls-files --deleted`, add `git ls-files --others --exclude-standard` and we
+have complete list of files.
 
 ### Put it in a script
 

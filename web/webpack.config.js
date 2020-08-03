@@ -20,6 +20,7 @@ const ShakePlugin = require('webpack-common-shake').Plugin
 const PurgecssPlugin = require('purgecss-webpack-plugin')
 const CssoPlugin = require('csso-webpack-plugin').default
 const CssnanoPlugin = require('cssnano-webpack-plugin')
+const HtmlWebpackInjectPlugin = require('html-webpack-inject-plugin').default
 
 process.env.NODE_ENV = process.env.NODE_ENV === 'production' ? 'production' : 'development'
 const outputDir = 'public'
@@ -50,6 +51,23 @@ const plugins = glob.sync(`${htmlDir}/**/*.html`, { nodir: true }).map(file => n
         minifyURLs: true,
     },
 })).concat([
+    new HtmlWebpackInjectPlugin({
+        externals: [
+            {
+                tag: 'img',
+                voidTag: true,
+                attrs: {
+                    src: `${process.env.NODE_ENV === 'production' ? 'http://localhost:8081' : 'http://localhost:8081'}/matejkosiarcik-com/us-central1/analytics`,
+                    alt: '',
+                    height: '0',
+                    width: '0',
+                    loading: 'eager',
+                },
+            },
+        ],
+        parent: 'body',
+        prepend: false,
+    }),
     new CopyPlugin({
         patterns:
             glob.sync('favicon/{,generated/}*.{svg,png,ico}').map(file => {

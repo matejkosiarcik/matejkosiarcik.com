@@ -9,7 +9,7 @@ const plugins = [
             selector: 'iframe',
             attr: 'loading',
             value: 'lazy',
-        }
+        },
     ]),
 ]
 
@@ -21,5 +21,5 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 module.exports = {
-    plugins: plugins
+    plugins: plugins,
 }
