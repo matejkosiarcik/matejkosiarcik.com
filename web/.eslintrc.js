@@ -20,5 +20,5 @@ module.exports = {
         'eqeqeq': ['error', 'always'],
         'semi': ['error', 'never', { 'beforeStatementContinuationChars': 'never' }],
         'no-inner-declarations': 0,
-    }
+    },
 }
