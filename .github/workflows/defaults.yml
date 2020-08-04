@@ -29,7 +29,8 @@ jobs:
           awk -F ': ' '{printf "defaults/%s project/%s\n", match($2, /[^ ]/) ? $2 : $1, $1}' | \
           xargs -n2 cp -r
       - name: Create Pull Request
-        path: project
         uses: peter-evans/create-pull-request@v3
-        assignees: matejkosiarcik
-        reviewers: matejkosiarcik
+        with:
+          path: project
+          assignees: matejkosiarcik
+          reviewers: matejkosiarcik
