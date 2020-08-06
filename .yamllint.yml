@@ -16,4 +16,4 @@ rules:
   document-start:
     present: false
   line-length:
-    max: 180
+    max: 120
