@@ -2,7 +2,10 @@ name: Update defaults
 
 on:  # yamllint disable-line rule:truthy
   schedule:
-    - cron: "0 1 * * *"
+    - cron: "0 1 * * *"  # daily, 1am
+  push:
+    branches:
+      - master
 
 jobs:
   update-default:
@@ -31,6 +34,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
+          title: Update defaults
           path: project
           assignees: matejkosiarcik
           reviewers: matejkosiarcik
