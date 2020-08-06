@@ -25,7 +25,7 @@ export const analytics = functions.https.onRequest((request, response) => {
 
         // get data for save
         functions.logger.debug('Raw headers', request.headers)
-        let data = {
+        const data = {
             'date': new Date().toISOString(),
             'data': {
                 'user-agent': request.headers['user-agent'] ?? '',

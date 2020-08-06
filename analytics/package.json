@@ -2,7 +2,7 @@
   "private": true,
   "main": "build/index.js",
   "engines": {
-    "node": "10"
+    "node": "8"
   },
   "scripts": {
     "lint": "run-p lint:*",
@@ -13,8 +13,7 @@
     "serve": "firebase emulators:start --only functions,database",
     "prestart": "run-s build",
     "start": "run-p watch serve",
-    "deploy": "run-s build deploy:firebase",
-    "deploy:firebase": "firebase deploy --only functions,database"
+    "deploy": "firebase deploy --only functions,database"
   },
   "dependencies": {
     "cors": "^2.8.5",

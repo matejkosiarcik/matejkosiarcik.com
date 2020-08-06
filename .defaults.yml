@@ -1,11 +1,11 @@
 files:
-  # - .browserslistrc
+  - .browserslistrc
   - .editorconfig
   - .github/toc.yml
-  # - .hadolint.yaml
+  - .hadolint.yaml
   - .markdownlint.json
-  # - .mdlrc
-  # - .mdlrc.rb
+  - .mdlrc
+  - .mdlrc.rb
   - .mergify/config.yml
   - .remarkrc
   - .yamllint.yml
