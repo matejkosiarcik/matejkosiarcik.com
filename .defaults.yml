@@ -1,4 +1,5 @@
 files:
+  - .mergify/config.yml
   - .browserslistrc
   - .editorconfig
   - .github/toc.yml
@@ -14,5 +15,5 @@ files:
   # - web/tslint.json: tslint.json
   # - analytics/.eslintrc.js: eslintrc.node.js
   # - tslint.json: tslint.json
-  # - .htmlhintrc
-  # - .htmllintrc
+  - .htmlhintrc
+  - .htmllintrc
