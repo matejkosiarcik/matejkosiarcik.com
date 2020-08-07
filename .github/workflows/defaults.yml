@@ -11,11 +11,11 @@ jobs:
   update-default:
     runs-on: ubuntu-latest
     steps:
-      - name: Cehckout project
+      - name: Checkout project
         uses: actions/checkout@v2
         with:
           path: project
-      - name: Checkout default
+      - name: Checkout defaults
         uses: actions/checkout@v2
         with:
           repository: matejkosiarcik/defaults
