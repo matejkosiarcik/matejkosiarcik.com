@@ -1,0 +1,9 @@
+{
+  "indent-width": 2,
+  "id-class-style": "dash",
+  "title-no-dup": false,
+  "html-req-lang": true,
+  "doctype-html5": true,
+  "class-style": "none",
+  "spec-char-escape": false
+}

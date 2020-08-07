@@ -1,0 +1,6 @@
+{
+  "jshint": {
+      "asi": true
+  },
+  "csslint": true
+}
