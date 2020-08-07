@@ -36,11 +36,7 @@ indent_style = tab
 # trim_trailing_whitespace = false
 
 # Most documentation formats prefer 2 spaces per indent level
-[{*.{yml,yaml},*.{xml,html,htm,svg,xlf},*.{md,mdown,markdown},*.{css,scss,sass,less}}]
-indent_size = 2
-
-# All jsons
-[{*.{json,json5},*.{remark,htmllint,htmlhint,eslint,babel}rc}]
+[{*.{yml,yaml},*.{xml,html,svg,xlf,sdef},*.{md,mdown,markdown},*.{css,scss,sass,less}}]
 indent_size = 2
 
 # C-style languages multiline comments
@@ -49,11 +45,27 @@ block_comment = *
 block_comment_end = */
 block_comment_start = /*
 
+### Apple ecosystem ###
+
+[{Fastfile,{Podfile,Cartfile}{,.resolved}}]
+indent_size = 2
+
+# TODO: [{*.plist,*.entitlements,*.stringsdict}]
+# TODO: [{*.storyboard,*.xib}]
+# TODO: [*.strings]
+# TODO: [{*.pbxproj,*.xcworkspacedata,*.xcscheme}]
+
+### JavaScript ecosystem ###
+
+# All jsons
+[*.{json,json5,remarkrc,htmllintrc,htmlhintrc,eslintrc,babelrc}]
+indent_size = 2
+
 ### Ruby ecosystem ###
 
 # Indent Gemfile using 2 spaces
 # TODO: check if bug (3 spaces indent at end of Gemfile.lock) is fixed
-[*{Gemfile,Gemfile.lock}]
+[{Rakefile,Gemfile{,.lock}}]
 indent_size = 2
 
 ### .NET ecosystem ###
@@ -62,7 +74,7 @@ indent_size = 2
 [*.{cs,csx,vb,vbx,csproj,njsproj,sln}]
 charset = utf-8-bom
 
-# config files indent diffrently
+# config files indent differently
 [*.{csproj,njsproj,Config,config,targets}]
 indent_size = 2
 
