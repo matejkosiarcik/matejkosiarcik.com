@@ -5,6 +5,7 @@ workflows:
   circleci-build:
     jobs:
       - azlint
+      - lint
       - web
       - analytics
 
@@ -16,6 +17,18 @@ jobs:
       - checkout
       - setup_remote_docker
       - run: azlint
+
+  lint:
+    docker:
+      - image: debian:stable
+    steps:
+      - checkout
+      - run: |
+          apt-get update
+          DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-install-recommends build-essential curl ruby ruby-dev zlib1g zlib1g-dev
+          curl -sL https://deb.nodesource.com/setup_14.x | bash - && apt-get install --yes --no-install-recommends nodejs
+      - run: make bootstrap
+      - run: make lint
 
   web:
     docker:
