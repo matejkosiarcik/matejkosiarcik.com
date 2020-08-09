@@ -17,4 +17,5 @@ rules:
     present: false
   line-length:
     max: 180
-  truthy: disable
+  truthy:
+    allowed-values: ['true', 'false', 'on']
