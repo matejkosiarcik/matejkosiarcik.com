@@ -30,3 +30,13 @@ install:
 script:
   - make lint
   - make build
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: web/public
+  target_branch: pages
+  if: os = linux
+  on:
+    branch: master
