@@ -12,7 +12,6 @@ const CopyPlugin = require('copy-webpack-plugin')
 const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries")
 
 const ScriptExtPlugin = require('script-ext-html-webpack-plugin')
-const SriPlugin = require('webpack-subresource-integrity')
 const ResourceHintPlugin = require('resource-hints-webpack-plugin')
 
 const TerserPlugin = require('terser-webpack-plugin')
@@ -25,8 +24,6 @@ const HtmlWebpackInjectPlugin = require('html-webpack-inject-plugin').default
 process.env.NODE_ENV = process.env.NODE_ENV === 'production' ? 'production' : 'development'
 const outputDir = 'public'
 
-// TODO: CSP plugin
-// TODO: minify CSS selectors (in HTML & CSS) (mainly classnames)
 // TODO: try google-closure-compiler or YUI compressor
 
 // search all jekyll generated html pages
@@ -97,17 +94,11 @@ if (process.env.NODE_ENV === 'production') {
             defaultAttribute: 'defer',
         }),
         new ResourceHintPlugin(),
-        new SriPlugin({
-            hashFuncNames: ['sha256', 'sha384'],
-            enabled: process.env.NODE_ENV === 'production',
-        }),
         new ShakePlugin(),
         new PurgecssPlugin({
             paths: glob2.sync([
                 `${htmlDir}/**/*.html`,
                 './script/**/*.{ts,js}',
-                // './node_modules/prismjs/*.js',
-                // './node_modules/prismjs/themes/*.css',
             ], { nodir: true }),
         }),
         new CssoPlugin(),

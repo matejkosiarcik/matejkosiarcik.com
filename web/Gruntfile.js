@@ -2,7 +2,7 @@ const glob = require('glob')
 
 module.exports = (grunt) => {
     grunt.initConfig({
-        'rcs': {
+        rcs: {
             options: {
                 exclude: [
                     'js',
