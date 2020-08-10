@@ -11,7 +11,7 @@ addons:
     update: true
     brewfile: true
 
-matrix:
+jobs:
   fast_finish: true
   include:
     - { os: linux }
@@ -32,11 +32,13 @@ script:
   - make build
 
 deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN
+  provider: pages:git
+  edge: true
+  cleanup: false
+  keep_history: false
+  token: $GITHUB_TOKEN
   local_dir: web/public
   target_branch: pages
-  if: os = linux
   on:
     branch: master
+    condition: os = linux
