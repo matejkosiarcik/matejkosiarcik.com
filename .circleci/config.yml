@@ -42,7 +42,7 @@ jobs:
       - run: cd web && make bootstrap
       - run: cd web && make build
 
-      api2:
+  api2:
     docker:
       - image: node
     steps:
