@@ -77,6 +77,8 @@ const plugins = glob.sync(`${htmlDir}/**/*.html`, { nodir: true }).map(file => n
             })).concat([
                 { from: path.join(__dirname, 'jekyll', '_site', 'blog-posts.json'), to: '' },
                 { from: path.join(__dirname, 'jekyll', '_site', 'sitemap.xml'), to: '' },
+                { from: path.join(__dirname, 'config', 'netlify.toml'), to: '' },
+                { from: path.join(__dirname, 'config', 'robots.txt'), to: '' },
             ]),
     }),
 ])
@@ -92,7 +94,7 @@ if (process.env.NODE_ENV === 'production') {
             filename: '[name].css',
         }),
         new ScriptExtPlugin({
-            defaultAttribute: 'defer'
+            defaultAttribute: 'defer',
         }),
         new ResourceHintPlugin(),
         new SriPlugin({
@@ -173,7 +175,7 @@ const config = {
             },
             {
                 test: /\.ts$/,
-                loader: 'babel-loader'
+                loader: 'babel-loader',
             },
             {
                 test: /\.scss$/,
@@ -182,7 +184,7 @@ const config = {
         ],
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.jsx', '.mjs', '.wasm', '.json']
+        extensions: ['.ts', '.tsx', '.js', '.jsx', '.mjs', '.wasm', '.json'],
     },
     plugins: plugins,
     optimization: {
