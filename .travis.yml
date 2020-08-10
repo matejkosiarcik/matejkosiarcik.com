@@ -15,7 +15,7 @@ jobs:
   fast_finish: true
   include:
     - { os: linux }
-    - { os: osx, osx_image: xcode12, if: branch == master }
+    - { os: osx, osx_image: xcode12, if: branch == master AND type != push }
 
 install:
   - |
