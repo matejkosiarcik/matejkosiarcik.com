@@ -1,6 +1,6 @@
 # Personal website
 
-> This is my personal website [binarytrex.com](https://binarytrex.com)
+> This is my personal website [matejkosiarcik.com](https://matejkosiarcik.com)
 
 <!-- toc -->
 
