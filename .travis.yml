@@ -41,4 +41,3 @@ deploy:
   target_branch: pages
   on:
     branch: master
-    condition: os = linux
