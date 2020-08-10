@@ -17,14 +17,14 @@ all: bootstrap build
 .PHONY: bootstrap
 bootstrap:
 	@$(MAKE) -C$(PROJECT_DIR)/web bootstrap
-	npm install --prefix analytics
+	npm install --prefix api2
 
 .PHONY: lint
 lint:
 	@$(MAKE) -C$(PROJECT_DIR)/web lint
-	npm run --prefix analytics lint
+	npm run --prefix api2 lint
 
 .PHONY: build
 build:
 	@$(MAKE) -C$(PROJECT_DIR)/web build
-	npm run --prefix analytics build
+	npm run --prefix api2 build
