@@ -1,1 +1,4 @@
 User-Agent: *
+Disallow: /404/
+
+Sitemap: https://matejkosiarcik.com/sitemap.xml
