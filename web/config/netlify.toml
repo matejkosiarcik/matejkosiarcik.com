@@ -6,9 +6,9 @@
   for = "/*"
 
   [headers.values]
-
-    # consider also "require-sri-for script style;"
-    Content-Security-Policy = "default-src 'self' https://*.matejkosiarcik.com; script-src 'self' 'unsafe-inline' https://*.matejkosiarcik.com https://polyfill.io; style-src 'self' 'unsafe-inline' https://*.matejkosiarcik.com; frame-ancestors 'none';"
+    # TODO: add report-uri or report-to
+    # TODO: consider also require-sri-for script style;
+    Content-Security-Policy = "default-src 'self' https://*.matejkosiarcik.com; script-src 'self' 'unsafe-inline' https://*.matejkosiarcik.com https://polyfill.io; object-src 'none'; form-action 'none'; frame-src 'none'; frame-ancestors 'none';"
 
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
