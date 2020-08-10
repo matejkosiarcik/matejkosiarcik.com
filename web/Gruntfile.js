@@ -3,7 +3,11 @@ const glob = require('glob')
 module.exports = (grunt) => {
     grunt.initConfig({
         'rcs': {
-            options: {},
+            options: {
+                exclude: [
+                    'js',
+                ],
+            },
             css: {
                 options: {
                     replaceCss: true,
