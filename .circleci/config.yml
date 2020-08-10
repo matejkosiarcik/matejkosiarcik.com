@@ -7,7 +7,7 @@ workflows:
       - azlint
       - lint
       - web
-      - analytics
+      - api2
 
 jobs:
   azlint:
@@ -42,10 +42,10 @@ jobs:
       - run: cd web && make bootstrap
       - run: cd web && make build
 
-  analytics:
+  api2:
     docker:
       - image: node
     steps:
       - checkout
-      - run: npm install --prefix analytics
-      - run: npm run --prefix analytics build
+      - run: npm install --prefix api2
+      - run: npm run --prefix api2 build

@@ -1,5 +1,5 @@
 env: production
-url: https://binarytrex.com  # TODO: put real url
+url: https://matejkosiarcik.com
 minify_html: true
 future: false
 show_drafts: false

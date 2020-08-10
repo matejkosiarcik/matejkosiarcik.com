@@ -13,7 +13,7 @@ files:
   - web/stylelint.config.js: stylelint.config.js
   # - web/.eslintrc.js: eslintrc.browser.js
   # - web/tslint.json: tslint.json
-  # - analytics/.eslintrc.js: eslintrc.node.js
+  # - api2/.eslintrc.js: eslintrc.node.js
   # - tslint.json: tslint.json
   - .htmlhintrc
   - .htmllintrc
