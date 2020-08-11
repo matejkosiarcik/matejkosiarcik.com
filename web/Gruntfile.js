@@ -6,6 +6,8 @@ module.exports = (grunt) => {
             options: {
                 exclude: [
                     'js',
+                    'content',
+                    'description',
                 ],
             },
             css: {

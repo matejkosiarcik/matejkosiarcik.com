@@ -12,7 +12,6 @@ const CopyPlugin = require('copy-webpack-plugin')
 const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries")
 
 const ScriptExtPlugin = require('script-ext-html-webpack-plugin')
-const ResourceHintPlugin = require('resource-hints-webpack-plugin')
 
 const TerserPlugin = require('terser-webpack-plugin')
 const ShakePlugin = require('webpack-common-shake').Plugin
@@ -32,8 +31,6 @@ const plugins = glob.sync(`${htmlDir}/**/*.html`, { nodir: true }).map(file => n
     filename: file.replace(/.*_site[\\/]/, ''),
     template: file,
     inject: true,
-    preload: ['**/*.*'],
-    prefetch: [],
     minify: process.env.NODE_ENV === 'development' ? false : {
         useShortDoctype: true,
         collapseWhitespace: true,
@@ -93,7 +90,6 @@ if (process.env.NODE_ENV === 'production') {
         new ScriptExtPlugin({
             defaultAttribute: 'defer',
         }),
-        new ResourceHintPlugin(),
         new ShakePlugin(),
         new PurgecssPlugin({
             paths: glob2.sync([

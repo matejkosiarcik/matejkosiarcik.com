@@ -11,6 +11,20 @@
     document.head.parentElement.className = 'js';
   </script>
 
+  {% if jekyll.environment == "production" %}
+    <link rel="preconnect" href="https://cdn.matejkosiarcik.com" />
+    <link rel="preconnect" href="https://cdn.matejkosiarcik.com" crossorigin="anonymous" />
+    <link rel="dns-prefetch" href="https://cdn.matejkosiarcik.com" />
+
+    <link rel="preconnect" href="https://api.matejkosiarcik.com" />
+    <link rel="preconnect" href="https://api.matejkosiarcik.com" crossorigin="anonymous" />
+    <link rel="dns-prefetch" href="https://api.matejkosiarcik.com" />
+
+    <link rel="preconnect" href="https://api2.matejkosiarcik.com" />
+    <link rel="preconnect" href="https://api2.matejkosiarcik.com" crossorigin="anonymous" />
+    <link rel="dns-prefetch" href="https://api2.matejkosiarcik.com" />
+  {% endif %}
+
   {% if page.title %}
     <title>{{ site.title }} | {{ page.title }}</title>
   {% else %}
@@ -18,9 +32,9 @@
   {% endif %}
 
   <!-- meta -->
-  <meta name="description" content="Server pre IoT zariadenia - Záznamy." />
-  <meta name="keywords" content="iot, internet of things, internet veci, smart home" />
-  <meta name="author" content="Peter Kalanin, Matej Košiarčik, Dominik Kováčik, Jakub Lazúr, Rastislav Molcan, Tomáš Macho" />
+  <meta name="description" content="Hi, I am Matej Košiarčik and I program stuff" />
+  <meta name="keywords" content="programmer, indie developer" />
+  <meta name="author" content="Matej Košiarčik" />
   <meta name="copyright" content="Copyright © 2017-2020 Matej Košiarčik. All rights reserved." />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   {% if jekyll.environment == "production" %}
