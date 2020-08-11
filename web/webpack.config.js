@@ -45,23 +45,24 @@ const plugins = glob.sync(`${htmlDir}/**/*.html`, { nodir: true }).map(file => n
         minifyURLs: true,
     },
 })).concat([
-    new HtmlWebpackInjectPlugin({
-        externals: [
-            {
-                tag: 'img',
-                voidTag: true,
-                attrs: {
-                    src: `${process.env.NODE_ENV === 'production' ? 'http://localhost:8081' : 'http://localhost:8081'}/matejkosiarcik-com/us-central1/analytics`,
-                    alt: '',
-                    height: '0',
-                    width: '0',
-                    loading: 'eager',
-                },
-            },
-        ],
-        parent: 'body',
-        prepend: false,
-    }),
+    // TODO: enable for production when online
+    // new HtmlWebpackInjectPlugin({
+    //     externals: [
+    //         {
+    //             tag: 'img',
+    //             voidTag: true,
+    //             attrs: {
+    //                 src: `${process.env.NODE_ENV === 'production' ? 'http://localhost:8081' : 'http://localhost:8081'}/matejkosiarcik-com/us-central1/analytics`,
+    //                 alt: '',
+    //                 height: '0',
+    //                 width: '0',
+    //                 loading: 'eager',
+    //             },
+    //         },
+    //     ],
+    //     parent: 'body',
+    //     prepend: false,
+    // }),
     new CopyPlugin({
         patterns:
             glob.sync('favicon/{,generated/}*.{svg,png,ico}').map(file => {
