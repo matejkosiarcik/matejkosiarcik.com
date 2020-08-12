@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "scripts": {
+    "test": "sh check-prod.sh"
+  },
+  "devDependencies": {
+    "broken-link-checker": "^0.7.8",
+    "html-validator-cli": "^7.0.0"
+  }
+}
