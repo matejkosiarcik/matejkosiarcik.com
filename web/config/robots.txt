@@ -1,4 +1,6 @@
 User-Agent: *
 Disallow: /404/
+Disallow: /.well-known/
 
 Sitemap: https://matejkosiarcik.com/sitemap.xml
+Host: matejkosiarcik.com
