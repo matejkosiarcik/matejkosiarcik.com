@@ -13,9 +13,11 @@ addons:
 
 jobs:
   fast_finish: true
+  allow_failures:
+    - os: osx
   include:
     - { os: linux }
-    - { os: osx, osx_image: xcode12, if: branch == master AND type != push }
+    - { os: osx, osx_image: xcode11.6, if: branch == master AND type != push }
 
 install:
   - |
@@ -41,3 +43,7 @@ deploy:
   target_branch: pages
   on:
     branch: master
+
+after_deploy:
+  - sleep 60  # wait for deployed artifacts to propagate
+  - npm test --prefix production-test

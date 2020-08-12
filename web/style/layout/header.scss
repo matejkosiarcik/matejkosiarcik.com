@@ -97,7 +97,7 @@ body > header {
 
   // hamburgers
 
-  input[type='checkbox']:checked ~ label button {
+  input[type='checkbox']:checked ~ label .hamburger {
     @extend .is-active;
   }
 }

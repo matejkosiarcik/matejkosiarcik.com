@@ -1,2 +1,2 @@
-import './instant'
 import './header'
+import 'instant.page'
