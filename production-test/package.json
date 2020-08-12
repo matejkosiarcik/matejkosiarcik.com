@@ -1,10 +1,16 @@
 {
   "private": true,
   "scripts": {
-    "test": "sh check-prod.sh"
+    "test": "run-s test:*",
+    "test:js": "node test.js",
+    "test:sh": "sh test.sh"
   },
   "devDependencies": {
     "broken-link-checker": "^0.7.8",
-    "html-validator-cli": "^7.0.0"
+    "css-validator": "^0.9.0",
+    "html-validator": "^5.1.14",
+    "html-validator-cli": "^7.0.0",
+    "isomorphic-fetch": "^2.2.1",
+    "npm-run-all": "^4.1.5"
   }
 }

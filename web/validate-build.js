@@ -14,7 +14,7 @@ const pages = glob.sync('public/**/*.html')
 pages.forEach(async pagePath => {
     const pageContent = fs.readFileSync(pagePath, 'utf-8').toString()
 
-    // wahtwg, local validator
+    // whatwg, local validator
     const results = await htmlValidator({ data: pageContent, validator: 'WHATWG' })
     if (!results['isValid']) {
         throw results['errors'].concat(results['warnings'])
