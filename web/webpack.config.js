@@ -89,6 +89,9 @@ if (process.env.NODE_ENV === 'production') {
             filename: '[name].css',
         }),
         new ScriptExtPlugin({
+            defaultAttribute: 'async',
+        }),
+        new ScriptExtPlugin({
             defaultAttribute: 'defer',
         }),
         new ShakePlugin(),
