@@ -1,14 +1,14 @@
 <header>
   <input type="checkbox" id="menu-checkbox" name="menu-checkbox" />
   <label for="menu-checkbox">
-    <button class="hamburger hamburger--spin" type="button">
+    <span class="hamburger hamburger--spin" tabindex="0" role="button" aria-label="Menu" aria-controls="navigation">
       <span class="hamburger-box">
         <span class="hamburger-inner"></span>
       </span>
-    </button>
+    </span>
   </label>
 
-  <nav class="container">
+  <nav class="container" id="navigation">
     <ul>
       <li>
         <a href="{{ '/' | relative_url }}">Home</a>
