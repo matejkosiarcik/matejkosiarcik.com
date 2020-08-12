@@ -18,6 +18,7 @@ all: bootstrap build
 bootstrap:
 	@$(MAKE) -C$(PROJECT_DIR)/web bootstrap
 	npm install --prefix api2
+	npm install --prefix production-test
 
 .PHONY: lint
 lint:
