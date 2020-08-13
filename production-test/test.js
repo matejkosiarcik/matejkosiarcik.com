@@ -2,7 +2,8 @@ const fs = require('fs')
 const process = require('process')
 const htmlValidator = require('html-validator')
 const cssValidator = require('css-validator')
-require('isomorphic-fetch')
+const assert = require('assert')
+require('isomorphic-fetch');
 
 // just bail on error
 process.on('unhandledRejection', error => {
@@ -10,9 +11,21 @@ process.on('unhandledRejection', error => {
     process.exit(1)
 });
 
+// assert redirect from www to non-www
+(async () => {
+    const response = await fetch('https://www.matejkosiarcik.com') // without trailing slash
+    const url = response.url.replace(/\/$/, '')
+    assert.equal(url, 'https://matejkosiarcik.com')
+})();
+(async () => {
+    const response = await fetch('https://www.matejkosiarcik.com/') // with trailing slash
+    const url = response.url.replace(/\/$/, '')
+    assert.equal(url, 'https://matejkosiarcik.com')
+})();
+
 // async function getURLs() {
 //     return new Promise(async (resolve, reject) => {
-//         const response = await fetch('https://matejkosiarcik.netlify.app/urllist.txt')
+//         const response = await fetch('https://matejkosiarcik.com/urllist.txt')
 //         const body = await response.text()
 //         resolve(body.split('\n'))
 //     })
@@ -20,7 +33,7 @@ process.on('unhandledRejection', error => {
 
 (async () => {
     // TODO: switch to: const urls = await getURLs()
-    const urls = ['https://matejkosiarcik.netlify.app']
+    const urls = ['https://matejkosiarcik.com']
     urls.forEach(async url => {
         // whatwg, local validator
         const results = await htmlValidator({ url: url, validator: 'WHATWG' })

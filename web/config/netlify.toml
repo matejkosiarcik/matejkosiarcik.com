@@ -13,6 +13,9 @@
     # TODO: <cdn.matejkosiarcik.com>; rel="preconnect",
     # TODO: <cdn.matejkosiarcik.com>; rel="dns-prefetch",
 
+    Strict-Transport-Security = 'max-age=6000; includeSubDomains'
+    # Strict-Transport-Security = 'max-age=63072000; includeSubDomains; preload'
+
     Report-To = '{"group":"default","max_age":31536000,"endpoints":[{"url":"https://matejkosiarcik.report-uri.com/a/d/g"}],"include_subdomains":true}'
 
     NEL = '{"report_to":"default","max_age":31536000,"include_subdomains":true}'
