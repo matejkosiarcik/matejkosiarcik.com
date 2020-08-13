@@ -5,5 +5,6 @@
   "html-req-lang": true,
   "doctype-html5": true,
   "class-style": "none",
+  "attr-req-value": false,
   "spec-char-escape": false
 }
