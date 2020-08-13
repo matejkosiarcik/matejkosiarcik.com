@@ -9,6 +9,7 @@ function optimize() {
     # mv "${tmpfile}" "${1}"
     optipng -force -strip all -o7 -zm1-9 "${1}" -out "${1}"
     # zopflipng -y --iterations=1000 --filters=01234mepb --lossy_8bit --lossy_transparent "${1}" "${1}"
+    rm -f "${tmpfile}"
 }
 
 convert -resize 80x80 -strip docker.png artifacts/docker.png
