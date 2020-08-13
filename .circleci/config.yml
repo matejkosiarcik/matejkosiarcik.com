@@ -7,6 +7,7 @@ workflows:
       - azlint
       - lint
       - web
+      - api
       - api2
 
 jobs:
@@ -41,6 +42,13 @@ jobs:
           curl -sL https://deb.nodesource.com/setup_14.x | bash - && apt-get install --yes --no-install-recommends nodejs
       - run: cd web && make bootstrap
       - run: cd web && make build
+
+  api:
+    docker:
+      - image: node
+    steps:
+      - checkout
+      - run: "true"
 
   api2:
     docker:
