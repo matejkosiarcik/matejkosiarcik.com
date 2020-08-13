@@ -12,7 +12,7 @@ process.on('unhandledRejection', error => {
 
 // async function getURLs() {
 //     return new Promise(async (resolve, reject) => {
-//         const response = await fetch('https://matejkosiarcik.netlify.app/urllist.txt')
+//         const response = await fetch('https://matejkosiarcik.com/urllist.txt')
 //         const body = await response.text()
 //         resolve(body.split('\n'))
 //     })
@@ -20,7 +20,7 @@ process.on('unhandledRejection', error => {
 
 (async () => {
     // TODO: switch to: const urls = await getURLs()
-    const urls = ['https://matejkosiarcik.netlify.app']
+    const urls = ['https://matejkosiarcik.com']
     urls.forEach(async url => {
         // whatwg, local validator
         const results = await htmlValidator({ url: url, validator: 'WHATWG' })
