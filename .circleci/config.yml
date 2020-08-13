@@ -10,6 +10,17 @@ workflows:
       - api
       - api2
 
+  cron:
+    triggers:
+      - schedule:
+          cron: "0 8 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - prod-check
+
 jobs:
   azlint:
     docker:
@@ -57,3 +68,11 @@ jobs:
       - checkout
       - run: npm install --prefix api2
       - run: npm run --prefix api2 build
+
+  prod-check:
+    docker:
+      - image: node
+    steps:
+      - checkout
+      - run: npm install --prefix production-test
+      - run: npm test --prefix production-test
