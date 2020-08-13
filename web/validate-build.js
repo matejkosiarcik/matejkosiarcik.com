@@ -19,12 +19,6 @@ pages.forEach(async pagePath => {
     if (!results['isValid']) {
         throw results['errors'].concat(results['warnings'])
     }
-
-    // default online validator
-    const results2 = await htmlValidator({ data: pageContent, format: 'text' })
-    if (results2.toLowerCase().includes('error')) {
-        throw results2
-    }
 })
 
 const styles = glob.sync('public/**/*.css')
