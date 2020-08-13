@@ -6,7 +6,7 @@ updates:
     versioning-strategy: increase
     schedule:
       interval: daily
-      time: "01:00"
+      time: "00:30"
       timezone: "Europe/Bratislava"
     reviewers:
       - matejkosiarcik
@@ -18,6 +18,30 @@ updates:
     versioning-strategy: increase
     schedule:
       interval: daily
+      time: "01:00"
+      timezone: "Europe/Bratislava"
+    reviewers:
+      - matejkosiarcik
+    assignees:
+      - matejkosiarcik
+
+  # - package-ecosystem: npm
+  #   directory: "/api/"
+  #   versioning-strategy: increase
+  #   schedule:
+  #     interval: daily
+  #     time: "01:30"
+  #     timezone: "Europe/Bratislava"
+  #   reviewers:
+  #     - matejkosiarcik
+  #   assignees:
+  #     - matejkosiarcik
+
+  - package-ecosystem: npm
+    directory: "/api2/"
+    versioning-strategy: increase
+    schedule:
+      interval: daily
       time: "02:00"
       timezone: "Europe/Bratislava"
     reviewers:
@@ -26,11 +50,11 @@ updates:
       - matejkosiarcik
 
   - package-ecosystem: npm
-    directory: "/api2/"
+    directory: "/production-test/"
     versioning-strategy: increase
     schedule:
       interval: daily
-      time: "03:00"
+      time: "02:30"
       timezone: "Europe/Bratislava"
     reviewers:
       - matejkosiarcik
