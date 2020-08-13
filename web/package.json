@@ -1,8 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "prebuild": "node favicon.js",
-    "build": "run-s clean prebuild build:webpack build:grunt build:gulp postbuild",
+    "build": "run-s clean build:webpack build:grunt build:gulp postbuild",
     "build:webpack": "cross-env NODE_ENV=production webpack -p --mode production",
     "build:grunt": "grunt",
     "build:gulp": "gulp sri",
