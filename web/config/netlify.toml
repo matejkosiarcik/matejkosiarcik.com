@@ -6,12 +6,11 @@
   for = "/*"
 
   [headers.values]
-    # TODO: Link = '''
-    #     </bundle.js>; rel="preload",
-    #     </style.css>; rel="preload",
-    # '''
-    # TODO: <cdn.matejkosiarcik.com>; rel="preconnect",
-    # TODO: <cdn.matejkosiarcik.com>; rel="dns-prefetch",
+    Link = '''
+        </style.css>; rel="preload"; as="style",
+        </bundle.js>; rel="preload"; as="script",
+    '''
+    # TODO: replace asset URLs to point at cdn
 
     Strict-Transport-Security = 'max-age=6000; includeSubDomains'
     # Strict-Transport-Security = 'max-age=63072000; includeSubDomains; preload'
@@ -26,7 +25,7 @@
     Content-Security-Policy = """
         default-src 'self' https://*.matejkosiarcik.com https://matejkosiarcik.netlify.app;
         base-uri 'self';
-        script-src 'self' 'unsafe-inline' https://*.matejkosiarcik.com https://matejkosiarcik.netlify.app https://polyfill.io/v3/polyfill.min.js;
+        script-src 'self' 'unsafe-inline' https://*.matejkosiarcik.com https://matejkosiarcik.netlify.app https://polyfill.io;
         style-src 'self' 'unsafe-inline' https://*.matejkosiarcik.com https://matejkosiarcik.netlify.app;
         object-src 'none';
         form-action 'none';

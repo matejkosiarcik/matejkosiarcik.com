@@ -11,7 +11,7 @@ optimize() {
     # pngcrush -brute "${1}" "${tmpfile}"
     # mv "${tmpfile}" "${1}"
     optipng -force -strip all -o7 -zm1-9 "${1}" -out "${1}"
-    # zopflipng -y --iterations=100 --filters=01234mepb --lossy_8bit --lossy_transparent "${1}" "${1}"
+    zopflipng -y --iterations=100 --filters=01234mepb --lossy_8bit --lossy_transparent "${1}" "${1}"
     rm -f "${tmpfile}"
 }
 
