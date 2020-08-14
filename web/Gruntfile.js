@@ -1,4 +1,4 @@
-const glob = require('glob')
+const glob = require('glob-all')
 
 module.exports = (grunt) => {
     grunt.initConfig({
@@ -23,7 +23,7 @@ module.exports = (grunt) => {
             all: {
                 files: [{
                     expand: true,
-                    src: ['public/bundle.js'].concat(glob.sync('public/**/*.html')),
+                    src: ['public/bundle.js'].concat(glob.sync(['public/*.html', 'public/**/*.html'])),
                     dest: '.', // in-place
                 }],
             },
