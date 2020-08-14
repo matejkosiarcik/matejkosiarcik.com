@@ -26,13 +26,12 @@
     Content-Security-Policy = """
         default-src 'self' https://*.matejkosiarcik.com https://matejkosiarcik.netlify.app;
         base-uri 'self';
-        script-src 'self' 'unsafe-inline' https://*.matejkosiarcik.com https://matejkosiarcik.netlify.app https://polyfill.io;
+        script-src 'self' 'unsafe-inline' https://*.matejkosiarcik.com https://matejkosiarcik.netlify.app https://polyfill.io/v3/polyfill.min.js;
         style-src 'self' 'unsafe-inline' https://*.matejkosiarcik.com https://matejkosiarcik.netlify.app;
         object-src 'none';
         form-action 'none';
         frame-src 'none';
         frame-ancestors 'none';
-        require-sri-for script style;
         block-all-mixed-content;
         report-uri https://matejkosiarcik.report-uri.com/r/d/csp/enforce;
         report-to default;
