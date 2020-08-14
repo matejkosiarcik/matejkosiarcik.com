@@ -5,7 +5,7 @@ cd "$(dirname "${0}")"
 mkdir -p 'artifacts'
 node 'build.js'
 
-function optimize {
+optimize() {
     tmpfile="$(mktemp)"
     pngquant --strip --speed 1 --skip-if-larger --quality 0-90 --force "${1}" --output "${1}"
     # pngcrush -brute "${1}" "${tmpfile}"
