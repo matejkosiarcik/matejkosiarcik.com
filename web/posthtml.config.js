@@ -1,5 +1,5 @@
 const plugins = [
-    require('posthtml-external-link-target-blank')(),
+    require('posthtml-outlinks')({}),
     require('posthtml-transform')([
         {
             selector: 'img',
