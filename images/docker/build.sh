@@ -11,7 +11,7 @@ optimize() {
     # zopflipng -y --iterations=1000 --filters=01234mepb --lossy_8bit --lossy_transparent "${1}" "${1}"
     rm -f "${tmpfile}"
 
-    magick "${1}" -quality 30 -define webp:lossless=false -define webp:alpha-quality=10  -define webp:method=6 "$(dirname "${1}")/$(basename "${1}" .png).webp"
+    magick "${1}" -quality 30 -define webp:lossless=false -define webp:alpha-quality=10 -define webp:method=6 "$(dirname "${1}")/$(basename "${1}" .png).webp"
 }
 
 convert -resize 80x80 -strip docker.png artifacts/docker.png
