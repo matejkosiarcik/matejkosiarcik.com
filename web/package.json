@@ -11,7 +11,7 @@
     "lint:js-tsc": "tsc --noEmit --skipLibCheck",
     "lint:js": "eslint --max-warnings 0 \"script/**/*.{ts,js}\"",
     "lint": "run-p lint:*",
-    "start": "run-s prebuild serve",
+    "start": "run-s serve",
     "serve": "cross-env NODE_ENV=development webpack-dev-server -d"
   },
   "dependencies": {
