@@ -2,10 +2,7 @@ const svg2img = require('svg2img')
 const fs = require('fs')
 const path = require('path')
 
-const outDir = path.join(__dirname, 'artifacts')
-if (!fs.existsSync(outDir)) {
-    fs.mkdirSync(outDir)
-}
+const outDir = path.join(__dirname, 'artifacts');
 
 (async () => {
     async function createSize(size) {

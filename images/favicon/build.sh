@@ -2,7 +2,8 @@
 set -euf
 cd "$(dirname ${0})"
 
-node build.js
+mkdir -p 'artifacts'
+node 'build.js'
 
 function optimize() {
     tmpfile="$(mktemp)"
