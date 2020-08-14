@@ -31,6 +31,12 @@
     """
 
 [[headers]]
+  for = "/*.svg"
+
+  [headers.values]
+    Content-Type = 'image/svg+xml; charset=UTF-8'
+
+[[headers]]
   for = "/*.html"
 
   [headers.values]
