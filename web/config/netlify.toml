@@ -6,6 +6,34 @@
   for = "/*"
 
   [headers.values]
+    Strict-Transport-Security = 'max-age=6000; includeSubDomains'
+    # Strict-Transport-Security = 'max-age=63072000; includeSubDomains; preload'
+
+    Report-To = '{"group":"default","max_age":31536000,"endpoints":[{"url":"https://matejkosiarcik.report-uri.com/a/d/g"}],"include_subdomains":true}'
+
+    NEL = '{"report_to":"default","max_age":31536000,"include_subdomains":true}'
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Content-Security-Policy = """
+        default-src 'self' https://*.matejkosiarcik.com https://matejkosiarcik.netlify.app;
+        base-uri 'self';
+        script-src 'self' 'unsafe-inline' https://*.matejkosiarcik.com https://matejkosiarcik.netlify.app https://polyfill.io;
+        style-src 'self' 'unsafe-inline' https://*.matejkosiarcik.com https://matejkosiarcik.netlify.app;
+        object-src 'none';
+        form-action 'none';
+        frame-src 'none';
+        frame-ancestors 'none';
+        block-all-mixed-content;
+        report-uri https://matejkosiarcik.report-uri.com/r/d/csp/enforce;
+        report-to default;
+    """
+
+[[headers]]
+  for = "/*.html"
+
+  [headers.values]
     Link = '''
         </style.css>; rel="preload"; as="style",
         </bundle.js>; rel="preload"; as="script",
