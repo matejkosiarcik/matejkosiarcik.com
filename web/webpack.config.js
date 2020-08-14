@@ -65,16 +65,16 @@ const plugins = glob.sync(`${htmlDir}/**/*.html`, { nodir: true }).map(file => n
     // }),
     new CopyPlugin({
         patterns:
-            glob.sync('favicon/{,generated/}*.{svg,png,ico}').map(file => {
-                return { from: file, to: '' }
-            }).concat(glob.sync('{assets,icons,icons/generated}/*.{jpg,png,svg,bmp,gif}').map(file => {
-                return { from: file, to: 'img' }
-            })).concat([
-                { from: path.join(__dirname, 'jekyll', '_site', 'blog-posts.json'), to: '' },
-                { from: path.join(__dirname, 'jekyll', '_site', 'sitemap.xml'), to: '' },
-                { from: path.join(__dirname, 'config', 'netlify.toml'), to: '' },
-                { from: path.join(__dirname, 'config', 'robots.txt'), to: '' },
-            ]),
+            [].concat(
+                glob.sync('../images/favicon/{,artifacts/}*.{svg,png,ico}').map(file => { return { from: file, to: '' } }),
+                glob.sync('../images/docker/artifacts/*.{jpg,png,svg,bmp,gif,webp}').map(file => { return { from: file, to: 'img' } }),
+                glob.sync('../images/icons/{,artifacts/}*.{jpg,png,svg,bmp,gif,webp}').map(file => { return { from: file, to: 'img' } }),
+                [
+                    { from: path.join(__dirname, 'jekyll', '_site', 'sitemap.xml'), to: '' },
+                    { from: path.join(__dirname, 'config', 'netlify.toml'), to: '' },
+                    { from: path.join(__dirname, 'config', 'robots.txt'), to: '' },
+                ],
+            ),
     }),
 ])
 
@@ -167,6 +167,7 @@ const config = {
             {
                 test: /\.ts$/,
                 loader: 'babel-loader',
+                exclude: /node_modules/,
             },
             {
                 test: /\.scss$/,

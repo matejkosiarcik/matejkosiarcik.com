@@ -32,12 +32,7 @@ clean:
 
 .PHONY: prebuild
 prebuild:
-	mkdir -p icons/generated
-
-	find icons -name '*.svg' | sed -E 's~.*/~~' | while read -r file; do \
-		filename="$$(basename "$${file}" .svg)" && \
-		sed 's~#333~#eee~g' <"icons/$${file}" >"icons/generated/$${filename}-dark.svg" \
-	;done
+	true
 
 .PHONY: build
 build: prebuild
