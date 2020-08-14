@@ -1,4 +1,3 @@
-const svg2img = require('svg2img')
 const fs = require('fs')
 const path = require('path')
 const glob = require('glob-all')
