@@ -24,10 +24,10 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Content-Security-Policy = """
-        default-src 'self' https://*.matejkosiarcik.com;
+        default-src 'self' https://*.matejkosiarcik.com https://matejkosiarcik.netlify.app;
         base-uri 'self';
-        script-src 'self' 'unsafe-inline' https://*.matejkosiarcik.com https://polyfill.io;
-        style-src 'self' 'unsafe-inline' https://*.matejkosiarcik.com;
+        script-src 'self' 'unsafe-inline' https://*.matejkosiarcik.com https://matejkosiarcik.netlify.app https://polyfill.io;
+        style-src 'self' 'unsafe-inline' https://*.matejkosiarcik.com https://matejkosiarcik.netlify.app;
         object-src 'none';
         form-action 'none';
         frame-src 'none';
