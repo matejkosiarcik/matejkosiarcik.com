@@ -17,3 +17,6 @@ function optimize() {
 
 optimize 'artifacts/terminal.png'
 optimize 'artifacts/placeholder.png'
+
+optimize 'artifacts/autodnd.png'
+optimize 'artifacts/zenplayer.png'
