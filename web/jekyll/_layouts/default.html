@@ -17,6 +17,16 @@
       {{ content }}
     </main>
     {% include footer.html %}
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default" nomodule defer crossorigin="anonymous"></script> <!-- only for semi-old browsers -->
+
+    <!-- polyfill for older browsers -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default" nomodule defer crossorigin="anonymous"></script>
+
+    <!-- TODO: analytics -->
+    {% if jekyll.environment == "production" %}
+      {% assign analytics_url = "https://api2.matejkosiarcik.com/analytics" %}
+    {% else %}
+      {% assign analytics_url = "http://localhost:8081/matejkosiarcik-com/us-central1/analytics" %}
+    {% endif %}
+    <!-- <img src="{{ analytics_url }}" alt="" height="0" width="0" loading="eager" /> -->
   </body>
 </html>
