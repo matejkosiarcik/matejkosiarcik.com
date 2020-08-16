@@ -16,8 +16,6 @@ const ScriptExtPlugin = require('script-ext-html-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const ShakePlugin = require('webpack-common-shake').Plugin
 const PurgecssPlugin = require('purgecss-webpack-plugin')
-const CssoPlugin = require('csso-webpack-plugin').default
-const CssnanoPlugin = require('cssnano-webpack-plugin')
 
 process.env.NODE_ENV = process.env.NODE_ENV === 'production' ? 'production' : 'development'
 const outputDir = 'public'
@@ -79,7 +77,6 @@ if (process.env.NODE_ENV === 'production') {
                 './script/**/*.{ts,js}',
             ], { nodir: true }),
         }),
-        new CssoPlugin(),
     )
 }
 
@@ -179,7 +176,6 @@ const config = {
                 },
                 extractComments: false,
             }),
-            new CssnanoPlugin(),
         ],
     },
     watch: process.env.NODE_ENV === 'development',
