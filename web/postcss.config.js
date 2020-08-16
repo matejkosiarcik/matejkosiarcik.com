@@ -61,14 +61,6 @@ const plugins = [
     require('autoprefixer'),
 ]
 
-if (process.env.NODE_ENV === 'production') {
-    plugins.push(
-        require('postcss-clean')(),
-        require('cssnano')(),
-        require('postcss-csso')({ restructure: true }),
-    )
-}
-
 module.exports = {
     parser: 'postcss-scss',
     plugins: plugins,
