@@ -59,7 +59,7 @@
     "gulp-sri-hash": "^2.2.1",
     "gulp-svgo": "^2.2.1",
     "html-loader": "^1.1.0",
-    "html-validator": "^5.1.14",
+    "html-validator": "^5.1.15",
     "html-webpack-plugin": "^4.3.0",
     "htmlnano": "^0.2.6",
     "jshint": "^2.12.0",
