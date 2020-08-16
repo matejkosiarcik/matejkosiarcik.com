@@ -48,7 +48,7 @@
     "csslint": "^1.0.5",
     "cssnano-cli": "^1.0.5",
     "csso-cli": "^3.0.0",
-    "eslint": "^7.6.0",
+    "eslint": "^7.7.0",
     "execa": "^4.0.3",
     "glob": "^7.1.6",
     "glob-all": "^3.2.1",
