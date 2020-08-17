@@ -1,11 +1,12 @@
 {
   "private": true,
   "scripts": {
-    "build": "run-s clean build:webpack build:grunt build:gulp build:css postbuild",
+    "build": "run-s clean build:webpack build:grunt build:recss build:gulp postbuild",
     "build:webpack": "cross-env NODE_ENV=production webpack -p --mode production",
     "build:grunt": "grunt",
     "build:gulp": "gulp svgo sri",
     "build:css": "run-s build:css:cssnano build:css:cleancss build:css:csso",
+    "build:recss": "sh remynify.sh public/style.css",
     "build:css:cleancss": "cleancss -O2 public/style.css --output public/style.css",
     "build:css:cssnano": "cssnano public/style.css public/style.css",
     "build:css:csso": "csso --comments none --force-media-merge --input public/style.css --output public/style.css",
@@ -41,6 +42,7 @@
     "color-convert": "^2.0.1",
     "concat": "^1.0.3",
     "copy-webpack-plugin": "^6.0.3",
+    "crass": "^0.12.3",
     "cross-env": "^7.0.2",
     "css-color-converter": "^1.1.1",
     "css-loader": "^4.2.1",
