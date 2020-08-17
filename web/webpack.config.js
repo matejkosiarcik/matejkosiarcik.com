@@ -27,7 +27,7 @@ const htmlDir = 'jekyll/_site' // always want "/" slash for globs
 const plugins = glob.sync(`${htmlDir}/**/*.html`, { nodir: true }).map(file => new HtmlPlugin({
     filename: file.replace(/.*_site[\\/]/, ''),
     template: file,
-    inject: true,
+    inject: process.env.NODE_ENV === 'development',
     minify: process.env.NODE_ENV === 'development' ? false : {
         useShortDoctype: true,
         collapseWhitespace: true,
@@ -38,7 +38,7 @@ const plugins = glob.sync(`${htmlDir}/**/*.html`, { nodir: true }).map(file => n
         removeStyleLinkTypeAttributes: true,
         removeScriptTypeAttributes: true,
         minifyCSS: true,
-        minifyJS: true,
+        // minifyJS: true, // Wrongly processes quotes
         minifyURLs: true,
     },
 })).concat([
@@ -131,7 +131,7 @@ const config = {
                         loader: 'html-loader',
                         options: {
                             attributes: false,
-                            minimize: process.env.NODE_ENV === 'production',
+                            minimize: false,
                         },
                     },
                     {

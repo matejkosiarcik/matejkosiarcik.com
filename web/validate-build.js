@@ -15,7 +15,7 @@ pages.forEach(async pagePath => {
     const pageContent = fs.readFileSync(pagePath, 'utf-8').toString()
 
     // whatwg, local validator
-    const results = await htmlValidator({ data: pageContent, validator: 'WHATWG' })
+    const results = await htmlValidator({ data: pageContent, validator: 'WHATWG', ignore: ['no-conditional-comment'] })
     if (!results['isValid']) {
         throw results['errors'].concat(results['warnings'])
     }
