@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "sh remynify.sh ../public/style.css"
+  },
+  "devDependencies": {
+    "clean-css-cli": "^4.3.0",
+    "crass": "^0.12.3",
+    "cssnano-cli": "^1.0.5",
+    "csso-cli": "^3.0.0"
+  }
+}
