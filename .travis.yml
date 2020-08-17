@@ -1,5 +1,8 @@
 language: generic
 
+services:
+  - docker
+
 addons:
   apt:
     update: true
