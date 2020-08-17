@@ -16,7 +16,6 @@ const plugins = [
 if (process.env.NODE_ENV === 'production') {
     plugins.push(
         require('posthtml-attrs-sorter')(),
-        require('htmlnano')({ collapseWhitespace: 'conservative' }, require('htmlnano').presets.max),
     )
 }
 

@@ -38,7 +38,7 @@ const plugins = glob.sync(`${htmlDir}/**/*.html`, { nodir: true }).map(file => n
         removeStyleLinkTypeAttributes: true,
         removeScriptTypeAttributes: true,
         minifyCSS: true,
-        minifyJS: true,
+        // minifyJS: true, // Wrongly processes quotes
         minifyURLs: true,
     },
 })).concat([
@@ -131,7 +131,7 @@ const config = {
                         loader: 'html-loader',
                         options: {
                             attributes: false,
-                            minimize: process.env.NODE_ENV === 'production',
+                            minimize: false,
                         },
                     },
                     {
