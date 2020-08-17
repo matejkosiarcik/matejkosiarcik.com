@@ -27,7 +27,7 @@ const htmlDir = 'jekyll/_site' // always want "/" slash for globs
 const plugins = glob.sync(`${htmlDir}/**/*.html`, { nodir: true }).map(file => new HtmlPlugin({
     filename: file.replace(/.*_site[\\/]/, ''),
     template: file,
-    inject: true,
+    inject: process.env.NODE_ENV === 'development',
     minify: process.env.NODE_ENV === 'development' ? false : {
         useShortDoctype: true,
         collapseWhitespace: true,

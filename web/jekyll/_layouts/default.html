@@ -27,5 +27,9 @@
       {% assign analytics_url = "http://localhost:8081/matejkosiarcik-com/us-central1/analytics" %}
     {% endif %}
     <!-- <img src="{{ analytics_url }}" alt="" height="0" width="0" loading="eager" /> -->
+
+    {% if jekyll.environment == "production" %}
+      <script src="/bundle.js" defer crossorigin="anonymous"></script>
+    {% endif %}
   </body>
 </html>
