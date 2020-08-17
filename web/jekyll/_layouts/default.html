@@ -1,17 +1,16 @@
-<!-- class (indicating current page id) for body -->
-{% capture class %}
+{% capture bodyClass %}
   {% if page.layout == "post" %}
     blog-post
   {% else %}
     {{ page.name | regex_replace: "\..+$", "" }}
   {% endif %}
 {% endcapture %}
-{% assign class = class | strip %}
+{% assign bodyClass = bodyClass | strip %}
 
 <!DOCTYPE html>
 <html lang="en" class="no-js">
   {% include head.html %}
-  <body class="{{ class }}">
+  <body class="{{ bodyClass }}">
     {% include header.html %}
     <main class="container content">
       {{ content }}
