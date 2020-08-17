@@ -17,11 +17,6 @@
     document.head.parentElement.className='js';
   </script>
 
-  {% if jekyll.environment == "production" %}
-    <link rel="preload" href="/style.css" as="style" onload="this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="/style.css"></noscript>
-  {% endif %}
-
   {% if page.title %}
     <title>{{ site.title }} | {{ page.title }}</title>
   {% else %}
@@ -44,4 +39,8 @@
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
   <![endif]-->
   <link rel="mask-icon" href="/pinicon.svg" color="#369" />
+
+  {% if jekyll.environment == "production" %}
+    <link rel="stylesheet" type="text/css" href="/style.css">
+  {% endif %}
 </head>
