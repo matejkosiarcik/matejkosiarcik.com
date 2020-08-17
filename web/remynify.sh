@@ -5,7 +5,7 @@ source="${1}"
 srcdir="${PWD}"
 
 tmpdir="$(mktemp -d)"
-cp "${1}" "${tmpdir}/file.css"
+cp "${source}" "${tmpdir}/file.css"
 cd "${tmpdir}"
 
 run_clean() {
@@ -111,19 +111,19 @@ run_crass file-nano-csso-clean
 
 # results
 
-find . -name '*.css' -and -not -name '*-*.css' | xargs wc
+find . -name '*.css' -and -not -name '*-*.css' -print0 | xargs -0 wc
 printf '\n'
-find . -name '*-*.css' -and -not -name '*-*-*.css' | xargs wc
+find . -name '*-*.css' -and -not -name '*-*-*.css' -print0 | xargs -0 wc
 printf '\n'
-find . -name '*-*-*.css' -and -not -name '*-*-*-*.css' | xargs wc
+find . -name '*-*-*.css' -and -not -name '*-*-*-*.css' -print0 | xargs -0 wc
 printf '\n'
-find . -name '*-*-*-*.css' -and -not -name '*-*-*-*-*.css' | xargs wc
+find . -name '*-*-*-*.css' -and -not -name '*-*-*-*-*.css' -print0 | xargs -0 wc
 printf '\n'
-find . -name '*-*-*-*-*.css' -and -not -name '*-*-*-*-*-*.css' | xargs wc
+find . -name '*-*-*-*-*.css' -and -not -name '*-*-*-*-*-*.css' -print0 | xargs -0 wc
 
-smallest_file="$(find . -type f -name '*.css' | xargs wc -c | sort --numeric-sort | head -n1 | tr -s ' ' | cut -d ' ' -f 3)"
+smallest_file="$(find . -type f -name '*.css' -print0 | xargs -0 wc -c | sort --numeric-sort | head -n1 | tr -s ' ' | cut -d ' ' -f 3)"
 printf '%s %s\n' "${smallest_file}" "$(wc -c <"${smallest_file}")"
 
 cd "${srcdir}"
-cp "${tmpdir}/${smallest_file}" "${1}"
+cp "${tmpdir}/${smallest_file}" "${source}"
 rm -rf "${tmpdir}"
