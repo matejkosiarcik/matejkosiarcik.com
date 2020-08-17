@@ -3,7 +3,7 @@
 
   <!-- simulate part of production CSP header locally -->
   {% if jekyll.environment == "development" %}
-    <meta http-equiv="Content-Security-Policy" content="default 'self' localhost:*; base-uri 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://polyfill.io; style-src 'self' 'unsafe-inline'; object-src 'none'; form-action 'none'; frame-src 'none'; frame-ancestors 'none';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' localhost:* https://polyfill.io; style-src 'self' 'unsafe-inline' localhost:*; img-src 'self'; media-src 'self'; connect-src 'self' ws:;">
   {% endif %}
 
   {% if jekyll.environment == "production" %}
@@ -17,11 +17,6 @@
     document.head.parentElement.className='js';
   </script>
 
-  {% if jekyll.environment == "production" %}
-    <link rel="preload" href="/style.css" as="style" onload="this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="/style.css"></noscript>
-  {% endif %}
-
   {% if page.title %}
     <title>{{ site.title }} | {{ page.title }}</title>
   {% else %}
@@ -29,7 +24,7 @@
   {% endif %}
 
   <!-- meta -->
-  <meta name="description" content="Hi, I am Matej Košiarčik and I program stuff" />
+  <meta name="description" content="I am Matej Košiarčik and I program stuff" />
   <meta name="keywords" content="programmer, indie developer" />
   <meta name="author" content="Matej Košiarčik" />
   <meta name="copyright" content="Copyright © 2017-2020 Matej Košiarčik. All rights reserved." />
@@ -44,4 +39,8 @@
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
   <![endif]-->
   <link rel="mask-icon" href="/pinicon.svg" color="#369" />
+
+  {% if jekyll.environment == "production" %}
+    <link rel="stylesheet" type="text/css" href="/style.css">
+  {% endif %}
 </head>

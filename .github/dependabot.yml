@@ -13,6 +13,18 @@ updates:
     assignees:
       - matejkosiarcik
 
+  - package-ecosystem: npm
+    directory: "/web/remynify/"
+    versioning-strategy: increase
+    schedule:
+      interval: daily
+      time: "00:30"
+      timezone: "Europe/Bratislava"
+    reviewers:
+      - matejkosiarcik
+    assignees:
+      - matejkosiarcik
+
   - package-ecosystem: bundler
     directory: "/web/jekyll/"
     versioning-strategy: increase

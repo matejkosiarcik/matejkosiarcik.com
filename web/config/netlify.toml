@@ -6,7 +6,6 @@
   from = "/*/index.html"
   to = "/:splat/"
   status = 302
-  force = true
 
 [[headers]]
   for = "/*"
@@ -32,15 +31,15 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
 
     Content-Security-Policy = """
-        default-src 'self' https://*.matejkosiarcik.com https://matejkosiarcik.netlify.app;
+        default-src 'none';
         base-uri 'self';
-        script-src 'self' 'unsafe-inline' https://*.matejkosiarcik.com https://matejkosiarcik.netlify.app https://polyfill.io;
-        style-src 'self' 'unsafe-inline' https://*.matejkosiarcik.com https://matejkosiarcik.netlify.app;
-        object-src 'none';
-        form-action 'none';
-        frame-src 'none';
-        frame-ancestors 'none';
+        script-src 'self' 'unsafe-inline' https://*.matejkosiarcik.com https://polyfill.io;
+        style-src 'self' 'unsafe-inline' https://*.matejkosiarcik.com;
+        img-src 'self' https://*.matejkosiarcik.com;
+        media-src 'self' https://*.matejkosiarcik.com;
+        connect-src 'self' https://*.matejkosiarcik.com;
         block-all-mixed-content;
+        require-sri-for script style;
         report-uri https://matejkosiarcik.report-uri.com/r/d/csp/enforce;
         report-to default;
     """
