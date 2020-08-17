@@ -36,14 +36,14 @@ process.on('unhandledRejection', error => {
     const urls = ['https://matejkosiarcik.com']
     urls.forEach(async url => {
         // whatwg, local validator
-        const results = await htmlValidator({ url: url, validator: 'WHATWG' })
+        const results = await htmlValidator({ url: url, validator: 'WHATWG', ignore: ['no-conditional-comment'] })
         if (!results['isValid']) {
             console.log(url)
             throw results['errors'].concat(results['warnings'])
         }
 
         // default online validator
-        const results2 = await htmlValidator({ url: url, format: 'text' })
+        const results2 = await htmlValidator({ url: url, format: 'text', ignore: ['no-conditional-comment'] })
         if (results2.toLowerCase().includes('error')) {
             console.log(url)
             throw results2
