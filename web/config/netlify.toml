@@ -6,7 +6,6 @@
   from = "/*/index.html"
   to = "/:splat/"
   status = 302
-  force = true
 
 [[headers]]
   for = "/*"
