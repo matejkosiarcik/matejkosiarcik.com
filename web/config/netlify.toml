@@ -3,6 +3,11 @@
   command = "true"
 
 [[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 302
+
+[[redirects]]
   from = "/*/index.html"
   to = "/:splat/"
   status = 302
