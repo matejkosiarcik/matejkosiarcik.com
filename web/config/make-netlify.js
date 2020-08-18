@@ -3,7 +3,7 @@ const fs = require('fs')
 const { assert } = require('console')
 const path = require('path')
 
-fs.copyFileSync(path.join('config', 'netlify.toml'), path.join('public', 'netlify.toml'))
+fs.copyFileSync(path.join('config', '_redirects'), path.join('public', '_redirects'))
 fs.writeFileSync(path.join('public', '_headers'), '')
 
 function makeHeaders(urls, headers) {
