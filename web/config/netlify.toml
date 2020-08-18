@@ -3,9 +3,24 @@
   command = "true"
 
 [[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 302
+
+# [[redirects]]
+#   from = "/index.html"
+#   to = "/"
+#   status = 200
+
+[[redirects]]
   from = "/*/index.html"
   to = "/:splat/"
   status = 302
+
+# [[redirects]]
+#   from = "/*/index.html"
+#   to = "/:splat/"
+#   status = 200
 
 [[headers]]
   for = "/*"
