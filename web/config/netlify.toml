@@ -5,26 +5,24 @@
 [[redirects]]
   from = "/index.html"
   to = "/"
-  status = 302
+  status = 301
   force = true
 
-[[redirects]]
-  from = "/"
-  to = "/index.html"
-  status = 200
-#   force = true
+# [[redirects]]
+#   from = "/"
+#   to = "/index.html"
+#   status = 200
 
 [[redirects]]
   from = "/:page/index.html"
   to = "/:page/"
-  status = 302
+  status = 301
   force = true
 
-[[redirects]]
-  from = "/:page/"
-  to = "/:page/index.html"
-  status = 200
-#   force = true
+# [[redirects]]
+#   from = "/:page/"
+#   to = "/:page/index.html"
+#   status = 200
 
 [[headers]]
   for = "/*"
@@ -35,7 +33,58 @@
     X-XSS-Protection = "1; mode=block"
 
 [[headers]]
-  for = "/*.html"
+  for = "/"
+
+  [headers.values]
+    Link = '''
+        </style.css>; rel="preload"; as="style",
+        </bundle.js>; rel="preload"; as="script",
+    '''
+    # TODO: replace asset URLs to point at cdn
+
+    Report-To = '{"group":"default","max_age":31536000,"endpoints":[{"url":"https://matejkosiarcik.report-uri.com/a/d/g"}],"include_subdomains":true}'
+    NEL = '{"report_to":"default","max_age":31536000,"include_subdomains":true}'
+    Strict-Transport-Security = 'max-age=63072000; includeSubDomains; preload'
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+    Content-Security-Policy = """
+        default-src 'none';
+        base-uri 'self';
+        script-src 'self' 'unsafe-inline' https://*.matejkosiarcik.com https://polyfill.io;
+        style-src 'self' 'unsafe-inline' https://*.matejkosiarcik.com;
+        img-src 'self' https://*.matejkosiarcik.com;
+        media-src 'self' https://*.matejkosiarcik.com;
+        connect-src 'self' https://*.matejkosiarcik.com;
+        block-all-mixed-content;
+        require-sri-for script style;
+        report-uri https://matejkosiarcik.report-uri.com/r/d/csp/enforce;
+        report-to default;
+    """
+
+    # disable all
+    Feature-Policy = """
+        accelerometer 'none';
+        ambient-light-sensor 'none';
+        autoplay 'none';
+        camera 'none';
+        encrypted-media 'none';
+        fullscreen 'none';
+        geolocation 'none';
+        gyroscope 'none';
+        magnetometer 'none';
+        microphone 'none';
+        midi 'none';
+        payment 'none';
+        picture-in-picture 'none';
+        speaker 'none';
+        sync-xhr 'none';
+        usb 'none';
+        vibrate 'none';
+        vr 'none'
+    """
+
+[[headers]]
+  for = "/:page/"
 
   [headers.values]
     Link = '''
