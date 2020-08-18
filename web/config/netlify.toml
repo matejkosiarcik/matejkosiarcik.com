@@ -12,7 +12,7 @@
   from = "/"
   to = "/index.html"
   status = 200
-  force = true
+#   force = true
 
 [[redirects]]
   from = "/:page/index.html"
@@ -24,7 +24,7 @@
   from = "/:page/"
   to = "/:page/index.html"
   status = 200
-  force = true
+#   force = true
 
 [[headers]]
   for = "/*"
