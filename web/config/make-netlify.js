@@ -53,7 +53,7 @@ makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
 
     'Content-Security-Policy': [
         "default-src 'none'",
-        "base-uri 'self';",
+        "base-uri 'self'",
         "script-src 'self' 'unsafe-inline' https://*.matejkosiarcik.com https://polyfill.io",
         "style-src 'self' 'unsafe-inline' https://*.matejkosiarcik.com",
         "img-src 'self' https://*.matejkosiarcik.com",
