@@ -31,7 +31,7 @@ makeHeaders('/*', {
     'X-XSS-Protection': '1; mode=block',
 })
 
-makeHeaders(['/', '/:page/'], {
+makeHeaders(['/', '/*.html'], {
     'Link': [
         '</style.css>; rel="preload"; as="style"',
         '</bundle.js>; rel="preload"; as="script"',
@@ -41,6 +41,8 @@ makeHeaders(['/', '/:page/'], {
     'NEL': '{"report_to":"default","max_age":31536000,"include_subdomains":true}',
     'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
     'Referrer-Policy': 'strict-origin-when-cross-origin',
+    'Clear-Site-Data': '*',
+    'X-Permitted-Cross-Domain-Policies': 'none',
 
     'Content-Security-Policy': [
         "default-src 'none'",
