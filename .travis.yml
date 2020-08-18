@@ -44,7 +44,3 @@ deploy:
   target_branch: pages
   on:
     branch: master
-
-after_deploy:
-  - sleep 60  # wait for deployed artifacts to propagate
-  - npm test --prefix production-test
