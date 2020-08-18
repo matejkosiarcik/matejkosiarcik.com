@@ -29,6 +29,7 @@ makeHeaders('/*', {
     'X-Content-Type-Options': 'nosniff',
     'X-Frame-Options': 'DENY',
     'X-XSS-Protection': '1; mode=block',
+    'Content-Security-Policy': "default-src 'none'",
 })
 
 makeHeaders(['/', '/*.html'], {
@@ -41,7 +42,7 @@ makeHeaders(['/', '/*.html'], {
     'NEL': '{"report_to":"default","max_age":31536000,"include_subdomains":true}',
     'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
     'Referrer-Policy': 'strict-origin-when-cross-origin',
-    'Clear-Site-Data': '*',
+    'Clear-Site-Data': '"*"',
     'X-Permitted-Cross-Domain-Policies': 'none',
 
     'Content-Security-Policy': [
@@ -83,4 +84,5 @@ makeHeaders(['/', '/*.html'], {
 
 makeHeaders('/*.svg', {
     'Content-Type': 'image/svg+xml; charset=UTF-8',
+    'Content-Security-Policy': "default-src 'none'; style-src 'unsafe-inline'",
 })
