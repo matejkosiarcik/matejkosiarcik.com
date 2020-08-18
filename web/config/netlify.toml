@@ -5,26 +5,24 @@
 [[redirects]]
   from = "/index.html"
   to = "/"
-  status = 302
+  status = 301
   force = true
 
-[[redirects]]
-  from = "/"
-  to = "/index.html"
-  status = 200
-#   force = true
+# [[redirects]]
+#   from = "/"
+#   to = "/index.html"
+#   status = 200
 
 [[redirects]]
   from = "/:page/index.html"
   to = "/:page/"
-  status = 302
+  status = 301
   force = true
 
-[[redirects]]
-  from = "/:page/"
-  to = "/:page/index.html"
-  status = 200
-#   force = true
+# [[redirects]]
+#   from = "/:page/"
+#   to = "/:page/index.html"
+#   status = 200
 
 [[headers]]
   for = "/*"
