@@ -1,11 +1,12 @@
 {
   "private": true,
   "scripts": {
-    "build": "run-s clean build:webpack build:grunt build:css build:gulp postbuild",
+    "build": "run-s clean build:webpack build:grunt build:css build:gulp build:netlify postbuild",
     "build:webpack": "cross-env NODE_ENV=production webpack -p --mode production",
     "build:grunt": "grunt",
     "build:gulp": "gulp svgo sri",
     "build:css": "npm run --prefix remynify build",
+    "build:netlify": "node config/make-netlify.js",
     "postbuild": "node validate-build.js",
     "clean": "rimraf public",
     "lint:css": "stylelint \"style/**/*.{css,scss}\"",

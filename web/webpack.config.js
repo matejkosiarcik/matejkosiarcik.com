@@ -50,7 +50,6 @@ const plugins = glob.sync(`${htmlDir}/**/*.html`, { nodir: true }).map(file => n
                 glob.sync('../images/icons/{,artifacts/}*.{jpg,png,svg,bmp,gif,webp}').map(file => { return { from: file, to: 'img' } }),
                 [
                     { from: path.join(__dirname, 'jekyll', '_site', 'sitemap.xml'), to: '' },
-                    { from: path.join(__dirname, 'config', 'netlify.toml'), to: '' },
                     { from: path.join(__dirname, 'config', 'robots.txt'), to: '' },
                 ],
             ),
