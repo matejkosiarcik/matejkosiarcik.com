@@ -7,3 +7,6 @@ blc --recursive --follow --filter-level 3 --exclude https://www.linkedin.com --e
 # check individual public pages
 # TODO: enable
 # curl -L https://matejkosiarcik.com/urllist.txt | xargs -n1 blc --follow --filter-level 3 --exclude https://www.linkedin.com --exclude https://linkedin.com
+
+observatory matejkosiarcik.com --zero --rescan --format report
+observatory matejkosiarcik.com --format report --min-grade B --min-score 75
