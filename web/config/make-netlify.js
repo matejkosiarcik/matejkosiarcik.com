@@ -2,6 +2,7 @@
 const fs = require('fs')
 const { assert } = require('console')
 const path = require('path')
+const glob = require('glob')
 
 fs.copyFileSync(path.join('config', '_redirects'), path.join('public', '_redirects'))
 fs.writeFileSync(path.join('public', '_headers'), '')
@@ -32,7 +33,12 @@ makeHeaders('/*', {
     'Content-Security-Policy': "default-src 'none'",
 })
 
-makeHeaders(['/', '/*.html'], {
+const htmlDirectories = glob.sync('**/index.html', { cwd: 'public' })
+    .map(file => path.dirname(file))
+    .filter(dir => dir !== '.')
+    .map(dir => `/${dir}/`)
+
+makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
     'Link': [
         '</style.css>; rel="preload"; as="style"',
         '</bundle.js>; rel="preload"; as="script"',
