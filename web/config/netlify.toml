@@ -8,11 +8,11 @@
   status = 302
   force = true
 
-# [[redirects]]
-#   from = "/index.html"
-#   to = "/"
-#   status = 200
-#   force = true
+[[redirects]]
+  from = "/"
+  to = "/index.html"
+  status = 200
+  force = true
 
 [[redirects]]
   from = "/:page/index.html"
@@ -20,11 +20,11 @@
   status = 302
   force = true
 
-# [[redirects]]
-#   from = "/*/index.html"
-#   to = "/:splat/"
-#   status = 200
-#   force = true
+[[redirects]]
+  from = "/:page/"
+  to = "/:page/index.html"
+  status = 200
+  force = true
 
 [[headers]]
   for = "/*"
@@ -35,7 +35,7 @@
     X-XSS-Protection = "1; mode=block"
 
 [[headers]]
-  for = "*/"
+  for = "/*.html"
 
   [headers.values]
     Link = '''
