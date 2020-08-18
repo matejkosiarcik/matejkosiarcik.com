@@ -6,21 +6,25 @@
   from = "/index.html"
   to = "/"
   status = 302
+  force = true
 
 # [[redirects]]
 #   from = "/index.html"
 #   to = "/"
 #   status = 200
+#   force = true
 
 [[redirects]]
-  from = "/*/index.html"
-  to = "/:splat/"
+  from = "/:page/index.html"
+  to = "/:page/"
   status = 302
+  force = true
 
 # [[redirects]]
 #   from = "/*/index.html"
 #   to = "/:splat/"
 #   status = 200
+#   force = true
 
 [[headers]]
   for = "/*"
