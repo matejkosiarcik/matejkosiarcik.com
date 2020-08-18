@@ -2,25 +2,29 @@
   publish = "."
   command = "true"
 
-[[redirects]]
-  from = "/index.html"
-  to = "/"
-  status = 302
+# [[redirects]]
+#   from = "/index.html"
+#   to = "/"
+#   status = 302
+#   force = true
 
 # [[redirects]]
 #   from = "/index.html"
 #   to = "/"
 #   status = 200
+#   force = true
 
 [[redirects]]
   from = "/*/index.html"
   to = "/:splat/"
   status = 302
+  force = true
 
 # [[redirects]]
 #   from = "/*/index.html"
 #   to = "/:splat/"
 #   status = 200
+#   force = true
 
 [[headers]]
   for = "/*"
