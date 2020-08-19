@@ -1,0 +1,52 @@
+{
+  "connector": {
+    "name": "jsdom"
+  },
+  "formatters": [
+    "stylish",
+    "summary",
+    "html"
+  ],
+  "extends": [
+    "web-recommended"
+  ],
+  "hints": {
+    "no-disallowed-headers": [
+      "error",
+      {
+        "ignore": [
+          "Server",
+          "X-Frame-Options"
+        ]
+      }
+    ],
+    "content-type": [
+      "error",
+      {
+        ".*\\.js": "text/javascript; charset=utf-8",
+        ".*\\.html?": "text/html; charset=utf-8",
+        ".*/$": "text/html; charset=utf-8",
+        ".*\\.css": "text/css; charset=utf-8",
+        ".*\\.svg": "image/svg+xml; charset=utf-8",
+        ".*\\.png": "image/png",
+        ".*\\.jpe?g": "image/jpeg",
+        ".*\\.webp": "image/webp",
+        ".*\\.gif": "image/gif",
+        ".*\\.bmp": "image/bmp",
+        ".*\\.tiff?": "image/tiff",
+        ".*\\.ico": "image/x-icon"
+      }
+    ],
+    "apple-touch-icons": "error",
+    "ssllabs": [
+      "error",
+      {
+        "grade": "A+"
+      }
+    ],
+    "compat-api/css": "off",
+    "compat-api/js": "off",
+    "compat-api/html": "off",
+    "http-compression": "off"
+  }
+}

@@ -28,9 +28,10 @@ function makeHeaders(urls, headers) {
 
 makeHeaders('/*', {
     'X-Content-Type-Options': 'nosniff',
-    'X-Frame-Options': 'DENY',
-    'X-XSS-Protection': '1; mode=block',
-    'Content-Security-Policy': "default-src 'none'",
+    'Content-Security-Policy': [
+        "default-src 'none';",
+        "img-src 'self' https://*.matejkosiarcik.com",
+    ].join('; ')
 })
 
 const htmlDirectories = glob.sync('**/index.html', { cwd: 'public' })
@@ -53,6 +54,10 @@ makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
     'Referrer-Policy': 'strict-origin-when-cross-origin',
     'Clear-Site-Data': '"*"',
     'X-Permitted-Cross-Domain-Policies': 'none',
+    'X-Frame-Options': 'DENY',
+    'X-XSS-Protection': '1; mode=block',
+    'X-UA-Compatible': 'IE=edge',
+    'Content-Type': 'text/html; charset=UTF-8',
 
     'Content-Security-Policy': [
         "default-src 'none'",
@@ -97,13 +102,17 @@ makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
 
 makeHeaders('/*.svg', {
     'Content-Type': 'image/svg+xml; charset=UTF-8',
-    'Report-To': reportTo,
     'Content-Security-Policy': [
         "default-src 'none'",
         "style-src 'unsafe-inline'",
-        "frame-ancestors 'none'",
-        "form-action 'none'",
-        "block-all-mixed-content",
-        "report-uri https://matejkosiarcik.report-uri.com/r/d/csp/enforce",
+        "img-src 'self' https://*.matejkosiarcik.com",
     ].join('; ')
+})
+
+makeHeaders('/*.css', {
+    'Content-Type': 'text/css; charset=UTF-8',
+})
+
+makeHeaders('/*.js', {
+    'Content-Type': 'text/javascript; charset=UTF-8',
 })
