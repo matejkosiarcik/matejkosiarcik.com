@@ -19,10 +19,6 @@ optimize 'artifacts/.favicon-16.png'
 optimize 'artifacts/.favicon-32.png'
 optimize 'artifacts/.favicon-48.png'
 optimize 'artifacts/.favicon-64.png'
-optimize 'artifacts/.favicon-96.png'
-optimize 'artifacts/.favicon-128.png'
-optimize 'artifacts/.favicon-256.png'
-
+optimize 'artifacts/apple-touch-icon.png'
 cp 'artifacts/.favicon-64.png' 'artifacts/favicon.png'
-
 png2ico 'artifacts/favicon.ico' --colors 16 'artifacts/.favicon-16.png' 'artifacts/.favicon-32.png'
