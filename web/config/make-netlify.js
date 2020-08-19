@@ -28,10 +28,6 @@ function makeHeaders(urls, headers) {
 
 makeHeaders('/*', {
     'X-Content-Type-Options': 'nosniff',
-    'Content-Security-Policy': [
-        "default-src 'none';",
-        "img-src 'self' https://*.matejkosiarcik.com",
-    ].join('; ')
 })
 
 const htmlDirectories = glob.sync('**/index.html', { cwd: 'public' })
@@ -105,8 +101,7 @@ makeHeaders('/*.svg', {
     'Content-Security-Policy': [
         "default-src 'none'",
         "style-src 'unsafe-inline'",
-        "img-src 'self' https://*.matejkosiarcik.com",
-    ].join('; ')
+    ].join('; '),
 })
 
 makeHeaders('/*.css', {
@@ -115,4 +110,8 @@ makeHeaders('/*.css', {
 
 makeHeaders('/*.js', {
     'Content-Type': 'text/javascript; charset=UTF-8',
+    'Content-Security-Policy': [
+        "default-src 'none'",
+        "connect-src https://api.matejkosiarcik.com https://api2.matejkosiarcik.com",
+    ].join('; '),
 })
