@@ -38,13 +38,15 @@ const htmlDirectories = glob.sync('**/index.html', { cwd: 'public' })
     .filter(dir => dir !== '.')
     .map(dir => `/${dir}/`)
 
+const reportTo = '{"group":"default","max_age":31536000,"endpoints":[{"url":"https://matejkosiarcik.report-uri.com/a/d/g"}],"include_subdomains":true}'
+
 makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
     'Link': [
         '</style.css>; rel="preload"; as="style"',
         '</bundle.js>; rel="preload"; as="script"',
     ].join(', '), // TODO: replace asset URLs to point at cdn
 
-    'Report-To': '{"group":"default","max_age":31536000,"endpoints":[{"url":"https://matejkosiarcik.report-uri.com/a/d/g"}],"include_subdomains":true}',
+    'Report-To': reportTo,
     'NEL': '{"report_to":"default","max_age":31536000,"include_subdomains":true}',
     'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
     'Referrer-Policy': 'strict-origin-when-cross-origin',
@@ -55,7 +57,7 @@ makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
         "default-src 'none'",
         "base-uri 'self'",
         "script-src 'self' 'unsafe-inline' https://*.matejkosiarcik.com https://polyfill.io",
-        "style-src 'self' 'unsafe-inline' https://*.matejkosiarcik.com",
+        "style-src 'self' https://*.matejkosiarcik.com",
         "img-src 'self' https://*.matejkosiarcik.com",
         "media-src 'self' https://*.matejkosiarcik.com",
         "connect-src 'self' https://*.matejkosiarcik.com",
@@ -94,5 +96,13 @@ makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
 
 makeHeaders('/*.svg', {
     'Content-Type': 'image/svg+xml; charset=UTF-8',
-    'Content-Security-Policy': "default-src 'none'; style-src 'unsafe-inline'",
+    'Report-To': reportTo,
+    'Content-Security-Policy': [
+        "default-src 'none'",
+        "style-src 'unsafe-inline'",
+        "frame-ancestors 'none'",
+        "form-action 'none'",
+        "block-all-mixed-content",
+        "report-uri https://matejkosiarcik.report-uri.com/r/d/csp/enforce",
+    ].join('; ')
 })
