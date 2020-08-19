@@ -74,5 +74,4 @@ jobs:
       - image: node
     steps:
       - checkout
-      - run: npm install --prefix production-test
-      - run: npm test --prefix production-test
+      - run: make prod-check

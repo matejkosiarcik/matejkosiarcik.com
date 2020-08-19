@@ -51,6 +51,8 @@ const plugins = glob.sync(`${htmlDir}/**/*.html`, { nodir: true }).map(file => n
                 [
                     { from: path.join(__dirname, 'jekyll', '_site', 'sitemap.xml'), to: '' },
                     { from: path.join(__dirname, 'config', 'robots.txt'), to: '' },
+                    { from: path.join(__dirname, 'config', 'humans.txt'), to: '' },
+                    { from: path.join(__dirname, 'config', 'security.txt'), to: '.well-known' },
                 ],
             ),
     }),

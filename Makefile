@@ -18,7 +18,6 @@ all: bootstrap build
 bootstrap:
 	@$(MAKE) -C$(PROJECT_DIR)/web bootstrap
 	npm install --prefix api2
-	npm install --prefix production-test
 	npm install --prefix images
 
 .PHONY: lint
@@ -30,3 +29,10 @@ lint:
 build:
 	@$(MAKE) -C$(PROJECT_DIR)/web build
 	npm run --prefix api2 build
+
+.PHONY: prod-check
+prod-check:
+	npm install --prefix production-test
+	npm install --prefix visual-test
+	npm test --prefix production-test
+	npm test --prefix visual-test
