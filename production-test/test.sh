@@ -10,3 +10,7 @@ blc --recursive --follow --filter-level 3 --exclude https://www.linkedin.com --e
 
 observatory matejkosiarcik.com --zero --rescan --format report
 observatory matejkosiarcik.com --format report --min-grade B --min-score 75
+
+# hint https://matejkosiarcik.com
+# TODO: replace with
+# curl -L https://matejkosiarcik.com/urllist.txt | xargs -n1 hint
