@@ -74,4 +74,5 @@ jobs:
       - image: node
     steps:
       - checkout
+      - setup_remote_docker
       - run: make prod-check
