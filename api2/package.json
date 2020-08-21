@@ -19,7 +19,7 @@
     "cors": "^2.8.5",
     "firebase-admin": "^9.1.1",
     "firebase-functions": "^3.10.0",
-    "firebase-tools": "^8.7.0"
+    "firebase-tools": "^8.8.1"
   },
   "devDependencies": {
     "@types/cors": "^2.8.6",
