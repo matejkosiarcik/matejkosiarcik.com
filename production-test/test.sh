@@ -1,16 +1,14 @@
 #!/bin/sh
+# shellcheck disable=SC2086
 
-# check all pages navigable from root
-# TODO: crank it to level 3
-blc --recursive --follow --filter-level 3 --exclude https://www.linkedin.com --exclude https://linkedin.com https://matejkosiarcik.com
+# link checker
+blc_args='--follow --filter-level 3 --exclude https://www.linkedin.com --exclude https://linkedin.com https://matejkosiarcik.com'
+blc --recursive ${blc_args}
+curl -L https://matejkosiarcik.com/urllist.txt | xargs -n1 blc ${blc_args}
 
-# check individual public pages
-# TODO: enable
-# curl -L https://matejkosiarcik.com/urllist.txt | xargs -n1 blc --follow --filter-level 3 --exclude https://www.linkedin.com --exclude https://linkedin.com
-
+# mozzila observatory
 observatory matejkosiarcik.com --zero --rescan --format report
 observatory matejkosiarcik.com --format report --min-grade B+ --min-score 80
 
-# hint https://matejkosiarcik.com
-# TODO: replace with
-# curl -L https://matejkosiarcik.com/urllist.txt | xargs -n1 hint
+# webhint.io
+curl -L https://matejkosiarcik.com/urllist.txt | xargs -n1 hint

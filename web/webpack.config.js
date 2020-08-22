@@ -28,19 +28,7 @@ const plugins = glob.sync(`${htmlDir}/**/*.html`, { nodir: true }).map(file => n
     filename: file.replace(/.*_site[\\/]/, ''),
     template: file,
     inject: process.env.NODE_ENV === 'development',
-    minify: process.env.NODE_ENV === 'development' ? false : {
-        useShortDoctype: true,
-        collapseWhitespace: true,
-        removeComments: true,
-        processConditionalComments: true,
-        collapseBooleanAttributes: true,
-        removeRedundantAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        removeScriptTypeAttributes: true,
-        minifyCSS: true,
-        // minifyJS: true, // Wrongly processes quotes
-        minifyURLs: true,
-    },
+    minify: false,
 })).concat([
     new CopyPlugin({
         patterns:

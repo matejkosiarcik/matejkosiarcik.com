@@ -34,7 +34,3 @@ build:
 prod-check:
 	npm install --prefix production-test
 	npm test --prefix production-test
-
-.PHONY: prod-check-visual
-	npm install --prefix visual-test
-	npm test --prefix visual-test
