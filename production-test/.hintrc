@@ -10,6 +10,15 @@
   "extends": [
     "web-recommended"
   ],
+  "ignoredUrls": [
+    {
+      "domain": "https?://polyfill\\.io/.*",
+      "hints": [
+        "http-cache",
+        "sri"
+      ]
+    }
+  ],
   "hints": {
     "no-disallowed-headers": [
       "error",
