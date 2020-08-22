@@ -1,11 +1,12 @@
 {
   "private": true,
   "scripts": {
-    "build": "run-s clean build:webpack build:urllist build:grunt build:css build:gulp build:netlify postbuild",
+    "build": "run-s clean build:webpack build:urllist build:grunt build:css build:gulp build:html build:netlify postbuild",
     "build:webpack": "cross-env NODE_ENV=production webpack -p --mode production",
     "build:grunt": "grunt",
     "build:gulp": "gulp svgo sri",
     "build:css": "npm run --prefix remynify build",
+    "build:html": "html-minifier --input-dir public --output-dir public --file-ext html --use-short-doctype --remove-comments --process-conditional-comments --collapse-whitespace --collapse-boolean-attributes --remove-redundant-attributes --remove-script-type-attributes --remove-style-link-type-attributes --sort-class-name --sort-attributes --minify-css true --minify-js true --minify-urls true",
     "build:netlify": "node config/make-netlify.js",
     "build:urllist": "sitemap2urllist --file public/sitemap.xml --output public/urllist.txt",
     "postbuild": "node validate-build.js",
@@ -55,6 +56,7 @@
     "gulp-sri-hash": "^2.2.1",
     "gulp-svgo": "^2.2.1",
     "html-loader": "^1.2.1",
+    "html-minifier": "^4.0.0",
     "html-validator": "^5.1.15",
     "html-webpack-plugin": "^4.3.0",
     "jshint": "^2.12.0",
