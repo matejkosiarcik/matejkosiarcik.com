@@ -6,9 +6,9 @@ workflows:
     jobs:
       - azlint
       - lint
-      - web
-      - api
-      - api2
+      - build-web
+      - build-api
+      - build-api2
 
   deploy:
     jobs:
@@ -49,7 +49,7 @@ jobs:
       - run: make bootstrap
       - run: make lint
 
-  web:
+  build-web:
     docker:
       - image: debian:stable
     steps:
@@ -61,14 +61,14 @@ jobs:
       - run: cd web && make bootstrap
       - run: cd web && make build
 
-  api:
+  build-api:
     docker:
       - image: node
     steps:
       - checkout
       - run: "true"
 
-  api2:
+  build-api2:
     docker:
       - image: node
     steps:
