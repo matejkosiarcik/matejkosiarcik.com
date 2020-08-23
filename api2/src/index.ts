@@ -20,7 +20,7 @@ export const analytics = functions.https.onRequest((request, response) => {
 
         // send content
         response.type('svg')
-        response.send('<?xml version="1.0" encoding="utf-8"?><svg xmlns="http://www.w3.org/2000/svg" height="0" viewBox="0 0 0 0" width="0"></svg>')
+        response.send('<?xml version="1.0" encoding="utf-8"?><svg xmlns="http://www.w3.org/2000/svg" height="0" width="0" viewBox="0 0 0 0"></svg>')
         response.end()
 
         // get data for save

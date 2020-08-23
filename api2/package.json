@@ -8,6 +8,7 @@
     "lint": "run-p lint:*",
     "lint:es": "eslint . || true",
     "lint:ts": "tslint --project tsconfig.json",
+    "prebuild": "mkdirp public",
     "build": "tsc",
     "watch": "tsc --watch",
     "serve": "firebase emulators:start --only functions,database,hosting",
