@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 const fs = require('fs')
-const { assert } = require('console')
 const path = require('path')
 const glob = require('glob')
+const assert = require('assert')
 
 fs.copyFileSync(path.join('config', '_redirects'), path.join('public', '_redirects'))
 fs.writeFileSync(path.join('public', '_headers'), '')

@@ -9,6 +9,22 @@
   "database": {
     "rules": "database.rules.json"
   },
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "**",
+      "**/.*",
+      "firebase.json",
+      "*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/analytics",
+        "function": "analytics"
+      }
+    ]
+  },
   "emulators": {
     "port": "4001",
     "functions": {
@@ -18,6 +34,10 @@
     "database": {
       "host": "localhost",
       "port": "8082"
+    },
+    "hosting": {
+      "host": "localhost",
+      "port": "8083"
     }
   }
 }
