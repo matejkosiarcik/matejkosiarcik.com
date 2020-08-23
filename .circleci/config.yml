@@ -10,6 +10,13 @@ workflows:
       - api
       - api2
 
+  deploy:
+    jobs:
+      - deploy-api2:
+          filters:
+            branches:
+              only: master
+
   cron:
     triggers:
       - schedule:
@@ -76,3 +83,12 @@ jobs:
       - checkout
       - setup_remote_docker
       - run: make prod-check
+
+  deploy-api2:
+    docker:
+      - image: node
+    steps:
+      - checkout
+      - run: npm install --prefix api2
+      - run: npm run --prefix api2 build
+      - run: npm run --prefix api2 deploy -- --token "${FIREBASE_TOKEN}"
