@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "build": "run-s clean build:webpack build:urllist build:grunt build:minify-css build:gulp build:minify-html build:minify-sitemap build:netlify-config",
+    "build": "run-s clean build:webpack build:grunt build:minify-css build:gulp build:minify-html build:urllist build:minify-sitemap build:netlify-config",
     "build:webpack": "cross-env NODE_ENV=production webpack -p --mode production",
     "build:grunt": "grunt",
     "build:gulp": "gulp svgo sri",
@@ -14,10 +14,10 @@
     "build:minify-sitemap:copy": "mv public/sitemap-tmp.xml public/sitemap.xml",
     "postbuild": "node validate-build.js",
     "clean": "rimraf public",
-    "lint:css": "stylelint \"style/**/*.{css,scss}\"",
-    "lint:js-tsc": "tsc --noEmit --skipLibCheck",
-    "lint:js": "eslint --max-warnings 0 \"script/**/*.{ts,js}\"",
     "lint": "run-p lint:*",
+    "lint:css": "stylelint \"style/**/*.{css,scss}\"",
+    "lint:tsc": "tsc --noEmit --skipLibCheck",
+    "lint:js": "eslint --max-warnings 0 \"script/**/*.{ts,js}\"",
     "start": "run-s serve",
     "serve": "cross-env NODE_ENV=development webpack-dev-server -d"
   },
