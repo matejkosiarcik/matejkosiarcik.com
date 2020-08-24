@@ -27,7 +27,7 @@ html.no-js .js {
   text-decoration: line-through;
 }
 
-img[src*='analytics'] {
+img[src*='analytics'][alt*='Analytics'] {
   visibility: hidden;
   position: absolute;
   width: 0;
