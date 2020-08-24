@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "build": "run-s clean build:webpack build:urllist build:grunt build:css build:gulp build:html build:netlify postbuild",
+    "build": "run-s clean build:webpack build:urllist build:grunt build:css build:gulp build:html build:minify-sitemap build:netlify postbuild",
     "build:webpack": "cross-env NODE_ENV=production webpack -p --mode production",
     "build:grunt": "grunt",
     "build:gulp": "gulp svgo sri",
@@ -9,6 +9,9 @@
     "build:html": "html-minifier --input-dir public --output-dir public --file-ext html --use-short-doctype --remove-comments --process-conditional-comments --collapse-whitespace --collapse-boolean-attributes --remove-redundant-attributes --remove-script-type-attributes --remove-style-link-type-attributes --sort-class-name --sort-attributes --minify-css true --minify-js true --minify-urls true",
     "build:netlify": "node config/make-netlify.js",
     "build:urllist": "sitemap2urllist --file public/sitemap.xml --output public/urllist.txt",
+    "build:minify-sitemap": "run-s build:minify-sitemap:generate build:minify-sitemap:copy",
+    "build:minify-sitemap:generate": "sed -E 's~^ +~~' <public/sitemap.xml | tr -d '\n' >public/sitemap-tmp.xml",
+    "build:minify-sitemap:copy": "mv public/sitemap-tmp.xml public/sitemap.xml",
     "postbuild": "node validate-build.js",
     "clean": "rimraf public",
     "lint:css": "stylelint \"style/**/*.{css,scss}\"",
