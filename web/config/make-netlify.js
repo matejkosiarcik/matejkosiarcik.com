@@ -49,7 +49,6 @@ makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
     'NEL': '{"report_to":"default","max_age":31536000,"include_subdomains":true}',
     'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
     'Referrer-Policy': 'strict-origin-when-cross-origin',
-    'Clear-Site-Data': '"*"',
     'X-Permitted-Cross-Domain-Policies': 'none',
     'X-XSS-Protection': '1; mode=block',
     'X-UA-Compatible': 'IE=edge',
@@ -58,7 +57,7 @@ makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
     'Content-Security-Policy': [
         "default-src 'none'",
         "base-uri 'self'",
-        "script-src 'self' 'unsafe-inline' https://*.matejkosiarcik.com https://polyfill.io",
+        "script-src 'self' https://*.matejkosiarcik.com https://polyfill.io",
         "style-src 'self' https://*.matejkosiarcik.com",
         "img-src 'self' https://*.matejkosiarcik.com",
         "media-src 'self' https://*.matejkosiarcik.com",
