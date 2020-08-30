@@ -39,11 +39,12 @@ const htmlDirectories = glob.sync('**/index.html', { cwd: 'public' })
 const reportTo = '{"group":"default","max_age":31536000,"endpoints":[{"url":"https://matejkosiarcik.report-uri.com/a/d/g"}],"include_subdomains":true}'
 
 makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
-    // TODO: enable
-    // 'Link': [
-    //     '<https://cdn.matejkosiarcik.com/style.css>; rel="preload"; as="style"; crossorigin="anonymous"',
-    //     '<https://cdn.matejkosiarcik.com/bundle.js>; rel="preload"; as="script"; crossorigin="anonymous"',
-    // ].join(', '),
+    'Link': [
+        '<https://api2.matejkosiarcik.com>; rel="dns-prefetch"',
+        // '<https://cdn.matejkosiarcik.com>; rel="dns-prefetch"',
+        // '<https://cdn.matejkosiarcik.com/style.css>; rel="preload"; as="style"; crossorigin="anonymous"',
+        // '<https://cdn.matejkosiarcik.com/bundle.js>; rel="preload"; as="script"; crossorigin="anonymous"',
+    ].join(', '),
 
     'Report-To': reportTo,
     'NEL': '{"report_to":"default","max_age":31536000,"include_subdomains":true}',
@@ -74,32 +75,32 @@ makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
 
     // disable all
     'Feature-Policy': [
-        'accelerometer',
-        'ambient-light-sensor',
+        // 'accelerometer',
+        // 'ambient-light-sensor',
         'autoplay',
-        'battery',
+        // 'battery',
         'camera',
-        'display-capture',
+        // 'display-capture',
         'document-domain',
         'encrypted-media',
         'fullscreen',
         'geolocation',
-        'gyroscope',
-        'layout-animations',
-        'legacy-image-formats',
-        'magnetometer',
+        // 'gyroscope',
+        // 'layout-animations',
+        // 'legacy-image-formats',
+        // 'magnetometer',
         'microphone',
         'midi',
         'payment',
-        'picture-in-picture',
-        'publickey-credentials-get',
-        'screen-wake-lock',
-        'sync-xhr',
-        'usb',
-        'vibrate',
-        'wake-lock',
-        'web-share',
-        'xr-spatial-tracking',
+        // 'picture-in-picture',
+        // 'publickey-credentials-get',
+        // 'screen-wake-lock',
+        // 'sync-xhr',
+        // 'usb',
+        // 'vibrate',
+        // 'wake-lock',
+        // 'web-share',
+        // 'xr-spatial-tracking',
     ].map(el => `${el} 'none'`).join('; '),
 })
 
