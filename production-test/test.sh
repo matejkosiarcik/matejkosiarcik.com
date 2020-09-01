@@ -8,22 +8,19 @@ curl -L https://matejkosiarcik.com/urllist.txt | xargs -n1 blc ${blc_args}
 
 # mozzila observatory
 observatory matejkosiarcik.com --zero --rescan --format report
-observatory matejkosiarcik.com --format report --min-grade B+ --min-score 80
+observatory matejkosiarcik.com --format report --min-grade A+ --min-score 100
 
 # webhint.io
 curl -L https://matejkosiarcik.com/urllist.txt | xargs -n1 hint
 
 printf '\n'
 
-if [ "$(curl -Iso /dev/null -w "%{http_code}" https://matejkosiarcik.com/this_page_should_not_exist_for_real_omg_it_is_looong)" != 404 ]; then
-    printf 'Non existent pages should return 404 status\n'
-    exit 1
-fi
-
-if [ "$(curl -Iso /dev/null -w "%{http_code}" https://matejkosiarcik.com/404/)" != 404 ]; then
-    printf '/404 page should also return status 404\n'
-    exit 1
-fi
+for page in '404' '404/' '404/index.html' '404.html' 'some-real-nonsense'; do
+    if [ "$(curl -Iso /dev/null -w "%{http_code}" "https://matejkosiarcik.com/${page}")" != 404 ]; then
+        printf '/%s page should return status 404\n' "${page}"
+        exit 1
+    fi
+done
 
 # Check redirects for trailing "/"
 # tmpfile="$(mktemp)"
