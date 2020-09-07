@@ -69,7 +69,7 @@ makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
         "frame-ancestors 'none'",
         "block-all-mixed-content",
         "require-sri-for script style",
-        "report-uri https://matejkosiarcik.report-uri.com/r/d/csp/enforce",
+        // "report-uri https://matejkosiarcik.report-uri.com/r/d/csp/enforce",
         "report-to default",
     ].join('; '),
 
@@ -81,7 +81,7 @@ makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
         // 'battery',
         'camera',
         // 'display-capture',
-        'document-domain',
+        // 'document-domain',
         'encrypted-media',
         'fullscreen',
         'geolocation',

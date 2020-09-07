@@ -12,10 +12,11 @@ observatory matejkosiarcik.com --format report --min-grade A+ --min-score 100
 
 # webhint.io
 curl -L https://matejkosiarcik.com/urllist.txt | xargs -n1 hint
+curl -L https://matejkosiarcik.com/urllist.txt | xargs -n1 is-website-vulnerable
 
 printf '\n'
 
-for page in '404' '404/' '404/index.html' '404.html' 'some-real-nonsense'; do
+for page in '404' '404.html' 'nonexisting'; do
     if [ "$(curl -Iso /dev/null -w "%{http_code}" "https://matejkosiarcik.com/${page}")" != 404 ]; then
         printf '/%s page should return status 404\n' "${page}"
         exit 1
