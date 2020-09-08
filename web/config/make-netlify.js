@@ -68,7 +68,7 @@ makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
         "frame-src 'none'",
         "frame-ancestors 'none'",
         "block-all-mixed-content",
-        "require-sri-for script style",
+        // "require-sri-for script style",
         // "report-uri https://matejkosiarcik.report-uri.com/r/d/csp/enforce",
         "report-to default",
     ].join('; '),
