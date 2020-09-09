@@ -45,7 +45,7 @@
     "copy-webpack-plugin": "^6.1.0",
     "cross-env": "^7.0.2",
     "css-color-converter": "^1.1.1",
-    "css-loader": "^4.2.2",
+    "css-loader": "^4.3.0",
     "css-validator": "^0.9.0",
     "csslint": "^1.0.5",
     "eslint": "^7.8.1",
