@@ -1,3 +1,15 @@
+{% if page.description %}
+  {% assign description = page.description %}
+{% else %}
+  {% assign description = "I am Matej Košiarčik and I program stuff" %}
+{% endif %}
+
+{% if page.image %}
+  {% assign image = page.image | absolute_url %}
+{% else %}
+  {% assign image = "/favicon.png" | absolute_url %}
+{% endif %}
+
 <head>
   <meta charset="UTF-8" />
 
@@ -19,7 +31,7 @@
   {% endif %}
 
   <!-- meta -->
-  <meta name="description" content="I am Matej Košiarčik and I program stuff" />
+  <meta name="description" content="{{ description }}" />
   <meta name="keywords" content="programmer, indie developer" />
   <meta name="author" content="Matej Košiarčik" />
   <meta name="copyright" content="Copyright © 2017-2020 Matej Košiarčik. All rights reserved." />
@@ -35,6 +47,23 @@
   <![endif]-->
   <link rel="mask-icon" href="/pinicon.svg" color="#369" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <!-- OpenGraph -->
+  {% if jekyll.environment == "production" %}
+    {% if page.title %}
+      <meta property="og:title" content="{{ page.title }}" />
+    {% else %}
+      <meta property="og:title" content="{{ site.title }}" />
+    {% endif %}
+    {% if page.path contains "_posts" %}
+      <meta property="og:type" content="article" />
+    {% else %}
+      <meta property="og:type" content="website" />
+    {% endif %}
+    <meta property="og:url" content="{{ page.url | absolute_url }}" />
+    <meta property="og:description" content="{{ description }}" />
+    <meta property="og:image" content="{{ image }}" />
+  {% endif %}
 
   {% if jekyll.environment == "production" %}
     <link rel="stylesheet" type="text/css" href="/style.css">
