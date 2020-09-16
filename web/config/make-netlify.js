@@ -61,16 +61,12 @@ makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
         "script-src 'self' https://*.matejkosiarcik.com https://polyfill.io",
         "style-src 'self' https://*.matejkosiarcik.com",
         "img-src 'self' https://*.matejkosiarcik.com",
-        "media-src 'self' https://*.matejkosiarcik.com",
         "connect-src 'self' https://*.matejkosiarcik.com",
-        "object-src 'none'",
         "form-action 'none'",
-        "frame-src 'none'",
         "frame-ancestors 'none'",
         "block-all-mixed-content",
-        // "require-sri-for script style",
         // "report-uri https://matejkosiarcik.report-uri.com/r/d/csp/enforce",
-        "report-to default",
+        // "report-to default",
     ].join('; '),
 
     // disable all
