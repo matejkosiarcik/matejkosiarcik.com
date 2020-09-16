@@ -3,6 +3,10 @@ language: generic
 services:
   - docker
 
+cache:
+  directories:
+    - web/jekyll/.bundle
+
 addons:
   apt:
     update: true
@@ -28,7 +32,7 @@ install:
       nvm unload
       rm -rf "${NVM_DIR}"
     fi
-  - travis_wait make bootstrap
+  - travis_wait 30 make bootstrap
 
 script:
   - make lint
