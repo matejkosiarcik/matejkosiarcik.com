@@ -3,6 +3,10 @@ language: generic
 services:
   - docker
 
+cache:
+  directories:
+    - web/jekyll/.bundle
+
 addons:
   apt:
     update: true
