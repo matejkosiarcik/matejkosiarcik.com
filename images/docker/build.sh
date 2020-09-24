@@ -6,7 +6,7 @@ mkdir -p 'artifacts'
 
 optimize() {
     pngquant --strip --speed 1 --skip-if-larger --quality 0-90 --force "${1}" --output "${1}"
-    docker run -v "${PWD}/${1}:/file.png" matejkosiarcik/redopng
+    docker run -v "${PWD}/${1}:/file.png" matejkosiarcik/redopng --brute
 
     # convert to webp
     magick "${1}" -quality 30 -define webp:lossless=false -define webp:alpha-quality=10 -define webp:method=6 "$(dirname "${1}")/$(basename "${1}" .png).webp"
