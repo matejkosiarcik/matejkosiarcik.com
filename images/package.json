@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "build": "run-p build:*",
+    "build": "run-s build:*",
     "build:favicon": "sh favicon/build.sh",
     "build:icons": "sh icons/build.sh",
     "build:docker": "sh docker/build.sh"
