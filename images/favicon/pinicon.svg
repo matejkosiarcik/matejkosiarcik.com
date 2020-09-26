@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" height="100" viewBox="0 0 100 100" width="100">
-  <g fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="10">
-    <path d="m39 10q-16 0-16 16v8q0 16-16 16 16 0 16 16v8q0 16 16 16" />
-    <path d="m61 10q16 0 16 16v8q0 16 16 16-16 0-16 16v8q0 16-16 16" />
+  <g fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="9">
+    <path d="m38 8q-16 0-16 16v10q0 16-16 16 16 0 16 16v10q0 16 16 16" />
+    <path d="m62 8q16 0 16 16v10q0 16 16 16-16 0-16 16v10q0 16-16 16" />
   </g>
 </svg>
