@@ -24,7 +24,7 @@ const plugins = [
         functions: {
             darken: (value, delta) => {
                 const fraction = delta.includes('%') ? parseFloat(delta) : parseFloat(delta) * 100
-                const oldRgba = color(value).toRgbaArray()
+                const oldRgba = color.fromString(value).toRgbaArray()
                 const oldHsl = convert.rgb.hsl([oldRgba[0], oldRgba[1], oldRgba[2]])
                 const lightness = (parseFloat(oldHsl[2]) - fraction).clamp(0, 100)
                 const newRgb = convert.hsl.rgb([oldHsl[0], oldHsl[1], lightness])
@@ -33,7 +33,7 @@ const plugins = [
             },
             lighten: (value, delta) => {
                 const fraction = delta.includes('%') ? parseFloat(delta) : parseFloat(delta) * 100
-                const oldRgba = color(value).toRgbaArray()
+                const oldRgba = color.fromString(value).toRgbaArray()
                 const oldHsl = convert.rgb.hsl([oldRgba[0], oldRgba[1], oldRgba[2]])
                 const lightness = (parseFloat(oldHsl[2]) + fraction).clamp(0, 100)
                 const newRgb = convert.hsl.rgb([oldHsl[0], oldHsl[1], lightness])
