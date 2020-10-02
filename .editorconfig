@@ -68,7 +68,7 @@ indent_size = 2
 [{Rakefile,Gemfile{,.lock}}]
 indent_size = 2
 
-### .NET ecosystem ###
+### .NET/Windows ecosystem ###
 
 # Encoding exception for VisualStudio project files
 [*.{cs,csx,vb,vbx,csproj,njsproj,sln}]
@@ -80,3 +80,10 @@ indent_size = 2
 
 [*.sln]
 indent_style = tab
+
+[*.bat]
+end_of_line = crlf
+
+### Java/JVM/Android ecosystem ###
+[gradlew]
+indent_size = 2
