@@ -37,7 +37,7 @@
     "@babel/preset-typescript": "^7.10.4",
     "@csstools/postcss-sass": "^4.0.0",
     "@typescript-eslint/eslint-plugin": "^4.4.0",
-    "@typescript-eslint/parser": "^4.3.0",
+    "@typescript-eslint/parser": "^4.4.0",
     "autoprefixer": "^9.8.6",
     "babel-loader": "^8.1.0",
     "color-convert": "^2.0.1",
