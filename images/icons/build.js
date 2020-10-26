@@ -20,13 +20,13 @@ async function svg2dark(inputFile, outputFile, fromColor, toColor) {
 }
 
 (async () => {
-    for (let inputFile of glob.sync(['{placeholder,terminal}.svg'])) {
+    for (let inputFile of glob.sync(['original/{placeholder,terminal}.svg'])) {
         await svg2png(inputFile, path.join(outDir, path.basename(inputFile, '.svg') + '.png'), 80, 80)
         const darkSvgPath = path.join(outDir, path.basename(inputFile, '.svg') + '-dark.svg')
         svg2dark(inputFile, darkSvgPath, '#333', '#eee')
     }
 
-    for (let inputFile of glob.sync(['{autodnd,zenplayer}.svg'])) {
+    for (let inputFile of glob.sync(['original/{autodnd,zenplayer}.svg'])) {
         await svg2png(inputFile, path.join(outDir, path.basename(inputFile, '.svg') + '.png'), 100, 100)
     }
 })()
