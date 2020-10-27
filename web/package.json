@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "build": "run-s clean build:webpack build:rcs build:minify-css build:gulp build:minify-html build:urllist build:minify-sitemap build:netlify-config",
-    "build:webpack": "cross-env NODE_ENV=production webpack -p --mode production",
+    "build:webpack": "cross-env NODE_ENV=production webpack --mode production",
     "build:rcs": "node rename-selectors.js",
     "build:gulp": "gulp svgo sri",
     "build:minify-css": "npm run --prefix remynify build",
@@ -19,7 +19,7 @@
     "lint:tsc": "tsc --noEmit --skipLibCheck",
     "lint:js": "eslint --max-warnings 0 \"script/**/*.{ts,js}\"",
     "start": "run-s serve",
-    "serve": "cross-env NODE_ENV=development webpack-dev-server -d"
+    "serve": "cross-env NODE_ENV=development webpack-dev-server -d --mode development"
   },
   "dependencies": {
     "bootstrap": "^4.5.3",
@@ -87,10 +87,10 @@
     "stylelint-config-recommended-scss": "^4.2.0",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-scss": "^3.18.0",
-    "terser-webpack-plugin": "^5.0.1",
+    "terser-webpack-plugin": "^4.2.3",
     "typescript": "^4.0.5",
-    "webpack": "^5.2.0",
-    "webpack-cli": "^4.1.0",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
     "webpack-common-shake": "^2.1.0",
     "webpack-dev-server": "^3.11.0",
     "webpack-fix-style-only-entries": "^0.6.0"
