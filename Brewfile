@@ -3,6 +3,7 @@
 # image conversion
 brew "imagemagick"
 brew "png2ico"
+brew "cairo"
 
 # main environments
 brew "node"
