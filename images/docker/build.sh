@@ -14,17 +14,17 @@ optimize() {
     magick "${1}" -quality 30 -define webp:lossless=false -define webp:alpha-quality=10 -define webp:method=6 "$(dirname "${1}")/$(basename "${1}" .png).webp"
 }
 
-convert -resize 80x80 -strip docker.png artifacts/docker.png
+convert -resize 80x80 -strip 'original/docker.png' 'artifacts/docker.png'
 optimize 'artifacts/docker.png'
-convert -resize 80x80 -strip docker-dark.png artifacts/docker-dark.png
+convert -resize 80x80 -strip 'original/docker-dark.png' 'artifacts/docker-dark.png'
 optimize 'artifacts/docker-dark.png'
 
-convert -resize 160x160 -strip docker.png artifacts/docker@2.png
+convert -resize 160x160 -strip 'original/docker.png' 'artifacts/docker@2.png'
 optimize 'artifacts/docker@2.png'
-convert -resize 160x160 -strip docker-dark.png artifacts/docker-dark@2.png
+convert -resize 160x160 -strip 'original/docker-dark.png' 'artifacts/docker-dark@2.png'
 optimize 'artifacts/docker-dark@2.png'
 
-convert -resize 240x240 -strip docker.png artifacts/docker@3.png
+convert -resize 240x240 -strip 'original/docker.png' 'artifacts/docker@3.png'
 optimize 'artifacts/docker@3.png'
-convert -resize 240x240 -strip docker-dark.png artifacts/docker-dark@3.png
+convert -resize 240x240 -strip 'original/docker-dark.png' 'artifacts/docker-dark@3.png'
 optimize 'artifacts/docker-dark@3.png'

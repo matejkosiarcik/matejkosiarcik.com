@@ -1,5 +1,6 @@
 {
   "private": true,
+  "name": "@matejkosiarcik/web-images",
   "scripts": {
     "build": "run-s build:*",
     "build:favicon": "sh favicon/build.sh",

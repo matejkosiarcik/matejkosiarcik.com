@@ -1,6 +1,7 @@
 {
   "jshint": {
-      "asi": true
+    "asi": true
   },
-  "csslint": true
+  "csslint": true,
+  "link-req-noopener": false
 }
