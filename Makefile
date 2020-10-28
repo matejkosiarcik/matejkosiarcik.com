@@ -17,8 +17,8 @@ all: bootstrap build
 .PHONY: bootstrap
 bootstrap:
 	@$(MAKE) -C$(PROJECT_DIR)/web bootstrap
-	npm install --prefix api2
-	npm install --prefix images
+	npm ci --prefix api2
+	npm ci --prefix images
 
 .PHONY: lint
 lint:
@@ -32,5 +32,5 @@ build:
 
 .PHONY: prod-check
 prod-check:
-	npm install --prefix production-test
+	npm ci --prefix production-test
 	npm test --prefix production-test
