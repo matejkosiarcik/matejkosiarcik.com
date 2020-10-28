@@ -18,8 +18,8 @@ all: bootstrap build
 bootstrap:
 	gem install bundler
 	$(BUNDLE_ENV) bundle install
-	npm install --no-save
-	npm install --no-save --prefix remynify
+	npm ci
+	npm ci --prefix remynify
 
 .PHONY: lint
 lint:
