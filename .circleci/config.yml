@@ -73,7 +73,7 @@ jobs:
       - image: node
     steps:
       - checkout
-      - run: npm install --prefix api2
+      - run: npm ci --prefix api2
       - run: npm run --prefix api2 build
 
   prod-check:
@@ -89,6 +89,6 @@ jobs:
       - image: node
     steps:
       - checkout
-      - run: npm install --prefix api2
+      - run: npm ci --prefix api2
       - run: npm run --prefix api2 build
       - run: npm run --prefix api2 deploy -- --token "${FIREBASE_TOKEN}"
