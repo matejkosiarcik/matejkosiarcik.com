@@ -1,5 +1,6 @@
 {
   "private": true,
+  "name": "@matejkosiarcik/web",
   "scripts": {
     "build": "run-s clean build:webpack build:rcs build:minify-css build:gulp build:minify-html build:urllist build:minify-sitemap build:netlify-config",
     "build:webpack": "cross-env NODE_ENV=production webpack --mode production",

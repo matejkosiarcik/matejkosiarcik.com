@@ -1,5 +1,6 @@
 {
   "private": true,
+  "name": "@matejkosiarcik/web-api2",
   "main": "build/index.js",
   "engines": {
     "node": "8"
