@@ -1,16 +1,23 @@
 # tap "homebrew/cask"
 
+# main environments
+brew "pkg-config"
+brew "node"
+brew "ruby"
+brew "pandoc"
+
+# RECOMMENDED (optional):
+# brew "ruby-build"
+# brew "rbenv"
+# brew "docker"
+# cask "docker"
+
 # image conversion
 brew "imagemagick"
 brew "png2ico"
 brew "cairo"
-
-# main environments
-brew "node"
-brew "ruby"
-# brew "ruby-build"
-# brew "rbenv"
-brew "pandoc"
-
-# brew "docker"
-# cask "docker"
+brew "pango"
+brew "libpng"
+brew "jpeg"
+brew "giflib"
+brew "librsvg"
