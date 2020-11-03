@@ -44,7 +44,7 @@
     "babel-loader": "^8.1.0",
     "color-convert": "^2.0.1",
     "concat": "^1.0.3",
-    "copy-webpack-plugin": "^6.2.1",
+    "copy-webpack-plugin": "^6.3.0",
     "cross-env": "^7.0.2",
     "css-color-converter": "^2.0.0",
     "css-loader": "^5.0.0",
