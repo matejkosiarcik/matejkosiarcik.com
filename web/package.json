@@ -74,7 +74,7 @@
     "postcss-media-minmax": "^4.0.0",
     "postcss-nested": "^5.0.1",
     "postcss-preset-env": "^6.7.0",
-    "postcss-scss": "^3.0.2",
+    "postcss-scss": "^3.0.4",
     "posthtml-attrs-sorter": "^1.1.0",
     "posthtml-loader": "^2.0.1",
     "posthtml-outlinks": "^1.0.0",
