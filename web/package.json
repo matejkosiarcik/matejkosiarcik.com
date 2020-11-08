@@ -68,7 +68,7 @@
     "postcss-calc": "^7.0.5",
     "postcss-css-variables": "^0.17.0",
     "postcss-easy-import": "^3.0.0",
-    "postcss-functions": "^3.0.0",
+    "postcss-functions": "^4.0.2",
     "postcss-hexrgba": "^2.0.1",
     "postcss-loader": "^4.0.4",
     "postcss-media-minmax": "^4.0.0",
