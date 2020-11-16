@@ -38,7 +38,7 @@
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-typescript": "^7.12.1",
     "@csstools/postcss-sass": "^4.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.7.0",
+    "@typescript-eslint/eslint-plugin": "^4.8.0",
     "@typescript-eslint/parser": "^4.7.0",
     "autoprefixer": "^10.0.2",
     "babel-loader": "^8.2.1",
