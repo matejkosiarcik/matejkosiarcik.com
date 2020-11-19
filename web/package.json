@@ -70,7 +70,7 @@
     "postcss-easy-import": "^3.0.0",
     "postcss-functions": "^3.0.0",
     "postcss-hexrgba": "^2.0.1",
-    "postcss-loader": "^4.0.4",
+    "postcss-loader": "^4.1.0",
     "postcss-media-minmax": "^4.0.0",
     "postcss-nested": "^5.0.1",
     "postcss-preset-env": "^6.7.0",
