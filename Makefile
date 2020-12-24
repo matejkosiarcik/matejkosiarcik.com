@@ -17,18 +17,15 @@ all: bootstrap build
 .PHONY: bootstrap
 bootstrap:
 	@$(MAKE) -C$(PROJECT_DIR)/web bootstrap
-	npm ci --prefix api2
 	npm ci --prefix images
 
 .PHONY: lint
 lint:
 	@$(MAKE) -C$(PROJECT_DIR)/web lint
-	npm run --prefix api2 lint
 
 .PHONY: build
 build:
 	@$(MAKE) -C$(PROJECT_DIR)/web build
-	npm run --prefix api2 build
 
 .PHONY: prod-check
 prod-check:

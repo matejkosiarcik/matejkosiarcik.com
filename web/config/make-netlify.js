@@ -40,7 +40,7 @@ const reportTo = '{"group":"default","max_age":31536000,"endpoints":[{"url":"htt
 
 makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
     'Link': [
-        '<https://api2.matejkosiarcik.com>; rel="dns-prefetch"',
+        // '<https://api.matejkosiarcik.com>; rel="dns-prefetch"',
         // '<https://cdn.matejkosiarcik.com>; rel="dns-prefetch"',
         // '<https://cdn.matejkosiarcik.com/style.css>; rel="preload"; as="style"; crossorigin="anonymous"',
         // '<https://cdn.matejkosiarcik.com/bundle.js>; rel="preload"; as="script"; crossorigin="anonymous"',
@@ -116,6 +116,6 @@ makeHeaders('/*.js', {
     'Content-Type': 'text/javascript; charset=UTF-8',
     'Content-Security-Policy': [
         "default-src 'none'",
-        "connect-src https://api.matejkosiarcik.com https://api2.matejkosiarcik.com",
+        "connect-src https://api.matejkosiarcik.com",
     ].join('; '),
 })
