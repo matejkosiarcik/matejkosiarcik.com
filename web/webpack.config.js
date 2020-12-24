@@ -75,7 +75,6 @@ const cssLoaders = process.env.NODE_ENV === 'production' ?
             loader: MiniCssExtractPlugin.loader,
             options: {
                 publicPath: '/',
-                hmr: process.env.NODE_ENV === 'development',
             },
         },
         {
@@ -83,6 +82,9 @@ const cssLoaders = process.env.NODE_ENV === 'production' ?
             options: {
                 url: false,
                 import: false,
+                modules: false,
+                esModule: false,
+                sourceMap: false,
             },
         },
         'postcss-loader',
@@ -93,6 +95,9 @@ const cssLoaders = process.env.NODE_ENV === 'production' ?
             options: {
                 url: false,
                 import: false,
+                modules: false,
+                esModule: false,
+                sourceMap: false,
             },
         },
         'postcss-loader',

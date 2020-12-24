@@ -1,14 +1,18 @@
 :root {
   // generic backgrounds
   --bg-color-light: #fafafa;
+  // --bg-color-light-alt: var(--bg-color-light);
   --bg-color-light-alt: darken(var(--bg-color-light), 20%);
   --bg-color-dark: #242125;
+  // --bg-color-dark-alt: var(--bg-color-dark);
   --bg-color-dark-alt: lighten(var(--bg-color-dark), 20%);
 
   // generic foregrounds
   --fg-color-light: #333;
+  // --fg-color-light-alt: var(--fg-color-light);
   --fg-color-light-alt: lighten(var(--fg-color-light), 20%);
   --fg-color-dark: #fff;
+  // --fg-color-dark-alt: var(--fg-color-dark);
   --fg-color-dark-alt: darken(var(--fg-color-dark), 15%);
 
   // only light mode
