@@ -23,14 +23,6 @@
     <!-- And the site is meant to function without it (it is just nicer when it works) -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default" nomodule defer crossorigin="anonymous" integrity="sha384-...."></script>
 
-    <!-- TODO: analytics -->
-    {% if jekyll.environment == "production" %}
-      {% assign analytics_url = "https://api2.matejkosiarcik.com/analytics" %}
-    {% else %}
-      {% assign analytics_url = "http://localhost:8083/analytics" %}
-    {% endif %}
-    <img src="{{ analytics_url }}" alt="Analytics" loading="eager" />
-
     {% if jekyll.environment == "production" %}
       <script src="/bundle.js" defer crossorigin="anonymous"></script>
     {% endif %}
