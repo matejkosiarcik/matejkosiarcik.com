@@ -36,14 +36,3 @@ install:
 script:
   - make lint
   - make build
-
-deploy:
-  provider: pages:git
-  edge: true
-  cleanup: false
-  keep_history: false
-  token: $GITHUB_TOKEN
-  local_dir: web/public
-  target_branch: pages
-  on:
-    branch: master
