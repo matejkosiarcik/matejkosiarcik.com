@@ -14,8 +14,6 @@ pull_request_rules:
     actions:
       merge:
         method: merge
-        strict: smart
-        strict_method: rebase
 
   - name: Automatic merge for dependabot
     conditions:
@@ -25,4 +23,3 @@ pull_request_rules:
     actions:
       merge:
         method: rebase
-        strict: true
