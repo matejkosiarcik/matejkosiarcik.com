@@ -36,7 +36,7 @@ indent_style = tab
 # trim_trailing_whitespace = false
 
 # Most documentation formats prefer 2 spaces per indent level
-[{*.{yml,yaml},*.{xml,html,svg,xlf,sdef},*.{md,mdown,markdown},*.{css,scss,sass,less}}]
+[{*.{yml,yaml},*.{xml,xhtml,html,html5,htm,svg,xlf,sdef},*.{md,mdown,markdown},*.{css,scss,sass,less}}]
 indent_size = 2
 
 # C-style languages multiline comments
