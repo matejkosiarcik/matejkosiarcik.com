@@ -8,14 +8,6 @@ workflows:
       - lint
       - build-web
       - build-api
-      - build-api2
-
-  deploy:
-    jobs:
-      - deploy-api2:
-          filters:
-            branches:
-              only: master
 
   cron:
     triggers:
@@ -68,14 +60,6 @@ jobs:
       - checkout
       - run: "true"
 
-  build-api2:
-    docker:
-      - image: node
-    steps:
-      - checkout
-      - run: npm ci --prefix api2
-      - run: npm run --prefix api2 build
-
   prod-check:
     docker:
       - image: node
@@ -83,12 +67,3 @@ jobs:
       - checkout
       - setup_remote_docker
       - run: make prod-check
-
-  deploy-api2:
-    docker:
-      - image: node
-    steps:
-      - checkout
-      - run: npm ci --prefix api2
-      - run: npm run --prefix api2 build
-      - run: npm run --prefix api2 deploy -- --token "${FIREBASE_TOKEN}"

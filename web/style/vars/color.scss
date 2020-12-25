@@ -1,27 +1,27 @@
 :root {
   // generic backgrounds
-  --bg-color-light: #fafafa;
-  --bg-color-light-alt: darken(var(--bg-color-light), 20%);
-  --bg-color-dark: #242125;
-  --bg-color-dark-alt: lighten(var(--bg-color-dark), 20%);
+  $bg-color-light: #fafafa;
+  $bg-color-light-alt: darken($bg-color-light, 20%);
+  $bg-color-dark: #242125;
+  $bg-color-dark-alt: lighten($bg-color-dark, 20%);
 
   // generic foregrounds
-  --fg-color-light: #333;
-  --fg-color-light-alt: lighten(var(--fg-color-light), 20%);
-  --fg-color-dark: #fff;
-  --fg-color-dark-alt: darken(var(--fg-color-dark), 15%);
+  $fg-color-light: #333;
+  $fg-color-light-alt: lighten($fg-color-light, 20%);
+  $fg-color-dark: #fff;
+  $fg-color-dark-alt: darken($fg-color-dark, 15%);
 
   // only light mode
-  --bg-color: var(--bg-color-light);
-  --bg-color-alt: var(--bg-color-light-alt);
-  --fg-color: var(--fg-color-light);
-  --fg-color-alt: var(--fg-color-light-alt);
+  --bg-color: $bg-color-light;
+  --bg-color-alt: $bg-color-light-alt;
+  --fg-color: $fg-color-light;
+  --fg-color-alt: $fg-color-light-alt;
 
   // only dark mode
-  @media (prefers-color-scheme: dark) {
-    --bg-color: var(--bg-color-dark);
-    --bg-color-alt: var(--bg-color-dark-alt);
-    --fg-color: var(--fg-color-dark);
-    --fg-color-alt: var(--fg-color-dark-alt);
+  @media (--dark) {
+    --bg-color: $bg-color-dark;
+    --bg-color-alt: $bg-color-dark-alt;
+    --fg-color: $fg-color-dark;
+    --fg-color-alt: $fg-color-dark-alt;
   }
 }

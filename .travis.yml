@@ -27,29 +27,12 @@ jobs:
   fast_finish: true
   include:
     - { os: linux }
-    - { os: osx, osx_image: xcode11.6, if: branch == master AND type != push }
+    # - { os: osx, osx_image: xcode11.6, if: branch == master AND type != push }
 
 install:
-  - |
-    if [ "$(uname -s)" = Linux ]; then
-      nvm install
-    elif [ "$(uname -s)" = Darwin ]; then
-      nvm unload
-      rm -rf "${NVM_DIR}"
-    fi
+  - nvm install && nvm use
   - travis_wait 30 make bootstrap
 
 script:
   - make lint
   - make build
-
-deploy:
-  provider: pages:git
-  edge: true
-  cleanup: false
-  keep_history: false
-  token: $GITHUB_TOKEN
-  local_dir: web/public
-  target_branch: pages
-  on:
-    branch: master

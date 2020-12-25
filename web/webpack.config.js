@@ -35,7 +35,7 @@ const plugins = glob.sync(`${htmlDir}/**/*.html`, { nodir: true }).map(file => n
             [].concat(
                 glob.sync('../images/favicon/{,artifacts/}*.{svg,png,ico}').map(file => { return { from: file, to: '' } }),
                 glob.sync('../images/docker/artifacts/*.{jpg,png,svg,bmp,gif,webp}').map(file => { return { from: file, to: 'img' } }),
-                glob.sync('../images/icons/{,artifacts/}*.{jpg,png,svg,bmp,gif,webp}').map(file => { return { from: file, to: 'img' } }),
+                glob.sync('../images/icons/{original,artifacts}/*.{jpg,png,svg,bmp,gif,webp}').map(file => { return { from: file, to: 'img' } }),
                 [
                     { from: path.join(__dirname, 'jekyll', '_site', 'sitemap.xml'), to: '' },
                     { from: path.join(__dirname, 'config', 'robots.txt'), to: '' },
@@ -75,7 +75,6 @@ const cssLoaders = process.env.NODE_ENV === 'production' ?
             loader: MiniCssExtractPlugin.loader,
             options: {
                 publicPath: '/',
-                hmr: process.env.NODE_ENV === 'development',
             },
         },
         {
@@ -83,9 +82,17 @@ const cssLoaders = process.env.NODE_ENV === 'production' ?
             options: {
                 url: false,
                 import: false,
+                modules: false,
+                esModule: false,
+                sourceMap: false,
             },
         },
-        'postcss-loader',
+        {
+            loader: 'postcss-loader',
+            options: {
+                sourceMap: false,
+            },
+        },
     ] : [
         'style-loader',
         {
@@ -93,9 +100,17 @@ const cssLoaders = process.env.NODE_ENV === 'production' ?
             options: {
                 url: false,
                 import: false,
+                modules: false,
+                esModule: false,
+                sourceMap: false,
             },
         },
-        'postcss-loader',
+        {
+            loader: 'postcss-loader',
+            options: {
+                sourceMap: false,
+            },
+        },
     ]
 
 const config = {
