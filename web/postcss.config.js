@@ -15,9 +15,10 @@ const plugins = [
         extensions: ['.css', '.scss'],
         prefix: '_',
     }),
+    require('postcss-simple-vars'),
     require('postcss-nested'),
     require('postcss-custom-properties')({
-        preserve: false
+        preserve: true,
     }),
     require('postcss-hexrgba'),
     require('postcss-functions')({

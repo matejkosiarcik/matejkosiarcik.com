@@ -87,7 +87,12 @@ const cssLoaders = process.env.NODE_ENV === 'production' ?
                 sourceMap: false,
             },
         },
-        'postcss-loader',
+        {
+            loader: 'postcss-loader',
+            options: {
+                sourceMap: false,
+            },
+        },
     ] : [
         'style-loader',
         {
@@ -100,7 +105,12 @@ const cssLoaders = process.env.NODE_ENV === 'production' ?
                 sourceMap: false,
             },
         },
-        'postcss-loader',
+        {
+            loader: 'postcss-loader',
+            options: {
+                sourceMap: false,
+            },
+        },
     ]
 
 const config = {
