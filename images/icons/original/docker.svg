@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" height="100" viewBox="0 0 100 100" width="100">
+  <style>
+    @media screen and (prefers-color-scheme: dark) {
+      g {
+        fill: #eee;
+      }
+    }
+  </style>
+  <g fill="#333">
+    <!-- top row -->
+    <rect x="46" y="13" width="10.5" height="9.5" ry="0.5" rx="0.5"/>
+
+    <!-- mid row -->
+    <rect x="21" y="24.5" width="10.5" height="9.5" ry="0.5" rx="0.5"/>
+    <rect x="33.5" y="24.5" width="10.5" height="9.5" ry="0.5" rx="0.5"/>
+    <rect x="46" y="24.5" width="10.5" height="9.5" ry="0.5" rx="0.5"/>
+
+    <!-- bottom row -->
+    <rect x="8.5" y="36" width="10.5" height="9.5" ry="0.5" rx="0.5"/>
+    <rect x="21" y="36" width="10.5" height="9.5" ry="0.5" rx="0.5"/>
+    <rect x="33.5" y="36" width="10.5" height="9.5" ry="0.5" rx="0.5"/>
+    <rect x="46" y="36" width="10.5" height="9.5" ry="0.5" rx="0.5"/>
+    <rect x="58.5" y="36" width="10.5" height="9.5" ry="0.5" rx="0.5"/>
+
+    <!-- whale -->
+    <path d="m95.29 41.22c-2.07-1.39-6.84-1.9-10.51-1.21-.47-3.45-2.4-6.45-5.91-9.16l-2.01-1.34-1.34 2.01c-2.65 4-3.36 10.58-.53 14.92-1.25.68-3.71 1.6-6.96 1.54h-62.48c-1.25 7.3.83 16.79 6.32 23.3 5.33 6.31 13.32 9.52 23.77 9.52 22.62 0 39.37-10.42 47.2-29.35 3.08.06 9.72.01 13.12-6.5.22-.36.95-1.9 1.22-2.46z"/>
+  </g>
+</svg>
