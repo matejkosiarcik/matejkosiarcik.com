@@ -68,8 +68,8 @@
       transition: 0.2s opacity, 0.2s top;
       border-radius: 10px;
       opacity: 0;
-      background: var(--bg-color-dark);
-      color: var(--fg-color-dark);
+      background: $bg-color-dark;
+      color: $fg-color-dark;
       pointer-events: none;
 
       @media (--dark) {
@@ -81,7 +81,7 @@
       }
 
       a:hover {
-        color: var(--fg-color-dark-alt);
+        color: $fg-color-dark-alt;
       }
 
       &::after {
@@ -93,7 +93,7 @@
         width: 0;
         height: 0;
         transform: translateX(-50%) translateY(100%);
-        border-top: 20px solid var(--bg-color-dark);
+        border-top: 20px solid $bg-color-dark;
         border-right: 25px solid transparent;
         border-left: 25px solid transparent;
         opacity: 1;
