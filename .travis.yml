@@ -27,7 +27,7 @@ jobs:
   fast_finish: true
   include:
     - { os: linux }
-    - { os: osx, osx_image: xcode11.6, if: branch == master AND type != push }
+    # - { os: osx, osx_image: xcode11.6, if: branch == master AND type != push }
 
 install:
   - nvm install && nvm use
