@@ -1,3 +1,6 @@
-@custom-media --phone (width < 600px);
-@custom-media --tablet (width >= 600px) and (width < 1000px);
-@custom-media --desktop (width >= 600px);
+// resolutions
+@custom-media --phone (width < 650px);
+@custom-media --desktop (width >= 650px);
+
+// misc
+@custom-media --dark screen and (prefers-color-scheme: dark)

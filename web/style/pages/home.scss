@@ -72,7 +72,7 @@
       color: var(--fg-color-dark);
       pointer-events: none;
 
-      @media (prefers-color-scheme: dark) {
+      @media (--dark) {
         border: 1px solid var(--fg-color);
       }
 

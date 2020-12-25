@@ -8,11 +8,20 @@ a {
   }
 }
 
-// heading fonts
-@for $i from 1 through 2 {
-  h#{$i} {
-    font-weight: 200;
-  }
+// headings
+
+h1 {
+  font-size: 3rem;
+  font-weight: 200;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 200;
+}
+
+h3 {
+  font-size: 1.5rem;
 }
 
 h3,
@@ -21,28 +30,16 @@ thead {
   font-weight: 500;
 }
 
-@for $i from 4 through 6 {
-  h#{$i} {
-    font-weight: 600;
-  }
-}
-
-h1 {
-  font-size: 3rem;
-}
-
-h2 {
-  font-size: 2rem;
-}
-
-h3 {
-  font-size: 1.5rem;
-}
-
 h4 {
   font-size: 1.3rem;
+  font-weight: 600;
 }
 
 h5 {
   font-size: 1.1rem;
+  font-weight: 600;
+}
+
+h6 {
+  font-weight: 600;
 }
