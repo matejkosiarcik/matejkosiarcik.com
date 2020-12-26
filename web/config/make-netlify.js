@@ -39,6 +39,44 @@ const htmlDirectories = glob.sync('**/index.html', { cwd: 'public' })
 
 const reportTo = '{"group":"default","max_age":31536000,"endpoints":[{"url":"https://matejkosiarcik.report-uri.com/a/d/g"}],"include_subdomains":true}'
 
+// This is for Permissions-Policy (and deprecate Feature-Policy)
+// I don't understand why it doesn't have a "default" clause (like csp)
+const permissions = [
+    // 'accelerometer',
+    // 'ambient-light-sensor',
+    // 'autoplay',
+    // 'battery',
+    // 'camera',
+    // 'display-capture',
+    // 'document-domain',
+    // 'document-write',
+    // 'encrypted-media',
+    // 'execution-while-not-rendered',
+    // 'execution-while-out-of-viewport',
+    // 'fullscreen',
+    // 'geolocation',
+    // 'gyroscope',
+    // 'layout-animations',
+    // 'legacy-image-formats',
+    // 'magnetometer',
+    // 'microphone',
+    // 'midi',
+    // 'navigation-override',
+    // 'oversized-images',
+    // 'payment',
+    // 'picture-in-picture',
+    // 'publickey-credentials-get',
+    // 'screen-wake-lock',
+    // 'sync-xhr',
+    // 'usb',
+    // 'vibrate',
+    // 'vr',
+    // 'wake-lock',
+    // 'webauthn',
+    // 'web-share',
+    // 'xr-spatial-tracking',
+]
+
 makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
     'Link': [
         // '<https://api.matejkosiarcik.com>; rel="dns-prefetch"',
@@ -70,35 +108,10 @@ makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
         // "report-to default",
     ].join('; '),
 
-    // disable all
-    'Feature-Policy': [
-        // 'accelerometer',
-        // 'ambient-light-sensor',
-        'autoplay',
-        // 'battery',
-        'camera',
-        // 'display-capture',
-        // 'document-domain',
-        'encrypted-media',
-        'fullscreen',
-        'geolocation',
-        // 'gyroscope',
-        // 'layout-animations',
-        // 'legacy-image-formats',
-        // 'magnetometer',
-        'microphone',
-        'midi',
-        'payment',
-        // 'picture-in-picture',
-        // 'publickey-credentials-get',
-        // 'screen-wake-lock',
-        // 'sync-xhr',
-        // 'usb',
-        // 'vibrate',
-        // 'wake-lock',
-        // 'web-share',
-        // 'xr-spatial-tracking',
-    ].map(el => `${el} 'none'`).join('; '),
+    'Feature-Policy': permissions.map(el => `${el} 'none'`).join('; '),
+    'Permissions-Policy': permissions.map(el => `${el}=()`).join(', '),
+
+    'Expect-CT': 'max-age=0, report-uri="https://matejkosiarcik.report-uri.com/r/d/ct/reportOnly"',
 })
 
 makeHeaders('/*.svg', {
