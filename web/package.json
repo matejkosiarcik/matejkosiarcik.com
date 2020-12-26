@@ -23,8 +23,9 @@
     "lint:css": "stylelint \"style/**/*.{css,scss}\"",
     "lint:tsc": "tsc --noEmit --skipLibCheck",
     "lint:js": "eslint --max-warnings 0 \"script/**/*.{ts,js}\"",
-    "start": "run-s serve",
-    "serve": "cross-env NODE_ENV=development webpack-dev-server -d --mode development"
+    "start": "run-p serve",
+    "serve-old": "cross-env NODE_ENV=development webpack-dev-server -d --mode development",
+    "serve": "cross-env NODE_ENV=development webpack serve --mode development"
   },
   "dependencies": {
     "bootstrap": "^4.5.3",

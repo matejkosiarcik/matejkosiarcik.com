@@ -42,10 +42,6 @@ const plugins = glob.sync(`jekyll/_site/**/*.html`, { nodir: true }).map(file =>
     }),
 ])
 
-if (process.env.NODE_ENV === 'development') {
-    plugins.push(new webpack.HotModuleReplacementPlugin())
-}
-
 if (process.env.NODE_ENV === 'production') {
     plugins.push(
         new FixStyleOnlyEntriesPlugin(),
@@ -164,10 +160,7 @@ if (process.env.NODE_ENV === 'development') {
     config.devServer = {
         hot: true,
         publicPath: config.output.publicPath,
-        inline: true,
-        liveReload: true,
         progress: false,
-        watchContentBase: true,
     }
 }
 
