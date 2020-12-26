@@ -14,7 +14,6 @@ async function fileHash(filePath) {
 
 (async () => {
     const resourceHashes = await Promise.all(resourceFiles.map(fileHash))
-    console.log(resourceHashes)
 
     const oldFileNames = []
     const newFileNames = []
@@ -30,14 +29,18 @@ async function fileHash(filePath) {
         fs.renameSync(oldPath, newPath)
     }
 
-    console.log(oldFileNames)
-    console.log(newFileNames)
-
     htmlFiles.forEach(filePath => {
-        let fileContent = fs.readFileSync(filePath, 'utf-8')
+        let fileContent = fs.readFileSync(filePath).toString('utf-8')
         for (i in resourceFiles) {
-            fileContent = fileContent.replaceAll(oldFileNames[i], newFileNames[i])
+            while (true) {
+                let newFileContent = fileContent.replace(oldFileNames[i], newFileNames[i])
+                if (newFileContent === fileContent) {
+                    break
+                }
+                fileContent = newFileContent
+            }
         }
+
         fs.writeFileSync(filePath, fileContent, { encoding: 'utf-8' })
     })
 })()
