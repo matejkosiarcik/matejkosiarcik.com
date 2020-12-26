@@ -34,7 +34,6 @@ const plugins = glob.sync(`${htmlDir}/**/*.html`, { nodir: true }).map(file => n
         patterns:
             [].concat(
                 glob.sync('../images/favicon/{,artifacts/}*.{svg,png,ico}').map(file => { return { from: file, to: '' } }),
-                glob.sync('../images/docker/artifacts/*.{jpg,png,svg,bmp,gif,webp}').map(file => { return { from: file, to: 'img' } }),
                 glob.sync('../images/icons/{original,artifacts}/*.{jpg,png,svg,bmp,gif,webp}').map(file => { return { from: file, to: 'img' } }),
                 [
                     { from: path.join(__dirname, 'jekyll', '_site', 'sitemap.xml'), to: '' },
