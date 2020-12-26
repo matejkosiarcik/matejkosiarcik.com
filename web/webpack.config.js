@@ -15,7 +15,6 @@ const ScriptExtPlugin = require('script-ext-html-webpack-plugin')
 
 const TerserPlugin = require('terser-webpack-plugin')
 const ShakePlugin = require('webpack-common-shake').Plugin
-const PurgecssPlugin = require('purgecss-webpack-plugin')
 
 process.env.NODE_ENV = process.env.NODE_ENV === 'production' ? 'production' : 'development'
 const outputDir = 'public'
@@ -59,12 +58,6 @@ if (process.env.NODE_ENV === 'production') {
             defaultAttribute: 'defer',
         }),
         new ShakePlugin(),
-        new PurgecssPlugin({
-            paths: glob2.sync([
-                `${htmlDir}/**/*.html`,
-                './script/**/*.{ts,js}',
-            ], { nodir: true }),
-        }),
     )
 }
 
