@@ -2,7 +2,7 @@ version: "{build}"
 
 image:
   - Visual Studio 2017
-  - Visual Studio 2015
+  # - Visual Studio 2015
   # - Visual Studio 2013
 
 platform:
@@ -14,9 +14,9 @@ environment:
   matrix:
     - nodejs_version: Current
     - nodejs_version: LTS
-    - nodejs_version: "14"
-    - nodejs_version: "13"
-    - nodejs_version: "12"
+    # - nodejs_version: "14"
+    # - nodejs_version: "13"
+    # - nodejs_version: "12"
     # TODO: include choco versions
     # - nodejs_choco: latest
     # - nodejs_choco: lts

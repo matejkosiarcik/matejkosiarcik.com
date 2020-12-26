@@ -1,7 +1,6 @@
 const path = require('path')
 const process = require('process')
 const glob = require('glob')
-const glob2 = require('glob-all')
 
 const webpack = require('webpack')
 
@@ -15,7 +14,6 @@ const ScriptExtPlugin = require('script-ext-html-webpack-plugin')
 
 const TerserPlugin = require('terser-webpack-plugin')
 const ShakePlugin = require('webpack-common-shake').Plugin
-const PurgecssPlugin = require('purgecss-webpack-plugin')
 
 process.env.NODE_ENV = process.env.NODE_ENV === 'production' ? 'production' : 'development'
 const outputDir = 'public'
@@ -23,8 +21,7 @@ const outputDir = 'public'
 // TODO: try google-closure-compiler or YUI compressor
 
 // search all jekyll generated html pages
-const htmlDir = 'jekyll/_site' // always want "/" slash for globs
-const plugins = glob.sync(`${htmlDir}/**/*.html`, { nodir: true }).map(file => new HtmlPlugin({
+const plugins = glob.sync(`jekyll/_site/**/*.html`, { nodir: true }).map(file => new HtmlPlugin({
     filename: file.replace(/.*_site[\\/]/, ''),
     template: file,
     inject: process.env.NODE_ENV === 'development',
@@ -59,41 +56,19 @@ if (process.env.NODE_ENV === 'production') {
             defaultAttribute: 'defer',
         }),
         new ShakePlugin(),
-        new PurgecssPlugin({
-            paths: glob2.sync([
-                `${htmlDir}/**/*.html`,
-                './script/**/*.{ts,js}',
-            ], { nodir: true }),
-        }),
     )
 }
 
-const cssLoaders = process.env.NODE_ENV === 'production' ?
-    [
+const cssLoaders = (process.env.NODE_ENV === 'production' ? [
         {
             loader: MiniCssExtractPlugin.loader,
             options: {
                 publicPath: '/',
             },
         },
-        {
-            loader: 'css-loader',
-            options: {
-                url: false,
-                import: false,
-                modules: false,
-                esModule: false,
-                sourceMap: false,
-            },
-        },
-        {
-            loader: 'postcss-loader',
-            options: {
-                sourceMap: false,
-            },
-        },
     ] : [
         'style-loader',
+    ]).concat([
         {
             loader: 'css-loader',
             options: {
@@ -110,7 +85,7 @@ const cssLoaders = process.env.NODE_ENV === 'production' ?
                 sourceMap: false,
             },
         },
-    ]
+    ])
 
 const config = {
     mode: process.env.NODE_ENV,
@@ -170,6 +145,7 @@ const config = {
                         passes: 20,
                         arguments: true,
                         keep_fargs: false,
+                        drop_console: true,
                     },
                     keep_classnames: false,
                     keep_fnames: false,

@@ -29,6 +29,7 @@ function makeHeaders(urls, headers) {
 makeHeaders('/*', {
     'X-Content-Type-Options': 'nosniff',
     'X-Frame-Options': 'DENY',
+    'X-Permitted-Cross-Domain-Policies': 'none',
 })
 
 const htmlDirectories = glob.sync('**/index.html', { cwd: 'public' })
