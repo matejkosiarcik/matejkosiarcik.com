@@ -61,32 +61,16 @@ if (process.env.NODE_ENV === 'production') {
     )
 }
 
-const cssLoaders = process.env.NODE_ENV === 'production' ?
-    [
+const cssLoaders = (process.env.NODE_ENV === 'production' ? [
         {
             loader: MiniCssExtractPlugin.loader,
             options: {
                 publicPath: '/',
             },
         },
-        {
-            loader: 'css-loader',
-            options: {
-                url: false,
-                import: false,
-                modules: false,
-                esModule: false,
-                sourceMap: false,
-            },
-        },
-        {
-            loader: 'postcss-loader',
-            options: {
-                sourceMap: false,
-            },
-        },
     ] : [
         'style-loader',
+    ]).concat([
         {
             loader: 'css-loader',
             options: {
@@ -103,7 +87,7 @@ const cssLoaders = process.env.NODE_ENV === 'production' ?
                 sourceMap: false,
             },
         },
-    ]
+    ])
 
 const config = {
     mode: process.env.NODE_ENV,
