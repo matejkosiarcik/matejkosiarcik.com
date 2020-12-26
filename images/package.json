@@ -4,8 +4,7 @@
   "scripts": {
     "build": "run-s build:*",
     "build:favicon": "sh favicon/build.sh",
-    "build:icons": "sh icons/build.sh",
-    "build:docker": "sh docker/build.sh"
+    "build:icons": "sh icons/build.sh"
   },
   "devDependencies": {
     "execa": "^5.0.0",

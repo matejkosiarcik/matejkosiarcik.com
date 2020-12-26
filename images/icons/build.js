@@ -14,16 +14,9 @@ async function svg2png(inputFile, outputFile, width, height) {
     await execa('rsvg-convert', ['-f', 'png', '-w', `${width}`, '-h', `${height}`, inputFile, '-o', outputFile])
 }
 
-async function svg2dark(inputFile, outputFile, fromColor, toColor) {
-    const svgContent = fs.readFileSync(inputFile).toString().replace(fromColor, toColor)
-    fs.writeFileSync(outputFile, svgContent)
-}
-
 (async () => {
-    for (let inputFile of glob.sync(['original/{placeholder,terminal}.svg'])) {
+    for (let inputFile of glob.sync(['original/{placeholder,terminal,docker}.svg'])) {
         await svg2png(inputFile, path.join(outDir, path.basename(inputFile, '.svg') + '.png'), 80, 80)
-        const darkSvgPath = path.join(outDir, path.basename(inputFile, '.svg') + '-dark.svg')
-        svg2dark(inputFile, darkSvgPath, '#333', '#eee')
     }
 
     for (let inputFile of glob.sync(['original/{autodnd,zenplayer}.svg'])) {
