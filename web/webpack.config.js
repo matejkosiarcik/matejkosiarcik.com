@@ -1,7 +1,6 @@
 const path = require('path')
 const process = require('process')
 const glob = require('glob')
-const glob2 = require('glob-all')
 
 const webpack = require('webpack')
 
@@ -22,8 +21,7 @@ const outputDir = 'public'
 // TODO: try google-closure-compiler or YUI compressor
 
 // search all jekyll generated html pages
-const htmlDir = 'jekyll/_site' // always want "/" slash for globs
-const plugins = glob.sync(`${htmlDir}/**/*.html`, { nodir: true }).map(file => new HtmlPlugin({
+const plugins = glob.sync(`jekyll/_site/**/*.html`, { nodir: true }).map(file => new HtmlPlugin({
     filename: file.replace(/.*_site[\\/]/, ''),
     template: file,
     inject: process.env.NODE_ENV === 'development',
