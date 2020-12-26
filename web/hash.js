@@ -18,7 +18,7 @@ async function fileHash(filePath) {
     const oldFileNames = []
     const newFileNames = []
 
-    for (i in resourceFiles) {
+    for (let i in resourceFiles) {
         const oldPath = resourceFiles[i]
         const newPath = resourceFiles[i].replace(/\.([a-zA-Z0-9]+)$/, `.${resourceHashes[i]}.$1`)
 
@@ -31,7 +31,7 @@ async function fileHash(filePath) {
 
     htmlFiles.forEach(filePath => {
         let fileContent = fs.readFileSync(filePath).toString('utf-8')
-        for (i in resourceFiles) {
+        for (let i in resourceFiles) {
             while (true) {
                 let newFileContent = fileContent.replace(oldFileNames[i], newFileNames[i])
                 if (newFileContent === fileContent) {

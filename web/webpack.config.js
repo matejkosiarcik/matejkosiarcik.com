@@ -2,8 +2,6 @@ const path = require('path')
 const process = require('process')
 const glob = require('glob')
 
-const webpack = require('webpack')
-
 const HtmlPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
