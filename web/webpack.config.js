@@ -145,6 +145,7 @@ const config = {
                         passes: 20,
                         arguments: true,
                         keep_fargs: false,
+                        drop_console: true,
                     },
                     keep_classnames: false,
                     keep_fnames: false,
