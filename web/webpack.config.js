@@ -2,8 +2,6 @@ const path = require('path')
 const process = require('process')
 const glob = require('glob')
 
-const webpack = require('webpack')
-
 const HtmlPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
@@ -41,10 +39,6 @@ const plugins = glob.sync(`jekyll/_site/**/*.html`, { nodir: true }).map(file =>
             ),
     }),
 ])
-
-if (process.env.NODE_ENV === 'development') {
-    plugins.push(new webpack.HotModuleReplacementPlugin())
-}
 
 if (process.env.NODE_ENV === 'production') {
     plugins.push(
@@ -164,10 +158,7 @@ if (process.env.NODE_ENV === 'development') {
     config.devServer = {
         hot: true,
         publicPath: config.output.publicPath,
-        inline: true,
-        liveReload: true,
         progress: false,
-        watchContentBase: true,
     }
 }
 
