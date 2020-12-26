@@ -5,6 +5,7 @@ on:  # yamllint disable-line rule:truthy
     branches:
       - pages
 
+# TODO: pin exact versions and setup dependabot
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
