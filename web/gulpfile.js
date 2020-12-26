@@ -7,9 +7,3 @@ gulp.task('sri', () => {
         .pipe(sriHash())
         .pipe(gulp.dest('public'))
 })
-
-gulp.task('svgo', () => {
-    return gulp.src('public/**/*.svg')
-        .pipe(svgo())
-        .pipe(gulp.dest('public'))
-})
