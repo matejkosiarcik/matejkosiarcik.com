@@ -3,7 +3,7 @@ name: Build and Deploy
 on:  # yamllint disable-line rule:truthy
   push:
     branches:
-      - pages
+      - master
 
 # TODO: pin exact versions and setup dependabot
 jobs:
