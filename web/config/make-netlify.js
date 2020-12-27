@@ -99,7 +99,7 @@ makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
         "base-uri 'self'",
         "script-src 'self' https://*.matejkosiarcik.com https://polyfill.io https://gc.zgo.at",
         "style-src 'self' https://*.matejkosiarcik.com",
-        "img-src 'self' https://*.matejkosiarcik.com",
+        "img-src 'self' https://*.matejkosiarcik.com https://matejkosiarcik.goatcounter.com",
         "connect-src 'self' https://*.matejkosiarcik.com https://matejkosiarcik.goatcounter.com",
         "form-action 'none'",
         "frame-ancestors 'none'",
