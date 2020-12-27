@@ -4,15 +4,24 @@ on:  # yamllint disable-line rule:truthy
   push:
     branches:
       - master
-      - develop
 
-# TODO: pin exact versions and setup dependabot
+# TODO: setup dependabot to update actions
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2.3.1
+
+      - name: Setup nodeJS
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Setup ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.7'
 
       - name: Build 🔧
         run: |
