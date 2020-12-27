@@ -10,6 +10,18 @@
   {% assign image = "/favicon.png" | absolute_url %}
 {% endif %}
 
+{% if page.title %}
+  {% assign title = page.title %}
+{% else %}
+  {% assign title = site.title %}
+{% endif %}
+
+{% if page.path contains "_posts" %}
+  {% assign webpage_type = "article" %}
+{% else %}
+  {% assign webpage_type = "website" %}
+{% endif %}
+
 <head>
   <meta charset="UTF-8" />
 
@@ -49,19 +61,19 @@
 
   <!-- OpenGraph -->
   {% if jekyll.environment == "production" %}
-    {% if page.title %}
-      <meta property="og:title" content="{{ page.title }}" />
-    {% else %}
-      <meta property="og:title" content="{{ site.title }}" />
-    {% endif %}
-    {% if page.path contains "_posts" %}
-      <meta property="og:type" content="article" />
-    {% else %}
-      <meta property="og:type" content="website" />
-    {% endif %}
+    <meta property="og:title" content="{{ title }}" />
+    <meta property="og:type" content="{{ webpage_type }}" />
     <meta property="og:url" content="{{ page.url | absolute_url }}" />
     <meta property="og:description" content="{{ description }}" />
     <meta property="og:image" content="{{ image }}" />
+    <!-- TOOD: <meta property="og:image:alt" content="" /> -->
+    <meta property="og:site_name" content="Matej Košiarčik's personal website">
+  {% endif %}
+
+  <!-- Twitter, ignoring properties already in OpenGraph -->
+  {% if jekyll.environment == "production" %}
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:creator" content="@matejkosiarcik">
   {% endif %}
 
   {% if jekyll.environment == "production" %}
