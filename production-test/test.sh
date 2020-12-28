@@ -1,12 +1,12 @@
 #!/bin/sh
 # shellcheck disable=SC2086
+set -euf
 
 # link checker
 blc_args='--follow --filter-level 3 --exclude linkedin.com --exclude twitter.com https://matejkosiarcik.com'
 blc --recursive ${blc_args}
 
 # mozzila observatory
-observatory matejkosiarcik.com --zero --rescan --format report
 observatory matejkosiarcik.com --format report --min-grade A+ --min-score 100
 
 # webhint.io
