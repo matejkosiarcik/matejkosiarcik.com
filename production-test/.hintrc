@@ -17,6 +17,14 @@
         "http-cache",
         "sri"
       ]
+    },
+    {
+        "domain": "https?://matejkosiarcik\\.goatcounter\\.com",
+        "hints": [
+            "http-cache",
+            "no-disallowed-headers",
+            "strict-transport-security"
+        ]
     }
   ],
   "hints": {
