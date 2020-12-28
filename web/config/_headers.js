@@ -30,6 +30,7 @@ makeHeaders('/*', {
     'X-Content-Type-Options': 'nosniff',
     'X-Frame-Options': 'DENY',
     'X-Permitted-Cross-Domain-Policies': 'none',
+    'Cache-Control': 'private, no-store, no-cache',
 })
 
 const htmlDirectories = glob.sync('**/index.html', { cwd: 'public' })
@@ -110,8 +111,9 @@ makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
 
     // 'Feature-Policy': permissions.map(el => `${el} 'none'`).join('; '),
     'Permissions-Policy': permissions.map(el => `${el}=()`).join(', '),
-
     'Expect-CT': 'max-age=0, report-uri="https://matejkosiarcik.report-uri.com/r/d/ct/reportOnly"',
+
+    'Cache-Control': 'max-age=86400, must-revalidate'
 })
 
 makeHeaders('/*.svg', {
@@ -122,6 +124,10 @@ makeHeaders('/*.svg', {
     ].join('; '),
 })
 
+makeHeaders(['/*.jpg', '/*.jpeg', '/*.png', '/*.gif', '/*.ico', '/*.svg', '/*.webp', '/*.avif', '/*.heif', '/*.heic'], {
+    'Cache-Control': 'max-age=604800, stale-while-revalidate=86400',
+})
+
 makeHeaders('/*.css', {
     'Content-Type': 'text/css; charset=UTF-8',
     'Cache-Control': 'max-age=31536000, immutable',
@@ -129,9 +135,5 @@ makeHeaders('/*.css', {
 
 makeHeaders('/*.js', {
     'Content-Type': 'text/javascript; charset=UTF-8',
-    'Content-Security-Policy': [
-        "default-src 'none'",
-        "connect-src https://api.matejkosiarcik.com",
-    ].join('; '),
     'Cache-Control': 'max-age=31536000, immutable',
 })
