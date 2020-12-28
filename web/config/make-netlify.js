@@ -129,9 +129,5 @@ makeHeaders('/*.css', {
 
 makeHeaders('/*.js', {
     'Content-Type': 'text/javascript; charset=UTF-8',
-    'Content-Security-Policy': [
-        "default-src 'none'",
-        "connect-src https://api.matejkosiarcik.com",
-    ].join('; '),
     'Cache-Control': 'max-age=31536000, immutable',
 })
