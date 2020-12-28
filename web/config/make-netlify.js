@@ -124,6 +124,7 @@ makeHeaders('/*.svg', {
 
 makeHeaders('/*.css', {
     'Content-Type': 'text/css; charset=UTF-8',
+    'Cache-Control': 'max-age=31536000, immutable',
 })
 
 makeHeaders('/*.js', {
@@ -132,4 +133,5 @@ makeHeaders('/*.js', {
         "default-src 'none'",
         "connect-src https://api.matejkosiarcik.com",
     ].join('; '),
+    'Cache-Control': 'max-age=31536000, immutable',
 })
