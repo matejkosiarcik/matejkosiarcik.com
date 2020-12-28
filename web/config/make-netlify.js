@@ -97,7 +97,7 @@ makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
     'Content-Security-Policy': [
         "default-src 'none'",
         "base-uri 'self'",
-        "script-src 'self' https://*.matejkosiarcik.com https://polyfill.io https://gc.zgo.at",
+        "script-src 'self' https://*.matejkosiarcik.com https://polyfill.io",
         "style-src 'self' https://*.matejkosiarcik.com",
         "img-src 'self' https://*.matejkosiarcik.com https://matejkosiarcik.goatcounter.com",
         "connect-src 'self' https://*.matejkosiarcik.com https://matejkosiarcik.goatcounter.com",
