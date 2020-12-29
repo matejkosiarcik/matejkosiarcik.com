@@ -20,6 +20,10 @@ pull_request_rules:
       - author=dependabot[bot]
       - base=master
       - assignee=matejkosiarcik
+      - -conflict
+      - -merged
+      - -locked
+      - -draft
     actions:
       merge:
         method: rebase

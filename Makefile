@@ -12,12 +12,11 @@ BUNDLE_ENV := BUNDLE_DISABLE_SHARED_GEMS=true BUNDLE_PATH__SYSTEM=false BUNDLE_P
 
 .DEFAULT: all
 .PHONY: all
-all: bootstrap build
+all: bootstrap lint build
 
 .PHONY: bootstrap
 bootstrap:
 	@$(MAKE) -C$(PROJECT_DIR)/web bootstrap
-	npm ci --prefix images
 
 .PHONY: lint
 lint:
@@ -30,4 +29,6 @@ build:
 .PHONY: prod-check
 prod-check:
 	npm ci --prefix production-test
+	npm ci --prefix backstop
 	npm test --prefix production-test
+	npm test --prefix backstop
