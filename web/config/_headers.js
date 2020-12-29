@@ -113,7 +113,7 @@ makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
     'Permissions-Policy': permissions.map(el => `${el}=()`).join(', '),
     'Expect-CT': 'max-age=0, report-uri="https://matejkosiarcik.report-uri.com/r/d/ct/reportOnly"',
 
-    'Cache-Control': 'max-age=3600, must-revalidate'
+    'Cache-Control': 'max-age=60, must-revalidate'
 })
 
 makeHeaders('/*.svg', {
