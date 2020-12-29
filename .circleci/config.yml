@@ -8,6 +8,9 @@ workflows:
       - lint
       - build-web
       - build-api
+  branches:
+    ignore:
+      - pages
 
   cron:
     triggers:
