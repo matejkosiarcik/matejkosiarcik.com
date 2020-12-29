@@ -35,3 +35,4 @@ jobs:
           BRANCH: pages
           FOLDER: web/public
           CLEAN: true
+          SINGLE_COMMIT: true
