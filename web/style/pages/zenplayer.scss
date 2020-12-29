@@ -1,0 +1,34 @@
+body.zenplayer {
+  text-align: center;
+
+  p {
+    margin-top: 15px;
+  }
+
+  p img {
+    display: inline;
+    width: 1.2em;
+    height: 1.2em;
+    vertical-align: text-bottom;
+  }
+
+  h2 {
+    margin-top: 100px;
+  }
+
+  .gallery {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+
+    > * {
+      margin-right: 50px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
