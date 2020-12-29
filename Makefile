@@ -17,7 +17,6 @@ all: bootstrap build
 .PHONY: bootstrap
 bootstrap:
 	@$(MAKE) -C$(PROJECT_DIR)/web bootstrap
-	npm ci --prefix images
 
 .PHONY: lint
 lint:
@@ -30,4 +29,6 @@ build:
 .PHONY: prod-check
 prod-check:
 	npm ci --prefix production-test
+	npm ci --prefix backstop
 	npm test --prefix production-test
+	npm test --prefix backstop
