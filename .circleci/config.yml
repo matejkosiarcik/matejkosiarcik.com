@@ -42,8 +42,7 @@ jobs:
           apt-get update
           DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-install-recommends build-essential curl ruby ruby-dev zlib1g zlib1g-dev
           curl -sL https://deb.nodesource.com/setup_lts.x | bash - && apt-get install --yes --no-install-recommends nodejs
-      - run: make bootstrap
-      - run: make lint
+      - run: make bootstrap lint
 
   build-web:
     docker:
@@ -54,8 +53,7 @@ jobs:
           apt-get update
           DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-install-recommends build-essential curl ruby ruby-dev pandoc zlib1g zlib1g-dev imagemagick
           curl -sL https://deb.nodesource.com/setup_lts.x | bash - && apt-get install --yes --no-install-recommends nodejs
-      - run: cd web && make bootstrap
-      - run: cd web && make build
+      - run: cd web && make bootstrap build
 
   build-api:
     docker:

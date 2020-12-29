@@ -34,5 +34,4 @@ install:
   - travis_wait 30 make bootstrap
 
 script:
-  - make lint
   - make build
