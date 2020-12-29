@@ -18,9 +18,9 @@ body.zenplayer {
 
   .gallery {
     display: flex;
+    flex-wrap: nowrap;
     margin-top: 20px;
     margin-bottom: 50px;
-    flex-wrap: nowrap;
     overflow-x: scroll;
 
     > * {

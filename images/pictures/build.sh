@@ -13,6 +13,6 @@ optimize() {
     exiftool -r -overwrite_original -all= "artifacts/$(basename "${1}")"
 }
 
-find 'original' -type f -iname '*.jpg' -print0 | while IFS= read -r -d '' file; do
+find 'original' -type f -iname '*.jpg' -print0 | while IFS= read -r file; do
     optimize "$(basename "${file}")"
 done
