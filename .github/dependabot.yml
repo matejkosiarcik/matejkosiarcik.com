@@ -48,3 +48,15 @@ updates:
       - matejkosiarcik
     assignees:
       - matejkosiarcik
+
+  - package-ecosystem: npm
+    directory: "/backstop/"
+    versioning-strategy: increase
+    schedule:
+      interval: daily
+      time: "02:30"
+      timezone: "Europe/Bratislava"
+    reviewers:
+      - matejkosiarcik
+    assignees:
+      - matejkosiarcik
