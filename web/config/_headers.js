@@ -125,7 +125,7 @@ makeHeaders('/*.svg', {
 })
 
 makeHeaders(['/*.jpg', '/*.jpeg', '/*.png', '/*.gif', '/*.ico', '/*.svg', '/*.webp', '/*.avif', '/*.heif', '/*.heic'], {
-    'Cache-Control': 'max-age=604800, stale-while-revalidate=86400',
+    'Cache-Control': 'max-age=604800',
 })
 
 makeHeaders('/*.css', {
