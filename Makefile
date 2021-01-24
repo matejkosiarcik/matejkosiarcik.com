@@ -29,6 +29,6 @@ build:
 .PHONY: prod-check
 prod-check:
 	npm ci --prefix production-test
-	npm ci --prefix backstop
+	# npm ci --prefix backstop
 	npm test --prefix production-test
 	# npm test --prefix backstop
