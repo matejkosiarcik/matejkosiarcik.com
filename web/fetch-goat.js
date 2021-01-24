@@ -13,3 +13,6 @@ require('isomorphic-fetch');
     fs.writeFileSync(scriptPath, originalScript)
     await execa('terser', ['--ie8', '--safari10', '--output', scriptPath, scriptPath])
 })()
+
+// TODO: consider if it is possible to replace with this
+// curl 'https://gc.zgo.at/count.js' | terser --ie8 --safari10 --output script/tmp/goat.js
