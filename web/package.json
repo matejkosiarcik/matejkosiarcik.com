@@ -31,7 +31,7 @@
     "serve": "cross-env NODE_ENV=development webpack serve --mode development"
   },
   "dependencies": {
-    "bootstrap": "^4.5.3",
+    "bootstrap": "^4.6.0",
     "colorette": "1.2.1",
     "core-js": "^3.8.3",
     "hamburgers": "^1.1.3",
