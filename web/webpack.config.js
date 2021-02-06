@@ -13,6 +13,8 @@ const ScriptExtPlugin = require('script-ext-html-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const ShakePlugin = require('webpack-common-shake').Plugin
 
+const sassImporter = require('node-sass-glob-importer')
+
 process.env.NODE_ENV = process.env.NODE_ENV === 'production' ? 'production' : 'development'
 const outputDir = 'public'
 
@@ -79,6 +81,16 @@ const cssLoaders = (process.env.NODE_ENV === 'production' ? [
             loader: 'postcss-loader',
             options: {
                 sourceMap: false,
+            },
+        },
+        {
+            loader: 'sass-loader',
+            options: {
+                implementation: require('sass'),
+                sassOptions: {
+                    importer: sassImporter(),
+                    outputStyle: 'expanded',
+                },
             },
         },
     ])
