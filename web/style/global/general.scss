@@ -26,10 +26,3 @@ html.no-js .js {
 .strikethrough {
   text-decoration: line-through;
 }
-
-img[src*='analytics'][alt*='Analytics'] {
-  visibility: hidden;
-  position: absolute;
-  width: 0;
-  height: 0;
-}
