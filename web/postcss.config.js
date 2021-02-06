@@ -1,9 +1,9 @@
 const plugins = [
-    require('postcss-hexrgba'),
     require('postcss-custom-properties')({
         preserve: true,
     }),
     require('postcss-calc'),
+    // TODO: replace with individual packages
     // require('postcss-preset-env')({
     //     preserve: false,
     //     autoprefixer: false,
@@ -12,6 +12,10 @@ const plugins = [
     //         'css-prefers-color-scheme': false, // do not translate dark mode
     //     },
     // }),
+    require('postcss-hexrgba'),
+    require('postcss-color-hex-alpha')({
+        preserve: false,
+    }),
     require('postcss-custom-media')({
         preserve: false,
     }),

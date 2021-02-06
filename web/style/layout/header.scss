@@ -5,7 +5,8 @@ body > header {
   }
 
   @media (--phone) {
-    border-bottom: 1px solid rgba(var(--fg-color), 0.2);
+    border-bottom: 1px solid var(--fg-color);
+    // border-bottom: 1px solid rgba(var(--fg-color), 0.2); // TODO: enable this
   }
 
   ul {
