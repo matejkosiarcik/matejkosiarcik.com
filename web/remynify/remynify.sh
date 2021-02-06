@@ -21,7 +21,7 @@ run_csso() {
 }
 
 run_crass() {
-    crass "${1}.css" --O1 --min ie9,fx30 --css4 --optimize >"${1}-crass.css"
+    crass "${1}.css" --css4 >"${1}-crass.css"
 }
 
 # 1
