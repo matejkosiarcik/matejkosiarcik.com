@@ -11,7 +11,7 @@ observatory matejkosiarcik.com --format report --min-grade A+ --min-score 100
 
 # webhint.io
 curl -L https://matejkosiarcik.com/urllist.txt | xargs -n1 hint
-curl -L https://matejkosiarcik.com/urllist.txt | xargs -n1 is-website-vulnerable
+# curl -L https://matejkosiarcik.com/urllist.txt | xargs -n1 is-website-vulnerable # TODO: reenable, seems to have problem with CHROME_PATH
 
 printf '\n'
 

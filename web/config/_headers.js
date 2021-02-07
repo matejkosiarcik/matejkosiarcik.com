@@ -30,6 +30,9 @@ makeHeaders('/*', {
     'X-Content-Type-Options': 'nosniff',
     'X-Frame-Options': 'DENY',
     'X-Permitted-Cross-Domain-Policies': 'none',
+
+    // by default cache nothing (such as robots.txt or 404s)
+    // override this setting for appropriate files (pages, assets, etc.)
     'Cache-Control': 'private, no-store, no-cache',
 })
 
@@ -37,8 +40,6 @@ const htmlDirectories = glob.sync('**/index.html', { cwd: 'public' })
     .map(file => path.dirname(file))
     .filter(dir => dir !== '.')
     .map(dir => `/${dir}/`)
-
-const reportTo = '{"group":"default","max_age":31536000,"endpoints":[{"url":"https://matejkosiarcik.report-uri.com/a/d/g"}],"include_subdomains":true}'
 
 // This is for Permissions-Policy (and deprecate Feature-Policy)
 // I don't understand why it doesn't have a "default" clause (like csp)
@@ -79,18 +80,17 @@ const permissions = [
 ]
 
 makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
-    'Link': [
-        // '<https://api.matejkosiarcik.com>; rel="dns-prefetch"',
-        // '<https://cdn.matejkosiarcik.com>; rel="dns-prefetch"',
-        // '<https://cdn.matejkosiarcik.com/style.css>; rel="preload"; as="style"; crossorigin="anonymous"',
-        // '<https://cdn.matejkosiarcik.com/bundle.js>; rel="preload"; as="script"; crossorigin="anonymous"',
-    ].join(', '),
+    // 'Link': [
+    //     // '<https://api.matejkosiarcik.com>; rel="dns-prefetch"',
+    //     // '<https://cdn.matejkosiarcik.com>; rel="dns-prefetch"',
+    //     // '<https://cdn.matejkosiarcik.com/style.css>; rel="preload"; as="style"; crossorigin="anonymous"',
+    //     // '<https://cdn.matejkosiarcik.com/bundle.js>; rel="preload"; as="script"; crossorigin="anonymous"',
+    // ].join(', '),
 
-    'Report-To': reportTo,
+    'Report-To': '{"group":"default","max_age":31536000,"endpoints":[{"url":"https://matejkosiarcik.report-uri.com/a/d/g"}],"include_subdomains":true}',
     'NEL': '{"report_to":"default","max_age":31536000,"include_subdomains":true}',
     'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
     'Referrer-Policy': 'strict-origin-when-cross-origin',
-    'X-Permitted-Cross-Domain-Policies': 'none',
     'X-XSS-Protection': '1; mode=block',
     'X-UA-Compatible': 'IE=edge',
     'Content-Type': 'text/html; charset=UTF-8',
@@ -113,7 +113,7 @@ makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
     'Permissions-Policy': permissions.map(el => `${el}=()`).join(', '),
     'Expect-CT': 'max-age=0, report-uri="https://matejkosiarcik.report-uri.com/r/d/ct/reportOnly"',
 
-    'Cache-Control': 'max-age=60, must-revalidate'
+    'Cache-Control': 'max-age=600, must-revalidate'
 })
 
 makeHeaders('/*.svg', {
@@ -124,8 +124,8 @@ makeHeaders('/*.svg', {
     ].join('; '),
 })
 
-makeHeaders(['/*.jpg', '/*.jpeg', '/*.png', '/*.gif', '/*.ico', '/*.svg', '/*.webp', '/*.avif', '/*.heif', '/*.heic'], {
-    'Cache-Control': 'max-age=604800, must-revalidate',
+makeHeaders(['/*.jpg', '/*.jpeg', '/*.png', '/*.apng', '/*.gif', '/*.ico', '/*.svg', '/*.webp', '/*.avif', '/*.heif', '/*.heic', '/*.bmp'], {
+    'Cache-Control': 'max-age=86400',
 })
 
 makeHeaders('/*.css', {
