@@ -19,7 +19,7 @@
     "build:svgo:post": "find public -type f -iname '*.svg' -print0 | xargs -0 -n1 sh -c 'tmpfile=\"$(dirname \"${1}\")/$(basename \"${1}\" .svg).tmp.svg\" && sed \"s~<defs/>~~g\" <\"${1}\" | tr -d \"\\n\" >\"${tmpfile}\" && mv \"${tmpfile}\" \"${1}\"' -",
     "build:hash": "node hash.js",
     "prebuild": "run-s prebuild:goat",
-    "prebuild:goat": "node fetch-goat.js",
+    "prebuild:goat": "node fetch-goatcounter.js",
     "postbuild": "node validate-build.js",
     "clean": "rimraf public",
     "lint": "run-p lint:*",
