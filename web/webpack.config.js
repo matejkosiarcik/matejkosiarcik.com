@@ -33,11 +33,10 @@ const plugins = glob.sync(`jekyll/_site/**/*.html`, { nodir: true }).map(file =>
                 glob.sync('../images/favicon/{,artifacts/}*.{svg,png,ico}').map(file => { return { from: file, to: '' } }),
                 glob.sync('../images/icons/{original,artifacts}/*.{jpg,png,svg,bmp,gif,webp}').map(file => { return { from: file, to: 'img' } }),
                 glob.sync('../images/pictures/artifacts/*.{jpg,png}').map(file => { return { from: file, to: 'img' } }),
+                glob.sync('./config/*', { nodir: true }).map(file => { return { from: file, to: '' } }),
+                glob.sync('./config/well-known/*', { nodir: true }).map(file => { return { from: file, to: '.well-known' } }),
                 [
                     { from: path.join(__dirname, 'jekyll', '_site', 'sitemap.xml'), to: '' },
-                    { from: path.join(__dirname, 'config', 'robots.txt'), to: '' },
-                    { from: path.join(__dirname, 'config', 'humans.txt'), to: '' },
-                    { from: path.join(__dirname, 'config', 'security.txt'), to: '.well-known' },
                     { from: path.join(__dirname, 'script', 'tmp', 'goatcounter.js'), to: '' },
                 ],
             ),

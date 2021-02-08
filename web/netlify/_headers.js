@@ -4,9 +4,6 @@ const path = require('path')
 const glob = require('glob')
 const assert = require('assert')
 
-fs.copyFileSync(path.join('config', '_redirects'), path.join('public', '_redirects'))
-fs.writeFileSync(path.join('public', '_headers'), '')
-
 function makeHeaders(urls, headers) {
     if (typeof urls === 'string') {
         urls = [urls]
@@ -22,7 +19,7 @@ function makeHeaders(urls, headers) {
     let outHeader = outHeaders.map(header => `  ${header}`).join('\n')
     for (let url of urls) {
         const output = `${url}\n${outHeader}\n`
-        fs.appendFileSync(path.join('public', '_headers'), output)
+        console.log(output)
     }
 }
 
@@ -44,39 +41,39 @@ const htmlDirectories = glob.sync('**/index.html', { cwd: 'public' })
 // This is for Permissions-Policy (and deprecate Feature-Policy)
 // I don't understand why it doesn't have a "default" clause (like csp)
 const permissions = [
-    'accelerometer',
-    'ambient-light-sensor',
-    'autoplay',
-    'battery',
-    'camera',
-    'display-capture',
-    // 'document-domain',
-    'document-write',
-    // 'encrypted-media',
-    // 'execution-while-not-rendered',
-    // 'execution-while-out-of-viewport',
-    'fullscreen',
-    'geolocation',
-    'gyroscope',
-    // 'layout-animations',
-    // 'legacy-image-formats',
-    'magnetometer',
-    'microphone',
-    'midi',
-    'navigation-override',
-    // 'oversized-images',
-    'payment',
-    // 'picture-in-picture',
-    // 'publickey-credentials-get',
-    // 'screen-wake-lock',
-    'sync-xhr',
-    'usb',
-    'vibrate',
-    // 'vr',
-    // 'wake-lock',
-    // 'webauthn',
-    // 'web-share',
-    // 'xr-spatial-tracking',
+    // 'accelerometer',
+    // 'ambient-light-sensor',
+    // 'autoplay',
+    // 'battery',
+    // 'camera',
+    // 'display-capture',
+    // // 'document-domain',
+    // 'document-write',
+    // // 'encrypted-media',
+    // // 'execution-while-not-rendered',
+    // // 'execution-while-out-of-viewport',
+    // 'fullscreen',
+    // 'geolocation',
+    // 'gyroscope',
+    // // 'layout-animations',
+    // // 'legacy-image-formats',
+    // 'magnetometer',
+    // 'microphone',
+    // 'midi',
+    // 'navigation-override',
+    // // 'oversized-images',
+    // 'payment',
+    // // 'picture-in-picture',
+    // // 'publickey-credentials-get',
+    // // 'screen-wake-lock',
+    // 'sync-xhr',
+    // 'usb',
+    // // 'vibrate',
+    // // 'vr',
+    // // 'wake-lock',
+    // // 'webauthn',
+    // // 'web-share',
+    // // 'xr-spatial-tracking',
 ]
 
 makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
