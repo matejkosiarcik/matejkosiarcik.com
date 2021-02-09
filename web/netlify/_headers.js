@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-const fs = require('fs')
 const path = require('path')
 const glob = require('glob')
 const assert = require('assert')
@@ -110,7 +109,7 @@ makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
     'Permissions-Policy': permissions.map(el => `${el}=()`).join(', '),
     'Expect-CT': 'max-age=0, report-uri="https://matejkosiarcik.report-uri.com/r/d/ct/reportOnly"',
 
-    'Cache-Control': 'max-age=600, must-revalidate'
+    'Cache-Control': 'max-age=600, must-revalidate',
 })
 
 makeHeaders('/*.svg', {
