@@ -34,5 +34,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: pages
           FOLDER: web/public
+          COMMIT_MESSAGE: "deploy: website go brrr 🚀 [ci skip]"
           CLEAN: true
           SINGLE_COMMIT: true
