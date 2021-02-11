@@ -13,6 +13,8 @@ updates:
     assignees:
       - matejkosiarcik
     open-pull-requests-limit: 1
+    labels:
+      - automerge
 
   - package-ecosystem: npm
     directory: "/web/"
@@ -25,6 +27,9 @@ updates:
       - matejkosiarcik
     assignees:
       - matejkosiarcik
+    open-pull-requests-limit: 1
+    labels:
+      - automerge
 
   - package-ecosystem: npm
     directory: "/web/remynify/"
@@ -37,6 +42,9 @@ updates:
       - matejkosiarcik
     assignees:
       - matejkosiarcik
+    open-pull-requests-limit: 1
+    labels:
+      - automerge
 
   - package-ecosystem: bundler
     directory: "/web/jekyll/"
@@ -49,6 +57,9 @@ updates:
       - matejkosiarcik
     assignees:
       - matejkosiarcik
+    open-pull-requests-limit: 1
+    labels:
+      - automerge
 
   - package-ecosystem: npm
     directory: "/production-test/"
@@ -61,6 +72,9 @@ updates:
       - matejkosiarcik
     assignees:
       - matejkosiarcik
+    open-pull-requests-limit: 1
+    labels:
+      - automerge
 
   - package-ecosystem: npm
     directory: "/backstop/"
@@ -73,3 +87,6 @@ updates:
       - matejkosiarcik
     assignees:
       - matejkosiarcik
+    open-pull-requests-limit: 1
+    labels:
+      - automerge
