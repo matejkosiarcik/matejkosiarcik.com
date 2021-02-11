@@ -7,8 +7,11 @@ jobs:
   auto-merge:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.0
-      - uses: ahmadnassri/action-dependabot-auto-merge@v2.2.0
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.1
+
+      - name: Merge 🎋
+        uses: ahmadnassri/action-dependabot-auto-merge@v2.2.0
         with:
           target: minor
-          github-token: ${{ secrets.mytoken }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
