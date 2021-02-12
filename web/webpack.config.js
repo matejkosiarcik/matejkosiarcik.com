@@ -31,8 +31,8 @@ const plugins = glob.sync(`jekyll/_site/**/*.html`, { nodir: true }).map(file =>
         patterns:
             [].concat(
                 glob.sync('../images/favicon/{,artifacts/}*.{svg,png,ico}').map(file => { return { from: file, to: '' } }),
-                glob.sync('../images/icons/{original,artifacts}/*.{jpg,png,svg,bmp,gif,webp}').map(file => { return { from: file, to: 'img' } }),
-                glob.sync('../images/pictures/artifacts/*.{jpg,png}').map(file => { return { from: file, to: 'img' } }),
+                glob.sync('../images/icons/{original,artifacts}/*.{jpg,png,svg,gif,webp}').map(file => { return { from: file, to: 'img' } }),
+                glob.sync('../images/pictures/artifacts/*.{jpg,png,svg,gif,webp}').map(file => { return { from: file, to: 'img' } }),
                 glob.sync('./config/*', { nodir: true }).map(file => { return { from: file, to: '' } }),
                 glob.sync('./config/well-known/*', { nodir: true }).map(file => { return { from: file, to: '.well-known' } }),
                 [
