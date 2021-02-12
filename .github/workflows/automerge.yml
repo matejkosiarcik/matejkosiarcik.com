@@ -42,3 +42,4 @@ jobs:
           MERGE_LABELS: automerge
           MERGE_METHOD: rebase
           MERGE_FILTER_AUTHOR: dependabot[bot]
+          UPDATE_METHOD: ""
