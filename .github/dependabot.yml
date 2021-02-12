@@ -13,12 +13,12 @@ updates:
     assignees:
       - matejkosiarcik
     open-pull-requests-limit: 1
-    labels:
-      - automerge
+    # labels:
+    #   - automerge
 
   - package-ecosystem: npm
     directory: "/web/"
-    versioning-strategy: increase
+    versioning-strategy: lockfile-only
     schedule:
       interval: daily
       time: "00:30"
@@ -28,12 +28,12 @@ updates:
     assignees:
       - matejkosiarcik
     open-pull-requests-limit: 1
-    labels:
-      - automerge
+    # labels:
+    #   - automerge
 
   - package-ecosystem: npm
     directory: "/web/remynify/"
-    versioning-strategy: increase
+    versioning-strategy: lockfile-only
     schedule:
       interval: daily
       time: "01:00"
@@ -43,12 +43,12 @@ updates:
     assignees:
       - matejkosiarcik
     open-pull-requests-limit: 1
-    labels:
-      - automerge
+    # labels:
+    #   - automerge
 
   - package-ecosystem: bundler
     directory: "/web/jekyll/"
-    versioning-strategy: increase
+    versioning-strategy: lockfile-only
     schedule:
       interval: daily
       time: "01:30"
@@ -58,12 +58,12 @@ updates:
     assignees:
       - matejkosiarcik
     open-pull-requests-limit: 1
-    labels:
-      - automerge
+    # labels:
+    #   - automerge
 
   - package-ecosystem: npm
     directory: "/production-test/"
-    versioning-strategy: increase
+    versioning-strategy: lockfile-only
     schedule:
       interval: daily
       time: "02:00"
@@ -73,12 +73,12 @@ updates:
     assignees:
       - matejkosiarcik
     open-pull-requests-limit: 1
-    labels:
-      - automerge
+    # labels:
+    #   - automerge
 
   - package-ecosystem: npm
     directory: "/backstop/"
-    versioning-strategy: increase
+    versioning-strategy: lockfile-only
     schedule:
       interval: daily
       time: "02:30"
@@ -88,5 +88,5 @@ updates:
     assignees:
       - matejkosiarcik
     open-pull-requests-limit: 1
-    labels:
-      - automerge
+    # labels:
+    #   - automerge
