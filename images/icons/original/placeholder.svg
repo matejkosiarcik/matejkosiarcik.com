@@ -3,7 +3,7 @@
   <style>
     @media screen and (prefers-color-scheme: dark) {
       g {
-        stroke: #eee;
+        stroke: #fafafa;
       }
     }
   </style>

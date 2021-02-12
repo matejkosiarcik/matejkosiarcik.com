@@ -3,7 +3,7 @@
   <style>
     @media screen and (prefers-color-scheme: dark) {
       g {
-        fill: #eee;
+        fill: #fafafa;
       }
     }
   </style>

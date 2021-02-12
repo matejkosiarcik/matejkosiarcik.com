@@ -3,7 +3,7 @@
   <style>
     @media screen and (prefers-color-scheme: dark) {
       #background-terminal {
-        fill: #eee;
+        fill: #fafafa;
       }
     }
   </style>
