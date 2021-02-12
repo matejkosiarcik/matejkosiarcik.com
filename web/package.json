@@ -55,7 +55,7 @@
     "css-loader": "^5.0.2",
     "css-validator": "^0.9.0",
     "csslint": "^1.0.5",
-    "eslint": "^7.19.0",
+    "eslint": "^7.20.0",
     "execa": "^5.0.0",
     "glob": "^7.1.6",
     "glob-all": "^3.2.1",
