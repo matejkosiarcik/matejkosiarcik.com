@@ -18,7 +18,7 @@ updates:
 
   - package-ecosystem: npm
     directory: "/web/"
-    versioning-strategy: lockfile-only
+    versioning-strategy: increase
     schedule:
       interval: daily
       time: "00:30"
@@ -33,7 +33,7 @@ updates:
 
   - package-ecosystem: npm
     directory: "/web/remynify/"
-    versioning-strategy: lockfile-only
+    versioning-strategy: increase
     schedule:
       interval: daily
       time: "01:00"
@@ -48,7 +48,7 @@ updates:
 
   - package-ecosystem: bundler
     directory: "/web/jekyll/"
-    versioning-strategy: lockfile-only
+    versioning-strategy: increase
     schedule:
       interval: daily
       time: "01:30"
@@ -63,7 +63,7 @@ updates:
 
   - package-ecosystem: npm
     directory: "/production-test/"
-    versioning-strategy: lockfile-only
+    versioning-strategy: increase
     schedule:
       interval: daily
       time: "02:00"
@@ -78,7 +78,7 @@ updates:
 
   - package-ecosystem: npm
     directory: "/backstop/"
-    versioning-strategy: lockfile-only
+    versioning-strategy: increase
     schedule:
       interval: daily
       time: "02:30"
