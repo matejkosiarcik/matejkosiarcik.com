@@ -26,3 +26,11 @@ html.no-js .js {
 .strikethrough {
   text-decoration: line-through;
 }
+
+img.siluette {
+  filter: opacity(82%);
+
+  @media (--dark) {
+    filter: invert(100%) opacity(95%);
+  }
+}
