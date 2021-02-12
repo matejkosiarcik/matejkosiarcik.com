@@ -2,10 +2,6 @@ name: AutoMerge
 
 on:
   pull_request:
-    branches:
-      - main
-      - master
-      - "dependabot/**"
     types:
       - labeled
       - unlabeled
