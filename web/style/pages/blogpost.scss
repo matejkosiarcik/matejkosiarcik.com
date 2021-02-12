@@ -2,8 +2,8 @@ body.blogpost {
   @media (--dark) {
     img {
       // filter: grayscale(30%);
+      transition: opacity 0.2s ease-in-out;
       opacity: 0.75;
-      transition: opacity .2s ease-in-out;
 
       &:hover {
         opacity: 1;
