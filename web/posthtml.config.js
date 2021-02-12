@@ -5,11 +5,18 @@ const plugins = [
             selector: 'img',
             attr: 'loading',
             value: 'lazy',
-        }, {
+        },
+        {
             selector: 'iframe',
             attr: 'loading',
             value: 'lazy',
         },
+        // TODO: benchmark if this is important or not
+        // {
+        //     selector: 'img',
+        //     attr: 'decoding',
+        //     value: 'async',
+        // },
     ]),
 ]
 
