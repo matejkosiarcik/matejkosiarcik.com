@@ -20,19 +20,6 @@ on:
   status: {}
 
 jobs:
-  # automerge-humans:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Automerge 🎋 for humans 👨‍💻
-  #       uses: "pascalgn/automerge-action@v0.13.0"
-  #       env:
-  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #         MERGE_LABELS: automerge
-  #         MERGE_METHOD: merge
-  #         MERGE_FILTER_AUTHOR: matejkosiarcik
-  #         UPDATE_LABELS: autoupdate
-  #         UPDATE_METHOD: rebase
-
   automerge-dependabot:
     runs-on: ubuntu-latest
     steps:

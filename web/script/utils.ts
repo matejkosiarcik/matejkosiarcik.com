@@ -1,7 +1,8 @@
 export function ready(callback: () => void): void {
-    if (typeof document === 'undefined') {
-        throw new Error('not a browser')
-    }
+    // check if running outside browser, like nodeJS
+    // if (typeof document === 'undefined') {
+    //     throw new Error('not a browser')
+    // }
 
     const state = document.readyState
     if (state === 'complete' || state === 'interactive') {
