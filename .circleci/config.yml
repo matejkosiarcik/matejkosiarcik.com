@@ -4,14 +4,10 @@ workflows:
   version: 2
   circleci-build:
     jobs:
-      - azlint:
-          filters: { branches: { ignore: [ pages ]}}
-      - lint:
-          filters: { branches: { ignore: [ pages ]}}
-      - build-web:
-          filters: { branches: { ignore: [ pages ]}}
-      - build-api:
-          filters: { branches: { ignore: [ pages ]}}
+      - azlint
+      - lint
+      - build-web
+      - build-api
 
   cron:
     triggers:
