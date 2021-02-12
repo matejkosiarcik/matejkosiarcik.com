@@ -29,6 +29,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MERGE_LABELS: automerge
           MERGE_METHOD: merge
+          MERGE_FILTER_AUTHOR: matejkosiarcik
           UPDATE_LABELS: autoupdate
           UPDATE_METHOD: rebase
 
@@ -42,4 +43,5 @@ jobs:
           MERGE_LABELS: automerge
           MERGE_METHOD: rebase
           MERGE_FILTER_AUTHOR: dependabot[bot],dependabot-preview[bot]
-          UPDATE_METHOD: ""
+          UPDATE_LABELS: autoupdate  # should not actually update
+          UPDATE_METHOD: rebase
