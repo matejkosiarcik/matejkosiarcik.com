@@ -42,7 +42,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MERGE_LABELS: automerge
           MERGE_METHOD: rebase
-          MERGE_FILTER_AUTHOR: dependabot[bot],dependabot-preview[bot]
+          MERGE_FILTER_AUTHOR: dependabot[bot]
           MERGE_RETRIES: 0
           MERGE_FORKS: false
           UPDATE_LABELS: autoupdate,never  # should not actually update
