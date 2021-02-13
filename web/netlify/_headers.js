@@ -106,7 +106,7 @@ makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
     ].join('; '),
 
     // 'Feature-Policy': permissions.map(el => `${el} 'none'`).join('; '),
-    'Permissions-Policy': permissions.map(el => `${el}=()`).join(', '),
+    'Permissions-Policy': '', // permissions.map(el => `${el}=()`).join(', '),
     'Expect-CT': 'max-age=0, report-uri="https://matejkosiarcik.report-uri.com/r/d/ct/reportOnly"',
 
     'Cache-Control': 'max-age=600, must-revalidate',
