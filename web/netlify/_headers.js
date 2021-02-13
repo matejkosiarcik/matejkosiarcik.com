@@ -30,6 +30,10 @@ makeHeaders('/*', {
     // by default cache nothing (such as robots.txt or 404s)
     // override this setting for appropriate files (pages, assets, etc.)
     'Cache-Control': 'private, no-store, no-cache',
+
+    // can't be same-origin, because assets will be served from subdomain,
+    // can't be cross-origin, because I guess hotlinking
+    'Cross-Origin-Resource-Policy': 'same-site',
 })
 
 const htmlDirectories = glob.sync('**/index.html', { cwd: 'public' })
@@ -71,7 +75,7 @@ const disabledPermissions = [
     'wake-lock',
     // 'webauthn',
     // 'web-share',
-    'xr-spatial-tracking',
+    // 'xr-spatial-tracking',
 ].map(el => `${el}=()`).join(', ')
 
 const imagePermissions = [
@@ -106,11 +110,13 @@ makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
         // "report-to default",
     ].join('; '),
 
-    // 'Feature-Policy': permissions.map(el => `${el} 'none'`).join('; '),
     'Permissions-Policy': disabledPermissions + ', ' + imagePermissions,
     'Expect-CT': 'max-age=0, report-uri="https://matejkosiarcik.report-uri.com/r/d/ct/reportOnly"',
 
     'Cache-Control': 'max-age=600, must-revalidate',
+
+    'Cross-Origin-Embedder-Policy': 'unsafe-none; report-to="default"', // TODO: switch to "require-corp" after all used external resources implemented "Cross-Origin-Resource-Policy: cross-origin" (mainly goatcounter)
+    'Cross-Origin-Opener-Policy': 'same-origin; report-to="default"',
 })
 
 makeHeaders('/*.svg', {
