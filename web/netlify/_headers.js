@@ -99,10 +99,10 @@ makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
     'Content-Security-Policy': [
         "default-src 'none'",
         "base-uri 'self'",
-        "script-src 'self' https://*.matejkosiarcik.com https://polyfill.io",
+        "script-src 'self' https://*.matejkosiarcik.com",
         "style-src 'self' https://*.matejkosiarcik.com",
         "img-src 'self' https://*.matejkosiarcik.com https://matejkosiarcik.goatcounter.com",
-        "connect-src 'self' https://*.matejkosiarcik.com https://matejkosiarcik.goatcounter.com",
+        "connect-src 'self' https://*.matejkosiarcik.com",
         "form-action 'none'",
         "frame-ancestors 'none'",
         "block-all-mixed-content",
@@ -111,8 +111,7 @@ makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
     ].join('; '),
 
     'Permissions-Policy': disabledPermissions + ', ' + imagePermissions,
-    'Expect-CT': 'max-age=0, report-uri="https://matejkosiarcik.report-uri.com/r/d/ct/reportOnly"',
-
+    'Expect-CT': 'max-age=0, enforce, report-uri="https://matejkosiarcik.report-uri.com/r/d/ct/enforce"',
     'Cache-Control': 'max-age=600, must-revalidate',
 
     'Cross-Origin-Embedder-Policy': 'unsafe-none; report-to="default"', // TODO: switch to "require-corp" after all used external resources implemented "Cross-Origin-Resource-Policy: cross-origin" (mainly goatcounter)

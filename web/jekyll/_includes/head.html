@@ -23,7 +23,7 @@
 {% endif %}
 
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
 
   <!-- simulate part of production CSP header locally -->
   {% if jekyll.environment == "development" %}
@@ -31,8 +31,8 @@
   {% endif %}
 
   {% if jekyll.environment == "production" %}
-    <!-- <link rel="dns-prefetch" href="https://api.matejkosiarcik.com" /> -->
-    <!-- <link rel="dns-prefetch" href="https://cdn.matejkosiarcik.com" /> -->
+    <!-- <link rel="dns-prefetch" href="https://api.matejkosiarcik.com"/> -->
+    <!-- <link rel="dns-prefetch" href="https://cdn.matejkosiarcik.com"/> -->
   {% endif %}
 
   {% if page.title %}
@@ -42,31 +42,31 @@
   {% endif %}
 
   <!-- meta -->
-  <meta name="description" content="{{ description }}" />
-  <meta name="keywords" content="programmer, indie developer" />
-  <meta name="author" content="Matej Košiarčik" />
-  <meta name="copyright" content="Copyright © 2017-2020 Matej Košiarčik. All rights reserved." />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="{{ description }}"/>
+  <meta name="keywords" content="programmer, indie developer"/>
+  <meta name="author" content="Matej Košiarčik"/>
+  <meta name="copyright" content="Copyright © 2017-2021 Matej Košiarčik. All rights reserved."/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   {% if jekyll.environment == "production" %}
-    <link rel="canonical" href="{{ page.url | absolute_url }}" />
+    <link rel="canonical" href="{{ page.url | absolute_url }}"/>
   {% endif %}
 
   <!-- favicon -->
-  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="icon" type="image/png" href="/favicon.png"/>
   <!--[if IE]>
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
   <![endif]-->
-  <link rel="mask-icon" href="/pinicon.svg" color="#369" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="mask-icon" href="/pinicon.svg" color="#369"/>
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
 
   <!-- OpenGraph -->
   {% if jekyll.environment == "production" %}
-    <meta property="og:title" content="{{ title }}" />
-    <meta property="og:type" content="{{ webpage_type }}" />
-    <meta property="og:url" content="{{ page.url | absolute_url }}" />
-    <meta property="og:description" content="{{ description }}" />
-    <meta property="og:image" content="{{ image }}" />
-    <!-- TOOD: <meta property="og:image:alt" content="" /> -->
+    <meta property="og:title" content="{{ title }}"/>
+    <meta property="og:type" content="{{ webpage_type }}"/>
+    <meta property="og:url" content="{{ page.url | absolute_url }}"/>
+    <meta property="og:description" content="{{ description }}"/>
+    <meta property="og:image" content="{{ image }}"/>
+    <!-- TOOD: <meta property="og:image:alt" content=""/> -->
     <meta property="og:site_name" content="Matej Košiarčik's personal website">
   {% endif %}
 

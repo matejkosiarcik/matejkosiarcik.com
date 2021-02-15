@@ -4,7 +4,7 @@ module.exports = {
   "id": "backstop_default",
   "viewports": [
     {
-      "label": "oldphone",
+      "label": "phone-small",
       "width": 320,
       "height": 480
     },

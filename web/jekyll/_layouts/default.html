@@ -17,22 +17,21 @@
     </main>
     {% include footer.html %}
 
-    <!-- polyfill for older browsers -->
-    <!-- The integrity is wrong, which does not matter because it is meant for older browsers which do not (usually) support SRI -->
-    <!-- If it catches few false positives doesn't matter, because the whole JS is just a progressive enhancement -->
-    <!-- And the site is meant to function without it (it is just nicer when it works) -->
-    <!-- TODO: enable or do something better that playes better with SRI -->
-    <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=default" nomodule defer crossorigin="anonymous" integrity="sha384-...."></script> -->
-
     {% if jekyll.environment == "production" %}
+      <!-- polyfill older IE versions -->
+      <!-- I know this is meaningless (I mean who still uses it?), but kinda fun though -->
+      <!--[if IE]>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default" crossorigin="anonymous"></script>
+      <![endif]-->
+
+      <!-- main script -->
       <script src="/bundle.js" defer crossorigin="anonymous"></script>
 
       <!-- analytics -->
       <script src="/goatcounter.js" data-goatcounter="https://matejkosiarcik.goatcounter.com/count" defer async crossorigin="anonymous"></script>
-
-      <!-- consider enabling this in the future, for now it is disabled because of potential bots -->
+      <!-- consider enabling this in the future (maybe with another domain endpoint?), for now it is disabled because of potential bots -->
       <!-- <noscript>
-        <img src="https://matejkosiarcik.goatcounter.com/count?p=/test-img">
+        <img src="https://matejkosiarcik.goatcounter.com/count?p=/test-img"/>
       </noscript> -->
     {% endif %}
   </body>
