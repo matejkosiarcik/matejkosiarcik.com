@@ -99,10 +99,10 @@ makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
     'Content-Security-Policy': [
         "default-src 'none'",
         "base-uri 'self'",
-        "script-src 'self' https://*.matejkosiarcik.com https://polyfill.io",
+        "script-src 'self' https://*.matejkosiarcik.com",
         "style-src 'self' https://*.matejkosiarcik.com",
         "img-src 'self' https://*.matejkosiarcik.com https://matejkosiarcik.goatcounter.com",
-        "connect-src 'self' https://*.matejkosiarcik.com https://matejkosiarcik.goatcounter.com",
+        "connect-src 'self' https://*.matejkosiarcik.com",
         "form-action 'none'",
         "frame-ancestors 'none'",
         "block-all-mixed-content",
