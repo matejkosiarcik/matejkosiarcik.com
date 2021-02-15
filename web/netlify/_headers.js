@@ -111,8 +111,7 @@ makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
     ].join('; '),
 
     'Permissions-Policy': disabledPermissions + ', ' + imagePermissions,
-    'Expect-CT': 'max-age=0, report-uri="https://matejkosiarcik.report-uri.com/r/d/ct/reportOnly"',
-
+    'Expect-CT': 'max-age=0, enforce, report-uri="https://matejkosiarcik.report-uri.com/r/d/ct/enforce"',
     'Cache-Control': 'max-age=600, must-revalidate',
 
     'Cross-Origin-Embedder-Policy': 'unsafe-none; report-to="default"', // TODO: switch to "require-corp" after all used external resources implemented "Cross-Origin-Resource-Policy: cross-origin" (mainly goatcounter)
