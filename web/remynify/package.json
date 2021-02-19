@@ -5,7 +5,7 @@
     "build": "sh remynify.sh ../public/style.css"
   },
   "devDependencies": {
-    "clean-css-cli": "^5.1.0",
+    "clean-css-cli": "^5.2.0",
     "crass": "^0.12.3",
     "cssnano-cli": "^1.0.5",
     "csso-cli": "^3.0.0"
