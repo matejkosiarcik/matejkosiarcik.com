@@ -27,12 +27,12 @@ jobs:
           cd web
           make bootstrap build
 
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@3.7.1
+      - name: Deploy to github pages 🚀
+        uses: JamesIves/github-pages-deploy-action@4.0.0
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: pages
-          FOLDER: web/public
-          COMMIT_MESSAGE: "deploy: website go brrr 🚀 [ci skip]"
-          CLEAN: true
-          SINGLE_COMMIT: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: pages
+          folder: ./web/public
+          commit-message: "deploy: website go brrr 🚀 [ci skip]"
+          single-commit: true
+          # clean: true
