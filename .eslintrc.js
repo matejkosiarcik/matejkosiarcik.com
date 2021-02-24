@@ -4,7 +4,6 @@ module.exports = {
         '**/script/tmp/**',
         '**/public/**',
         '**/backstop_data/**',
-        'web/*.config.js',
     ],
     parser: '@typescript-eslint/parser',
     plugins: [
@@ -24,7 +23,13 @@ module.exports = {
         '@typescript-eslint/no-explicit-any': 0,
         'comma-dangle': ['error', 'always-multiline'],
         'eqeqeq': ['error', 'always'],
-        'semi': ['error', 'always', { 'omitLastInOneLineBlock': false }],
+        'semi': ['error', 'always', { 'omitLastInOneLineBlock': true }],
         'no-inner-declarations': 0,
     },
-}
+    overrides: [{
+        files: ["*.js", "*.jsx"],
+        rules: {
+            '@typescript-eslint/no-var-requires': 0,
+        },
+    }],
+};

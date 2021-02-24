@@ -1,8 +1,8 @@
-import { ready } from "./utils"
+import { ready } from "./utils";
 
 // redirect from matejkosiarcik.netlify.app -> matejkosiarcik.com
 ready(() => {
     if (location.hostname.includes('netlify')) {
-        location.assign(`https://matejkosiarcik.com${location.pathname}`)
+        location.assign(`https://matejkosiarcik.com${location.pathname}`);
     }
-})
+});

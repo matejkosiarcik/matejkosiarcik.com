@@ -1,22 +1,22 @@
-const path = require('path')
-const process = require('process')
-const glob = require('glob')
+const path = require('path');
+const process = require('process');
+const glob = require('glob');
 
-const HtmlPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const HtmlPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const CopyPlugin = require('copy-webpack-plugin')
-const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries")
+const CopyPlugin = require('copy-webpack-plugin');
+const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 
-const ScriptExtPlugin = require('script-ext-html-webpack-plugin')
+const ScriptExtPlugin = require('script-ext-html-webpack-plugin');
 
-const TerserPlugin = require('terser-webpack-plugin')
-const ShakePlugin = require('webpack-common-shake').Plugin
+const TerserPlugin = require('terser-webpack-plugin');
+const ShakePlugin = require('webpack-common-shake').Plugin;
 
-const sassImporter = require('node-sass-glob-importer')
+const sassImporter = require('node-sass-glob-importer');
 
-process.env.NODE_ENV = process.env.NODE_ENV === 'production' ? 'production' : 'development'
-const outputDir = 'public'
+process.env.NODE_ENV = process.env.NODE_ENV === 'production' ? 'production' : 'development';
+const outputDir = 'public';
 
 // TODO: try google-closure-compiler or YUI compressor
 
@@ -41,7 +41,7 @@ const plugins = glob.sync(`jekyll/_site/**/*.html`, { nodir: true }).map(file =>
                 ],
             ),
     }),
-])
+]);
 
 if (process.env.NODE_ENV === 'production') {
     plugins.push(
@@ -53,7 +53,7 @@ if (process.env.NODE_ENV === 'production') {
             defaultAttribute: 'defer',
         }),
         new ShakePlugin(),
-    )
+    );
 }
 
 const cssLoaders = (process.env.NODE_ENV === 'production' ? [
@@ -92,7 +92,7 @@ const cssLoaders = (process.env.NODE_ENV === 'production' ? [
                 },
             },
         },
-    ])
+    ]);
 
 const config = {
     mode: process.env.NODE_ENV,
@@ -165,14 +165,14 @@ const config = {
         ],
     },
     watch: process.env.NODE_ENV === 'development',
-}
+};
 
 if (process.env.NODE_ENV === 'development') {
     config.devServer = {
         hot: true,
         publicPath: config.output.publicPath,
         progress: false,
-    }
+    };
 }
 
-module.exports = config
+module.exports = config;

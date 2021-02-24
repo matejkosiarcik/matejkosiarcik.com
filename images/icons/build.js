@@ -1,11 +1,11 @@
-const fs = require('fs')
-const path = require('path')
-const glob = require('glob-all')
-const execa = require('execa')
+const fs = require('fs');
+const path = require('path');
+const glob = require('glob-all');
+const execa = require('execa');
 
 const outDir = path.join(__dirname, 'artifacts');
 try {
-    fs.mkdirSync(outDir)
+    fs.mkdirSync(outDir);
 } catch(e) {}
 if (!fs.existsSync(outDir)) {
     console.log('Could not create/find output directory');
@@ -25,4 +25,4 @@ async function svg2png(inputFile, outputFile, width, height) {
     for (let inputFile of glob.sync(['original/{autodnd,zenplayer}.svg'])) {
         await svg2png(inputFile, path.join(outDir, path.basename(inputFile, '.svg') + '.png'), 100, 100);
     }
-})()
+})();

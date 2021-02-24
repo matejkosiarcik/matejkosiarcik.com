@@ -22,14 +22,14 @@ const plugins = [
         //     value: '',
         // },
     ]),
-]
+];
 
 if (process.env.NODE_ENV === 'production') {
     plugins.push(
         require('posthtml-attrs-sorter')(),
-    )
+    );
 }
 
 module.exports = {
     plugins: plugins,
-}
+};

@@ -21,8 +21,8 @@ const plugins = [
     }),
     require('postcss-media-minmax'),
     require('autoprefixer'),
-]
+];
 
 module.exports = {
     plugins: plugins,
-}
+};
