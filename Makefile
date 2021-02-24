@@ -16,10 +16,12 @@ all: bootstrap build
 
 .PHONY: bootstrap
 bootstrap:
+	npm ci
 	@$(MAKE) -C$(PROJECT_DIR)/web bootstrap
 
 .PHONY: lint
 lint:
+	npm run lint
 	@$(MAKE) -C$(PROJECT_DIR)/web lint
 
 .PHONY: build
