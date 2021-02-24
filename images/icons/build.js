@@ -6,7 +6,7 @@ const execa = require('execa');
 const outDir = path.join(__dirname, 'artifacts');
 try {
     fs.mkdirSync(outDir);
-} catch(e) {}
+} catch(e) { return }
 if (!fs.existsSync(outDir)) {
     console.log('Could not create/find output directory');
 }

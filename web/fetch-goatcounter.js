@@ -11,7 +11,7 @@ require('isomorphic-fetch');
     // write script to file
     try {
         fs.mkdirSync(path.resolve(__dirname, 'script', 'tmp'));
-    } catch(e) {}
+    } catch(e) { return }
     const scriptPath = path.join(__dirname, 'script', 'tmp', 'goatcounter.js');
     fs.writeFileSync(scriptPath, script);
 
