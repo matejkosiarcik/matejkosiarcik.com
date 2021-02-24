@@ -14,6 +14,15 @@ async function fileHash(filePath) {
     return hashBase36.substr(0,12);
 }
 
+// replace all occurences of "pattern" in "content" with "value"
+function replaceAll(content, pattern, value) {
+    let output = content.replace(pattern, value);
+    if (output === content) {
+        return output;
+    }
+    return replaceAll(output, pattern, value);
+}
+
 (async () => {
     const assetHashes = await Promise.all(assetFiles.map(fileHash));
     const oldAssetNames = [];
@@ -35,7 +44,7 @@ async function fileHash(filePath) {
     documentFiles.forEach(documentFilePath => {
         let documentContent = fs.readFileSync(documentFilePath).toString('utf-8');
         for (let i in assetFiles) {
-            documentContent = documentContent.replaceAll(oldAssetNames[i], newAssetNames[i]);
+            documentContent = replaceAll(documentContent, oldAssetNames[i], newAssetNames[i]);
         }
         fs.writeFileSync(documentFilePath, documentContent, { encoding: 'utf-8' });
     });
