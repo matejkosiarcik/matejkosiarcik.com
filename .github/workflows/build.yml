@@ -22,4 +22,4 @@ jobs:
           ruby-version: '2.7'
 
       - name: Build 🔧
-        run: make bootstrap lint build test
+        run: make bootstrap lint build
