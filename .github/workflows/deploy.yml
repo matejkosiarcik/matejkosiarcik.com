@@ -35,4 +35,3 @@ jobs:
           folder: ./web/public
           commit-message: "deploy: website go brrr 🚀 [ci skip]"
           single-commit: true
-          # clean: true
