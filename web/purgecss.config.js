@@ -4,9 +4,9 @@ module.exports = {
         'script/**/*.{js,ts}',
     ],
     css: [
-        'public/style.css'
+        'public/style.css',
     ],
     output: 'public/style.css',
     fontFace: true,
     keyframes: true,
-}
+};

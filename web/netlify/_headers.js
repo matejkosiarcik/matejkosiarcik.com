@@ -1,24 +1,24 @@
 #!/usr/bin/env node
-const path = require('path')
-const glob = require('glob')
-const assert = require('assert')
+const path = require('path');
+const glob = require('glob');
+const assert = require('assert');
 
 function makeHeaders(urls, headers) {
     if (typeof urls === 'string') {
-        urls = [urls]
+        urls = [urls];
     }
-    assert(Array.isArray(urls))
+    assert(Array.isArray(urls));
 
-    let outHeaders = []
+    let outHeaders = [];
     for (let header in headers) {
-        assert(typeof header === 'string')
-        assert(typeof headers[header] === 'string')
-        outHeaders.push(`  ${header}: ${headers[header]}`)
+        assert(typeof header === 'string');
+        assert(typeof headers[header] === 'string');
+        outHeaders.push(`  ${header}: ${headers[header]}`);
     }
-    let outHeader = outHeaders.map(header => `  ${header}`).join('\n')
+    let outHeader = outHeaders.map(header => `  ${header}`).join('\n');
     for (let url of urls) {
-        const output = `${url}\n${outHeader}\n`
-        console.log(output)
+        const output = `${url}\n${outHeader}\n`;
+        console.log(output);
     }
 }
 
@@ -34,12 +34,12 @@ makeHeaders('/*', {
     // can't be same-origin, because assets will be served from subdomain,
     // can't be cross-origin, because I guess hotlinking
     'Cross-Origin-Resource-Policy': 'same-site',
-})
+});
 
 const htmlDirectories = glob.sync('**/index.html', { cwd: 'public' })
     .map(file => path.dirname(file))
     .filter(dir => dir !== '.')
-    .map(dir => `/${dir}/`)
+    .map(dir => `/${dir}/`);
 
 // This is for Permissions-Policy (and deprecate Feature-Policy)
 // I don't understand why it doesn't have a "default" clause (like csp)
@@ -76,12 +76,12 @@ const disabledPermissions = [
     // 'webauthn',
     // 'web-share',
     // 'xr-spatial-tracking',
-].map(el => `${el}=()`).join(', ')
+].map(el => `${el}=()`).join(', ');
 
 const imagePermissions = [
     'oversized-images',
     'legacy-image-formats',
-].map(el => `${el}=(self "https://matejkosiarcik.goatcounter.com")`).join(', ')
+].map(el => `${el}=(self "https://matejkosiarcik.goatcounter.com")`).join(', ');
 
 makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
     // 'Link': [
@@ -116,7 +116,7 @@ makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
 
     'Cross-Origin-Embedder-Policy': 'unsafe-none; report-to="default"', // TODO: switch to "require-corp" after all used external resources implemented "Cross-Origin-Resource-Policy: cross-origin" (mainly goatcounter)
     'Cross-Origin-Opener-Policy': 'same-origin; report-to="default"',
-})
+});
 
 makeHeaders('/*.svg', {
     'Content-Type': 'image/svg+xml; charset=UTF-8',
@@ -124,18 +124,18 @@ makeHeaders('/*.svg', {
         "default-src 'none'",
         "style-src 'unsafe-inline'",
     ].join('; '),
-})
+});
 
 makeHeaders(['/*.jpg', '/*.jpeg', '/*.png', '/*.apng', '/*.gif', '/*.ico', '/*.svg', '/*.webp', '/*.avif', '/*.heif', '/*.heic', '/*.bmp'], {
     'Cache-Control': 'max-age=86400',
-})
+});
 
 makeHeaders('/*.css', {
     'Content-Type': 'text/css; charset=UTF-8',
     'Cache-Control': 'max-age=31536000, immutable',
-})
+});
 
 makeHeaders('/*.js', {
     'Content-Type': 'text/javascript; charset=UTF-8',
     'Cache-Control': 'max-age=31536000, immutable',
-})
+});

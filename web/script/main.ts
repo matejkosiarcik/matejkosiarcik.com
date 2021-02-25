@@ -1,4 +1,4 @@
-import './enable-js'
-import './redirect'
-import './header'
-import 'instant.page'
+import './enable-js';
+import './redirect';
+import './header';
+import 'instant.page';

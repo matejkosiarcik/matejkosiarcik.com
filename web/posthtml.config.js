@@ -11,21 +11,25 @@ const plugins = [
             attr: 'loading',
             value: 'lazy',
         },
-        // TODO: benchmark if this is important or not
+        {
+            selector: 'img',
+            attr: 'decoding',
+            value: 'async',
+        },
         // {
-        //     selector: 'img',
-        //     attr: 'decoding',
-        //     value: 'async',
+        //     selector: 'img[width][height]',
+        //     attr: 'data-visibilty',
+        //     value: '',
         // },
     ]),
-]
+];
 
 if (process.env.NODE_ENV === 'production') {
     plugins.push(
         require('posthtml-attrs-sorter')(),
-    )
+    );
 }
 
 module.exports = {
     plugins: plugins,
-}
+};

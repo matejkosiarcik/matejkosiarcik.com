@@ -5,7 +5,7 @@ const presets = [
         'useBuiltIns': 'usage',
     }],
     '@babel/typescript',
-]
+];
 
 module.exports = {
     presets: presets,
@@ -14,4 +14,4 @@ module.exports = {
         '@babel/proposal-numeric-separator',
         '@babel/proposal-object-rest-spread',
     ],
-}
+};

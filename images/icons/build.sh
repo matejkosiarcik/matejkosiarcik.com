@@ -15,6 +15,7 @@ optimize() {
 optimize 'artifacts/terminal.png'
 optimize 'artifacts/placeholder.png'
 optimize 'artifacts/docker.png'
+optimize 'artifacts/warning.png'
 
 optimize 'artifacts/autodnd.png'
 optimize 'artifacts/zenplayer.png'

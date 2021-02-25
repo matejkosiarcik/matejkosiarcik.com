@@ -17,7 +17,7 @@ updates:
       - automerge
 
   - package-ecosystem: npm
-    directory: "/web/"
+    directory: "/"
     versioning-strategy: increase
     schedule:
       interval: daily
@@ -32,11 +32,26 @@ updates:
       - automerge
 
   - package-ecosystem: npm
-    directory: "/web/remynify/"
+    directory: "/web/"
     versioning-strategy: increase
     schedule:
       interval: daily
       time: "01:00"
+      timezone: "Europe/Bratislava"
+    reviewers:
+      - matejkosiarcik
+    assignees:
+      - matejkosiarcik
+    open-pull-requests-limit: 1
+    labels:
+      - automerge
+
+  - package-ecosystem: npm
+    directory: "/web/remynify/"
+    versioning-strategy: increase
+    schedule:
+      interval: daily
+      time: "01:30"
       timezone: "Europe/Bratislava"
     reviewers:
       - matejkosiarcik
@@ -51,7 +66,7 @@ updates:
     versioning-strategy: increase
     schedule:
       interval: daily
-      time: "01:30"
+      time: "02:00"
       timezone: "Europe/Bratislava"
     reviewers:
       - matejkosiarcik
@@ -66,7 +81,7 @@ updates:
     versioning-strategy: increase
     schedule:
       interval: daily
-      time: "02:00"
+      time: "02:30"
       timezone: "Europe/Bratislava"
     reviewers:
       - matejkosiarcik
@@ -81,7 +96,7 @@ updates:
     versioning-strategy: increase
     schedule:
       interval: daily
-      time: "02:30"
+      time: "03:00"
       timezone: "Europe/Bratislava"
     reviewers:
       - matejkosiarcik

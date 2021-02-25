@@ -18,4 +18,8 @@ module.exports = {
         "selector-attribute-quotes": "always",
         "string-quotes": "single",
     },
-}
+    "ignoreFiles": [
+        "**/*.js",
+        "**/public/**",
+    ],
+};
