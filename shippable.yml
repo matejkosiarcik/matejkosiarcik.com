@@ -1,5 +1,0 @@
-build:
-  ci:
-    - rvm install "$(cat .ruby-version)" && rvm use "$(cat .ruby-version)" && ruby --version
-    - nvm install && nvm use && node --version
-    - make

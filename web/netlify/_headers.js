@@ -45,12 +45,12 @@ const htmlDirectories = glob.sync('**/index.html', { cwd: 'public' })
 // I don't understand why it doesn't have a "default" clause (like csp)
 const disabledPermissions = [
     'accelerometer',
-    'ambient-light-sensor',
+    // 'ambient-light-sensor', // warning in chrome
     'autoplay',
-    'battery',
+    // 'battery', // warning in chrome
     'camera',
-    'display-capture',
-    'document-domain',
+    // 'display-capture', // warning in chrome
+    // 'document-domain',
     // 'document-write',
     // 'encrypted-media',
     // 'execution-while-not-rendered',
@@ -61,27 +61,22 @@ const disabledPermissions = [
     // 'layout-animations',
     'magnetometer',
     'microphone',
-    'midi',
-    'navigation-override',
-    'payment',
+    // 'midi',
+    // 'navigation-override', // warning in chrome
+    // 'payment',
     // 'picture-in-picture',
     // 'publickey-credentials',
     // 'publickey-credentials-get',
     // 'screen-wake-lock',
     'sync-xhr',
     'usb',
-    'vibrate',
+    // 'vibrate', // warning in chrome
     // 'vr',
-    'wake-lock',
+    // 'wake-lock', // warning in chrome
     // 'webauthn',
     // 'web-share',
     // 'xr-spatial-tracking',
 ].map(el => `${el}=()`).join(', ');
-
-const imagePermissions = [
-    'oversized-images',
-    'legacy-image-formats',
-].map(el => `${el}=(self "https://matejkosiarcik.goatcounter.com")`).join(', ');
 
 makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
     // 'Link': [
@@ -110,7 +105,7 @@ makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
         // "report-to default",
     ].join('; '),
 
-    'Permissions-Policy': disabledPermissions + ', ' + imagePermissions,
+    'Permissions-Policy': disabledPermissions,
     'Expect-CT': 'max-age=0, enforce, report-uri="https://matejkosiarcik.report-uri.com/r/d/ct/enforce"',
     'Cache-Control': 'max-age=600, must-revalidate',
 

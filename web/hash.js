@@ -11,7 +11,7 @@ const documentFiles = glob.sync('public/**/*.html');
 async function fileHash(filePath) {
     const hashBase16 = await hasha.fromFile(filePath, { algorithm: 'sha256' });
     const hashBase36 = BigInt(`0x${hashBase16}`).toString(36); // base36 represents numbers [0-9] and letters [a-z]
-    return hashBase36.substr(0,12);
+    return hashBase36.substr(0, 12);
 }
 
 // replace all occurences of "pattern" in "content" with "value"
