@@ -1,0 +1,20 @@
+name: Lint
+
+on:  # yamllint disable-line rule:truthy
+  push:
+  pull_request:
+
+jobs:
+  github-super-linter:
+    name: GitHub Super Linter
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.4
+
+      - name: GitHub Super Linter
+        uses: github/super-linter@v3.15.3
+        env:
+          VALIDATE_ALL_CODEBASE: true
+          LINTER_RULES_PATH: /
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
