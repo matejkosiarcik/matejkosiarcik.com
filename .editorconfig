@@ -58,7 +58,7 @@ indent_size = 2
 ### JavaScript ecosystem ###
 
 # All jsons
-[*.{json,json5,remarkrc,htmllintrc,htmlhintrc,eslintrc,babelrc}]
+[*.{json,json5,remarkrc,htmllintrc,htmlhintrc,eslintrc,babelrc,hintrc}]
 indent_size = 2
 
 ### Ruby ecosystem ###
