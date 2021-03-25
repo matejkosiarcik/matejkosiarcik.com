@@ -18,3 +18,5 @@ jobs:
           VALIDATE_ALL_CODEBASE: true
           LINTER_RULES_PATH: /
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CSS_FILE_NAME: .stylelintrc.yml
+          VALIDATE_CSS: false
