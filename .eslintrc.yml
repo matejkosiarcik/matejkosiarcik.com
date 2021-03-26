@@ -8,12 +8,10 @@ ignorePatterns:
 parser: "@typescript-eslint/parser"
 plugins:
   - "@typescript-eslint"
-  - "eslint-comments"
-  - "promise"
 
 extends:
   - "eslint:recommended"
-  - "airbnb"
+  - "airbnb-base"
   - "plugin:@typescript-eslint/eslint-recommended"
   - "plugin:@typescript-eslint/recommended"
 
