@@ -9,14 +9,14 @@ function makeHeaders(urls, headers) {
   }
   assert(Array.isArray(urls));
 
-  let outHeaders = [];
-  for (let header in headers) {
+  const outHeaders = [];
+  for (const header in headers) {
     assert(typeof header === 'string');
     assert(typeof headers[header] === 'string');
     outHeaders.push(`  ${header}: ${headers[header]}`);
   }
-  let outHeader = outHeaders.map(header => `  ${header}`).join('\n');
-  for (let url of urls) {
+  const outHeader = outHeaders.map((header) => `  ${header}`).join('\n');
+  for (const url of urls) {
     const output = `${url}\n${outHeader}\n`;
     console.log(output);
   }
@@ -37,9 +37,9 @@ makeHeaders('/*', {
 });
 
 const htmlDirectories = glob.sync('**/index.html', { cwd: 'public' })
-  .map(file => path.dirname(file))
-  .filter(dir => dir !== '.')
-  .map(dir => `/${dir}/`);
+  .map((file) => path.dirname(file))
+  .filter((dir) => dir !== '.')
+  .map((dir) => `/${dir}/`);
 
 // This is for Permissions-Policy (and deprecate Feature-Policy)
 // I don't understand why it doesn't have a "default" clause (like csp)
@@ -76,7 +76,7 @@ const disabledPermissions = [
   // 'webauthn',
   // 'web-share',
   // 'xr-spatial-tracking',
-].map(el => `${el}=()`).join(', ');
+].map((el) => `${el}=()`).join(', ');
 
 makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
   // 'Link': [
@@ -84,7 +84,7 @@ makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
   // ].join(', '),
 
   'Report-To': "{'group':'default','max_age':31536000,'endpoints':[{'url':'https://matejkosiarcik.report-uri.com/a/d/g'}],'include_subdomains':true}",
-  'NEL': "{'report_to':'default','max_age':31536000,'include_subdomains':true}",
+  NEL: "{'report_to':'default','max_age':31536000,'include_subdomains':true}",
   'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
   'Referrer-Policy': 'strict-origin-when-cross-origin',
   'X-XSS-Protection': '1; mode=block',

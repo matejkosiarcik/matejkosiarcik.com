@@ -21,7 +21,7 @@ const outputDir = 'public';
 // TODO: try google-closure-compiler or YUI compressor
 
 // search all jekyll generated html pages
-const plugins = glob.sync(`jekyll/_site/**/*.html`, { nodir: true }).map(file => new HtmlPlugin({
+const plugins = glob.sync('jekyll/_site/**/*.html', { nodir: true }).map((file) => new HtmlPlugin({
   filename: file.replace(/.*_site[\\/]/, ''),
   template: file,
   inject: process.env.NODE_ENV === 'development',
@@ -30,11 +30,11 @@ const plugins = glob.sync(`jekyll/_site/**/*.html`, { nodir: true }).map(file =>
   new CopyPlugin({
     patterns:
       [].concat(
-        glob.sync('../images/favicon/{original,artifacts}/*.{svg,png,ico}').map(file => { return { from: file, to: '' } }),
-        glob.sync('../images/icons/{original,artifacts}/*.{jpg,png,svg,gif,webp}').map(file => { return { from: file, to: 'img' } }),
-        glob.sync('../images/pictures/artifacts/*.{jpg,png,svg,gif,webp}').map(file => { return { from: file, to: 'img' } }),
-        glob.sync('./config/*', { nodir: true }).map(file => { return { from: file, to: '' } }),
-        glob.sync('./config/well-known/*', { nodir: true }).map(file => { return { from: file, to: '.well-known' } }),
+        glob.sync('../images/favicon/{original,artifacts}/*.{svg,png,ico}').map((file) => ({ from: file, to: '' })),
+        glob.sync('../images/icons/{original,artifacts}/*.{jpg,png,svg,gif,webp}').map((file) => ({ from: file, to: 'img' })),
+        glob.sync('../images/pictures/artifacts/*.{jpg,png,svg,gif,webp}').map((file) => ({ from: file, to: 'img' })),
+        glob.sync('./config/*', { nodir: true }).map((file) => ({ from: file, to: '' })),
+        glob.sync('./config/well-known/*', { nodir: true }).map((file) => ({ from: file, to: '.well-known' })),
         [
           { from: path.join(__dirname, 'jekyll', '_site', 'sitemap.xml'), to: '' },
           { from: path.join(__dirname, 'script', 'tmp', 'goatcounter.js'), to: '' },
@@ -57,42 +57,42 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const cssLoaders = (process.env.NODE_ENV === 'production' ? [
-    {
-      loader: MiniCssExtractPlugin.loader,
-      options: {
-        publicPath: '/',
+  {
+    loader: MiniCssExtractPlugin.loader,
+    options: {
+      publicPath: '/',
+    },
+  },
+] : [
+  'style-loader',
+]).concat([
+  {
+    loader: 'css-loader',
+    options: {
+      url: false,
+      import: false,
+      modules: false,
+      esModule: false,
+      sourceMap: false,
+    },
+  },
+  {
+    loader: 'postcss-loader',
+    options: {
+      sourceMap: false,
+    },
+  },
+  {
+    loader: 'sass-loader',
+    options: {
+      implementation: require('sass'),
+      sassOptions: {
+        importer: sassImporter(),
+        outputStyle: 'expanded',
       },
     },
-  ] : [
-    'style-loader',
-  ]).concat([
-    {
-      loader: 'css-loader',
-      options: {
-        url: false,
-        import: false,
-        modules: false,
-        esModule: false,
-        sourceMap: false,
-      },
-    },
-    {
-      loader: 'postcss-loader',
-      options: {
-        sourceMap: false,
-      },
-    },
-    {
-      loader: 'sass-loader',
-      options: {
-        implementation: require('sass'),
-        sassOptions: {
-          importer: sassImporter(),
-          outputStyle: 'expanded',
-        },
-      },
-    },
-  ]);
+  },
+]);
 
 const config = {
   mode: process.env.NODE_ENV,

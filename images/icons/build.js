@@ -6,7 +6,7 @@ const execa = require('execa');
 const outDir = path.join(__dirname, 'artifacts');
 try {
   fs.mkdirSync(outDir);
-} catch(e) { return }
+} catch (e) { return; }
 if (!fs.existsSync(outDir)) {
   console.log('Could not create/find output directory');
 }
@@ -19,10 +19,10 @@ async function svg2png(inputFile, outputFile, width, height) {
 
 (async () => {
   for (const inputFile of glob.sync(['original/{placeholder,terminal,docker,warning}.svg'])) {
-    await svg2png(inputFile, path.join(outDir, path.basename(inputFile, '.svg') + '.png'), 80, 80);
+    await svg2png(inputFile, path.join(outDir, `${path.basename(inputFile, '.svg')}.png`), 80, 80);
   }
 
   for (const inputFile of glob.sync(['original/{autodnd,zenplayer}.svg'])) {
-    await svg2png(inputFile, path.join(outDir, path.basename(inputFile, '.svg') + '.png'), 100, 100);
+    await svg2png(inputFile, path.join(outDir, `${path.basename(inputFile, '.svg')}.png`), 100, 100);
   }
 })();

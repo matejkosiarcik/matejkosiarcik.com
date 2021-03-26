@@ -13,7 +13,7 @@ plugins:
 
 extends:
   - "eslint:recommended"
-  # - "airbnb"
+  - "airbnb"
   - "plugin:@typescript-eslint/eslint-recommended"
   - "plugin:@typescript-eslint/recommended"
 
@@ -28,6 +28,8 @@ rules:
   "eqeqeq": ["error", "always"]
   # "semi": ["error", "always", { "omitLastInOneLineBlock": true }]
   "no-inner-declarations": 0
+  "indent": 0
+  "object-shorthand": 0
 
   "import/no-extraneous-dependencies": 0
   "import/no-unresolved": 0

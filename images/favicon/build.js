@@ -4,7 +4,7 @@ const path = require('path');
 
 (async () => {
   async function createSize(size, filename) {
-    await new Promise(resolve => {
+    await new Promise((resolve) => {
       svg2img(path.join(__dirname, 'original', 'favicon.svg'),
         { width: size, height: size, preserveAspectRatio: true },
         (_, buffer) => {
@@ -14,7 +14,7 @@ const path = require('path');
     });
   }
 
-  [16, 32].forEach(async size => {
+  [16, 32].forEach(async (size) => {
     await createSize(size);
   });
   await createSize(64, 'favicon.png');
