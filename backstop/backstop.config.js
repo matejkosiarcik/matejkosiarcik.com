@@ -40,7 +40,7 @@ module.exports = {
     {
       'label': 'home',
       'url': `${url}`,
-      'misMatchThreshold' : 0.1,
+      'misMatchThreshold': 0.1,
     },
   ],
   'paths': {

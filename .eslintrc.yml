@@ -8,10 +8,12 @@ ignorePatterns:
 parser: "@typescript-eslint/parser"
 plugins:
   - "@typescript-eslint"
+  - "eslint-comments"
+  - "promise"
 
 extends:
   - "eslint:recommended"
-  - "airbnb"
+  # - "airbnb"
   - "plugin:@typescript-eslint/eslint-recommended"
   - "plugin:@typescript-eslint/recommended"
 
@@ -35,3 +37,7 @@ overrides:
   - files: ["*.js", "*.jsx"]
     rules:
       "@typescript-eslint/no-var-requires": 0
+      "global-require": 0
+  - files: ["production-test/*"]
+    rules:
+      "no-console": 0

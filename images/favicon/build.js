@@ -10,8 +10,7 @@ const path = require('path');
         (_, buffer) => {
           fs.writeFileSync(path.join(__dirname, 'artifacts', filename ?? `.favicon-${size}.png`), buffer);
           resolve();
-        },
-      );
+        });
     });
   }
 

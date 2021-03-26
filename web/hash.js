@@ -16,7 +16,7 @@ async function fileHash(filePath) {
 
 // replace all occurences of "pattern" in "content" with "value"
 function replaceAll(content, pattern, value) {
-  let output = content.replace(pattern, value);
+  const output = content.replace(pattern, value);
   if (output === content) {
     return output;
   }

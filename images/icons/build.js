@@ -18,11 +18,11 @@ async function svg2png(inputFile, outputFile, width, height) {
 }
 
 (async () => {
-  for (let inputFile of glob.sync(['original/{placeholder,terminal,docker,warning}.svg'])) {
+  for (const inputFile of glob.sync(['original/{placeholder,terminal,docker,warning}.svg'])) {
     await svg2png(inputFile, path.join(outDir, path.basename(inputFile, '.svg') + '.png'), 80, 80);
   }
 
-  for (let inputFile of glob.sync(['original/{autodnd,zenplayer}.svg'])) {
+  for (const inputFile of glob.sync(['original/{autodnd,zenplayer}.svg'])) {
     await svg2png(inputFile, path.join(outDir, path.basename(inputFile, '.svg') + '.png'), 100, 100);
   }
 })();

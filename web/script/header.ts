@@ -56,13 +56,13 @@ ready(() => {
           navigation.style.height = `${oldHeight * (1 - progress / duration)}px`;
           window.requestAnimationFrame(step2);
         } else {
-          navigation.style.height = `0`;
+          navigation.style.height = '0';
         }
       }
       if (window.requestAnimationFrame) {
         window.requestAnimationFrame(step2);
       } else {
-        navigation.style.height = `0`;
+        navigation.style.height = '0';
       }
     }
   });
