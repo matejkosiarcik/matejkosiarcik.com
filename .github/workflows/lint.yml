@@ -19,7 +19,7 @@ jobs:
           LINTER_RULES_PATH: /
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-          VALIDATE_JSCPD: false # TODO: reenable JSCPD
+          VALIDATE_JSCPD: false  # TODO: reenable JSCPD
 
           # CSS is linted separately
           VALIDATE_CSS: false
