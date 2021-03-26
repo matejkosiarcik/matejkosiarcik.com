@@ -11,17 +11,15 @@ function makeHeaders(_urls, headers) {
   assert(Array.isArray(_urls) || typeof _urls === 'string');
   const urls = Array.isArray(_urls) ? _urls : [_urls];
 
-  const outHeaders = [];
-  for (const header in headers) {
-    assert(typeof header === 'string');
-    assert(typeof headers[header] === 'string');
-    outHeaders.push(`  ${header}: ${headers[header]}`);
-  }
-  const outHeader = outHeaders.map((header) => `  ${header}`).join('\n');
-  for (const url of urls) {
-    const output = `${url}\n${outHeader}\n`;
+  const outputHeaders = Object.keys(headers).map((key) => {
+    assert(typeof key === 'string');
+    assert(typeof headers[key] === 'string');
+    return `    ${key}: ${headers[key]}`;
+  }).join('\n');
+  urls.forEach((url) => {
+    const output = `${url}\n${outputHeaders}\n`;
     fs.writeFileSync(outputFile, output);
-  }
+  });
 }
 
 makeHeaders('/*', {

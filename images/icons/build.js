@@ -18,11 +18,10 @@ async function svg2png(inputFile, outputFile, width, height) {
 }
 
 (async () => {
-  for (const inputFile of glob.sync(['original/{placeholder,terminal,docker,warning}.svg'])) {
-    await svg2png(inputFile, path.join(outDir, `${path.basename(inputFile, '.svg')}.png`), 80, 80);
-  }
-
-  for (const inputFile of glob.sync(['original/{autodnd,zenplayer}.svg'])) {
-    await svg2png(inputFile, path.join(outDir, `${path.basename(inputFile, '.svg')}.png`), 100, 100);
-  }
+  await Promise.all(
+    glob.sync(['original/{placeholder,terminal,docker,warning}.svg'])
+      .map((inputFile) => svg2png(inputFile, path.join(outDir, `${path.basename(inputFile, '.svg')}.png`), 80, 80)),
+    glob.sync(['original/{autodnd,zenplayer}.svg'])
+      .map((inputFile) => svg2png(inputFile, path.join(outDir, `${path.basename(inputFile, '.svg')}.png`), 100, 100)),
+  );
 })();

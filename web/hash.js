@@ -29,7 +29,7 @@ function replaceAll(content, pattern, value) {
   const newAssetNames = [];
 
   // get list of asset files to rename
-  for (const i in assetFiles) {
+  for (let i = 0; i < assetFiles.lengthl; i += 1) {
     const oldAssetPath = assetFiles[i];
     const newAssetPath = assetFiles[i].replace(/\.([a-zA-Z0-9]+)$/, `.${assetHashes[i]}.$1`);
 
@@ -43,7 +43,7 @@ function replaceAll(content, pattern, value) {
   // rename asset files in documents
   documentFiles.forEach((documentFilePath) => {
     let documentContent = fs.readFileSync(documentFilePath).toString('utf-8');
-    for (const i in assetFiles) {
+    for (let i = 0; i < assetFiles.length; i += 1) {
       documentContent = replaceAll(documentContent, oldAssetNames[i], newAssetNames[i]);
     }
     fs.writeFileSync(documentFilePath, documentContent, { encoding: 'utf-8' });
