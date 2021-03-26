@@ -1,4 +1,4 @@
-import { ready } from "./utils";
+import { ready } from './utils';
 
 // redirect from matejkosiarcik.netlify.app -> matejkosiarcik.com
 ready(() => {

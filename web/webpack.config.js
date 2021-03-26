@@ -6,7 +6,7 @@ const HtmlPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const CopyPlugin = require('copy-webpack-plugin');
-const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
+const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
 
 const ScriptExtPlugin = require('script-ext-html-webpack-plugin');
 

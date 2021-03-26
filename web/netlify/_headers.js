@@ -80,11 +80,11 @@ const disabledPermissions = [
 
 makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
   // 'Link': [
-  //     // '<https://cdn.matejkosiarcik.com>; rel="dns-prefetch"',
+  //     // '<https://cdn.matejkosiarcik.com>; rel='dns-prefetch'',
   // ].join(', '),
 
-  'Report-To': '{"group":"default","max_age":31536000,"endpoints":[{"url":"https://matejkosiarcik.report-uri.com/a/d/g"}],"include_subdomains":true}',
-  'NEL': '{"report_to":"default","max_age":31536000,"include_subdomains":true}',
+  'Report-To': "{'group':'default','max_age':31536000,'endpoints':[{'url':'https://matejkosiarcik.report-uri.com/a/d/g'}],'include_subdomains':true}",
+  'NEL': "{'report_to':'default','max_age':31536000,'include_subdomains':true}",
   'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
   'Referrer-Policy': 'strict-origin-when-cross-origin',
   'X-XSS-Protection': '1; mode=block',
@@ -100,17 +100,17 @@ makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
     "connect-src 'self' https://*.matejkosiarcik.com",
     "form-action 'none'",
     "frame-ancestors 'none'",
-    "block-all-mixed-content",
-    // "report-uri https://matejkosiarcik.report-uri.com/r/d/csp/enforce",
-    // "report-to default",
+    'block-all-mixed-content',
+    // 'report-uri https://matejkosiarcik.report-uri.com/r/d/csp/enforce',
+    // 'report-to default',
   ].join('; '),
 
   'Permissions-Policy': disabledPermissions,
-  'Expect-CT': 'max-age=0, enforce, report-uri="https://matejkosiarcik.report-uri.com/r/d/ct/enforce"',
+  'Expect-CT': 'max-age=0, enforce, report-uri='https://matejkosiarcik.report-uri.com/r/d/ct/enforce'',
   'Cache-Control': 'max-age=600, must-revalidate',
 
-  'Cross-Origin-Embedder-Policy': 'unsafe-none; report-to="default"', // TODO: switch to "require-corp" after all used external resources implemented "Cross-Origin-Resource-Policy: cross-origin" (mainly goatcounter)
-  'Cross-Origin-Opener-Policy': 'same-origin; report-to="default"',
+  'Cross-Origin-Embedder-Policy': "unsafe-none; report-to='default'", // TODO: switch to "require-corp" after all used external resources implemented "Cross-Origin-Resource-Policy: cross-origin" (mainly goatcounter)
+  'Cross-Origin-Opener-Policy': "same-origin; report-to='default'",
 });
 
 makeHeaders('/*.svg', {
