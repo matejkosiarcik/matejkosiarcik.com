@@ -11,6 +11,7 @@ plugins:
 
 extends:
   - "eslint:recommended"
+  - "airbnb"
   - "plugin:@typescript-eslint/eslint-recommended"
   - "plugin:@typescript-eslint/recommended"
 
@@ -21,10 +22,14 @@ env:
 
 rules:
   "@typescript-eslint/no-explicit-any": 0
-  "comma-dangle": ["error", "always-multiline"]
+  # "comma-dangle": ["error", "always-multiline"]
   "eqeqeq": ["error", "always"]
-  "semi": ["error", "always", { "omitLastInOneLineBlock": true }]
+  # "semi": ["error", "always", { "omitLastInOneLineBlock": true }]
   "no-inner-declarations": 0
+
+  "import/no-extraneous-dependencies": 0
+  "import/no-unresolved": 0
+  "import/extensions": 0
 
 overrides:
   - files: ["*.js", "*.jsx"]

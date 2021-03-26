@@ -21,3 +21,4 @@ jobs:
           CSS_FILE_NAME: .stylelintrc.yml
           VALIDATE_CSS: false
           JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.yml
+          JAVASCRIPT_DEFAULT_STYLE: prettier
