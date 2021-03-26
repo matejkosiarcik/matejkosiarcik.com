@@ -35,9 +35,16 @@ indent_style = tab
 # [*.md]
 # trim_trailing_whitespace = false
 
+### Documentation and Configuration # ###
+
 # Most documentation formats prefer 2 spaces per indent level
 [{*.{yml,yaml},*.{xml,html,svg,xlf,sdef},*.{md,mdown,markdown},*.{css,scss,sass,less}}]
 indent_size = 2
+
+# Multiline comments
+[*.{html,htm}]
+block_comment_end = -->
+block_comment_start = <!--
 
 # C-style languages multiline comments
 [{*.{c,h}{,pp,xx,++},*.{m,cc,hh,mm,C,H,M},*.swift,*.{js,ts}{,x},*.php{,4,5,7},*.{java,scala,sc,kt,ktm,kts},*.{cs,fs}{,x}}]
@@ -56,6 +63,9 @@ indent_size = 2
 # TODO: [{*.pbxproj,*.xcworkspacedata,*.xcscheme}]
 
 ### JavaScript ecosystem ###
+
+[*.{js,ts,jsx,tsx}]
+indent_size = 2
 
 # All jsons
 [*.{json,json5,remarkrc,htmllintrc,htmlhintrc,eslintrc,babelrc,hintrc,ecrc}]
