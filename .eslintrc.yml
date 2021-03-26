@@ -19,7 +19,6 @@ extends:
 
 env:
   "es2020": true
-  "browser": true
   "node": true
 
 rules:
@@ -34,6 +33,8 @@ rules:
   "import/no-extraneous-dependencies": 0
   "import/no-unresolved": 0
   "import/extensions": 0
+  "max-len": 0
+  "no-console": 0
 
 overrides:
   - files: ["*.js", "*.jsx"]
@@ -43,3 +44,10 @@ overrides:
   - files: ["production-test/*"]
     rules:
       "no-console": 0
+  - files: ["web/scripts/*"]
+    env:
+      "es2020": true
+      "node": false
+      "browser": true
+    rules:
+      "no-console": ["error", { allow: ["warn", "error"] }]

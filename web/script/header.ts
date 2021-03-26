@@ -31,7 +31,7 @@ ready(() => {
         }
         const progress = timestamp - start;
         if (progress < duration) {
-          navigation.style.height = `${newHeight * progress / duration}px`;
+          navigation.style.height = `${(newHeight * progress) / duration}px`;
           window.requestAnimationFrame(step1);
         } else {
           navigation.style.height = `${newHeight}px`;

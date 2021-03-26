@@ -2,12 +2,14 @@
 const path = require('path');
 const glob = require('glob');
 const assert = require('assert');
+const process = require('process');
+const fs = require('fs');
 
-function makeHeaders(urls, headers) {
-  if (typeof urls === 'string') {
-    urls = [urls];
-  }
-  assert(Array.isArray(urls));
+const outputFile = process.argv[2];
+
+function makeHeaders(_urls, headers) {
+  assert(Array.isArray(_urls) || typeof _urls === 'string');
+  const urls = Array.isArray(_urls) ? _urls : [_urls];
 
   const outHeaders = [];
   for (const header in headers) {
@@ -18,7 +20,7 @@ function makeHeaders(urls, headers) {
   const outHeader = outHeaders.map((header) => `  ${header}`).join('\n');
   for (const url of urls) {
     const output = `${url}\n${outHeader}\n`;
-    console.log(output);
+    fs.writeFileSync(outputFile, output);
   }
 }
 

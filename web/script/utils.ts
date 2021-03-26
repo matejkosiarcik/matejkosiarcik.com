@@ -22,10 +22,10 @@ export function ready(callback: () => void): void {
   }
 }
 
-export function listen(element: HTMLElement, event: string, callback: (event: Event) => void): void {
+export function listen(element: HTMLElement, eventName: string, callback: (event: Event) => void): void {
   if (element.addEventListener) {
-    element.addEventListener(event, callback);
+    element.addEventListener(eventName, callback);
   } else {
-    (element as any).attachEvent(`on${event}`, callback);
+    (element as any).attachEvent(`on${eventName}`, callback);
   }
 }

@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const execa = require('execa');
-require('isomorphic-fetch');
+const fetch = require('isomorphic-fetch');
 
 (async () => {
   // fetch script from network

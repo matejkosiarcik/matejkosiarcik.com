@@ -5,4 +5,4 @@ set -euf
 
 # build netlify config
 cp 'netlify/_redirects' 'public/_redirects'
-node 'netlify/_headers.js' >'public/_headers'
+node 'netlify/_headers.js' 'public/_headers'
