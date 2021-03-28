@@ -3,6 +3,7 @@ name: Lint
 on:  # yamllint disable-line rule:truthy
   push:
   pull_request:
+    branches: [master, main]
 
 jobs:
   github-super-linter:
@@ -11,16 +12,17 @@ jobs:
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2.3.4
+        with:
+          fetch-depth: 0  # Full git history is needed to get a proper list of changed files
 
       - name: GitHub Super Linter
         uses: github/super-linter@v3.15.3
         env:
-          VALIDATE_ALL_CODEBASE: true
-          LINTER_RULES_PATH: /
+          # global settings
+          VALIDATE_ALL_CODEBASE: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+          DEFAULT_BRANCH: master
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          RUBY_CONFIG_FILE: .rubocop.yml
-
-          VALIDATE_JSCPD: false  # TODO: reenable JSCPD
+          LINTER_RULES_PATH: /
 
           # CSS is linted separately
           VALIDATE_CSS: false
@@ -32,3 +34,7 @@ jobs:
           VALIDATE_JAVASCRIPT_STANDARD: false
           VALIDATE_TYPESCRIPT_ES: false
           VALIDATE_TYPESCRIPT_STANDARD: false
+
+          # misc
+          RUBY_CONFIG_FILE: .rubocop.yml
+          VALIDATE_JSCPD: false  # TODO: reenable JSCPD
