@@ -1,5 +1,4 @@
 {
-  "Exclude": ["*.png", "*.jpg", "*.webp", "*.gif"],
   "Disable": {
     "IndentSize": true
   }
