@@ -1,9 +1,13 @@
 root: true
 
 ignorePatterns:
-  - "**/script/tmp/**"
-  - "**/public/**"
+  - "**/_site/**"
+  - "**/.bundle/**"
   - "**/backstop_data/**"
+  - "**/build/**"
+  - "**/dist/**"
+  - "**/public/**"
+  - "**/tmp/**"
 
 parser: "@typescript-eslint/parser"
 plugins:

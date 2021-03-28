@@ -1,9 +1,11 @@
 # build artifacts
+_site/
+.bundle/
+backstop_data/
 build/
 dist/
-tmp/
 public/
-_site/
+tmp/
 
 # dependencies
 node_modules/
