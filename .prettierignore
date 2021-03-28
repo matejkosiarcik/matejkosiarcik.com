@@ -1,0 +1,14 @@
+# build artifacts
+build/
+dist/
+tmp/
+public/
+_site/
+
+# dependencies
+node_modules/
+venv/
+
+# files
+*.js
+*.ts
