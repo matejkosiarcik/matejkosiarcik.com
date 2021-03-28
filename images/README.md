@@ -4,6 +4,8 @@
 
 <!-- toc -->
 
+- [Development](#development)
+
 <!-- tocstop -->
 
 Even though the optimized images are just a build artifact,
