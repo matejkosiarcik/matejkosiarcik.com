@@ -22,8 +22,8 @@ toc:
   max_level: 3
   no_toc_section_class: no-toc
   list_class: toc
-  sublist_class: ''
-  item_class: ''
+  sublist_class: ""
+  item_class: ""
 
 highlighter: none # highlight with js instead
 markdown: Pandoc
