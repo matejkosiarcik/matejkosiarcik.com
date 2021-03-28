@@ -15,7 +15,7 @@ And I don't wait to waste CI time (and wait for it) an hour for each commit/PR.
 ## Development
 
 ```sh
-$ npm ci
-$ # optionally: npm run clean
-$ npm run build
+npm ci
+# optionally: npm run clean
+npm run build
 ```

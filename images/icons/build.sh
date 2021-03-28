@@ -30,4 +30,5 @@ node -e 'require("glob").sync("original/{autodnd,zenplayer}.svg").forEach(file =
 done
 
 # TODO: change this in millipng to be invoked simpler
+# shellcheck disable=SC2016
 find artifacts -iname '*.png' -print0 | xargs -0 -n 1 sh -c 'printf "%s\n" "-- ${1} --" && docker run --interactive --volume "${PWD}/${1}:/file.png" matejkosiarcik/millipng --brute' -
