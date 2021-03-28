@@ -5,8 +5,10 @@
     "lint": "run-p lint:*",
     "lint:es": "eslint --max-warnings 0 \"**/*.{ts,js}\"",
     "lint:css": "stylelint \"**/*.{css,scss}\"",
-    "lint:prettier": "prettier --list-different '**/*.{yml,yaml,json,html,htm,css,scss,sass,xml,svg,xhtml,md}'",
+    "lint:prettier": "prettier --list-different '**/*.{yml,yaml,json,html,htm,xhtml,css,scss,sass,md}'",
     "fmt": "run-p fmt:*",
+    "fmt:es": "eslint --fix \"**/*.{ts,js}\"",
+    "fmt:css": "stylelint --fix \"**/*.{css,scss}\"",
     "fmt:prettier": "prettier --write '**/*.{yml,yaml,json,html,htm,xhtml,css,scss,sass,md}'"
   },
   "devDependencies": {

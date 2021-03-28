@@ -24,6 +24,10 @@ lint:
 	npm run lint
 	@$(MAKE) -C$(PROJECT_DIR)/web lint
 
+.PHONY: fmt
+fmt:
+	npm run fmt
+
 .PHONY: build
 build:
 	@$(MAKE) -C$(PROJECT_DIR)/web build
