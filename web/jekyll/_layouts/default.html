@@ -1,3 +1,4 @@
+<!-- prettier-ignore -->
 {% capture bodyClass %}
   {% if page.layout == "post" %}
     blog-post
@@ -12,25 +13,24 @@
   {% include head.html %}
   <body class="{{ bodyClass }}">
     {% include header.html %}
-    <main class="container content">
-      {{ content }}
-    </main>
+    <main class="container content">{{ content }}</main>
     {% include footer.html %}
 
+    <!-- prettier-ignore -->
     {% if jekyll.environment == "production" %}
-      <!-- polyfill older IE versions -->
-      <!-- I know this is meaningless (I mean who still uses it?), but kinda fun though -->
-      <!--[if IE]>
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=default" crossorigin="anonymous"></script>
-      <![endif]-->
+    <!-- polyfill older IE versions -->
+    <!-- I know this is meaningless (I mean who still uses it?), but kinda fun though -->
+    <!--[if IE]>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=default" crossorigin="anonymous"></script>
+    <![endif]-->
 
-      <!-- main script -->
-      <script src="/bundle.js" defer crossorigin="anonymous"></script>
+    <!-- main script -->
+    <script src="/bundle.js" defer crossorigin="anonymous"></script>
 
-      <!-- analytics -->
-      <script src="/goatcounter.js" data-goatcounter="https://matejkosiarcik.goatcounter.com/count" defer async crossorigin="anonymous"></script>
-      <!-- consider enabling this in the future (maybe with another domain endpoint?), for now it is disabled because of potential bots -->
-      <!-- <noscript>
+    <!-- analytics -->
+    <script src="/goatcounter.js" data-goatcounter="https://matejkosiarcik.goatcounter.com/count" defer async crossorigin="anonymous"></script>
+    <!-- consider enabling this in the future (maybe with another domain endpoint?), for now it is disabled because of potential bots -->
+    <!-- <noscript>
         <img src="https://matejkosiarcik.goatcounter.com/count?p=/test-img"/>
       </noscript> -->
     {% endif %}
