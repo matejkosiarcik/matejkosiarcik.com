@@ -1,11 +1,21 @@
 name: Build and Test
 
-on:  # yamllint disable-line rule:truthy
+on:
   push:
   pull_request:
 
 jobs:
-  publish:
+  # Cancel duplicate jobs: https://github.com/fkirc/skip-duplicate-actions#option-3-cancellation-only
+  cancel_duplicates:
+    name: Cancel duplicate jobs ❌
+    runs-on: ubuntu-latest
+    steps:
+      - uses: fkirc/skip-duplicate-actions@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+  build:
+    name: Build 🔧
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
@@ -19,7 +29,7 @@ jobs:
       - name: Setup ruby 🧩
         uses: ruby/setup-ruby@v1.66.1
         with:
-          ruby-version: '2.7'
+          ruby-version: "2.7"
 
       - name: Build 🔧
         run: make bootstrap lint build

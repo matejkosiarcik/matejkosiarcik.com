@@ -1,12 +1,22 @@
 name: Build and Deploy
 
-on:  # yamllint disable-line rule:truthy
+on:
   push:
     branches:
       - master
 
 jobs:
+  # Cancel duplicate jobs: https://github.com/fkirc/skip-duplicate-actions#option-3-cancellation-only
+  cancel_duplicates:
+    name: Cancel duplicate jobs ❌
+    runs-on: ubuntu-latest
+    steps:
+      - uses: fkirc/skip-duplicate-actions@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
   build-and-deploy:
+    name: Deploy 🚀
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
@@ -15,12 +25,12 @@ jobs:
       - name: Setup nodeJS 🧩
         uses: actions/setup-node@v2.1.5
         with:
-          node-version: '14'
+          node-version: "14"
 
       - name: Setup ruby 🧩
         uses: ruby/setup-ruby@v1.66.1
         with:
-          ruby-version: '2.7'
+          ruby-version: "2.7"
 
       - name: Build 🔧
         run: |

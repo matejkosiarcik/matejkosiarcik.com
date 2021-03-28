@@ -1,10 +1,10 @@
 title: Matej Košiarčik
-permalink: /blog/:title/  # for posts
+permalink: /blog/:title/ # for posts
 strict_front_matter: true
 encoding: utf-8
 
 include:
-  - _pages  # hard-coded pages (not posts)
+  - _pages # hard-coded pages (not posts)
 
 # must exclude frontend resource and webpack config files
 exclude:
@@ -22,10 +22,10 @@ toc:
   max_level: 3
   no_toc_section_class: no-toc
   list_class: toc
-  sublist_class: ''
-  item_class: ''
+  sublist_class: ""
+  item_class: ""
 
-highlighter: none  # highlight with js instead
+highlighter: none # highlight with js instead
 markdown: Pandoc
 
 defaults:

@@ -4,7 +4,12 @@
   "scripts": {
     "lint": "run-p lint:*",
     "lint:es": "eslint --max-warnings 0 \"**/*.{ts,js}\"",
-    "lint:css": "stylelint \"**/*.{css,scss}\""
+    "lint:css": "stylelint \"**/*.{css,scss}\"",
+    "lint:prettier": "prettier --list-different '**/*.{yml,yaml,json,html,htm,xhtml,css,scss,sass,md}'",
+    "fmt": "run-p fmt:*",
+    "fmt:es": "eslint --fix \"**/*.{ts,js}\"",
+    "fmt:css": "stylelint --fix \"**/*.{css,scss}\"",
+    "fmt:prettier": "prettier --write '**/*.{yml,yaml,json,html,htm,xhtml,css,scss,sass,md}'"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.19.0",
@@ -13,6 +18,7 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
     "npm-run-all": "^4.1.5",
+    "prettier": "^2.2.1",
     "stylelint": "^13.12.0",
     "stylelint-config-property-sort-order-smacss": "^7.0.0",
     "stylelint-config-recommended-scss": "^4.2.0",
