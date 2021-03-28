@@ -57,5 +57,3 @@ jobs:
           DEFAULT_BRANCH: master
           LINTER_RULES_PATH: /
           # Rest of the config is in /.mega-linter.yml
-
-          YAML_YAMLLINT_CONFIG_FILE: .yamllint.yml
