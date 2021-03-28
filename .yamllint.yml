@@ -17,5 +17,8 @@ rules:
     present: false
   line-length:
     max: 180
+  comments:
+    comments:
+      min-spaces-from-content: 1
   truthy:
     allowed-values: ['true', 'false', 'on']

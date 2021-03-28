@@ -1,6 +1,6 @@
 name: Build and Test
 
-on:  # yamllint disable-line rule:truthy
+on: # yamllint disable-line rule:truthy
   push:
   pull_request:
 
