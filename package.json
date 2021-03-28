@@ -7,7 +7,7 @@
     "lint:css": "stylelint \"**/*.{css,scss}\"",
     "lint:prettier": "prettier --list-different '**/*.{yml,yaml,json,html,htm,css,scss,sass,xml,svg,xhtml,md}'",
     "fmt": "run-p fmt:*",
-    "fmt:prettier": "prettier --write '**/*.{yml,yaml,json,html,htm,css,scss,sass,xml,svg,xhtml,md}'"
+    "fmt:prettier": "prettier --write '**/*.{yml,yaml,json,html,htm,xhtml,css,scss,sass,md}'"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.19.0",
