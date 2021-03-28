@@ -19,14 +19,15 @@ jobs:
         uses: github/super-linter@v3.15.3
         env:
           # global settings
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_ALL_CODEBASE: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
           DEFAULT_BRANCH: master
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LINTER_RULES_PATH: /
 
           # CSS is linted separately
           VALIDATE_CSS: false
           CSS_FILE_NAME: .stylelintrc.yml
+          YAML_CONFIG_FILE: .yamllint.yml
 
           # JS is linted separately
           JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.yml
@@ -51,6 +52,10 @@ jobs:
       - name: Mega Linter
         uses: nvuillam/mega-linter@v4.30.0
         env:
-          VALIDATE_ALL_CODEBASE: true # ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}  # Validates all source when push on master, else just the git diff with master. Override with true if you always want to lint all sources
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VALIDATE_ALL_CODEBASE: true # ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}  # Validates all source when push on master, else just the git diff with master. Override with true if you always want to lint all sources
+          DEFAULT_BRANCH: master
+          LINTER_RULES_PATH: /
           # Rest of the config is in /.mega-linter.yml
+
+          YAML_YAMLLINT_CONFIG_FILE: .yamllint.yml
