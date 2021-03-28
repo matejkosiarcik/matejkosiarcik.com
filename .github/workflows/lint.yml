@@ -8,7 +8,7 @@ on:
 jobs:
   # Cancel duplicate jobs: https://github.com/fkirc/skip-duplicate-actions#option-3-cancellation-only
   cancel_duplicates:
-    name: Cancel duplicate jobs ❌
+    name: Cancel duplicate jobs 🛑
     runs-on: ubuntu-latest
     steps:
       - uses: fkirc/skip-duplicate-actions@master
@@ -17,6 +17,7 @@ jobs:
 
   github-super-linter:
     name: GitHub Super Linter
+    id: super-linter
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
@@ -51,6 +52,7 @@ jobs:
 
   mega-linter:
     name: Mega-Linter
+    id: mega-linter
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️

@@ -7,7 +7,7 @@ on:
 jobs:
   # Cancel duplicate jobs: https://github.com/fkirc/skip-duplicate-actions#option-3-cancellation-only
   cancel_duplicates:
-    name: Cancel duplicate jobs ❌
+    name: Cancel duplicate jobs 🛑
     runs-on: ubuntu-latest
     steps:
       - uses: fkirc/skip-duplicate-actions@master
@@ -16,6 +16,7 @@ jobs:
 
   build:
     name: Build 🔧
+    id: build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
