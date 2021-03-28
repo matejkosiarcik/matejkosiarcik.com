@@ -4,8 +4,9 @@
 
 <!-- toc -->
 
-<!-- tocstop -->
+- [License](#license)
 
+<!-- tocstop -->
 
 ![Website](https://img.shields.io/website?url=https%3A%2F%2Fmatejkosiarcik.com)
 ![Chromium HSTS preload](https://img.shields.io/hsts/preload/matejkosiarcik.com)
