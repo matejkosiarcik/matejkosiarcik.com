@@ -1,0 +1,34 @@
+name: Lint
+
+on:  # yamllint disable-line rule:truthy
+  push:
+  pull_request:
+
+jobs:
+  github-super-linter:
+    name: GitHub Super Linter
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.4
+
+      - name: GitHub Super Linter
+        uses: github/super-linter@v3.15.3
+        env:
+          VALIDATE_ALL_CODEBASE: true
+          LINTER_RULES_PATH: /
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUBY_CONFIG_FILE: .rubocop.yml
+
+          VALIDATE_JSCPD: false  # TODO: reenable JSCPD
+
+          # CSS is linted separately
+          VALIDATE_CSS: false
+          CSS_FILE_NAME: .stylelintrc.yml
+
+          # JS is linted separately
+          JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.yml
+          VALIDATE_JAVASCRIPT_ES: false
+          VALIDATE_JAVASCRIPT_STANDARD: false
+          VALIDATE_TYPESCRIPT_ES: false
+          VALIDATE_TYPESCRIPT_STANDARD: false

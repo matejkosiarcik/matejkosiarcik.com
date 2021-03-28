@@ -1,4 +1,4 @@
-Contact: https://github.com/matejkosiarcik/web/issues
+Contact: https://github.com/matejkosiarcik/matejkosiarcik.com/issues
 Contact: mailto:matejkosiarcik@gmail.com
 Expires: 2099-01-01 00:00:00
 Preferred-Languages: en, sk, cz

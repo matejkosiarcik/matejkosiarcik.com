@@ -35,9 +35,16 @@ indent_style = tab
 # [*.md]
 # trim_trailing_whitespace = false
 
+### Documentation and Configuration # ###
+
 # Most documentation formats prefer 2 spaces per indent level
 [{*.{yml,yaml},*.{xml,html,svg,xlf,sdef},*.{md,mdown,markdown},*.{css,scss,sass,less}}]
 indent_size = 2
+
+# Multiline comments
+[*.{html,htm}]
+block_comment_end = -->
+block_comment_start = <!--
 
 # C-style languages multiline comments
 [{*.{c,h}{,pp,xx,++},*.{m,cc,hh,mm,C,H,M},*.swift,*.{js,ts}{,x},*.php{,4,5,7},*.{java,scala,sc,kt,ktm,kts},*.{cs,fs}{,x}}]
@@ -57,16 +64,24 @@ indent_size = 2
 
 ### JavaScript ecosystem ###
 
+[*.{js,ts,jsx,tsx}]
+indent_size = 2
+
 # All jsons
-[*.{json,json5,remarkrc,htmllintrc,htmlhintrc,eslintrc,babelrc}]
+[*.{json,json5,remarkrc,htmllintrc,htmlhintrc,eslintrc,babelrc,hintrc,ecrc}]
 indent_size = 2
 
 ### Ruby ecosystem ###
 
 # Indent Gemfile using 2 spaces
-# TODO: check if bug (3 spaces indent at end of Gemfile.lock) is fixed
-[{Rakefile,Gemfile{,.lock}}]
+[{Rakefile,Gemfile}]
 indent_size = 2
+
+# There is a bug that erronously outputs 3 spaces per indent for last few lines of Gemfile.lock
+# Until it is fixed (and fixed versions available everywhere) ignoring this issue seems to be the only way
+# relevant: https://github.com/rubygems/rubygems/issues/3326
+[Gemfile.lock]
+indent_size = unset
 
 ### .NET/Windows ecosystem ###
 
