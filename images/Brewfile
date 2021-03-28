@@ -1,1 +1,11 @@
+tap "homebrew/cask"
+
+# jpg optimizations
 brew "guetzli"
+
+# converting svg -> png
+brew "librsvg"
+brew "svg2png"
+
+# optimizing png
+cask "docker"

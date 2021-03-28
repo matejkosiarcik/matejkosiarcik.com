@@ -2,20 +2,32 @@
 set -euf
 cd "$(dirname "${0}")"
 
-mkdir -p 'artifacts'
-node 'build.js'
+output_directory='artifacts'
+mkdir -p "${output_directory}"
 
-optimize() {
-    printf '%s\n' "${1}"
-    pngquant --strip --speed 1 --skip-if-larger --quality 0-90 --force "${1}" --output "${1}"
-    docker run --interactive --tty --volume "${PWD}/${1}:/file.png" matejkosiarcik/millipng --brute
+## Convert SVGs to PNGs ##
+
+svg2png() {
+    inputFile="${1}"
+    outputFile="${output_directory}/$(basename "${inputFile}" .svg).png"
+    # outputFile="$(node -e "console.log(require('path').resolve('.', '${outputFile}'))")" # absolute path
+    width="${2}"
+    height="${2}"
+
+    printf '%s\n' "$(basename "${outputFile}")"
+    rsvg-convert -f png -w "${width}" -h "${height}" "${inputFile}" -o "${outputFile}"
+    pngquant --strip --speed 1 --skip-if-larger --quality 0-90 --force "${outputFile}" --output "${outputFile}"
+    # docker run --interactive --volume "${PWD}/${outputFile}:/file.png" matejkosiarcik/millipng --fast
     printf '\n'
 }
 
-optimize 'artifacts/terminal.png'
-optimize 'artifacts/placeholder.png'
-optimize 'artifacts/docker.png'
-optimize 'artifacts/warning.png'
+node -e 'require("glob").sync("original/{placeholder,terminal,docker,warning}.svg").forEach(file => console.log(file))' | while read -r file; do
+    svg2png "${file}" 80
+done
 
-optimize 'artifacts/autodnd.png'
-optimize 'artifacts/zenplayer.png'
+node -e 'require("glob").sync("original/{autodnd,zenplayer}.svg").forEach(file => console.log(file))' | while read -r file; do
+    svg2png "${file}" 100
+done
+
+# TODO: change this in millipng to be invoked simpler
+find artifacts -iname '*.png' -print0 | xargs -0 -n 1 sh -c 'printf "%s\n" "-- ${1} --" && docker run --interactive --volume "${PWD}/${1}:/file.png" matejkosiarcik/millipng --brute' -
