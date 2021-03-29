@@ -18,7 +18,7 @@ function makeHeaders(_urls, headers) {
   }).join('\n');
   urls.forEach((url) => {
     const output = `${url}\n${outputHeaders}\n`;
-    fs.writeFileSync(outputFile, output);
+    fs.appendFileSync(outputFile, output);
   });
 }
 
