@@ -29,11 +29,6 @@ body.home {
     position: relative;
     margin: 20px 40px;
     text-align: center;
-
-    img {
-      width: 150px;
-      height: 150px;
-    }
   }
 
   .other-projects .project {
@@ -43,11 +38,6 @@ body.home {
 
     @media (--phone) {
       margin: 15px 20px;
-    }
-
-    img {
-      width: 80px;
-      height: 80px;
     }
 
     .description {
