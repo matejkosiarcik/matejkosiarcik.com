@@ -1,10 +1,11 @@
 {
-  "indent-width": 2,
-  "id-class-style": "dash",
-  "title-no-dup": false,
-  "html-req-lang": true,
-  "doctype-html5": true,
-  "class-style": "none",
+  "attr-bans": false,
   "attr-req-value": false,
-  "spec-char-escape": false
+  "class-style": "none",
+  "doctype-html5": true,
+  "html-req-lang": true,
+  "id-class-style": "dash",
+  "indent-width": 2,
+  "spec-char-escape": false,
+  "title-no-dup": false
 }
