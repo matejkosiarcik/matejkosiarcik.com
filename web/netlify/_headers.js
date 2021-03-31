@@ -2,12 +2,11 @@
 const path = require('path');
 const glob = require('glob');
 const assert = require('assert');
-const process = require('process');
 const fs = require('fs');
 
-const outputFile = process.argv[2];
-
 function makeHeaders(_urls, headers) {
+  const outputFile = path.join('public', '_headers');
+
   assert(Array.isArray(_urls) || typeof _urls === 'string');
   const urls = Array.isArray(_urls) ? _urls : [_urls];
 
