@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: Build and Deploy 🚀
 
 on:
   push:
@@ -28,7 +28,7 @@ jobs:
           cd web
           make bootstrap build
 
-      - name: Deploy to github pages 🚀
+      - name: Deploy to github pages (branch) 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
