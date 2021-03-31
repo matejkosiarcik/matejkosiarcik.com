@@ -1,4 +1,4 @@
-name: Build and Test
+name: Build and Test 🔧
 
 on:
   push:
@@ -6,8 +6,12 @@ on:
 
 jobs:
   build:
-    name: Build 🔧
-    runs-on: ubuntu-latest
+    name: Build and Test 🔧
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        node: [14, 15]
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2.3.4
