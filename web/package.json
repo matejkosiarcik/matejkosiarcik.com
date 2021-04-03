@@ -22,7 +22,7 @@
     "build:netlify:headers": "node 'netlify/_headers.js'",
     "prebuild": "run-s prebuild:goat",
     "prebuild:goat": "node fetch-goatcounter.js",
-    "postbuild": "node validate-build.js",
+    "postbuild": "node build-validate.js",
     "clean": "rimraf public",
     "lint": "run-p lint:*",
     "lint:ts": "tsc --noEmit --skipLibCheck",
