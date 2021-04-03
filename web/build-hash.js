@@ -32,7 +32,7 @@ function replaceAll(content, pattern, value) {
   const newAssetNames = [];
 
   // get list of asset files to rename
-  for (let i = 0; i < assetFiles.lengthl; i += 1) {
+  for (let i = 0; i < assetFiles.length; i += 1) {
     const oldAssetPath = assetFiles[i];
     const newAssetPath = assetFiles[i].replace(/\.([a-zA-Z0-9]+)$/, `.${assetHashes[i]}.$1`);
 
@@ -51,5 +51,8 @@ function replaceAll(content, pattern, value) {
     }
     fs.writeFileSync(documentFilePath, documentContent, { encoding: 'utf-8' });
   });
+
   // TODO: also rename assets in other assets
+  // NOTE: this currently does not rename references for example when .js file includes .css file
+  // But I don't need it for this project, so I can live without it
 })();
