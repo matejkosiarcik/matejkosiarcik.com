@@ -8,17 +8,6 @@ workflows:
       - lint
       - build-web
 
-  cron:
-    triggers:
-      - schedule:
-          cron: "0 9 * * *"
-          filters:
-            branches:
-              only:
-                - master
-    jobs:
-      - prod-check
-
 jobs:
   azlint:
     docker:
@@ -49,11 +38,3 @@ jobs:
           DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-install-recommends build-essential curl ruby ruby-dev pandoc zlib1g zlib1g-dev imagemagick
           curl -sL https://deb.nodesource.com/setup_lts.x | bash - && apt-get install --yes --no-install-recommends nodejs
       - run: cd web && make bootstrap build
-
-  prod-check:
-    docker:
-      - image: node:lts
-    steps:
-      - checkout
-      - setup_remote_docker
-      - run: make prod-check

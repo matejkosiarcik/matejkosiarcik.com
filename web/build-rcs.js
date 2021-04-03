@@ -1,3 +1,5 @@
+// This file renames/simplifies selectors in .css, .html and .js
+
 const rcs = require('rcs-core');
 const fs = require('fs');
 const glob = require('glob');
