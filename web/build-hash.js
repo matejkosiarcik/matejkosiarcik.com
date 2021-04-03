@@ -1,3 +1,6 @@
+// This file hashes assets foo.js -> foo.123.js
+// Also renames references to these files in .html and all files
+
 const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
