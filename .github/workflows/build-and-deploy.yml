@@ -19,7 +19,7 @@ jobs:
           node-version: "14"
 
       - name: Setup ruby 🧩
-        uses: ruby/setup-ruby@v1.66.1
+        uses: ruby/setup-ruby@v1.68.0
         with:
           ruby-version: "2.7"
 
