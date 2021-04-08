@@ -21,7 +21,7 @@
     "build:netlify": "run-p build:netlify:*",
     "build:netlify:redirects": "cp 'netlify/_redirects' 'public/_redirects'",
     "build:netlify:headers": "node 'netlify/_headers.js'",
-    "build:goatcounter": "curl -sSLf 'https://gc.zgo.at/count.js' --output script/tmp/goatcounter.js",
+    "build:goatcounter": "curl -sSLf 'https://gc.zgo.at/count.js' --output script/goatcounter/goatcounter.js",
     "postbuild": "node build-validate.js",
     "clean": "rimraf public",
     "lint": "run-p lint:*",
