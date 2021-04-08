@@ -2,7 +2,7 @@
   "private": true,
   "name": "@matejkosiarcik/web",
   "scripts": {
-    "build": "run-s clean build:webpack build:minify-js build:purgecss build:rcs build:minify-css build:svgo build:hash build:sri build:minify-html build:sitemap build:netlify",
+    "build": "run-s clean build:goatcounter build:webpack build:minify-js build:purgecss build:rcs build:minify-css build:svgo build:hash build:sri build:minify-html build:sitemap build:netlify",
     "build:webpack": "cross-env NODE_ENV=production webpack --mode production",
     "build:purgecss": "purgecss --config purgecss.config.js",
     "build:rcs": "node build-rcs.js",
