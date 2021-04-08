@@ -2,7 +2,7 @@
   "private": true,
   "name": "@matejkosiarcik/web",
   "scripts": {
-    "build": "run-s clean build:webpack build:purgecss build:rcs build:minify-css build:svgo build:hash build:sri build:minify-html build:sitemap build:netlify",
+    "build": "run-s clean prepare build:webpack build:purgecss build:rcs build:minify-css build:svgo build:hash build:sri build:minify-html build:sitemap build:netlify",
     "build:webpack": "cross-env NODE_ENV=production webpack --mode production",
     "build:purgecss": "purgecss --config purgecss.config.js",
     "build:rcs": "node build-rcs.js",
@@ -20,13 +20,13 @@
     "build:netlify": "run-p build:netlify:*",
     "build:netlify:redirects": "cp 'netlify/_redirects' 'public/_redirects'",
     "build:netlify:headers": "node 'netlify/_headers.js'",
-    "prebuild": "run-s prebuild:goat",
-    "prebuild:goat": "node build-goatcounter.js",
+    "prepare": "run-s prepare:*",
+    "prepare:goat": "node build-goatcounter.js",
     "postbuild": "node build-validate.js",
     "clean": "rimraf public",
     "lint": "run-p lint:*",
     "lint:ts": "tsc --noEmit --skipLibCheck",
-    "start": "run-p prebuild serve",
+    "start": "run-p prepare serve",
     "serve": "cross-env NODE_ENV=development webpack serve --mode development"
   },
   "dependencies": {
