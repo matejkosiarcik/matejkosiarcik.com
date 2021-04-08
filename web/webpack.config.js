@@ -8,14 +8,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
 
-const TerserPlugin = require('terser-webpack-plugin');
-
 const sassImporter = require('node-sass-glob-importer');
 
 process.env.NODE_ENV = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 const outputDir = 'public';
-
-// TODO: try google-closure-compiler or YUI compressor
 
 // search all jekyll generated html pages
 const plugins = glob.sync('jekyll/_site/**/*.html', { nodir: true }).map((file) => new HtmlPlugin({
@@ -34,7 +30,7 @@ const plugins = glob.sync('jekyll/_site/**/*.html', { nodir: true }).map((file) 
         glob.sync('./config/well-known/*', { nodir: true }).map((file) => ({ from: file, to: '.well-known' })),
         [
           { from: path.join(__dirname, 'jekyll', '_site', 'sitemap.xml'), to: '' },
-          { from: path.join(__dirname, 'script', 'tmp', 'goatcounter.js'), to: '' },
+          { from: path.join(__dirname, 'script', 'goatcounter', 'goatcounter.js'), to: '' },
         ],
       ),
   }),
@@ -135,26 +131,6 @@ const config = {
   optimization: {
     minimize: process.env.NODE_ENV === 'production',
     minimizer: [
-      new TerserPlugin({
-        terserOptions: {
-          output: {
-            comments: false,
-            keep_quoted_props: false,
-          },
-          compress: {
-            passes: 20,
-            arguments: true,
-            keep_fargs: false,
-            drop_console: true,
-          },
-          keep_classnames: false,
-          keep_fnames: false,
-          toplevel: true,
-          ie8: true,
-          safari10: true,
-        },
-        extractComments: false,
-      }),
     ],
   },
   watch: process.env.NODE_ENV === 'development',
