@@ -21,7 +21,7 @@
     "build:netlify:redirects": "cp 'netlify/_redirects' 'public/_redirects'",
     "build:netlify:headers": "node 'netlify/_headers.js'",
     "prebuild": "run-s prebuild:goat",
-    "prebuild:goat": "node fetch-goatcounter.js",
+    "prebuild:goat": "node build-goatcounter.js",
     "postbuild": "node build-validate.js",
     "clean": "rimraf public",
     "lint": "run-p lint:*",
