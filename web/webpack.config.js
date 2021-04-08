@@ -13,8 +13,6 @@ const sassImporter = require('node-sass-glob-importer');
 process.env.NODE_ENV = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 const outputDir = 'public';
 
-// TODO: try google-closure-compiler or YUI compressor
-
 // search all jekyll generated html pages
 const plugins = glob.sync('jekyll/_site/**/*.html', { nodir: true }).map((file) => new HtmlPlugin({
   filename: file.replace(/.*_site[\\/]/, ''),
