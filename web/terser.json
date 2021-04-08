@@ -1,0 +1,15 @@
+{
+  "output": {
+    "comments": false,
+    "keep_quoted_props": false
+  },
+  "compress": {
+    "passes": 20,
+    "arguments": true,
+    "keep_fargs": false,
+    "drop_console": true
+  },
+  "keep_classnames": false,
+  "keep_fnames": false,
+  "toplevel": true
+}
