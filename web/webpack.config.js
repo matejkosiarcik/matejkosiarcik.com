@@ -8,8 +8,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
 
-const ScriptExtPlugin = require('script-ext-html-webpack-plugin');
-
 const TerserPlugin = require('terser-webpack-plugin');
 
 const sassImporter = require('node-sass-glob-importer');
@@ -47,9 +45,6 @@ if (process.env.NODE_ENV === 'production') {
     new FixStyleOnlyEntriesPlugin(),
     new MiniCssExtractPlugin({
       filename: '[name].css',
-    }),
-    new ScriptExtPlugin({
-      defaultAttribute: 'defer',
     }),
   );
 }
