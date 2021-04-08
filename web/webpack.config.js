@@ -8,8 +8,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
 
-const TerserPlugin = require('terser-webpack-plugin');
-
 const sassImporter = require('node-sass-glob-importer');
 
 process.env.NODE_ENV = process.env.NODE_ENV === 'production' ? 'production' : 'development';
@@ -135,26 +133,6 @@ const config = {
   optimization: {
     minimize: process.env.NODE_ENV === 'production',
     minimizer: [
-      new TerserPlugin({
-        terserOptions: {
-          output: {
-            comments: false,
-            keep_quoted_props: false,
-          },
-          compress: {
-            passes: 20,
-            arguments: true,
-            keep_fargs: false,
-            drop_console: true,
-          },
-          keep_classnames: false,
-          keep_fnames: false,
-          toplevel: true,
-          ie8: true,
-          safari10: true,
-        },
-        extractComments: false,
-      }),
     ],
   },
   watch: process.env.NODE_ENV === 'development',

@@ -11,5 +11,7 @@
   },
   "keep_classnames": false,
   "keep_fnames": false,
-  "toplevel": true
+  "toplevel": true,
+  "ie8": true,
+  "safari10": true
 }
