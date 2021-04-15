@@ -133,3 +133,15 @@ makeHeaders('/*.js', {
   'Content-Type': 'text/javascript; charset=UTF-8',
   'Cache-Control': 'max-age=31536000, immutable',
 });
+
+makeHeaders('/*.xml', {
+  'Content-Type': 'application/xml; charset=UTF-8',
+});
+
+makeHeaders('/*.json', {
+  'Content-Type': 'application/json; charset=UTF-8',
+});
+
+makeHeaders('/*.txt', {
+  'Content-Type': 'text/plain; charset=UTF-8',
+});
