@@ -43,6 +43,7 @@ const htmlDirectories = glob.sync('**/index.html', { cwd: 'public' })
 // This is for Permissions-Policy (and deprecate Feature-Policy)
 // I don't understand why it doesn't have a "default" clause (like csp)
 const disabledPermissions = [
+  'interest-cohort', // Google's FLOC
   'accelerometer',
   // 'ambient-light-sensor', // warning in chrome
   'autoplay',
