@@ -30,7 +30,7 @@
   "dependencies": {
     "bootstrap": "^4.6.0",
     "colorette": "1.2.2",
-    "core-js": "^3.10.1",
+    "core-js": "^3.10.2",
     "hamburgers": "^1.1.3",
     "instant.page": "^5.1.0",
     "normalize.css": "^8.0.1"
@@ -82,7 +82,7 @@
     "purgecss": "^4.0.3",
     "rcs-core": "^3.6.0",
     "rimraf": "^3.0.2",
-    "sass": "^1.32.10",
+    "sass": "^1.32.11",
     "sass-loader": "^11.0.1",
     "sitemap2urllist": "^0.2.1",
     "style-loader": "^2.0.0",
