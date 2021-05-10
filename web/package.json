@@ -83,7 +83,7 @@
     "rcs-core": "^3.6.0",
     "rimraf": "^3.0.2",
     "sass": "^1.32.12",
-    "sass-loader": "^11.0.1",
+    "sass-loader": "^11.1.0",
     "sitemap2urllist": "^0.2.1",
     "style-loader": "^2.0.0",
     "svgo": "^2.3.0",
