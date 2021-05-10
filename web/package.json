@@ -51,7 +51,7 @@
     "css-validator": "^0.10.0",
     "csslint": "^1.0.5",
     "execa": "^5.0.0",
-    "glob": "^7.1.6",
+    "glob": "^7.1.7",
     "glob-all": "^3.2.1",
     "gulp": "^4.0.2",
     "gulp-sri-hash": "^2.2.1",
