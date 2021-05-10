@@ -16,5 +16,5 @@ optimize() {
 }
 
 find 'original' -type f -iname '*.jpg' | while IFS= read -r file; do
-    optimize "$(basename "${file}")"
+    optimize "$(basename "$file")"
 done
