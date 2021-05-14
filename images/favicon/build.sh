@@ -24,8 +24,6 @@ svg2png '.favicon-32' 32
 svg2png 'favicon' 64
 svg2png 'apple-touch-icon' 180
 
-# TODO: change this in millipng to be invoked simpler
-# shellcheck disable=SC2016
-find artifacts -iname '*.png' -print0 | xargs -0 -n 1 sh -c 'printf "%s\n" "-- ${1} --" && docker run --interactive --volume "${PWD}/${1}:/file.png" matejkosiarcik/millipng --brute' -
+docker run --interactive --tty --volume "$PWD:/img" matejkosiarcik/millipng:dev --level ultra-brute
 
 png2ico 'artifacts/favicon.ico' --colors 16 'artifacts/.favicon-16.png' 'artifacts/.favicon-32.png'
