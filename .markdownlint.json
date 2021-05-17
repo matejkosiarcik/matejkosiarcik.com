@@ -10,8 +10,5 @@
   },
   "no-inline-html": {
     "allowed_elements": ["details", "summary"]
-  },
-  "single-h1": {
-    "front_matter_title": ""
   }
 }
