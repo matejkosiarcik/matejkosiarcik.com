@@ -1,27 +1,27 @@
 #!/bin/sh
 set -euf
 
-source="${1}"
-srcdir="${PWD}"
+source="$1"
+srcdir="$PWD"
 
 tmpdir="$(mktemp -d)"
-cp "${source}" "${tmpdir}/file.css"
-cd "${tmpdir}"
+cp "$source" "$tmpdir/file.css"
+cd "$tmpdir"
 
 run_clean() {
-    cleancss -O2 "${1}.css" --output "${1}-clean.css"
+    cleancss -O2 "$1.css" --output "$1-clean.css"
 }
 
 run_nano() {
-    cssnano "${1}.css" "${1}-nano.css"
+    cssnano "$1.css" "$1-nano.css"
 }
 
 run_csso() {
-    csso --comments none --force-media-merge --input "${1}.css" --output "${1}-csso.css"
+    csso --comments none --force-media-merge --input "$1.css" --output "$1-csso.css"
 }
 
 run_crass() {
-    crass "${1}.css" --css4 >"${1}-crass.css"
+    crass "$1.css" --css4 >"$1-crass.css"
 }
 
 # 1
@@ -122,8 +122,8 @@ printf '\n'
 find . -name '*-*-*-*-*.css' -and -not -name '*-*-*-*-*-*.css' -print0 | xargs -0 wc
 
 smallest_file="$(find . -type f -name '*.css' -print0 | xargs -0 wc -c | sort --numeric-sort | head -n1 | tr -s ' ' | cut -d ' ' -f 3)"
-printf '%s %s\n' "${smallest_file}" "$(wc -c <"${smallest_file}")"
+printf '%s %s\n' "$smallest_file" "$(wc -c <"$smallest_file")"
 
-cd "${srcdir}"
-cp "${tmpdir}/${smallest_file}" "${source}"
-rm -rf "${tmpdir}"
+cd "$srcdir"
+cp "$tmpdir/$smallest_file" "$source"
+rm -rf "$tmpdir"
