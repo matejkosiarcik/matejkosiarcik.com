@@ -30,7 +30,7 @@ const plugins = glob.sync('jekyll/_site/**/*.html', { nodir: true }).map((file) 
         glob.sync('./config/well-known/*', { nodir: true }).map((file) => ({ from: file, to: '.well-known' })),
         [
           { from: path.join(__dirname, 'jekyll', '_site', 'sitemap.xml'), to: '' },
-          { from: path.join(__dirname, 'script', 'goatcounter', 'goatcounter.js'), to: '' },
+          { from: path.join(__dirname, 'script', 'goatcounter.js'), to: '' },
         ],
       ),
   }),

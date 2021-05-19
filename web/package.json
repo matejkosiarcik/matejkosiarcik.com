@@ -19,7 +19,7 @@
     "build:netlify": "run-p build:netlify:*",
     "build:netlify:redirects": "cp 'netlify/_redirects' 'public/_redirects'",
     "build:netlify:headers": "node 'netlify/_headers.js'",
-    "build:goatcounter": "curl -sSLf 'https://gc.zgo.at/count.js' --output script/goatcounter/goatcounter.js",
+    "build:goatcounter": "curl -sSLf 'https://gc.zgo.at/count.js' --output script/goatcounter.js",
     "postbuild": "node build-validate.js",
     "clean": "rimraf public",
     "lint": "run-p lint:*",
@@ -89,7 +89,7 @@
     "svgo": "^2.3.0",
     "terser": "^5.7.0",
     "typescript": "^4.2.4",
-    "webpack": "^5.37.0",
+    "webpack": "^5.37.1",
     "webpack-cli": "^4.7.0",
     "webpack-dev-server": "^3.11.2",
     "webpack-fix-style-only-entries": "^0.6.1"
