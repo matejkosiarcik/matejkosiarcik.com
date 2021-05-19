@@ -1,3 +1,4 @@
 backstop_data/bitmaps_test
 backstop_data/engine_scripts
+backstop_data/*_report/
 backstop.json
