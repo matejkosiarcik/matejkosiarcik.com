@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "@matejkosiarcik/web-root",
+  "name": "example",
   "scripts": {
     "lint": "run-p lint:*",
     "lint:es": "eslint --max-warnings 0 \"**/*.{ts,js}\"",

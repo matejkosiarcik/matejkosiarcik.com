@@ -1,5 +1,6 @@
 {
   "private": true,
+  "name": "example",
   "scripts": {
     "test": "backstop test --config backstop.config.js --docker",
     "pretest": "run-s prepare",

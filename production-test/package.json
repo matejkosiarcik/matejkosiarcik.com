@@ -1,5 +1,6 @@
 {
   "private": true,
+  "name": "example",
   "scripts": {
     "test": "run-s test:*",
     "test:js": "node test.js",
