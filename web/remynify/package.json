@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "@matejkosiarcik/web-remynify",
+  "name": "example",
   "scripts": {
     "build": "sh remynify.sh ../public/style.css"
   },

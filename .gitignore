@@ -15,8 +15,10 @@ Package Control.*
 # dependencies
 node_modules/
 .bundle/
+.jekyll-cache/
 
 # build
+_site/
 build/
 dist/
 public/

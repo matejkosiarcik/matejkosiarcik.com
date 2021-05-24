@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "@matejkosiarcik/web",
+  "name": "example",
   "scripts": {
     "build": "run-s clean build:goatcounter build:webpack build:minify-js build:purgecss build:rcs build:minify-css build:svgo build:hash build:sri build:minify-html build:urllist build:minify-xml build:netlify",
     "build:webpack": "cross-env NODE_ENV=production webpack --mode production",
@@ -47,7 +47,7 @@
     "concat": "^1.0.3",
     "copy-webpack-plugin": "^9.0.0",
     "cross-env": "^7.0.3",
-    "css-loader": "^5.2.5",
+    "css-loader": "^5.2.6",
     "css-validator": "^0.10.0",
     "csslint": "^1.0.5",
     "execa": "^5.0.0",

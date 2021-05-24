@@ -18,3 +18,5 @@ optimize() {
 find 'original' -type f -iname '*.jpg' | while IFS= read -r file; do
     optimize "$(basename "$file")"
 done
+
+docker run --interactive --tty --volume "$PWD:/img" matejkosiarcik/millipng:dev --level ultra-brute
