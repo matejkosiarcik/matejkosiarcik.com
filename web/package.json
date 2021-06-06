@@ -61,7 +61,7 @@
     "html-validator": "^5.1.17",
     "html-webpack-plugin": "^5.3.1",
     "isomorphic-fetch": "^3.0.0",
-    "jshint": "^2.12.0",
+    "jshint": "^2.13.0",
     "mini-css-extract-plugin": "^1.6.0",
     "minify-xml": "^2.5.0",
     "node-sass-glob-importer": "^5.3.2",
