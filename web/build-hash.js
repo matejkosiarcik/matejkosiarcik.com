@@ -52,7 +52,6 @@ function replaceAll(content, pattern, value) {
     fs.writeFileSync(documentFilePath, documentContent, { encoding: 'utf-8' });
   });
 
-  // TODO: also rename assets in other assets
   // NOTE: this currently does not rename references for example when .js file includes .css file
   // But I don't need it for this project, so I can live without it
 })();
