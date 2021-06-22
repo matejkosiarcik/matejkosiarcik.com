@@ -4,8 +4,8 @@
 MAKEFLAGS += --warn-undefined-variables
 SHELL := /bin/sh  # for compatibility (mainly with redhat distros)
 .SHELLFLAGS := -ec
-MAKEFILE_PATH := $(abspath $(lastword $(MAKEFILE_LIST)))
 PROJECT_DIR := $(realpath $(dir $(abspath $(MAKEFILE_LIST))))
+MAKEFILE_PATH := $(abspath $(lastword $(MAKEFILE_LIST)))
 BUNDLE_ENV := BUNDLE_DISABLE_SHARED_GEMS=true BUNDLE_PATH__SYSTEM=false BUNDLE_PATH="$(PROJECT_DIR)/jekyll/.bundle" BUNDLE_GEMFILE=$(PROJECT_DIR)/jekyll/Gemfile
 
 .POSIX:

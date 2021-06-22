@@ -14,7 +14,7 @@ const documentFiles = glob.sync('public/**/*.html');
 async function fileHash(filePath) {
   const hashBase16 = await hasha.fromFile(filePath, { algorithm: 'sha256' });
   const hashBase36 = BigInt(`0x${hashBase16}`).toString(36); // base36 represents numbers [0-9] and letters [a-z]
-  return hashBase36.substr(0, 12);
+  return hashBase36.substr(0, 8);
 }
 
 // replace all occurrences of "pattern" in "content" with "value"
@@ -52,7 +52,6 @@ function replaceAll(content, pattern, value) {
     fs.writeFileSync(documentFilePath, documentContent, { encoding: 'utf-8' });
   });
 
-  // TODO: also rename assets in other assets
   // NOTE: this currently does not rename references for example when .js file includes .css file
   // But I don't need it for this project, so I can live without it
 })();
