@@ -34,6 +34,6 @@ build:
 .PHONY: prod-check
 prod-check:
 	npm ci --prefix tests
-	npm test --prefix tests
+	BASE_URL=https://matejkosiarcik.com npm test --prefix tests
 	npm ci --prefix visual-tests
 	BASE_URL=https://matejkosiarcik.com npm test --prefix visual-tests

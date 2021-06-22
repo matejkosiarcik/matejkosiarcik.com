@@ -10,29 +10,14 @@ process.on('unhandledRejection', (error) => {
   process.exit(1);
 });
 
-// assert redirect from www to non-www
-(async () => {
-  const response = await fetch('https://www.matejkosiarcik.com'); // without trailing slash
-  const url = response.url.replace(/\/$/, '');
-  assert.strictEqual(url, 'https://matejkosiarcik.com');
-})();
-(async () => {
-  const response = await fetch('https://www.matejkosiarcik.com/'); // with trailing slash
-  const url = response.url.replace(/\/$/, '');
-  assert.strictEqual(url, 'https://matejkosiarcik.com');
-})();
-
-// async function getURLs() {
-//     return new Promise(async (resolve, reject) => {
-//       const response = await fetch('https://matejkosiarcik.com/urllist.txt')
-//       const body = await response.text()
-//       resolve(body.split('\n'))
-//     })
-// }
+const baseUrl = process.env.BASE_URL;
+if (!baseUrl) {
+  console.log('BASE_URL not set');
+  process.exit(1);
+}
 
 (async () => {
-  // TODO: switch to: const urls = await getURLs()
-  const urls = ['https://matejkosiarcik.com'];
+  const urls = [baseUrl, `${baseUrl}/zenplayer`];
   urls.forEach(async (url) => {
     // whatwg, local validator
     const results = await htmlValidator({ url, validator: 'WHATWG', ignore: ['no-conditional-comment'] });

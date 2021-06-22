@@ -3,20 +3,19 @@
 set -euf
 
 # link checker
-blc_args='--follow --filter-level 3 --exclude linkedin.com --exclude twitter.com https://matejkosiarcik.com'
-blc --recursive "$blc_args"
+blc --recursive --follow --filter-level 3 --exclude linkedin.com --exclude twitter.com "$BASE_URL"
 
 # mozzila observatory
-observatory matejkosiarcik.com --format report --min-grade A+ --min-score 100
+# observatory matejkosiarcik.com --format report --min-grade A+ --min-score 100
 
 # webhint.io
-curl -L https://matejkosiarcik.com/urllist.txt | xargs -n1 hint
-# curl -L https://matejkosiarcik.com/urllist.txt | xargs -n1 is-website-vulnerable # TODO: reenable, seems to have problem with CHROME_PATH
+# curl -L "$BASE_URL/urllist.txt" | xargs -n1 hint # TODO: reenable
+# curl -L "$BASE_URL/urllist.txt" | xargs -n1 is-website-vulnerable # TODO: reenable, seems to have problem with CHROME_PATH
 
 printf '\n'
 
 for page in '404' '404.html' 'nonexisting'; do
-    if [ "$(curl -Iso /dev/null -w "%{http_code}" "https://matejkosiarcik.com/$page")" != 404 ]; then
+    if [ "$(curl -Iso /dev/null -w "%{http_code}" "$BASE_URL/$page")" != 404 ]; then
         printf '/%s page should return status 404\n' "$page"
         exit 1
     fi
@@ -24,7 +23,7 @@ done
 
 # Check redirects for trailing "/"
 # tmpfile="$(mktemp)"
-# curl -Iso "$tmpfile" https://matejkosiarcik.com/blog
+# curl -Iso "$tmpfile" "$BASE_URL/blog"
 # status="$(head -n1 <"$tmpfile" | cut -d' ' -f2 | tr -d [:space:])"
 # location="$(grep -iE '^location:' <"$tmpfile" | cut -d' ' -f2 | tr -d [:space:])"
 # rm -f "$tmpfile"

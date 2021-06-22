@@ -2,7 +2,7 @@
   "private": true,
   "name": "example",
   "scripts": {
-    "test": "run-s test:*",
+    "test": "run-p test:*",
     "test:js": "node test.js",
     "test:sh": "sh test.sh"
   },
