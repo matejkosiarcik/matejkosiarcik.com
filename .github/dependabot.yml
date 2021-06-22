@@ -92,7 +92,7 @@ updates:
       - automerge
 
   - package-ecosystem: npm
-    directory: "/backstop/"
+    directory: "/visual-tests/"
     versioning-strategy: increase
     schedule:
       interval: daily
