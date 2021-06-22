@@ -33,7 +33,7 @@ build:
 
 .PHONY: prod-check
 prod-check:
-	npm ci --prefix production-test
-	# npm ci --prefix backstop
-	npm test --prefix production-test
-	# npm test --prefix backstop
+	npm ci --prefix tests
+	BASE_URL=https://matejkosiarcik.com npm test --prefix tests
+	npm ci --prefix visual-tests
+	BASE_URL=https://matejkosiarcik.com npm test --prefix visual-tests

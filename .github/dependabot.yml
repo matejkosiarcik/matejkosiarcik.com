@@ -77,7 +77,7 @@ updates:
       - automerge
 
   - package-ecosystem: npm
-    directory: "/production-test/"
+    directory: "/tests/"
     versioning-strategy: increase
     schedule:
       interval: daily
@@ -92,7 +92,7 @@ updates:
       - automerge
 
   - package-ecosystem: npm
-    directory: "/backstop/"
+    directory: "/visual-tests/"
     versioning-strategy: increase
     schedule:
       interval: daily
