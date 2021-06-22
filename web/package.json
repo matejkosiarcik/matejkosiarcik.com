@@ -59,7 +59,7 @@
     "html-loader": "^2.1.2",
     "html-minifier": "^4.0.0",
     "html-validator": "^5.1.17",
-    "html-webpack-plugin": "^5.3.1",
+    "html-webpack-plugin": "^5.3.2",
     "isomorphic-fetch": "^3.0.0",
     "jshint": "^2.13.0",
     "mini-css-extract-plugin": "^1.6.0",
