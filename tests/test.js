@@ -1,8 +1,6 @@
 const process = require('process');
 const htmlValidator = require('html-validator');
 const cssValidator = require('css-validator');
-const assert = require('assert');
-const fetch = require('isomorphic-fetch');
 
 // just bail on error
 process.on('unhandledRejection', (error) => {

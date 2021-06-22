@@ -2,7 +2,7 @@ import * as playwright from 'playwright';
 import * as fs from 'fs/promises';
 import * as path from 'path';
 
-const baseUrl = process.env.BASE_URL!;
+const baseUrl = process.env.BASE_URL;
 if (!baseUrl) {
   console.error('BASE_URL not set.');
   process.exit(1);
@@ -11,64 +11,64 @@ if (!baseUrl) {
 const pages = [
   {
     name: 'home',
-    url: '/'
+    url: '/',
   },
   {
     name: 'zenplayer',
-    url: '/zenplayer'
+    url: '/zenplayer',
   },
   {
     name: '404',
-    url: '/404'
-  }
+    url: '/404',
+  },
 ];
 
 const viewports = [
   {
     width: 375,
-    height: 667
+    height: 667,
   },
   {
     width: 640,
-    height: 480
+    height: 480,
   },
   {
     width: 1024,
-    height: 768
+    height: 768,
   },
   {
     width: 1920,
-    height: 1080
+    height: 1080,
   },
   {
     width: 4096,
-    height: 2160
-  }
+    height: 2160,
+  },
 ];
 
 const browsers = [
   {
     name: 'chromium',
-    browser: playwright.chromium
+    browser: playwright.chromium,
   },
   {
     name: 'firefox',
-    browser: playwright.firefox
+    browser: playwright.firefox,
   },
   {
     name: 'webkit',
-    browser: playwright.webkit
-  }
+    browser: playwright.webkit,
+  },
 ];
 
 (async () => {
   await fs.rm('test', { force: true, recursive: true });
 
-  await Promise.all(browsers.map(async browserInfo => {
+  await Promise.all(browsers.map(async (browserInfo) => {
     const browser = await browserInfo.browser.launch({ headless: true });
     const context = await browser.newContext();
 
-    await Promise.all(pages.map(async pageInfo => {
+    await Promise.all(pages.map(async (pageInfo) => {
       const viewportDir = path.join('test', pageInfo.name, browserInfo.name, 'viewport');
       const fullpageDir = path.join('test', pageInfo.name, browserInfo.name, 'full');
       const [page] = await Promise.all([
@@ -77,14 +77,19 @@ const browsers = [
         fs.mkdir(fullpageDir, { recursive: true }),
       ]);
 
-      for (const viewport of viewports) {
+      // This is serial for a reason
+      // When running it all at the same time, I found it can degrades performance (starting so many tabs/processes)
+      /* eslint-disable no-await-in-loop */
+      for (const viewport of viewports) { // eslint-disable-line no-restricted-syntax
         await page.setViewportSize(viewport);
         await page.goto(`${baseUrl}/${pageInfo.url}`, { waitUntil: 'networkidle' });
         await Promise.all([
           page.screenshot({ path: path.join(viewportDir, `${viewport.width}x${viewport.height}.png`) }),
-          page.screenshot({ path: path.join(fullpageDir, `${viewport.width}x${viewport.height}.png`) , fullPage: true }),
+          page.screenshot({ path: path.join(fullpageDir, `${viewport.width}x${viewport.height}.png`), fullPage: true }),
         ]);
       }
+      /* eslint-enable no-await-in-loop */
+
       await page.close();
     }));
 
