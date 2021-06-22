@@ -41,7 +41,7 @@ overrides:
     rules:
       "@typescript-eslint/no-var-requires": 0
       "global-require": 0
-  - files: ["production-test/*"]
+  - files: ["tests/*"]
     rules:
       "no-console": 0
   - files: ["web/scripts/*"]
