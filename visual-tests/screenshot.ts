@@ -79,8 +79,7 @@ const browsers = [
 
       // This is serial for a reason
       // When running it all at the same time, I found it can degrades performance (starting so many tabs/processes)
-      /* eslint-disable no-await-in-loop */
-      for (const viewport of viewports) { // eslint-disable-line no-restricted-syntax
+      for (const viewport of viewports) {
         await page.setViewportSize(viewport);
         await page.goto(`${baseUrl}/${pageInfo.url}`, { waitUntil: 'networkidle' });
         await Promise.all([
@@ -88,7 +87,6 @@ const browsers = [
           page.screenshot({ path: path.join(fullpageDir, `${viewport.width}x${viewport.height}.png`), fullPage: true }),
         ]);
       }
-      /* eslint-enable no-await-in-loop */
 
       await page.close();
     }));
