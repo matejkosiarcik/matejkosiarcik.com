@@ -1,7 +1,7 @@
 const presets = [
   ['@babel/env', {
     corejs: '3',
-    loose: true,
+    // loose: true,
     useBuiltIns: 'usage',
   }],
   '@babel/typescript',

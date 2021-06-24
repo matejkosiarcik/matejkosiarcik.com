@@ -24,6 +24,6 @@ svg2png '.favicon-32' 32
 svg2png 'favicon' 64
 svg2png 'apple-touch-icon' 180
 
-docker run --interactive --tty --volume "$PWD:/img" matejkosiarcik/millipng:dev --level ultra-brute
+docker run --interactive --tty --volume "$PWD/artifacts:/img" matejkosiarcik/millipng:dev --level ultra-brute
 
 png2ico 'artifacts/favicon.ico' --colors 16 'artifacts/.favicon-16.png' 'artifacts/.favicon-32.png'

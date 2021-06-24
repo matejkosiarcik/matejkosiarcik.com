@@ -5,28 +5,13 @@ cd "$(dirname "$0")"
 output_directory='artifacts'
 mkdir -p "$output_directory"
 
-## Convert SVGs to PNGs ##
-
-svg2png() {
-    inputFile="$1"
-    outputFile="$output_directory/$(basename "$inputFile" .svg).png"
-    # outputFile="$(node -e "console.log(require('path').resolve('.', '$outputFile'))")" # absolute path
-    width="$2"
-    height="$2"
-
-    printf '%s\n' "$(basename "$outputFile")"
-    rsvg-convert -f png -w "$width" -h "$height" "$inputFile" -o "$outputFile"
-    pngquant --strip --speed 1 --skip-if-larger --quality 0-90 --force "$outputFile" --output "$outputFile"
-    # docker run --interactive --volume "$PWD/$outputFile:/file.png" matejkosiarcik/millipng --fast
-    printf '\n'
-}
-
-node -e 'require("glob").sync("original/{placeholder,terminal,docker,warning}.svg").forEach(file => console.log(file))' | while read -r file; do
-    svg2png "$file" 80
+# generate dark/light mode variants
+find 'original' -name '*.svg' | while read -r file; do
+    # only remove media from svgs that actually contain dark-mode media queries
+    if grep '@media (prefers-color-scheme: dark)' <"$file" >/dev/null 2>&1; then
+        # shellcheck disable=SC2094
+        perl -0pe 's~\@media *\(prefers-color-scheme: *dark\) *\{([\s\S]*?\})\s*\}~\1~gms' <"$file" >"artifacts/$(basename "$file" .svg)-dark.svg"
+        # shellcheck disable=SC2094
+        perl -0pe 's~\@media *\(prefers-color-scheme: *dark\) *\{[\s\S]*?\}\s*\}~~gms' <"$file" >"artifacts/$(basename "$file" .svg)-light.svg"
+    fi
 done
-
-node -e 'require("glob").sync("original/{autodnd,zenplayer}.svg").forEach(file => console.log(file))' | while read -r file; do
-    svg2png "$file" 100
-done
-
-docker run --interactive --tty --volume "$PWD:/img" matejkosiarcik/millipng:dev --level ultra-brute
