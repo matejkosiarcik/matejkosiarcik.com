@@ -51,3 +51,9 @@ overrides:
       "browser": true
     rules:
       "no-console": ["error", { allow: ["warn", "error"] }]
+  - files: ["visual-tests/*"]
+    rules:
+      "no-restricted-syntax": 0
+      "no-await-in-loop": 0
+      "@typescript-eslint/no-non-null-assertion": 0
+      "no-continue": 0
