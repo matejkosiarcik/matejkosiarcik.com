@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" height="100" viewBox="0 0 100 100" width="100">
+  <defs>
+    <style>
+      #background-terminal {
+        fill: #333;
+      }
+      @media (prefers-color-scheme: dark) {
+        #background-terminal {
+          fill: #fafafa;
+        }
+      }
+    </style>
+  </defs>
+
   <mask id="mask">
     <rect fill="#fff" height="100" width="100"/>
     <g fill="none" stroke="#000" stroke-linecap="round" stroke-width="4">

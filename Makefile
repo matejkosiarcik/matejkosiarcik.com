@@ -16,6 +16,7 @@ all: bootstrap build
 .PHONY: bootstrap
 bootstrap:
 	npm ci
+	npm --prefix images ci
 	@$(MAKE) -C$(PROJECT_DIR)/web bootstrap
 
 .PHONY: lint
@@ -29,6 +30,7 @@ fmt:
 
 .PHONY: build
 build:
+	sh images/icons/build.sh
 	@$(MAKE) -C$(PROJECT_DIR)/web build
 
 .PHONY: prod-check

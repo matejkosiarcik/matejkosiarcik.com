@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" height="100" viewBox="0 0 100 100" width="100">
+  <defs>
+    <style>
+      circle, path, rect {
+        stroke: #333;
+      }
+      @media (prefers-color-scheme: dark) {
+        circle, path, rect {
+          stroke: #fafafa;
+        }
+      }
+    </style>
+  </defs>
+
   <g fill="none" stroke="#000">
     <rect height="98.8" ry="24.5" stroke-width="1.2" width="98.8" x=".6" y=".6"/>
     <g stroke-width=".6">
