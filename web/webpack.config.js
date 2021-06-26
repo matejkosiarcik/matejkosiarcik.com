@@ -115,8 +115,7 @@ const config = {
       },
       {
         test: /\.ts$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
+        loader: 'ts-loader',
       },
       {
         test: /\.scss$/,
@@ -136,6 +135,37 @@ const config = {
   watch: process.env.NODE_ENV === 'development',
 };
 
+const legacyConfig = {
+  mode: process.env.NODE_ENV,
+  output: {
+    filename: '[name].js',
+    path: path.join(__dirname, outputDir),
+    publicPath: '/',
+    crossOriginLoading: 'anonymous',
+  },
+  entry: {
+    'bundle-legacy': path.join(__dirname, 'script', 'main.ts'),
+  },
+  target: 'es5',
+  module: {
+    rules: [
+      {
+        test: /\.ts$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+      },
+    ],
+  },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.mjs', '.wasm', '.json'],
+  },
+  optimization: {
+    minimize: process.env.NODE_ENV === 'production',
+    minimizer: [
+    ],
+  },
+};
+
 if (process.env.NODE_ENV === 'development') {
   config.devServer = {
     hot: true,
@@ -144,4 +174,4 @@ if (process.env.NODE_ENV === 'development') {
   };
 }
 
-module.exports = config;
+module.exports = [config, legacyConfig];

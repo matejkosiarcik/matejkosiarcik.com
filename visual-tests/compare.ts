@@ -121,7 +121,7 @@ async function report(imgDiffs: { name: string, diff: number }[]): Promise<boole
     const isSuccess = img.diff <= treshold;
     failsCount += isSuccess ? 0 : 1;
 
-    const colorStart = isSuccess ? '\u001b[32m' : '\u001b[31m';
+    const colorStart = isSuccess ? (img.diff > 0 ? '\u001b[33m' : '\u001b[32m') : '\u001b[31m'; // eslint-disable-line no-nested-ternary
     const colorEnd = '\u001b[0m';
 
     const diff = `${(img.diff * 100).toFixed(2)}%`;

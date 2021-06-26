@@ -33,9 +33,16 @@ build:
 	sh images/icons/build.sh
 	@$(MAKE) -C$(PROJECT_DIR)/web build
 
-.PHONY: prod-check
-prod-check:
+.PHONY: test-prod
+test-prod:
 	npm ci --prefix tests
 	BASE_URL=https://matejkosiarcik.com npm test --prefix tests
 	npm ci --prefix visual-tests
 	BASE_URL=https://matejkosiarcik.com npm test --prefix visual-tests
+
+.PHONY: test-local
+test-local:
+	npm ci --prefix tests
+	BASE_URL=http://localhost:8888 npm test --prefix tests
+	npm ci --prefix visual-tests
+	BASE_URL=http://localhost:8888 npm test --prefix visual-tests
