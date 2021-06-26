@@ -4,7 +4,6 @@ title: Blog
 published: false
 ---
 
-<!-- prettier-ignore -->
 {% for post in site.posts %}
 <article class="teaser">
   <header>
@@ -19,10 +18,8 @@ published: false
 </article>
 {% endfor %}
 
-<!-- prettier-ignore -->
 {% assign post_count = site.posts | size %}
 
-<!-- prettier-ignore -->
 {% if post_count == 0 %}
   There are currently no posts...
 {% endif %}
