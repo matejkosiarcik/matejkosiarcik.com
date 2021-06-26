@@ -22,16 +22,15 @@ const plugins = glob.sync('jekyll/_site/**/*.html', { nodir: true }).map((file) 
 })).concat([
   new CopyPlugin({
     patterns:
-      [].concat(
-        glob.sync('../images/favicon/{original,artifacts}/*.{svg,png,ico}').map((file) => ({ from: file, to: '' })),
-        glob.sync('../images/icons/{original,artifacts}/*.{jpg,png,svg,gif,webp}').map((file) => ({ from: file, to: 'img' })),
+      [
+        { from: path.join(__dirname, 'jekyll', '_site', 'sitemap.xml'), to: '' },
+        { from: path.join(__dirname, 'script', 'goatcounter.js'), to: '' },
+      ].concat(
+        glob.sync('../images/favicon/artifacts/*.{svg,png,ico}').map((file) => ({ from: file, to: '' })),
+        glob.sync('../images/icons/artifacts/*.{jpg,png,svg,gif,webp}').map((file) => ({ from: file, to: 'img' })),
         glob.sync('../images/pictures/artifacts/*.{jpg,png,svg,gif,webp}').map((file) => ({ from: file, to: 'img' })),
         glob.sync('./config/*', { nodir: true }).map((file) => ({ from: file, to: '' })),
         glob.sync('./config/well-known/*', { nodir: true }).map((file) => ({ from: file, to: '.well-known' })),
-        [
-          { from: path.join(__dirname, 'jekyll', '_site', 'sitemap.xml'), to: '' },
-          { from: path.join(__dirname, 'script', 'goatcounter.js'), to: '' },
-        ],
       ),
   }),
 ]);
