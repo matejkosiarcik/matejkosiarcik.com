@@ -81,7 +81,7 @@ const browsers = [
       // When running it all at the same time, I found it can degrades performance (starting so many tabs/processes)
       for (const viewport of viewports) {
         await page.setViewportSize(viewport);
-        await page.goto(`${baseUrl}/${pageInfo.url}`, { waitUntil: 'networkidle' });
+        await page.goto(`${baseUrl}${pageInfo.url}`, { waitUntil: 'networkidle' });
         await Promise.all([
           page.screenshot({ path: path.join(viewportDir, `${viewport.width}x${viewport.height}.png`) }),
           page.screenshot({ path: path.join(fullpageDir, `${viewport.width}x${viewport.height}.png`), fullPage: true }),

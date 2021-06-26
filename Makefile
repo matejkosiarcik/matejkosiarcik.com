@@ -43,6 +43,6 @@ test-prod:
 .PHONY: test-local
 test-local:
 	npm ci --prefix tests
-	BASE_URL=https://localhost:8888 npm test --prefix tests
+	BASE_URL=http://localhost:8888 npm test --prefix tests
 	npm ci --prefix visual-tests
-	BASE_URL=https://localhost:8888 npm test --prefix visual-tests
+	BASE_URL=http://localhost:8888 npm test --prefix visual-tests

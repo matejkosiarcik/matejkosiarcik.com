@@ -32,11 +32,13 @@ if (!baseUrl) {
     }
 
     // validates all styles in given document
-    cssValidator({ uri: url, warning: 'no', profile: 'css3svg' }, (_, data) => {
-      if (!data.validity) {
-        console.log(url);
-        throw data.errors;
-      }
-    });
+    if (!url.includes('localhost')) {
+      cssValidator({ uri: url, warning: 'no', profile: 'css3svg' }, (_, data) => {
+        if (!data.validity) {
+          console.log(url);
+          throw data.errors;
+        }
+      });
+    }
   });
 })();
