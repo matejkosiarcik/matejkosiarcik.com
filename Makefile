@@ -30,7 +30,6 @@ fmt:
 
 .PHONY: build
 build:
-	sh images/icons/build.sh
 	@$(MAKE) -C$(PROJECT_DIR)/web build
 
 .PHONY: test-prod

@@ -27,3 +27,8 @@ svg2png 'apple-touch-icon' 180
 docker run --interactive --tty --volume "$PWD/artifacts:/img" matejkosiarcik/millipng:dev --level ultra-brute
 
 png2ico 'artifacts/favicon.ico' --colors 16 'artifacts/.favicon-16.png' 'artifacts/.favicon-32.png'
+
+# optimize svgs with svgcleaner
+find 'original' -name '*.svg' | while read -r file; do
+    svgcleaner --apply-transform-to-paths yes --coordinates-precision 1 --properties-precision 1 --transforms-precision 1 --paths-coordinates-precision 1 "$file" "$output_directory/$(basename "$file")"
+done
