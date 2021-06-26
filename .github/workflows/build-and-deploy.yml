@@ -23,6 +23,9 @@ jobs:
         with:
           ruby-version: "2.7"
 
+      - name: Install build dependencies 🧩
+        run: sudo apt-get install --yes git
+
       - name: Build 🔧
         run: |
           cd web
