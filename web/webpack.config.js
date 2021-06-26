@@ -24,6 +24,7 @@ const plugins = glob.sync('jekyll/_site/**/*.html', { nodir: true }).map((file) 
     patterns:
       [
         { from: path.join(__dirname, 'jekyll', '_site', 'sitemap.xml'), to: '' },
+        { from: path.join(__dirname, 'jekyll', '_site', 'sitemap2.xml'), to: '' },
         { from: path.join(__dirname, 'script', 'goatcounter.js'), to: '' },
       ].concat(
         glob.sync('../images/favicon/artifacts/*.{svg,png,ico}').map((file) => ({ from: file, to: '' })),

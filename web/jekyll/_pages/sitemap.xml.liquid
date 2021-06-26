@@ -1,0 +1,15 @@
+---
+permalink: /sitemap2.xml
+layout:
+---
+{% assign all_pages = site.html_pages | concat: site.posts | where_exp: "page", "page.sitemap != false" | sort: "url" %}
+
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {% for page in all_pages %}
+    <url>
+      <loc>{{ page.url | absolute_url }}</loc>
+      <lastmod>{{ page.last_modified_at | date_to_xmlschema }}</lastmod>
+    </url>
+  {% endfor %}
+</urlset>
