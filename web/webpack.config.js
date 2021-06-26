@@ -115,8 +115,7 @@ const config = {
       },
       {
         test: /\.ts$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
+        loader: 'ts-loader',
       },
       {
         test: /\.scss$/,

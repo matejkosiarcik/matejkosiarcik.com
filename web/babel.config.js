@@ -8,6 +8,7 @@ const presets = [
 ];
 
 module.exports = {
+  parserOpts: { strictMode: true },
   presets: presets,
   plugins: [
     '@babel/proposal-class-properties',
