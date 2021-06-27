@@ -12,7 +12,6 @@ exclude:
 
 plugins:
   - jekyll-last-modified-at
-  - jekyll-sitemap
   - jekyll-tidy
   - jekyll-toc
   - jekyll-regex-replace

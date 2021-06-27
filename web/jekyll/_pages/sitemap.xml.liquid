@@ -1,5 +1,5 @@
 ---
-permalink: /sitemap2.xml
+permalink: /sitemap.xml
 layout:
 ---
 {% assign all_pages = site.html_pages | concat: site.posts | where_exp: "page", "page.sitemap != false" | sort: "url" %}
