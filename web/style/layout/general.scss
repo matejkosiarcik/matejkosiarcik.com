@@ -3,17 +3,3 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
-
-body > main {
-  flex-grow: 1;
-  padding-right: 15px !important;
-  padding-left: 15px !important;
-}
-
-body > header .container,
-body > footer .container {
-  @media (--desktop) {
-    padding-right: 15px !important;
-    padding-left: 15px !important;
-  }
-}

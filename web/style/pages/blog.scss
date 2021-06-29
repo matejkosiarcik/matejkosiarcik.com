@@ -1,0 +1,114 @@
+// !!! This file styles both the "/blog" and all individual articles "/blog/hello-world"
+
+.articles {
+  margin: -20px 0; // reset margin from individual article
+
+  @media (--desktop) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
+article {
+  time {
+    color: var(--fg-color-faded);
+  }
+
+  .categories {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: -5px;
+  }
+
+  .category {
+    flex-shrink: 0;
+    padding: 3px 5px;
+    border-radius: 5px;
+    background-color: var(--highlight-color);
+    color: $fg-color-dark;
+    margin-top: 5px;
+    margin-right: 5px;
+
+    &::selection {
+      // well basically, the default selection colors are not visible enough on this background
+      // so we change the selection background so we can see the selection better
+      background-color: purple;
+    }
+  }
+}
+
+article.teaser {
+  overflow: hidden;
+  border-radius: 10px;
+  margin: 20px 0;
+  background-color: var(--accent-color);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+
+  @media (--desktop) {
+    width: calc(50% - 20px);
+  }
+
+  .header h1 {
+    word-break: break-all;
+    margin-top: 0;
+  }
+
+  .main {
+    flex-grow: 1;
+  }
+
+  .footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+
+    @media (--phone) {
+      a {
+        display: inline-block;
+        margin-bottom: 0.5rem;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+article.full {
+  .header {
+    margin-bottom: 70px;
+  }
+
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+
+  table {
+    max-width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    border-top: 0.1px solid var(--fg-color-faded);
+    margin-left: auto;
+    margin-right: auto;
+
+    th,
+    td {
+      padding: 0.75rem 30px;
+    }
+
+    thead,
+    tbody tr { // :not(:last-child)
+      border-bottom: 0.1px solid var(--fg-color-faded);
+    }
+  }
+
+  pre {
+    padding: 20px;
+    border-radius: 20px;
+    background: var(--accent-color);
+  }
+}

@@ -1,73 +1,81 @@
 body > header {
-  @media (--desktop) {
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
+  margin-bottom: 50px;
 
   @media (--phone) {
     border-bottom: 1px solid var(--fg-color);
-    // border-bottom: 1px solid rgba(var(--fg-color), 0.2); // TODO: enable this
   }
 
-  ul {
-    margin: 0;
-    padding-left: 0; // reset default browser style
-    list-style: none;
-  }
-
-  li {
-    display: block;
-    margin-right: 0;
-    float: left;
-    text-align: center;
-
-    @media (--phone) {
-      width: 100%;
-    }
+  @media (--tablet-and-desktop) {
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 
   nav {
     height: 0;
     overflow: hidden;
 
-    @media (--desktop) {
+    @media (--tablet-and-desktop) {
       height: auto !important;
     }
   }
 
-  // hide checkbox
-  input[type='checkbox'] {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 0;
-    overflow: hidden;
-    opacity: 0;
-    pointer-events: none;
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding-left: 0; // reset default browser style
+    list-style: none;
+
+    @media (--phone) {
+      margin: 0 -15px; // reset .container padding to extend buttons to the edge of the screen
+    }
+  }
+
+  li {
+    text-align: center;
+
+    @media (--phone) {
+      width: 100%;
+    }
+
+    @media (--tablet-and-desktop) {
+      margin-right: 15px;
+    }
+
+    &.active a {
+      text-decoration: underline;
+    }
   }
 
   a,
   label {
+    transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
+
+    &:hover {
+      background-color: var(--highlight-color);
+      // color: var(--bg-color);
+      color: $fg-color-dark;
+    }
+
     @media (--phone) {
       display: inline-block;
       padding-top: 25px;
       padding-bottom: 25px;
-      // padding: 25px 35px;
       background: inherit;
     }
   }
 
   a {
-    width: 100%;
+    display: block;
     text-decoration: none;
 
-    @media (--desktop) {
-      margin-right: 15px;
+    @media (--tablet-and-desktop) {
+      padding: 10px 15px;
+      border-radius: 7px;
     }
 
-    @media (--phone) {
-      transition: background-color 0.2s;
+    &:hover {
+      text-decoration: none !important;
     }
   }
 
@@ -78,25 +86,29 @@ body > header {
     text-align: center;
     cursor: pointer;
 
-    @media (--desktop) {
+    @media (--tablet-and-desktop) {
       display: none;
     }
 
+    // size for hamburger button
     svg {
       width: 30px;
       height: 30px;
     }
   }
 
-  a:hover,
-  label:hover {
-    @media (--phone) {
-      background-color: var(--bg-color-alt);
-      color: var(--fg-color);
-    }
-  }
+  // MARK: Navigation button for mobile
 
-  // hamburgers
+  input[type='checkbox'] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
 
   input[type='checkbox']:checked ~ label .hamburger {
     @extend .is-active;

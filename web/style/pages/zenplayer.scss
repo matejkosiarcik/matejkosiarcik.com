@@ -1,26 +1,13 @@
-body.zenplayer {
+.zenplayer {
   text-align: center;
 
-  p {
-    margin-top: 15px;
-  }
-
-  p img {
-    display: inline;
-    width: 1.2em;
-    height: 1.2em;
-    vertical-align: text-bottom;
-  }
-
-  h2 {
+  main {
     margin-top: 100px;
   }
 
   .gallery {
     display: flex;
     flex-wrap: nowrap;
-    margin-top: 20px;
-    margin-bottom: 50px;
     overflow-x: scroll;
 
     > * {
@@ -29,6 +16,16 @@ body.zenplayer {
       &:last-child {
         margin-right: 0;
       }
+    }
+  }
+
+  footer {
+    margin-top: 25px;
+
+    img {
+      width: 1.2em;
+      height: 1.2em;
+      vertical-align: text-bottom;
     }
   }
 }

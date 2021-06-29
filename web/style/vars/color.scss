@@ -9,6 +9,13 @@ $fg-color-light: #333;
 $fg-color-light-alt: lighten($fg-color-light, 20%);
 $fg-color-dark: #fafafa;
 $fg-color-dark-alt: darken($fg-color-dark, 15%);
+$fg-color-light-faded: #a0a0a0;
+$fg-color-dark-faded: #888;
+
+// highlight-color
+$accent-color-light: #e2eaf2;
+$accent-color-dark: #151a20;
+$highlight-color: #369;
 
 :root {
   // only light mode
@@ -16,6 +23,9 @@ $fg-color-dark-alt: darken($fg-color-dark, 15%);
   --bg-color-alt: #{$bg-color-light-alt};
   --fg-color: #{$fg-color-light};
   --fg-color-alt: #{$fg-color-light-alt};
+  --fg-color-faded: #{$fg-color-light-faded};
+  --highlight-color: #{$highlight-color};
+  --accent-color: #{$accent-color-light};
 
   // only dark mode
   @media (--dark) {
@@ -23,5 +33,7 @@ $fg-color-dark-alt: darken($fg-color-dark, 15%);
     --bg-color-alt: #{$bg-color-dark-alt};
     --fg-color: #{$fg-color-dark};
     --fg-color-alt: #{$fg-color-dark-alt};
+    --fg-color-faded: #{$fg-color-dark-faded};
+    --accent-color: #{$accent-color-dark};
   }
 }

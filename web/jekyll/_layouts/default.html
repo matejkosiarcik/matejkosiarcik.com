@@ -11,9 +11,9 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
   {% include head.html %}
-  <body class="{{ bodyClass }}">
+  <body>
     {% include header.html %}
-    <main class="container">{{ content }}</main>
+    <main class="container {{ bodyClass }}">{{ content }}</main>
     {% include footer.html %}
 
     <!-- prettier-ignore -->

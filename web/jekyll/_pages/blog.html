@@ -1,28 +1,37 @@
 ---
 permalink: /blog/
 title: Blog
-published: false
+navigation: true
 ---
 
-<!-- prettier-ignore -->
-{% for post in site.posts %}
-<article class="teaser">
-  <header>
-    <h1>{{ post.title }}</h1>
-  </header>
+{% assign posts = site.posts | sort: "date" | reverse %}
 
-  <main>{{ post.excerpt }}</main>
+<div class="articles">
+  <!-- prettier-ignore -->
+  {% for post in posts %}
+  <article class="teaser">
+    <section class="header">
+      <h1>{{ post.title }}</h1>
+    </section>
 
-  <footer>
-    <a href="{{ post.url | relative_url }}">Read</a>
-  </footer>
-</article>
-{% endfor %}
+    <section class="main">
+      {{ post.excerpt | truncate: 200 }}
+    </section>
 
-<!-- prettier-ignore -->
-{% assign post_count = site.posts | size %}
+    <section class="footer">
+      <a href="{{ post.url | relative_url }}">Read</a>
+      <div class="categories">
+        {% for category in post.category %}<span class="category">{{ category }}</span>{% endfor %}
+      </div>
+    </section>
+  </article>
+  {% endfor %}
 
-<!-- prettier-ignore -->
-{% if post_count == 0 %}
-  There are currently no posts...
-{% endif %}
+  <!-- prettier-ignore -->
+  {% assign post_count = site.posts | size %}
+
+  <!-- prettier-ignore -->
+  {% if post_count == 0 %}
+    There are currently no posts...
+  {% endif %}
+</div>

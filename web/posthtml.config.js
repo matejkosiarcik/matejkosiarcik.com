@@ -25,6 +25,11 @@ if (process.env.NODE_ENV === 'production') {
       //     attr: 'data-visibilty',
       //     value: '',
       // },
+      {
+        selector: 'th',
+        attr: 'scope',
+        value: 'col',
+      },
     ]),
     require('posthtml-attrs-sorter')(),
   );
