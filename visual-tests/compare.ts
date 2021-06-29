@@ -49,6 +49,7 @@ function union(arr1: string[], arr2: string[]): string[] {
   return resultArray;
 }
 
+// TODO: allow comparing images with nonmatching sizes
 // create diff data
 async function createDiffs() : Promise<{ name: string, diff: number }[]> {
   const [testFiles, referenceFiles] = await Promise.all([

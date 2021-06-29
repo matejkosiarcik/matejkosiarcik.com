@@ -82,6 +82,8 @@ const browsers = [
       for (const viewport of viewports) {
         await page.setViewportSize(viewport);
         await page.goto(`${baseUrl}${pageInfo.url}`, { waitUntil: 'networkidle' });
+        // load all async resources as sync
+        await page.$$eval('[loading=lazy]', (elements) => elements.forEach((element) => element.setAttribute('loading', 'eager')));
         await Promise.all([
           page.screenshot({ path: path.join(viewportDir, `${viewport.width}x${viewport.height}.png`) }),
           page.screenshot({ path: path.join(fullpageDir, `${viewport.width}x${viewport.height}.png`), fullPage: true }),
