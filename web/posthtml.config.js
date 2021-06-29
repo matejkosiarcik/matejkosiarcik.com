@@ -20,11 +20,6 @@ if (process.env.NODE_ENV === 'production') {
         attr: 'decoding',
         value: 'async',
       },
-      // {
-      //     selector: 'img[width][height]',
-      //     attr: 'data-visibilty',
-      //     value: '',
-      // },
       {
         selector: 'th',
         attr: 'scope',
