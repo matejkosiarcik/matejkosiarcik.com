@@ -9,5 +9,4 @@ group :jekyll_plugins do
   gem "jekyll-tidy"
   gem "jekyll-toc"
   gem "jekyll-regex-replace"
-  gem "jekyll-pandoc"
 end

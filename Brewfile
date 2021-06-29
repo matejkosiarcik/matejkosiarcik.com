@@ -4,7 +4,6 @@
 brew "pkg-config"
 brew "node"
 brew "ruby"
-brew "pandoc"
 
 # RECOMMENDED (optional):
 # brew "ruby-build"
