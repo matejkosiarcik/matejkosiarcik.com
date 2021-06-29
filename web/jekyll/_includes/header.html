@@ -1,3 +1,4 @@
+<!-- prettier-ignore -->
 {% assign current_url = page.url | regex_replace: "/+$", "" %}
 {% assign navigation_pages = site.pages | where_exp: "page", "page.navigation == true" | sort: "url" %}
 
@@ -13,15 +14,18 @@
 
   <nav id="navigation" class="container">
     <ul>
+      <!-- prettier-ignore -->
       {% for page in navigation_pages %}
         {% assign page_url = page.url | regex_replace: "/+$", "" %}
 
+        <!-- prettier-ignore -->
         {% if current_url == page_url %}
           <li class="active">
         {% else %}
           <li>
         {% endif %}
 
+        <!-- prettier-ignore -->
         {% if page_url == "" %}
           {% assign page_url = "/" %}
         {% endif %}
