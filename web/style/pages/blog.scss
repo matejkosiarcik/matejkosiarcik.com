@@ -101,7 +101,7 @@ article.full {
     }
 
     thead,
-    tbody tr { // :not(:last-child)
+    tbody tr {
       border-bottom: 0.1px solid var(--fg-color-faded);
     }
   }
