@@ -1,3 +1,19 @@
+
+@mixin a-and-label {
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
+
+  &:hover {
+    background-color: var(--highlight-color);
+    color: $fg-color-dark;
+  }
+
+  @media (--phone) {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    background: inherit;
+  }
+}
+
 body > header {
   margin-bottom: 50px;
 
@@ -41,31 +57,11 @@ body > header {
     @media (--tablet-and-desktop) {
       margin-right: 15px;
     }
-
-    &.active a {
-      text-decoration: underline;
-    }
-  }
-
-  a,
-  label {
-    transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
-
-    &:hover {
-      background-color: var(--highlight-color);
-      // color: var(--bg-color);
-      color: $fg-color-dark;
-    }
-
-    @media (--phone) {
-      display: inline-block;
-      padding-top: 25px;
-      padding-bottom: 25px;
-      background: inherit;
-    }
   }
 
   a {
+    @include a-and-label;
+
     display: block;
     text-decoration: none;
 
@@ -79,12 +75,22 @@ body > header {
     }
   }
 
+  li.active a {
+    text-decoration: underline;
+  }
+
   label {
+    @include a-and-label;
+
     width: 100%;
     background-color: var(--bg-color);
     color: var(--fg-color);
     text-align: center;
     cursor: pointer;
+
+    @media (--phone) {
+      display: inline-block;
+    }
 
     @media (--tablet-and-desktop) {
       display: none;

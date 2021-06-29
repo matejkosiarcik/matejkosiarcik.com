@@ -17,19 +17,19 @@ article {
 
   .categories {
     display: flex;
-    align-items: center;
     flex-wrap: wrap;
+    align-items: center;
     margin-top: -5px;
   }
 
   .category {
     flex-shrink: 0;
+    margin-top: 5px;
+    margin-right: 5px;
     padding: 3px 5px;
     border-radius: 5px;
     background-color: var(--highlight-color);
     color: $fg-color-dark;
-    margin-top: 5px;
-    margin-right: 5px;
 
     &::selection {
       // well basically, the default selection colors are not visible enough on this background
@@ -40,21 +40,21 @@ article {
 }
 
 article.teaser {
-  overflow: hidden;
-  border-radius: 10px;
-  margin: 20px 0;
-  background-color: var(--accent-color);
-  padding: 20px;
   display: flex;
   flex-direction: column;
+  margin: 20px 0;
+  padding: 20px;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: var(--accent-color);
 
   @media (--desktop) {
     width: calc(50% - 20px);
   }
 
   .header h1 {
-    word-break: break-all;
     margin-top: 0;
+    word-break: break-all;
   }
 
   .main {
@@ -64,14 +64,14 @@ article.teaser {
   .footer {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     align-items: baseline;
+    justify-content: space-between;
 
     @media (--phone) {
       a {
         display: inline-block;
-        margin-bottom: 0.5rem;
         margin-right: 10px;
+        margin-bottom: 0.5rem;
       }
     }
   }
@@ -89,11 +89,11 @@ article.full {
 
   table {
     max-width: 100%;
-    border-collapse: collapse;
-    text-align: left;
-    border-top: 0.1px solid var(--fg-color-faded);
-    margin-left: auto;
     margin-right: auto;
+    margin-left: auto;
+    border-collapse: collapse;
+    border-top: 0.1px solid var(--fg-color-faded);
+    text-align: left;
 
     th,
     td {
