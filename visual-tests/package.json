@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "pixelmatch": "^5.2.1",
-    "playwright": "^1.12.2",
+    "playwright": "^1.12.3",
     "pngjs": "^6.0.0"
   },
   "devDependencies": {
