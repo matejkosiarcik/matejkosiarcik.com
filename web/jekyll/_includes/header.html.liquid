@@ -17,16 +17,15 @@
         {% assign page_url = page.url | regex_replace: "/+$", "" %}
 
         {% if current_url == page_url %}
-          {% assign li_start = 'class="active"' %}
+          <li class="active">
         {% else %}
-          {% assign li_start = '' %}
+          <li>
         {% endif %}
 
         {% if page_url == "" %}
           {% assign page_url = "/" %}
         {% endif %}
 
-        <li {{ li_start }}>
           <a href="{{ page_url }}">{{ page.title }}</a>
         </li>
       {% endfor %}
