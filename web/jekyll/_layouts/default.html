@@ -10,11 +10,11 @@
 
 <!DOCTYPE html>
 <html lang="en" class="no-js">
-  {% include head.html %}
+  {% include head.html.liquid %}
   <body>
-    {% include header.html %}
+    {% include header.html.liquid %}
     <main class="container {{ bodyClass }}">{{ content }}</main>
-    {% include footer.html %}
+    {% include footer.html.liquid %}
 
     <!-- prettier-ignore -->
     {% if jekyll.environment == "production" %}
