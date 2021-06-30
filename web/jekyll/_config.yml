@@ -24,8 +24,11 @@ toc:
   sublist_class: ""
   item_class: ""
 
-highlighter: none # highlight with js instead
-markdown: Pandoc
+markdown: kramdown
+kramdown:
+  syntax_highlighter_opts:
+    disable: true
+highlighter: none
 
 defaults:
   - scope:

@@ -4,29 +4,24 @@ a {
   color: inherit;
 
   &:hover {
-    color: var(--fg-color-alt);
+    color: var(--highlight-color);
   }
 }
 
 // headings
 
 h1 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 200;
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 1.9rem;
   font-weight: 200;
 }
 
 h3 {
   font-size: 1.5rem;
-}
-
-h3,
-th,
-thead {
   font-weight: 500;
 }
 
@@ -41,5 +36,17 @@ h5 {
 }
 
 h6 {
+  font-size: 1rem;
   font-weight: 600;
+}
+
+th,
+thead {
+  font-weight: 600;
+}
+
+// misc
+
+.strikethrough {
+  text-decoration: line-through;
 }

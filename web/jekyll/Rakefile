@@ -1,25 +1,25 @@
 # clean jekyll output folder
 require "rake/clean"
-CLEAN.include(FileList["_site"])
+CLEAN.include(FileList["_site", ".jekyll-*"])
 
 task :build => ["clean"] do
-    ENV["JEKYLL_ENV"] = "production"
-    Dir.chdir(File.dirname(__FILE__)) do
-        sh "bundle", "exec", "jekyll", "clean"
-        sh "bundle", "exec", "jekyll", "build", "--config", "_config.yml,_config.prod.yml"
-    end
+  ENV["JEKYLL_ENV"] = "production"
+  Dir.chdir(File.dirname(__FILE__)) do
+    sh "bundle", "exec", "jekyll", "clean"
+    sh "bundle", "exec", "jekyll", "build", "--config", "_config.yml,_config.prod.yml"
+  end
 end
 
 task :prestart do
-    ENV["JEKYLL_ENV"] = "development"
-    Dir.chdir(File.dirname(__FILE__)) do
-        sh "bundle", "exec", "jekyll", "build", "--config", "_config.yml,_config.dev.yml"
-    end
+  ENV["JEKYLL_ENV"] = "development"
+  Dir.chdir(File.dirname(__FILE__)) do
+    sh "bundle", "exec", "jekyll", "build", "--config", "_config.yml,_config.dev.yml"
+  end
 end
 
 task :start do
-    ENV["JEKYLL_ENV"] = "development"
-    Dir.chdir(File.dirname(__FILE__)) do
-        sh "bundle", "exec", "jekyll", "serve", "--config", "_config.yml,_config.dev.yml"
-    end
+  ENV["JEKYLL_ENV"] = "development"
+  Dir.chdir(File.dirname(__FILE__)) do
+    sh "bundle", "exec", "jekyll", "serve", "--config", "_config.yml,_config.dev.yml"
+  end
 end

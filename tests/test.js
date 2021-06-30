@@ -25,11 +25,11 @@ if (!baseUrl) {
     }
 
     // default online validator
-    const results2 = await htmlValidator({ url, format: 'text', ignore: ['no-conditional-comment'] });
-    if (results2.toLowerCase().includes('error')) {
-      console.log(url);
-      throw results2;
-    }
+    // const results2 = await htmlValidator({ url, format: 'text', ignore: ['no-conditional-comment'] });
+    // if (results2.toLowerCase().includes('error')) {
+    //   console.log(url);
+    //   throw results2;
+    // }
 
     // validates all styles in given document
     if (!url.includes('localhost')) {

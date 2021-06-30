@@ -1,25 +1,21 @@
-<!-- prettier-ignore -->
 {% if page.description %}
   {% assign description = page.description %}
 {% else %}
   {% assign description = "I am Matej Košiarčik and I program stuff" %}
 {% endif %}
 
-<!-- prettier-ignore -->
 {% if page.image %}
   {% assign image = page.image | absolute_url %}
 {% else %}
   {% assign image = "/favicon.png" | absolute_url %}
 {% endif %}
 
-<!-- prettier-ignore -->
 {% if page.title %}
   {% assign title = page.title %}
 {% else %}
   {% assign title = site.title %}
 {% endif %}
 
-<!-- prettier-ignore -->
 {% if page.path contains "_posts" %}
   {% assign webpage_type = "article" %}
 {% else %}
@@ -30,7 +26,6 @@
   <meta charset="UTF-8" />
 
   <!-- simulate part of production CSP header locally -->
-  <!-- prettier-ignore -->
   {% if jekyll.environment == "development" %}
   <meta
     http-equiv="Content-Security-Policy"
@@ -38,7 +33,6 @@
   />
   {% endif %}
 
-  <!-- prettier-ignore -->
   {% if jekyll.environment == "production" %}
   <link rel="dns-prefetch" href="https://matejkosiarcik.goatcounter.com" />
   <link rel="preconnect" href="https://matejkosiarcik.goatcounter.com" />
@@ -51,11 +45,10 @@
     -->
   {% endif %}
 
-  <!-- prettier-ignore -->
   {% if page.title %}
-  <title>{{ site.title }} | {{ page.title }}</title>
+    <title>{{ site.title }} | {{ page.title }}</title>
   {% else %}
-  <title>{{ site.title }}</title>
+    <title>{{ site.title }}</title>
   {% endif %}
 
   <!-- meta -->
@@ -65,7 +58,7 @@
   <meta name="copyright" content="Copyright © 2017-2021 Matej Košiarčik. All rights reserved." />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   {% if jekyll.environment == "production" %}
-  <link rel="canonical" href="{{ page.url | absolute_url }}" />
+    <link rel="canonical" href="{{ page.url | absolute_url }}" />
   {% endif %}
 
   <!-- favicon -->
@@ -78,24 +71,22 @@
 
   <!-- OpenGraph -->
   {% if jekyll.environment == "production" %}
-  <meta property="og:title" content="{{ title }}" />
-  <meta property="og:type" content="{{ webpage_type }}" />
-  <meta property="og:url" content="{{ page.url | absolute_url }}" />
-  <meta property="og:description" content="{{ description }}" />
-  <meta property="og:image" content="{{ image }}" />
-  <!-- <meta property="og:image:alt" content=""/> -->
-  <meta property="og:site_name" content="Matej Košiarčik's personal website" />
+    <meta property="og:title" content="{{ title }}" />
+    <meta property="og:type" content="{{ webpage_type }}" />
+    <meta property="og:url" content="{{ page.url | absolute_url }}" />
+    <meta property="og:description" content="{{ description }}" />
+    <meta property="og:image" content="{{ image }}" />
+    <!-- <meta property="og:image:alt" content=""/> -->
+    <meta property="og:site_name" content="Matej Košiarčik's personal website" />
   {% endif %}
 
   <!-- Twitter, ignoring properties already in OpenGraph -->
-  <!-- prettier-ignore -->
   {% if jekyll.environment == "production" %}
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:creator" content="@matejkosiarcik" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="@matejkosiarcik" />
   {% endif %}
 
-  <!-- prettier-ignore -->
   {% if jekyll.environment == "production" %}
-  <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="stylesheet" type="text/css" href="/style.css" />
   {% endif %}
 </head>

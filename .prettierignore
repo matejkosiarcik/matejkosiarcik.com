@@ -14,3 +14,4 @@ venv/
 # files
 *.js
 *.ts
+*.html

@@ -1,0 +1,114 @@
+// !!! This file styles both the "/blog" and all individual articles "/blog/hello-world"
+
+.articles {
+  margin: -20px 0; // reset margin from individual article
+
+  @media (--desktop) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
+article {
+  time {
+    color: var(--fg-color-faded);
+  }
+
+  .categories {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: -5px;
+  }
+
+  .category {
+    flex-shrink: 0;
+    margin-top: 5px;
+    margin-right: 5px;
+    padding: 3px 5px;
+    border-radius: 5px;
+    background-color: var(--highlight-color);
+    color: $fg-color-dark;
+
+    &::selection {
+      // well basically, the default selection colors are not visible enough on this background
+      // so we change the selection background so we can see the selection better
+      background-color: purple;
+    }
+  }
+}
+
+article.teaser {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+  padding: 20px;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: var(--accent-color);
+
+  @media (--desktop) {
+    width: calc(50% - 20px);
+  }
+
+  .header h1 {
+    margin-top: 0;
+    word-break: break-all;
+  }
+
+  .main {
+    flex-grow: 1;
+  }
+
+  .footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+
+    @media (--phone) {
+      a {
+        display: inline-block;
+        margin-right: 10px;
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+}
+
+article.full {
+  .header {
+    margin-bottom: 70px;
+  }
+
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+
+  table {
+    max-width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    border-collapse: collapse;
+    border-top: 0.1px solid var(--fg-color-faded);
+    text-align: left;
+
+    th,
+    td {
+      padding: 0.75rem 30px;
+    }
+
+    thead,
+    tbody tr {
+      border-bottom: 0.1px solid var(--fg-color-faded);
+    }
+  }
+
+  pre {
+    padding: 20px;
+    border-radius: 20px;
+    background: var(--accent-color);
+  }
+}
