@@ -98,8 +98,12 @@ async function createDiffs() : Promise<{ name: string, diff: number }[]> {
 
     const diffImg = new PNG({ width: Math.max(testImg.width, referenceImg.width), height: Math.max(testImg.height, referenceImg.height) });
     const totalPixelsCount = diffImg.height * diffImg.width;
-    const diffPixelsCount = pixelmatch(testImg.data, referenceImg.data, diffImg.data, diffImg.width, diffImg.height, { threshold: 0 });
-    imgDiffs.push({ name: diffFile, diff: diffPixelsCount / totalPixelsCount });
+    try {
+      const diffPixelsCount = pixelmatch(testImg.data, referenceImg.data, diffImg.data, diffImg.width, diffImg.height, { threshold: 0 });
+      imgDiffs.push({ name: diffFile, diff: diffPixelsCount / totalPixelsCount });
+    } catch (error) {
+      imgDiffs.push({ name: diffFile, diff: NaN });
+    }
     await fs.writeFile(diffFile, PNG.sync.write(diffImg));
   }));
 
@@ -125,7 +129,7 @@ async function report(imgDiffs: { name: string, diff: number }[]): Promise<boole
     const colorStart = isSuccess ? (img.diff > 0 ? '\u001b[33m' : '\u001b[32m') : '\u001b[31m'; // eslint-disable-line no-nested-ternary
     const colorEnd = '\u001b[0m';
 
-    const diff = `${(img.diff * 100).toFixed(2)}%`;
+    const diff = `${Number.isFinite(img.diff) ? (img.diff * 100).toFixed(2) : '-'}%`;
     const nameSpacer = ' '.repeat(maxImgNameLength - img.name.length);
     const diffSpacer = ' '.repeat(maxDiffLength - diff.length);
     const trailer = isSuccess ? '' : ' ❌';
