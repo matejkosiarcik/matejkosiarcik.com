@@ -89,6 +89,7 @@ const config = {
     path: path.join(__dirname, outputDir),
     publicPath: '/',
     crossOriginLoading: 'anonymous',
+    chunkFormat: 'array-push', // important to emit output for web
   },
   entry: {
     bundle: path.join(__dirname, 'script', 'main.ts'),
@@ -141,6 +142,7 @@ const legacyConfig = {
     path: path.join(__dirname, outputDir),
     publicPath: '/',
     crossOriginLoading: 'anonymous',
+    chunkFormat: 'array-push', // important to emit output for web
   },
   entry: {
     'bundle-legacy': path.join(__dirname, 'script', 'main.ts'),
