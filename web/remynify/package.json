@@ -2,7 +2,8 @@
   "private": true,
   "name": "example",
   "scripts": {
-    "build": "sh remynify.sh ../public/style.css"
+    "build": "sh remynify.sh ../public/style.css",
+    "build:new": "ts-node remynify.ts ../public/style.css"
   },
   "devDependencies": {
     "@types/node": "^16.3.1",

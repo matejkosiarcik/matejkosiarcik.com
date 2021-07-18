@@ -2,9 +2,7 @@
   "name": "example",
   "private": true,
   "scripts": {
-    "test": "run-s screenshot compare",
-    "screenshot": "ts-node screenshot.ts",
-    "compare": "ts-node compare.ts"
+    "test": "ts-node main.ts"
   },
   "dependencies": {
     "pixelmatch": "^5.2.1",
