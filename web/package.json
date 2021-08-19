@@ -57,7 +57,7 @@
     "html-webpack-plugin": "^5.3.2",
     "isomorphic-fetch": "^3.0.0",
     "mini-css-extract-plugin": "^2.1.0",
-    "minify-xml": "^2.5.0",
+    "minify-xml": "^3.1.0",
     "netlify-cli": "^4.4.2",
     "node-sass-glob-importer": "^5.3.2",
     "npm-run-all": "^4.1.5",
