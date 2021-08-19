@@ -6,13 +6,13 @@
     "build:new": "ts-node remynify.ts ../public/style.css"
   },
   "devDependencies": {
-    "@types/node": "^16.6.1",
+    "@types/node": "^16.6.2",
     "@types/yargs": "^17.0.2",
     "clean-css-cli": "^5.3.3",
     "crass": "^0.12.3",
     "cssnano-cli": "^1.0.5",
     "csso-cli": "^3.0.0",
-    "ts-node": "^10.1.0",
+    "ts-node": "^10.2.1",
     "typescript": "^4.3.5"
   },
   "dependencies": {
