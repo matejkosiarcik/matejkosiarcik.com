@@ -6,7 +6,7 @@
     "build:new": "ts-node remynify.ts ../public/style.css"
   },
   "devDependencies": {
-    "@types/node": "^16.6.1",
+    "@types/node": "^16.7.1",
     "@types/yargs": "^17.0.2",
     "clean-css-cli": "^5.3.3",
     "crass": "^0.12.3",
