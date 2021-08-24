@@ -77,8 +77,8 @@ const browsers = [
       const fullpageDir = path.join(pageInfo.name, browserInfo.name, 'full');
       const [page] = await Promise.all([
         context.newPage(),
-        fs.mkdir(viewportDir, { recursive: true }),
-        fs.mkdir(fullpageDir, { recursive: true }),
+        fs.mkdir(path.join('test', viewportDir), { recursive: true }),
+        fs.mkdir(path.join('test', fullpageDir), { recursive: true }),
       ]);
 
       // This is serial for a reason
