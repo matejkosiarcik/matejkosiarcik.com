@@ -25,5 +25,8 @@ jobs:
         with:
           ruby-version: "2.7"
 
+      - name: Dependencies 📦
+        run: gem instal bundler
+
       - name: Build 🔧
         run: make bootstrap lint build

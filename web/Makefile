@@ -16,7 +16,7 @@ all: bootstrap build
 
 .PHONY: bootstrap
 bootstrap:
-	gem install bundler
+	command -v bundle >/dev/null 2>&1 || gem install bundler
 	$(BUNDLE_ENV) bundle install
 	npm ci
 	npm ci --prefix remynify
