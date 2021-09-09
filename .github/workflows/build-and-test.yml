@@ -1,6 +1,9 @@
 name: Build and Test 🔧
 
 on:
+  push:
+    branches:
+      - master
   pull_request:
 
 jobs:
@@ -25,4 +28,4 @@ jobs:
           ruby-version: "2.7"
 
       - name: Build 🔧
-        run: make bootstrap lint build
+        run: make bootstrap build
