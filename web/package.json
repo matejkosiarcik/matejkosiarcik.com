@@ -20,7 +20,7 @@
     "build:netlify:redirects": "cp 'netlify/_redirects' 'public/_redirects'",
     "build:netlify:headers": "node 'netlify/_headers.js'",
     "build:goatcounter": "curl -sSLf 'https://gc.zgo.at/count.js' --output script/goatcounter.js",
-    "postbuild": "node build-validate.js",
+    "postbuild": "node postbuild-validate.js",
     "clean": "rimraf public",
     "lint": "run-p lint:*",
     "lint:ts": "tsc --noEmit --skipLibCheck",
