@@ -40,19 +40,6 @@ updates:
       - matejkosiarcik
     open-pull-requests-limit: 1
 
-  - package-ecosystem: npm
-    directory: "/web/remynify/"
-    versioning-strategy: increase
-    schedule:
-      interval: daily
-      time: "01:30"
-      timezone: "Europe/Bratislava"
-    reviewers:
-      - matejkosiarcik
-    assignees:
-      - matejkosiarcik
-    open-pull-requests-limit: 1
-
   - package-ecosystem: bundler
     directory: "/web/jekyll/"
     versioning-strategy: increase
