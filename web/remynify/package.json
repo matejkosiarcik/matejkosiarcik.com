@@ -8,14 +8,14 @@
   "devDependencies": {
     "@types/node": "^16.9.1",
     "@types/yargs": "^17.0.2",
-    "clean-css-cli": "^5.3.3",
-    "crass": "^0.12.3",
-    "cssnano-cli": "^1.0.5",
-    "csso-cli": "^3.0.0",
     "ts-node": "^10.2.1",
     "typescript": "^4.4.3"
   },
   "dependencies": {
+    "clean-css-cli": "^5.3.3",
+    "crass": "^0.12.3",
+    "cssnano-cli": "^1.0.5",
+    "csso-cli": "^3.0.0",
     "execa": "^5.1.1",
     "hasha": "^5.2.2",
     "yargs": "^17.1.1"
