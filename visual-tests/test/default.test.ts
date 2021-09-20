@@ -3,24 +3,36 @@ import { configureToMatchImageSnapshot } from 'jest-image-snapshot';
 const toMatchImageSnapshot = configureToMatchImageSnapshot({
   failureThreshold: 0.05,
   failureThresholdType: 'percent',
+  customSnapshotsDir: 'snapshots',
+  updatePassedSnapshot: true,
 });
 expect.extend({ toMatchImageSnapshot });
 
 const viewports = [
   {
-    label: 'phone',
+    label: 'Phone',
     width: 375,
     height: 667,
   },
   {
-    label: 'tablet',
+    label: 'Tablet',
     width: 1024,
     height: 768,
   },
   {
-    label: 'fullhd',
+    label: 'HD',
+    width: 1280,
+    height: 720,
+  },
+  {
+    label: 'FullHD',
     width: 1920,
     height: 1080,
+  },
+  {
+    label: 'UltraHD',
+    width: 3840,
+    height: 2160,
   },
 ];
 

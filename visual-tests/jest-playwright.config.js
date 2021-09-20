@@ -1,7 +1,6 @@
 module.exports = {
   launchOptions: {
-      headless: process.env.HEADLESS !== 'false',
-      slowMo: process.env.SLOWMO ? Number.parseInt(process.env.SLOWMO, 10) : 0,
+    headless: process.env.HEADLESS !== 'false',
   },
   browsers: ['chromium', 'firefox', 'webkit'],
 };
