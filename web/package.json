@@ -9,7 +9,7 @@
     "build:sri": "gulp sri",
     "build:minify-css": "cmmm public/style.css -o public/style.css",
     "build:minify-html": "html-minifier --input-dir public --output-dir public --file-ext html --use-short-doctype --remove-comments --process-conditional-comments --collapse-whitespace --collapse-boolean-attributes --remove-redundant-attributes --remove-script-type-attributes --remove-style-link-type-attributes --sort-class-name --sort-attributes --minify-css true --minify-js true --minify-urls true",
-    "build:minify-js": "find public -type f -iname '*.js' -print0 | xargs -0 -n1 sh -c 'terser \"$0\" --config-file terser.json --output \"$0\"'",
+    "build:minify-js": "find public -type f -iname '*.js' -print0 | xargs -0 -n1 -I% terser % --config-file terser.json --output %",
     "build:minify-xml": "find public -type f -iname '*.xml' -print0 | xargs -0 -n1 minify-xml --in-place",
     "build:urllist": "sitemap2urllist --file public/sitemap.xml --output public/urllist.txt",
     "build:svgo": "run-s build:svgo:*",
