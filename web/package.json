@@ -61,7 +61,7 @@
     "minify-xml": "^3.2.0",
     "node-sass-glob-importer": "^5.3.2",
     "npm-run-all": "^4.1.5",
-    "postcss": "^8.3.7",
+    "postcss": "^8.3.8",
     "postcss-calc": "^8.0.0",
     "postcss-color-hex-alpha": "^8.0.0",
     "postcss-custom-media": "^8.0.0",
@@ -84,7 +84,7 @@
     "terser": "^5.9.0",
     "ts-loader": "^9.2.6",
     "typescript": "^4.4.3",
-    "webpack": "^5.53.0",
+    "webpack": "^5.54.0",
     "webpack-cli": "^4.8.0",
     "webpack-dev-server": "^4.3.0",
     "webpack-fix-style-only-entries": "^0.6.1"
