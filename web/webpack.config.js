@@ -132,7 +132,6 @@ const config = {
     minimizer: [
     ],
   },
-  watch: process.env.NODE_ENV === 'development',
 };
 
 const legacyConfig = {
