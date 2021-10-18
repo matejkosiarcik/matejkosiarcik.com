@@ -44,7 +44,7 @@
     "babel-loader": "^8.2.2",
     "copy-webpack-plugin": "^9.0.1",
     "cross-env": "^7.0.3",
-    "css-loader": "^6.3.0",
+    "css-loader": "^6.4.0",
     "css-mini-mini-mini": "^0.1.1",
     "css-validator": "^0.10.0",
     "glob": "^7.2.0",
