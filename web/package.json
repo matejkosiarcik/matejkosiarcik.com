@@ -41,7 +41,7 @@
     "@babel/preset-env": "^7.15.8",
     "@babel/preset-typescript": "^7.15.0",
     "autoprefixer": "^10.3.6",
-    "babel-loader": "^8.2.2",
+    "babel-loader": "^8.2.3",
     "copy-webpack-plugin": "^9.0.1",
     "cross-env": "^7.0.3",
     "css-loader": "^6.4.0",
