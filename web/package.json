@@ -52,7 +52,7 @@
     "gulp": "^4.0.2",
     "gulp-sri-hash": "^2.2.1",
     "hasha": "^5.2.2",
-    "html-loader": "^2.1.2",
+    "html-loader": "^3.0.0",
     "html-minifier": "^4.0.0",
     "html-validator": "^5.1.17",
     "html-webpack-plugin": "^5.4.0",
