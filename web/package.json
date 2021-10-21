@@ -76,7 +76,7 @@
     "purgecss": "^4.0.3",
     "rcs-core": "^3.7.0",
     "rimraf": "^3.0.2",
-    "sass": "^1.43.2",
+    "sass": "^1.43.3",
     "sass-loader": "^12.2.0",
     "sitemap2urllist": "^0.2.1",
     "style-loader": "^3.3.1",
