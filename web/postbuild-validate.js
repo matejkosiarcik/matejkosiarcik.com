@@ -3,7 +3,6 @@ const process = require('process');
 const htmlValidator = require('html-validator');
 const glob = require('glob');
 const cssValidator = require('css-validator');
-const path = require('path');
 
 // just bail on error
 process.on('unhandledRejection', (error) => {
