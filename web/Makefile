@@ -30,17 +30,13 @@ clean:
 	$(BUNDLE_ENV) bundle exec rake -f $(PROJECT_DIR)/jekyll/Rakefile clean
 	npm run clean
 
-.PHONY: prebuild
-prebuild:
-	true
-
 .PHONY: build
-build: prebuild
+build:
 	$(BUNDLE_ENV) bundle exec rake -f $(PROJECT_DIR)/jekyll/Rakefile build
 	npm run build
 
 .PHONY: run
-run: prebuild
+run:
 	$(BUNDLE_ENV) bundle exec rake -f $(PROJECT_DIR)/jekyll/Rakefile prestart
 	@$(MAKE) -j2 -C$(PROJECT_DIR) -f$(MAKEFILE_PATH) _run
 

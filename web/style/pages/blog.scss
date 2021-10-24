@@ -1,7 +1,16 @@
 // !!! This file styles both the "/blog" and all individual articles "/blog/hello-world"
 
+main.blog {
+  // TODO: remove before publishing any blogposts
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 30px;
+  text-align: center;
+}
+
 .articles {
-  margin: -20px 0; // reset margin from individual article
+  margin: -20px 0 0 0; // reset margin from individual article
 
   @media (--desktop) {
     display: flex;

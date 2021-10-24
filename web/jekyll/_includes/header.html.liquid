@@ -1,5 +1,11 @@
 {% assign current_url = page.url | regex_replace: "/+$", "" %}
-{% assign navigation_pages = site.pages | where_exp: "page", "page.navigation == true" | sort: "url" %}
+{% capture navigation_pages %}
+/ | Home
+/projects | Projects
+/about | About
+/blog | Blog
+{% endcapture %}
+{% assign navigation_pages = navigation_pages | strip | newline_to_br | strip_newlines | split: "<br />" %}
 
 <header>
   <input type="checkbox" id="menu-checkbox" name="menu-checkbox" />
@@ -14,7 +20,8 @@
   <nav id="navigation" class="container">
     <ul>
       {% for page in navigation_pages %}
-        {% assign page_url = page.url | regex_replace: "/+$", "" %}
+        {% assign page_url = page | split: "|" | first | strip | regex_replace: "/+$", "" %}
+        {% assign page_title = page | split: "|" | last | strip %}
 
         {% if current_url == page_url %}
           <li class="active">
@@ -26,7 +33,7 @@
           {% assign page_url = "/" %}
         {% endif %}
 
-          <a href="{{ page_url }}">{{ page.title }}</a>
+          <a href="{{ page_url }}">{{ page_title }}</a>
         </li>
       {% endfor %}
     </ul>
