@@ -116,7 +116,7 @@ body > header {
   }
 
   input[type='checkbox']:checked ~ label .hamburger {
-    @extend .is-active;
+    @extend .is-active; /* stylelint-disable-line scss/at-extend-no-missing-placeholder */
   }
 }
 
