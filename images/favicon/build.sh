@@ -15,7 +15,6 @@ svg2png() {
     printf '%s\n' "$(basename "$outputFile")"
     rsvg-convert -f png -w "$width" -h "$height" "$inputFile" -o "$outputFile"
     pngquant --strip --speed 1 --skip-if-larger --quality 0-90 --force "$outputFile" --output "$outputFile"
-    # docker run --interactive --volume "$PWD/$outputFile:/file.png" matejkosiarcik/millipng --brute
     printf '\n'
 }
 

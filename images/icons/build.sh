@@ -22,3 +22,5 @@ done
 find "$output_directory" -name '*.svg' | while read -r file; do
     svgcleaner --apply-transform-to-paths yes --coordinates-precision 1 --properties-precision 1 --transforms-precision 1 --paths-coordinates-precision 1 "$file" "$file"
 done
+
+docker run --interactive --tty --volume "$PWD/artifacts:/img" matejkosiarcik/millipng:dev --level ultra-brute
