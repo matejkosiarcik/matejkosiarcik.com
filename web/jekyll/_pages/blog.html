@@ -1,0 +1,17 @@
+---
+permalink: /blog/
+title: Blog
+navigation: true
+---
+
+{% if site.posts.size == 0 %}
+  <h1>I guess there are no posts yet ¯\_(ツ)_/¯</h1>
+{% else %}
+  <h1>Recent articles</h1>
+
+  <div class="articles">
+    {% for post in site.posts %}
+      {% include blogpost-teaser.html.liquid %}
+    {% endfor %}
+  </div>
+{% endif %}

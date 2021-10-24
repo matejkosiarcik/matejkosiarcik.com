@@ -1,0 +1,17 @@
+<article class="teaser">
+  <section class="header">
+    <h2>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+    </h2>
+    <p>
+      <time datetime="{{ post.date | date: "%Y-%m-%d" }}">{{ post.date | date_to_long_string }}</time>
+    </p>
+    <p class="categories">
+      {% for category in post.category %}
+        <span class="category">{{ category }}</span>
+      {% endfor %}
+    </p>
+  </section>
+
+  <!-- <section class="main">{{ post.excerpt }}</section> -->
+</article>

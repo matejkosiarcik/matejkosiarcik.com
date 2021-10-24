@@ -3,6 +3,7 @@ const process = require('process');
 const htmlValidator = require('html-validator');
 const glob = require('glob');
 const cssValidator = require('css-validator');
+const path = require('path');
 
 // just bail on error
 process.on('unhandledRejection', (error) => {
@@ -17,6 +18,7 @@ pages.forEach(async (pagePath) => {
   // WHATWG is the **local** validator
   const results = await htmlValidator({ data: pageContent, validator: 'WHATWG', ignore: ['no-conditional-comment'] });
   if (!results.isValid) {
+    console.error(`Error in page ${pagePath}`);
     throw results.errors.concat(results.warnings);
   }
 });
@@ -27,6 +29,7 @@ styles.forEach(async (stylePath) => {
 
   cssValidator({ text: styleContent, warning: 'no', profile: 'css3svg' }, (_, data) => {
     if (!data.validity) {
+      console.error(`Error in style ${stylePath}`);
       throw data.errors;
     }
   });
