@@ -19,7 +19,6 @@ rules:
 
   # misc
   alpha-value-notation: number
-  scss/no-global-function-names: null # TODO: reenable this warning
 
 ignoreFiles:
   - "**/*.js"

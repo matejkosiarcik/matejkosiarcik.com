@@ -1,14 +1,16 @@
+@use 'sass:color';
+
 // generic backgrounds
 $bg-color-light: #fafafa;
-$bg-color-light-alt: darken($bg-color-light, 20%);
+$bg-color-light-alt: color.adjust($bg-color-light, $lightness: -20%);
 $bg-color-dark: #121212;
-$bg-color-dark-alt: lighten($bg-color-dark, 20%);
+$bg-color-dark-alt: color.adjust($bg-color-dark, $lightness: 20%);
 
 // generic foregrounds
 $fg-color-light: #333;
-$fg-color-light-alt: lighten($fg-color-light, 20%);
+$fg-color-light-alt: color.adjust($fg-color-light, $lightness: 20%);
 $fg-color-dark: #fafafa;
-$fg-color-dark-alt: darken($fg-color-dark, 15%);
+$fg-color-dark-alt: color.adjust($fg-color-dark, $lightness: -15%);
 $fg-color-light-faded: #a0a0a0;
 $fg-color-dark-faded: #888;
 
