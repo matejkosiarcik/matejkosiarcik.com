@@ -1,6 +1,5 @@
 {
   "private": true,
-  "name": "example",
   "scripts": {
     "build": "run-s build:*",
     "build:favicon": "sh favicon/build.sh",

@@ -1,6 +1,5 @@
 {
   "private": true,
-  "name": "example",
   "scripts": {
     "build": "run-s clean build:goatcounter build:webpack build:minify-js build:purgecss build:rcs build:minify-css build:svgo build:hash build:sri build:minify-html build:urllist build:minify-xml build:netlify",
     "build:webpack": "cross-env NODE_ENV=production webpack --mode production",
