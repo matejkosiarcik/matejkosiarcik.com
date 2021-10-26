@@ -4,9 +4,12 @@ const glob = require('glob');
 const assert = require('assert');
 const fs = require('fs');
 
-function makeHeaders(_urls, headers) {
-  const outputFile = path.join('public', '_headers');
+const outputFile = path.join('public', '_headers');
 
+/**
+ * Output headers for each url
+ */
+function makeHeaders(_urls, headers) {
   assert(Array.isArray(_urls) || typeof _urls === 'string');
   const urls = Array.isArray(_urls) ? _urls : [_urls];
 
@@ -15,10 +18,8 @@ function makeHeaders(_urls, headers) {
     assert(typeof headers[key] === 'string');
     return `    ${key}: ${headers[key]}`;
   }).join('\n');
-  urls.forEach((url) => {
-    const output = `${url}\n${outputHeaders}\n`;
-    fs.appendFileSync(outputFile, output);
-  });
+  const output = urls.map((url) => `${url}\n${outputHeaders}\n`).join('');
+  fs.appendFileSync(outputFile, output);
 }
 
 makeHeaders('/*', {
@@ -26,12 +27,12 @@ makeHeaders('/*', {
   'X-Frame-Options': 'DENY',
   'X-Permitted-Cross-Domain-Policies': 'none',
 
-  // by default cache nothing (such as robots.txt or 404s)
-  // override this setting for appropriate files (pages, assets, etc.)
+  // By default cache nothing (such as robots.txt or 404s)
+  // We later override this setting for appropriate files (pages, assets, etc.)
   'Cache-Control': 'private, no-store, no-cache',
 
-  // can't be same-origin, because assets will be served from subdomain,
-  // can't be cross-origin, because I guess hotlinking
+  // Can't be same-origin, because assets will be served from subdomain (eventually)
+  // Can't be cross-origin, because I guess hotlinking ¯\_(ツ)_/¯
   'Cross-Origin-Resource-Policy': 'same-site',
 });
 
@@ -109,7 +110,7 @@ makeHeaders(['/', '/*.html'].concat(htmlDirectories), {
   'Expect-CT': "max-age=0, enforce, report-uri='https://matejkosiarcik.report-uri.com/r/d/ct/enforce'",
   'Cache-Control': 'max-age=600, must-revalidate',
 
-  'Cross-Origin-Embedder-Policy': "unsafe-none; report-to='default'", // TODO: switch to "require-corp" after all used external resources implemented "Cross-Origin-Resource-Policy: cross-origin" (mainly goatcounter)
+  'Cross-Origin-Embedder-Policy': "unsafe-none; report-to='default'", // TODO: switch to "require-corp" after all used external resources implemented "Cross-Origin-Resource-Policy: cross-origin" (goatcounter is currently missing support for this)
   'Cross-Origin-Opener-Policy': "same-origin; report-to='default'",
 });
 
