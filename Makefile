@@ -16,7 +16,6 @@ all: bootstrap build
 .PHONY: bootstrap
 bootstrap:
 	npm ci
-	npm --prefix images ci
 	@$(MAKE) -C$(PROJECT_DIR)/web bootstrap
 
 .PHONY: lint

@@ -132,7 +132,7 @@ makeHeaders('/*.css', {
 });
 
 makeHeaders('/*.js', {
-  'Content-Type': 'text/javascript; charset=UTF-8',
+  'Content-Type': 'application/javascript; charset=UTF-8',
   'Cache-Control': 'max-age=31536000, immutable',
 });
 

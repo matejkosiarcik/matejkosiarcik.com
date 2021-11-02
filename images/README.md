@@ -9,13 +9,11 @@
 <!-- tocstop -->
 
 Even though the optimized images are just a build artifact,
-they are stored in project history because generating them takes a long time.
-And I don't wait to waste CI time (and wait for it) an hour for each commit/PR.
+they are stored in project anyway, because generating them takes a long time
+(and so does not make sense to wait an hour on each CI build).
 
 ## Development
 
 ```sh
-npm ci
-# optionally: npm run clean
-npm run build
+make build
 ```
