@@ -1,4 +1,6 @@
 import { configureToMatchImageSnapshot } from 'jest-image-snapshot';
+import { viewports } from '../utils/viewports';
+import { locations } from '../utils/locations';
 
 const toMatchImageSnapshot = configureToMatchImageSnapshot({
   failureThreshold: 0.05,
@@ -7,61 +9,6 @@ const toMatchImageSnapshot = configureToMatchImageSnapshot({
   updatePassedSnapshot: true,
 });
 expect.extend({ toMatchImageSnapshot });
-
-const viewports = [
-  {
-    label: 'Phone',
-    width: 375,
-    height: 667,
-  },
-  {
-    label: 'Tablet',
-    width: 1024,
-    height: 768,
-  },
-  {
-    label: 'HD',
-    width: 1280,
-    height: 720,
-  },
-  {
-    label: 'FullHD',
-    width: 1920,
-    height: 1080,
-  },
-  {
-    label: 'UltraHD',
-    width: 3840,
-    height: 2160,
-  },
-];
-
-const locations = [
-  {
-    name: 'home',
-    url: '/',
-  },
-  {
-    name: 'projects',
-    url: '/projects',
-  },
-  {
-    name: 'about',
-    url: '/about',
-  },
-  {
-    name: 'blog',
-    url: '/blog',
-  },
-  {
-    name: '404',
-    url: '/404',
-  },
-  {
-    name: 'zenplayer',
-    url: '/zenplayer',
-  },
-];
 
 describe.each(locations)('$name', (location: typeof locations[0]) => {
   beforeAll(async () => {
@@ -73,7 +20,6 @@ describe.each(locations)('$name', (location: typeof locations[0]) => {
 
   test.each(viewports)('$width x $height', async (viewport: typeof viewports[0]) => {
     await page.setViewportSize({ width: viewport.width, height: viewport.height });
-    await page.pause();
 
     const [landingImage, fullpageImage] = await Promise.all([
       page.screenshot({ fullPage: false }),
