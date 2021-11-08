@@ -1,6 +1,6 @@
 import { configureToMatchImageSnapshot } from 'jest-image-snapshot';
-import { viewports } from '../utils/viewports';
-import { locations } from '../utils/locations';
+import viewports from '../utils/viewports';
+import locations from '../utils/locations';
 
 const toMatchImageSnapshot = configureToMatchImageSnapshot({
   failureThreshold: 0.05,

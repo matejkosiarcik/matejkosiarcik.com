@@ -1,4 +1,4 @@
-export const locations = [
+const locations = [
   {
     name: 'home',
     url: '/',
@@ -24,3 +24,5 @@ export const locations = [
     url: '/zenplayer',
   },
 ];
+
+export default locations;

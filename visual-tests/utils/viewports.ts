@@ -1,4 +1,4 @@
-export const viewports = [
+const viewports = [
   {
     label: 'Phone',
     width: 375,
@@ -25,3 +25,5 @@ export const viewports = [
     height: 2160,
   },
 ];
+
+export default viewports;
