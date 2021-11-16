@@ -37,18 +37,8 @@ export const viewports = [
     height: 768,
   },
   {
-    label: 'HD',
-    width: 1280,
-    height: 720,
-  },
-  {
     label: 'FullHD',
     width: 1920,
     height: 1080,
-  },
-  {
-    label: 'UltraHD',
-    width: 3840,
-    height: 2160,
   },
 ];

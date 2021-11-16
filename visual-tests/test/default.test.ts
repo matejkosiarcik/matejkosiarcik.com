@@ -1,5 +1,6 @@
 import { configureToMatchImageSnapshot } from 'jest-image-snapshot';
 import { locations, viewports } from '../utils/constants';
+import { waitForIdle, waitForImages, waitForReady } from '../utils/utils';
 
 expect.extend({
   toMatchImageSnapshot: configureToMatchImageSnapshot({
@@ -7,7 +8,7 @@ expect.extend({
     failureThresholdType: 'percent',
     customSnapshotsDir: 'snapshots',
     updatePassedSnapshot: true,
-  })
+  }),
 });
 
 describe.each(locations)('$name', (location: typeof locations[0]) => {
@@ -20,6 +21,9 @@ describe.each(locations)('$name', (location: typeof locations[0]) => {
         element.setAttribute('loading', 'eager');
       });
     });
+    await waitForReady(page);
+    await waitForIdle(page);
+    await waitForImages(page);
   });
 
   test.each(viewports)('$width x $height', async (viewport: typeof viewports[0]) => {
