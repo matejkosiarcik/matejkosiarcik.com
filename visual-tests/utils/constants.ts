@@ -1,4 +1,4 @@
-const locations = [
+export const locations = [
   {
     name: 'home',
     url: '/',
@@ -25,4 +25,20 @@ const locations = [
   },
 ];
 
-export default locations;
+export const viewports = [
+  {
+    label: 'Phone',
+    width: 375,
+    height: 667,
+  },
+  {
+    label: 'Tablet',
+    width: 1024,
+    height: 768,
+  },
+  {
+    label: 'FullHD',
+    width: 1920,
+    height: 1080,
+  },
+];
