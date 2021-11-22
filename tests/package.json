@@ -10,7 +10,7 @@
     "broken-link-checker": "^0.7.8",
     "css-validator": "^0.10.0",
     "hint": "^6.1.9",
-    "html-validator": "^5.1.17",
+    "html-validator": "^6.0.0",
     "is-website-vulnerable": "^1.14.8",
     "observatory-cli": "^0.7.1",
     "webhint-formatter-real-json": "^1.0.0"
