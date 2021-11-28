@@ -60,13 +60,13 @@
     "minify-xml": "^3.3.1",
     "node-sass-glob-importer": "^5.3.2",
     "npm-run-all": "^4.1.5",
-    "postcss": "^8.3.11",
+    "postcss": "^8.4.4",
     "postcss-calc": "^8.0.0",
     "postcss-color-hex-alpha": "^8.0.0",
     "postcss-custom-media": "^8.0.0",
     "postcss-custom-properties": "^12.0.0",
     "postcss-hexrgba": "^2.0.1",
-    "postcss-loader": "^6.2.0",
+    "postcss-loader": "^6.2.1",
     "postcss-media-minmax": "^5.0.0",
     "posthtml-attrs-sorter": "^1.1.0",
     "posthtml-loader": "^2.0.1",
@@ -83,9 +83,9 @@
     "terser": "^5.10.0",
     "ts-loader": "^9.2.6",
     "typescript": "^4.5.2",
-    "webpack": "^5.64.2",
+    "webpack": "^5.64.4",
     "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^4.5.0",
+    "webpack-dev-server": "^4.6.0",
     "webpack-fix-style-only-entries": "^0.6.1"
   }
 }
