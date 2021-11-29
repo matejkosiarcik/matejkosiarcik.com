@@ -72,7 +72,7 @@
     "posthtml-loader": "^2.0.1",
     "posthtml-outlinks": "^1.0.0",
     "posthtml-transform": "^1.0.10",
-    "purgecss": "^4.0.3",
+    "purgecss": "^4.1.1",
     "rcs-core": "^3.7.0",
     "rimraf": "^3.0.2",
     "sass": "^1.43.5",
