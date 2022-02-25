@@ -19,6 +19,13 @@ rules:
 
   # misc
   alpha-value-notation: number
+  value-keyword-case:
+    - lower
+    - camelCaseSvgKeywords: true
+  function-no-unknown:
+    - true
+    - ignoreFunctions:
+      - color.adjust
 
 ignoreFiles:
   - "**/*.js"
