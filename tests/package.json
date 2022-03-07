@@ -8,7 +8,7 @@
   "dependencies": {
     "@hint/formatter-json": "^3.1.25",
     "broken-link-checker": "^0.7.8",
-    "css-validator": "^0.10.0",
+    "css-validator": "^0.11.0",
     "hint": "^6.1.9",
     "html-validator": "^6.0.0",
     "is-website-vulnerable": "^1.14.8",
