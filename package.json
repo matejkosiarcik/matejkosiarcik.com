@@ -9,9 +9,9 @@
     "fmt:css": "stylelint --fix \"**/*.{css,scss}\""
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.13.0",
-    "@typescript-eslint/parser": "^5.12.1",
-    "eslint": "^8.10.0",
+    "@typescript-eslint/eslint-plugin": "^5.14.0",
+    "@typescript-eslint/parser": "^5.14.0",
+    "eslint": "^8.11.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.4",
     "npm-run-all": "^4.1.5",
@@ -20,6 +20,6 @@
     "stylelint-config-recommended-scss": "^5.0.2",
     "stylelint-config-standard": "^25.0.0",
     "stylelint-scss": "^4.1.0",
-    "typescript": "^4.5.5"
+    "typescript": "^4.6.2"
   }
 }
