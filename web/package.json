@@ -44,7 +44,7 @@
     "copy-webpack-plugin": "^10.2.4",
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
-    "css-mini-mini-mini": "^0.2.0",
+    "css-mini-mini-mini": "^0.2.1",
     "css-validator": "^0.11.0",
     "glob": "^7.2.0",
     "glob-all": "^3.3.0",
