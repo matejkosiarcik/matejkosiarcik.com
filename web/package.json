@@ -46,7 +46,7 @@
     "css-loader": "^6.7.1",
     "css-mini-mini-mini": "^0.2.1",
     "css-validator": "^0.11.0",
-    "glob": "^8.0.1",
+    "glob": "^8.0.2",
     "glob-all": "^3.3.0",
     "glob-exec": "^0.1.1",
     "gulp": "^4.0.2",
