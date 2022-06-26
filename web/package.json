@@ -27,7 +27,7 @@
     "serve": "cross-env NODE_ENV=development webpack serve --mode development"
   },
   "dependencies": {
-    "core-js": "^3.23.2",
+    "core-js": "^3.23.3",
     "hamburgers": "^1.2.1",
     "instant.page": "^5.1.0",
     "normalize.css": "^8.0.1"
