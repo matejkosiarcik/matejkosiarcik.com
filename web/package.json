@@ -77,7 +77,7 @@
     "rcs-core": "^3.7.1",
     "rimraf": "^3.0.2",
     "sass": "^1.53.0",
-    "sass-loader": "^13.0.0",
+    "sass-loader": "^13.0.1",
     "sitemap2urllist": "^0.2.1",
     "sponge": "^0.1.0",
     "style-loader": "^3.3.1",
