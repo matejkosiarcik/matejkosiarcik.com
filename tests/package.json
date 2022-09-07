@@ -6,7 +6,7 @@
     "test:sh": "sh test.sh"
   },
   "dependencies": {
-    "@hint/formatter-json": "^3.1.30",
+    "@hint/formatter-json": "^3.1.32",
     "broken-link-checker": "^0.7.8",
     "css-validator": "^0.11.0",
     "hint": "^7.1.1",
