@@ -1,0 +1,9 @@
+/index.html / 301!
+/security.txt /.well-known/security.txt 301!
+
+/404.html /404.html 404!
+/404 /404.html 404!
+/404/ /404.html 404!
+/* /404.html 404
+
+/:page/index.html /:page/ 301!

@@ -1,0 +1,129 @@
+/*
+    X-Content-Type-Options: nosniff
+    X-Frame-Options: DENY
+    X-Permitted-Cross-Domain-Policies: none
+    Cache-Control: private, no-store, no-cache
+    Cross-Origin-Resource-Policy: same-site
+/
+    Report-To: {'group':'default','max_age':31536000,'endpoints':[{'url':'https://matejkosiarcik.report-uri.com/a/d/g'}],'include_subdomains':true}
+    NEL: {'report_to':'default','max_age':31536000,'include_subdomains':true}
+    Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+    Referrer-Policy: strict-origin-when-cross-origin
+    X-XSS-Protection: 1; mode=block
+    X-UA-Compatible: IE=edge
+    Content-Type: text/html; charset=UTF-8
+    Content-Security-Policy: default-src 'none'; base-uri 'self'; script-src 'self' https://*.matejkosiarcik.com; style-src 'self' https://*.matejkosiarcik.com; img-src 'self' https://*.matejkosiarcik.com https://matejkosiarcik.goatcounter.com; connect-src 'self' https://*.matejkosiarcik.com; form-action 'none'; frame-ancestors 'none'; block-all-mixed-content
+    Permissions-Policy: interest-cohort=(), accelerometer=(), autoplay=(), camera=(), fullscreen=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), sync-xhr=(), usb=()
+    Expect-CT: max-age=0, enforce, report-uri='https://matejkosiarcik.report-uri.com/r/d/ct/enforce'
+    Cache-Control: max-age=600, must-revalidate
+    Cross-Origin-Embedder-Policy: unsafe-none; report-to='default'
+    Cross-Origin-Opener-Policy: same-origin; report-to='default'
+/*.html
+    Report-To: {'group':'default','max_age':31536000,'endpoints':[{'url':'https://matejkosiarcik.report-uri.com/a/d/g'}],'include_subdomains':true}
+    NEL: {'report_to':'default','max_age':31536000,'include_subdomains':true}
+    Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+    Referrer-Policy: strict-origin-when-cross-origin
+    X-XSS-Protection: 1; mode=block
+    X-UA-Compatible: IE=edge
+    Content-Type: text/html; charset=UTF-8
+    Content-Security-Policy: default-src 'none'; base-uri 'self'; script-src 'self' https://*.matejkosiarcik.com; style-src 'self' https://*.matejkosiarcik.com; img-src 'self' https://*.matejkosiarcik.com https://matejkosiarcik.goatcounter.com; connect-src 'self' https://*.matejkosiarcik.com; form-action 'none'; frame-ancestors 'none'; block-all-mixed-content
+    Permissions-Policy: interest-cohort=(), accelerometer=(), autoplay=(), camera=(), fullscreen=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), sync-xhr=(), usb=()
+    Expect-CT: max-age=0, enforce, report-uri='https://matejkosiarcik.report-uri.com/r/d/ct/enforce'
+    Cache-Control: max-age=600, must-revalidate
+    Cross-Origin-Embedder-Policy: unsafe-none; report-to='default'
+    Cross-Origin-Opener-Policy: same-origin; report-to='default'
+/about/
+    Report-To: {'group':'default','max_age':31536000,'endpoints':[{'url':'https://matejkosiarcik.report-uri.com/a/d/g'}],'include_subdomains':true}
+    NEL: {'report_to':'default','max_age':31536000,'include_subdomains':true}
+    Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+    Referrer-Policy: strict-origin-when-cross-origin
+    X-XSS-Protection: 1; mode=block
+    X-UA-Compatible: IE=edge
+    Content-Type: text/html; charset=UTF-8
+    Content-Security-Policy: default-src 'none'; base-uri 'self'; script-src 'self' https://*.matejkosiarcik.com; style-src 'self' https://*.matejkosiarcik.com; img-src 'self' https://*.matejkosiarcik.com https://matejkosiarcik.goatcounter.com; connect-src 'self' https://*.matejkosiarcik.com; form-action 'none'; frame-ancestors 'none'; block-all-mixed-content
+    Permissions-Policy: interest-cohort=(), accelerometer=(), autoplay=(), camera=(), fullscreen=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), sync-xhr=(), usb=()
+    Expect-CT: max-age=0, enforce, report-uri='https://matejkosiarcik.report-uri.com/r/d/ct/enforce'
+    Cache-Control: max-age=600, must-revalidate
+    Cross-Origin-Embedder-Policy: unsafe-none; report-to='default'
+    Cross-Origin-Opener-Policy: same-origin; report-to='default'
+/blog/
+    Report-To: {'group':'default','max_age':31536000,'endpoints':[{'url':'https://matejkosiarcik.report-uri.com/a/d/g'}],'include_subdomains':true}
+    NEL: {'report_to':'default','max_age':31536000,'include_subdomains':true}
+    Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+    Referrer-Policy: strict-origin-when-cross-origin
+    X-XSS-Protection: 1; mode=block
+    X-UA-Compatible: IE=edge
+    Content-Type: text/html; charset=UTF-8
+    Content-Security-Policy: default-src 'none'; base-uri 'self'; script-src 'self' https://*.matejkosiarcik.com; style-src 'self' https://*.matejkosiarcik.com; img-src 'self' https://*.matejkosiarcik.com https://matejkosiarcik.goatcounter.com; connect-src 'self' https://*.matejkosiarcik.com; form-action 'none'; frame-ancestors 'none'; block-all-mixed-content
+    Permissions-Policy: interest-cohort=(), accelerometer=(), autoplay=(), camera=(), fullscreen=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), sync-xhr=(), usb=()
+    Expect-CT: max-age=0, enforce, report-uri='https://matejkosiarcik.report-uri.com/r/d/ct/enforce'
+    Cache-Control: max-age=600, must-revalidate
+    Cross-Origin-Embedder-Policy: unsafe-none; report-to='default'
+    Cross-Origin-Opener-Policy: same-origin; report-to='default'
+/projects/
+    Report-To: {'group':'default','max_age':31536000,'endpoints':[{'url':'https://matejkosiarcik.report-uri.com/a/d/g'}],'include_subdomains':true}
+    NEL: {'report_to':'default','max_age':31536000,'include_subdomains':true}
+    Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+    Referrer-Policy: strict-origin-when-cross-origin
+    X-XSS-Protection: 1; mode=block
+    X-UA-Compatible: IE=edge
+    Content-Type: text/html; charset=UTF-8
+    Content-Security-Policy: default-src 'none'; base-uri 'self'; script-src 'self' https://*.matejkosiarcik.com; style-src 'self' https://*.matejkosiarcik.com; img-src 'self' https://*.matejkosiarcik.com https://matejkosiarcik.goatcounter.com; connect-src 'self' https://*.matejkosiarcik.com; form-action 'none'; frame-ancestors 'none'; block-all-mixed-content
+    Permissions-Policy: interest-cohort=(), accelerometer=(), autoplay=(), camera=(), fullscreen=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), sync-xhr=(), usb=()
+    Expect-CT: max-age=0, enforce, report-uri='https://matejkosiarcik.report-uri.com/r/d/ct/enforce'
+    Cache-Control: max-age=600, must-revalidate
+    Cross-Origin-Embedder-Policy: unsafe-none; report-to='default'
+    Cross-Origin-Opener-Policy: same-origin; report-to='default'
+/zenplayer/
+    Report-To: {'group':'default','max_age':31536000,'endpoints':[{'url':'https://matejkosiarcik.report-uri.com/a/d/g'}],'include_subdomains':true}
+    NEL: {'report_to':'default','max_age':31536000,'include_subdomains':true}
+    Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+    Referrer-Policy: strict-origin-when-cross-origin
+    X-XSS-Protection: 1; mode=block
+    X-UA-Compatible: IE=edge
+    Content-Type: text/html; charset=UTF-8
+    Content-Security-Policy: default-src 'none'; base-uri 'self'; script-src 'self' https://*.matejkosiarcik.com; style-src 'self' https://*.matejkosiarcik.com; img-src 'self' https://*.matejkosiarcik.com https://matejkosiarcik.goatcounter.com; connect-src 'self' https://*.matejkosiarcik.com; form-action 'none'; frame-ancestors 'none'; block-all-mixed-content
+    Permissions-Policy: interest-cohort=(), accelerometer=(), autoplay=(), camera=(), fullscreen=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), sync-xhr=(), usb=()
+    Expect-CT: max-age=0, enforce, report-uri='https://matejkosiarcik.report-uri.com/r/d/ct/enforce'
+    Cache-Control: max-age=600, must-revalidate
+    Cross-Origin-Embedder-Policy: unsafe-none; report-to='default'
+    Cross-Origin-Opener-Policy: same-origin; report-to='default'
+/*.svg
+    Content-Type: image/svg+xml; charset=UTF-8
+    Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'
+/*.jpg
+    Cache-Control: max-age=86400
+/*.jpeg
+    Cache-Control: max-age=86400
+/*.png
+    Cache-Control: max-age=86400
+/*.apng
+    Cache-Control: max-age=86400
+/*.gif
+    Cache-Control: max-age=86400
+/*.ico
+    Cache-Control: max-age=86400
+/*.svg
+    Cache-Control: max-age=86400
+/*.webp
+    Cache-Control: max-age=86400
+/*.avif
+    Cache-Control: max-age=86400
+/*.heif
+    Cache-Control: max-age=86400
+/*.heic
+    Cache-Control: max-age=86400
+/*.bmp
+    Cache-Control: max-age=86400
+/*.css
+    Content-Type: text/css; charset=UTF-8
+    Cache-Control: max-age=31536000, immutable
+/*.js
+    Content-Type: application/javascript; charset=UTF-8
+    Cache-Control: max-age=31536000, immutable
+/*.xml
+    Content-Type: application/xml; charset=UTF-8
+/*.json
+    Content-Type: application/json; charset=UTF-8
+/*.txt
+    Content-Type: text/plain; charset=UTF-8
